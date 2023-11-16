@@ -1,0 +1,1 @@
+export { IconsIconShoppingCart } from "./IconsIconShoppingCart";

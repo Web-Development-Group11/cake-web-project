@@ -1,18 +1,12 @@
-import { BrowserRouter,  Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
 
+// import { Card } from "./components/card";
+import { Card } from "./components/card/Card";
 
-
-function App() {
+function App() {  
   return (
-    <div className="App">
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={< Home />} />
-      </Routes>
-      </BrowserRouter>
+  <div className="App">
+      <Card/>
     </div>
   );
 }
-
 export default App;
