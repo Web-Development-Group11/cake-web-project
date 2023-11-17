@@ -1,3 +1,5 @@
+@import url("../../styleguide.css");
+
 .card {
     height: 400px;
     width: 276px;
@@ -137,15 +139,15 @@
 }
 
 .card.hover .text-wrapper {
-    color: rgba(226, 16, 51, 1);
+    color: var(--primary)
 }
 
 .card.default .add-to-cart {
-    /* background-color: var(--primary) */
-    background-color: rgba(226, 16, 51, 1);
+    background-color: var(--primary)
+    /* background-color: rgba(226, 16, 51, 1); */
 }
 
 .card.hover .add-to-cart {
-    /* background-color: var(--secondaryvariant); */
-    background-color: rgba(161, 225, 244, 1);
+    background-color: var(--secondaryvariant);
+    /* background-color: rgba(161, 225, 244, 1); */
 }
