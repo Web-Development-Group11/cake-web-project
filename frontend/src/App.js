@@ -3,7 +3,7 @@ import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import Product from './pages/product/Product';
-import Product_detail from './pages/product_detail/Product_detail';
+import ProductDetail from './pages/productDetail/ProductDetail';
 import Support from './pages/support/Support';
 import Payment from './pages/payment/Payment';
 import Account from './pages/account/Account';
@@ -21,7 +21,7 @@ function App() {
         <Route path="/login" element={< Login />} />
         <Route path="/register" element={< Register />} />
         <Route path="/product" element={< Product />} />
-        <Route path="product_detail" element={< Product_detail />} />
+        <Route path="productDetail" element={< ProductDetail />} />
         <Route path="/support" element={< Support/>} />
         <Route path="/payment" element={< Payment />} />
         <Route path="/account" element={< Account />} />

@@ -1,0 +1,29 @@
+/* src/variable.css */
+
+:root {
+
+    /* Set color */
+    --red : #E21033;
+    --pink : #FFEEF4;
+    --blue : #A1E1F4;
+    --white : #FFFFFF;
+    --black : #000000;
+    --brown : #47271C;
+
+    /* Set color variants */
+    --primary-color : var(--red);
+    --background-1: var(-white);
+    --background-2 : var(--pink);
+    --variant : var(--blue);
+    --text : var(--black);
+    --highlight-text : var(--brown);
+
+    /* Set font variants */
+
+}
+
+
+@import 'https://fonts.googleapis.com/css?family=Lobster';
+@import 'https://fonts.googleapis.com/css?family=Lato';
+
+
