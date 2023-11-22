@@ -1,5 +1,10 @@
 @import url("../../Variable.css");
-h1 {
+
+.title--4 {
     color: var(--primary-color);
-    font-family: Lobster;
+    text-align: center;
+}
+.btn1 {
+    display: flex;
+    margin: 0 auto;
 }
