@@ -4,7 +4,7 @@ import './Button.css'
 const Button = (props) => {
   const {children} = props;
   return (
-    <button>{children}</button>
+    <button className='btn primary'>{children}</button>
   )
 }
 

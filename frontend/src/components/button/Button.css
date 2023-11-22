@@ -1,11 +1,10 @@
 @import url("../../Variable.css");
 
-button {
-    color: var(--white);
-    background: none;
-    background-color: var(--primary-color);
+/* Button style defaut */
+.btn {
+    background: transparent;
     font-size: 20px;
-    font-family: var(--button);
+    font-family: Lato;
     cursor: pointer;
     padding: 12px 32px;
     border: 2px solid var(--white);
@@ -16,14 +15,29 @@ button {
     overflow: hidden;
 }
 
-button:hover {
+/* Button style when hovering */
+.btn:hover {
     background-color: var(--variant);
     color: var(--text);
     box-shadow: 0 2px 0 2px var(--brown),
                 0px 8px 32px rgba(0, 0, 0, 0.12)
 }
-   
-button:active {
+
+/* Button style when pressing */
+.btn:active {
     box-shadow: 0 1px 0 1px var(--brown),
                 0px 1px 8px rgba(0, 0, 0, 0.12)
+}
+
+/* Variations */
+.primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.secondary {
+    background-color: var(--background-2);
+    color: var(--primary-color);
+    box-shadow: 0 2px 0 2px var(--primary-color),
+                0px 3px 12px rgba(0, 0, 0, 0.10);
 }
