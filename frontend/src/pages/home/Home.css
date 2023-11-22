@@ -1,4 +1,5 @@
 @import url("../../Variable.css");
 h1 {
     color: var(--primary-color);
+    font-family: Lobster;
 }
