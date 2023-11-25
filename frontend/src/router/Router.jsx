@@ -10,10 +10,12 @@ import Account from "../pages/account/Account";
 import Cart from "../pages/cart/Cart";
 import Introduction from "../pages/introduction/Introduction";
 import Blog from "../pages/blog/Blog";
+import Navbar from "../components/header/NavBar";
 
 const Router = () => {
     return (
         <div className="App">
+        <Navbar/>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={< Home />} />
