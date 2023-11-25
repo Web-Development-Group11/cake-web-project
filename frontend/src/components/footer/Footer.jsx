@@ -1,6 +1,5 @@
 import React from 'react';
-import IconName from "react-icons/fa";
-import MdOutlineEmail from "react-icons/md";
+// import MdOutlineEmail from "react-icons/md";
 import './Footer.css';
 import Button from '../button/Button';
 import TextField from '../textField/TextField';
@@ -33,7 +32,7 @@ const Footer = ({
                 <div className="contact__name title">Liên hệ</div>
                 <div className="contact__email">
                     <div className="contact__info">bongcake.work@gmail.com</div>
-                    <MdOutlineEmail className="contact__email-symb icon"/>
+                    {/* <MdOutlineEmail className="contact__email-symb icon"/> */}
                 </div>
                 
                 <div className="contact__phone">
