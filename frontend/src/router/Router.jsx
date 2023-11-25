@@ -15,7 +15,6 @@ import Navbar from "../components/header/NavBar";
 const Router = () => {
     return (
         <div className="App">
-        <Navbar/>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={< Home />} />
