@@ -21,7 +21,7 @@ app.use(cors({
 }));
 
 //routes 
-app.use('/',homeRoute);
+app.use('/', homeRoute);
 
 //listen for reqquest 
 app.listen(process.env.PORT, () => {
