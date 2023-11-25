@@ -23,7 +23,7 @@ const Footer = ({
                     <div className="newsletter__email">
                         <TextField
                             className="newsletter__email--input"/>
-                        <Button className="newsletter__email-submit btn">Đăng ký</Button>
+                        <Button className="newsletter__email-submit btn2">Đăng ký</Button>
                     </div>
                 </div>
             </div>

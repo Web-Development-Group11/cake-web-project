@@ -1,7 +1,5 @@
-import Footer from '../../components/Footer/Footer';
-import Button from '../../components/button/Button';
+import Footer from '../../components/footer/Footer';
 import './Home.css';
-import Footer from '../../components/Footer/Footer';
 
 const Home = () =>{
     return (
