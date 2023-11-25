@@ -1,0 +1,28 @@
+@import url("../../Variable.css");
+
+.text-field {
+    height: 50px;
+    width: 480px;
+  }
+  
+.text-field .overlap-group {
+    background-color: var(--background-1);
+    border: 1px solid;
+    border-color: var(--highlight-text);
+    border-radius: 8px;
+    color: var(--highlight-text);
+    font-family: "Lato", Helvetica;
+    font-size: 16px;
+    font-style: var(--desktop-styles-body-2-font-style);
+    font-weight: var(--desktop-styles-body-2-font-weight);
+    height: 50px;
+    left: -1px;
+    letter-spacing: var(--desktop-styles-body-2-letter-spacing);
+    line-height: var(--desktop-styles-body-2-line-height);
+    padding: 0;
+    padding-left: 16px;
+    position: relative;
+    top: -1px;
+    white-space: nowrap;
+    width: 462px;
+  }
