@@ -1,5 +1,6 @@
 /* src/variable.css */
-
+@import 'https://fonts.googleapis.com/css?family=Lobster';
+@import 'https://fonts.googleapis.com/css?family=Lato';
 :root {
 
     /* Set color */
@@ -22,8 +23,7 @@
 }
 
 
-@import 'https://fonts.googleapis.com/css?family=Lobster';
-@import 'https://fonts.googleapis.com/css?family=Lato';
+
 
 /* Set font variants */
 .heading {
