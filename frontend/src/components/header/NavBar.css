@@ -138,8 +138,8 @@ p {
 }
 
 .navBar__icon {
-  height: 18px;
-  width: 18px;
+  height: 20px;
+  width: 20px;
   color: var(--primary-color);
   cursor: pointer;
 }
@@ -150,10 +150,9 @@ p {
 }
 
 .navBar__search-bar {
-  opacity: 0;
   position: absolute;
   right: -12px;
-  top: 140%;
+  top: 200%;
   display: flex;
   align-items: stretch;
   border: 1px solid #47271c;
@@ -161,15 +160,11 @@ p {
   font-family: 'Lato', sans-serif;
 }
 
-.navBar__search-bar.active {
-  opacity: 1;
-}
-
 .navBar__search-input {
-  width: 160px;
-  height: 36px;
+  width: 300px;
+  height: 40px;
   font-size: 14px;
-  padding-inline: 12px;
+  padding-inline: 16px;
   border-radius: 8px 0 0 8px;
   outline: none;
   border: none;
