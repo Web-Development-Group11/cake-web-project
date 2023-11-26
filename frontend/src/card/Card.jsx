@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { useReducer } from "react";
-import { Icons1 } from "../../icons/Icons1";
+import { FaShoppingCart } from 'react-icons/fa';
+import { FaRegStar } from "react-icons/fa";
 import "./Card.css";
 
 export const Card = ({ status, className }) => {
@@ -26,21 +27,20 @@ export const Card = ({ status, className }) => {
           src={
             state.status === "hover"
               ? "https://c.animaapp.com/Ohu87577/img/product-image-2@2x.png"
-              : "https://c.animaapp.com/Ohu87577/img/product-image@2x.png"
+              : "https://cupcakecentral.com.au/cdn/shop/products/CLASSIC-STYLED-CC-RV-2.jpg?v=1681783033"
           }
         />
         <div className="text-wrapper">Cupcake Chocolate hạnh nhân</div>
-        <img className="line" alt="Line" src="https://c.animaapp.com/Ohu87577/img/line-1-2.svg" />
+        <img className="line" alt="Line" src="https://cupcakecentral.com.au/cdn/shop/products/CLASSIC-STYLED-CC-RV-2.jpg?v=1681783033" />
         <div className="rate">
-          <div className="div">4.8</div>
+          <div className="div">5.0</div>
           <div className="star">
             <img
-            
               alt="Star"
               src={
                 state.status === "hover"
-                  ? "https://c.animaapp.com/Ohu87577/img/star-2.svg"
-                  : "https://c.animaapp.com/Ohu87577/img/star.svg"
+                  ? <FaRegStar />
+                  : <FaRegStar />
               }
             />
             <img
@@ -48,8 +48,8 @@ export const Card = ({ status, className }) => {
               alt="Star"
               src={
                 state.status === "hover"
-                  ? "https://c.animaapp.com/Ohu87577/img/star-2.svg"
-                  : "https://c.animaapp.com/Ohu87577/img/star.svg"
+                  ? <FaRegStar />
+                  : <FaRegStar />
               }
             />
             <img
@@ -57,8 +57,8 @@ export const Card = ({ status, className }) => {
               alt="Star"
               src={
                 state.status === "hover"
-                  ? "https://c.animaapp.com/Ohu87577/img/star-2.svg"
-                  : "https://c.animaapp.com/Ohu87577/img/star.svg"
+                  ? <FaRegStar />
+                  : <FaRegStar />
                 }
               />
             <img
@@ -66,8 +66,8 @@ export const Card = ({ status, className }) => {
               alt="Star"
               src={
                 state.status === "hover"
-                  ? "https://c.animaapp.com/Ohu87577/img/star-2.svg"
-                  : "https://c.animaapp.com/Ohu87577/img/star.svg"
+                  ? <FaRegStar />
+                  : <FaRegStar />
                 }
               />
             <img
@@ -75,8 +75,8 @@ export const Card = ({ status, className }) => {
               alt="Star"
               src={
                 state.status === "hover"
-                  ? "https://c.animaapp.com/Ohu87577/img/star-2.svg"
-                  : "https://c.animaapp.com/Ohu87577/img/star.svg"
+                  ? <FaRegStar />
+                  : <FaRegStar />
                 }
               />
 
@@ -85,7 +85,7 @@ export const Card = ({ status, className }) => {
           </div>
           <div className="text-wrapper-2">150,000đ</div>
           <div className="add-to-cart">
-            <Icons1 className="icons" color={state.status === "hover" ? "#47271C" : "white"} />
+            <FaShoppingCart  className="icons" color={state.status === "hover" ? "#47271C" : "white"} />
         </div>
       </div>
     </div>

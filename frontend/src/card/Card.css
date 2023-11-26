@@ -6,9 +6,9 @@
 }
 
 .card .overlap-group {
-    background-color: #ffffff;
+    background-color: var(--white);
     border: 2px solid;
-    border-color: var(--secondaryhighlight-text);
+    border-color: var(--brown);
     border-radius: 16px;
     /* height: 404px; */
     height: 400px;
@@ -25,10 +25,11 @@
     position: absolute;
     top: 0;
     width: 276px;
-    background-color: #47271c;
+    background-color: var(--brown);
     border-top-right-radius: 13px;
     border-top-left-radius: 13px;
 }
+
 /* title */
 .card .text-wrapper {
     color: var(--secondaryhighlight-text);
