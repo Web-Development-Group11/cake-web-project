@@ -1,14 +1,18 @@
 import React from 'react';
-// import MdOutlineEmail from "react-icons/md";
 import './Footer.css';
 import Button from '../button/Button';
 import TextField from '../textField/TextField';
 
-const Footer = ({
-    group = "https://c.animaapp.com/TcJmswtL/img/group-13@2x.png",
-    phone = "https://c.animaapp.com/TcJmswtL/img/phone-1.svg",
-    inputType = "email",
-}) => {
+// Import thư viện các icon
+import { MdEmail } from "react-icons/md";
+import { FaPhoneAlt } from "react-icons/fa";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { FaFacebookF } from "react-icons/fa";
+import { FaInstagramSquare } from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa";
+
+
+const Footer = () => {
     return (
         <div className="footer">
             {/* Đặt màu background cho footer */}
@@ -21,8 +25,8 @@ const Footer = ({
                     <div className="newsletter__description">Cập nhật những sản phẩm mới và hấp dẫn từ Bông Cake</div>
                     <div className="newsletter__email">
                         <TextField
-                            className="newsletter__email--input"/>
-                        <Button className="newsletter__email-submit btn2">Đăng ký</Button>
+                            className="text-field__input" placeholder="Email của bạn..." />
+                        <Button type="btn2 primary">Đăng ký</Button>
                     </div>
                 </div>
             </div>
@@ -32,17 +36,17 @@ const Footer = ({
                 <div className="contact__name title">Liên hệ</div>
                 <div className="contact__email">
                     <div className="contact__info">bongcake.work@gmail.com</div>
-                    {/* <MdOutlineEmail className="contact__email-symb icon"/> */}
+                    <MdEmail className="contact__email--symb" />
                 </div>
-                
+
                 <div className="contact__phone">
                     <div className="contact__info">012 345 6789</div>
-                    <img className="img" alt="Phone" src={phone} />
+                    <FaPhoneAlt className="contact__phone--symb icon" />
                 </div>
-                
+
                 <div className="contact__location">
                     <div className="contact__info">669 QL1A, khu phố 3, Thủ Đức, HCM</div>
-                    <img className="img" alt="Map pin" src="https://c.animaapp.com/TcJmswtL/img/map-pin-1.svg" />
+                    <FaMapMarkerAlt className="contact__location--symb icon" />
                 </div>
             </div>
 
@@ -55,8 +59,10 @@ const Footer = ({
                         src="https://c.animaapp.com/TcJmswtL/img/b-ng-cake-logo-1@2x.png"
                     />
                     <div className="slogan__content">Thiên đường bánh ngọt dành riêng cho bạn</div>
+                    <FaFacebookF className="slogan__media slogan__media--fb" />
+                    <FaInstagramSquare className="slogan__media slogan__media--ig" />
+                    <FaYoutube className="slogan__media slogan__media--yt" />
                 </div>
-                <img className="group" alt="Group" src={group} />
             </div>
 
             {/* Phần Liên kết nhanh */}

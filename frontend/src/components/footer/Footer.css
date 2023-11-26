@@ -65,24 +65,24 @@
 }
 
 .footer .newsletter__email {
-    background-color: var(--background-1);
-    height: 50px;
+    border-radius: 16px;
+    height: 40px;
     left: 649px;
     position: absolute;
     top: 25px;
     width: 480px;
 }
 
-.footer .newsletter__email--input {
+.footer .text-field__input {
     left: 0;
     top: 0;
     position: absolute;
-    width: 480px;
-    border-radius: 16px;
 }
 
 .footer .btn2 {
-    left: 343px !important;
+    height: 40px;
+    width: 100px;
+    left: 380px;
     position: relative;
 }
 
@@ -127,20 +127,24 @@
     width: 164px;
 }
 
-.footer .icon {
-    height: 20px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 20px;
-}
-
-.footer .img {
+/* Riêng icon email vì khác font icon nên phải thiết lập khác */
+.footer .contact__email--symb {
+    color: var(--primary-color);
     height: 24px;
     left: 0;
     position: absolute;
     top: 0;
     width: 24px;
+}
+
+/* Thiết lập thuộc tính chung cho các icon */
+.footer .icon {
+    color: var(--primary-color);
+    height: 20px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 20px;
 }
 
 .footer .contact__phone {
@@ -202,12 +206,25 @@
     width: 330px;
 }
 
-.footer .group {
+/* Thiết lập các thuộc tính chung cho các icon media */
+.footer .slogan__media {
+    color: var(--primary-color);
     height: 32px;
-    left: 78px;
     position: absolute;
     top: 109px;
-    width: 160px;
+    width: 32px;
+}
+
+.footer .slogan__media--fb {
+    left: 78px;
+}
+
+.footer .slogan__media--ig {
+    left: 142px;
+}
+
+.footer .slogan__media--yt {
+    left: 206px;
 }
 
 /* ----- Định dạng phần Liên kết nhanh ----- */
