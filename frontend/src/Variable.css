@@ -1,4 +1,6 @@
 /* src/variable.css */
+@import 'https://fonts.googleapis.com/css?family=Lobster';
+@import 'https://fonts.googleapis.com/css2?family=Lato';
 
 :root {
 
@@ -22,8 +24,7 @@
 }
 
 
-@import 'https://fonts.googleapis.com/css?family=Lobster';
-@import 'https://fonts.googleapis.com/css?family=Lato';
+
 
 /* Set font variants */
 .heading {
@@ -66,7 +67,7 @@
 }
 
 .body--2 {
-    font-family: Lato;
+    font-family: 'Lato', sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.5;

@@ -6,11 +6,10 @@ import Navbar from '../../components/header/NavBar'
 const Home = () => {
   return (
     <div>
-    <Navbar />
         <h1>
         Welcome to React
         </h1>
-        <Button type ="btn1 primary " >hello </Button>
+        <Button type ="btn1 primary " >liên hệ </Button>
     </div>
   )
 }
