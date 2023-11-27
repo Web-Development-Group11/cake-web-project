@@ -1,0 +1,316 @@
+@import url("../../Variable.css");
+
+.footer {
+    height: 414px;
+    width: 1440px;
+}
+
+.footer .background {
+    background-color: var(--background-2);
+    height: 367px;
+    left: 0;
+    position: absolute;
+    top: 47px;
+    width: 1440px;
+}
+
+ /* Thiết lập thuộc tính chung cho các title có trong footer */
+.footer .title {
+    font-family: "Lobster", Helvetica;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+}
+
+/* ----- Định dạng phần Đăng ký nhận tin ----- */
+
+.footer .newsletter {
+    height: 100px;
+    left: 120px;
+    position: absolute;
+    top: 0;
+    width: 1204px;
+}
+
+.footer .newsletter__form {
+    background-color: var(--variant);
+    border-radius: 16px;
+    height: 100px;
+    position: relative;
+    width: 1200px;
+}
+
+.footer .newsletter__name {
+    color: var(--text);
+    height: 25px;
+    left: 71px;
+    top: 21px;
+    white-space: nowrap;
+    width: 163px;
+}
+
+.footer .newsletter__description {
+    color: var(--text);
+    font-family: "Lato", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    height: 24px;
+    left: 71px;
+    letter-spacing: 0px;
+    position: absolute;
+    top: 54px;
+    white-space: nowrap;
+}
+
+.footer .newsletter__email {
+    border-radius: 16px;
+    height: 40px;
+    left: 649px;
+    position: absolute;
+    top: 25px;
+    width: 480px;
+}
+
+.footer .text-field__input {
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+
+.footer .btn2 {
+    height: 40px;
+    width: 100px;
+    left: 380px;
+    position: relative;
+}
+
+/* ----- Định dạng phần Liên hệ ----- */
+
+.footer .contact {
+    height: 142px;
+    left: 120px;
+    position: absolute;
+    top: 132px;
+    width: 254px;
+}
+
+.footer .contact__name {
+    color: var(--primary-color);
+    height: 30px;
+    left: 1px;
+    top: 0;
+}
+
+/* Định dạng cho các thuộc tính chung trong phần Liên hệ, bao gồm các thông tin liên lạc (contact__info) */
+.footer .contact__info {
+    color: var(--text);
+    font-family: "Lato", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    height: 19px;
+    left: 40px;
+    letter-spacing: 0;
+    line-height: normal;
+    padding: 0;
+    position: absolute;
+    top: 3px;
+    white-space: nowrap;
+}
+
+.footer .contact__email {
+    height: 24px;
+    left: 0;
+    position: absolute;
+    top: 46px;
+    width: 164px;
+}
+
+/* Riêng icon email vì khác font icon nên phải thiết lập khác */
+.footer .contact__email--symb {
+    color: var(--primary-color);
+    height: 24px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 24px;
+}
+
+/* Thiết lập thuộc tính chung cho các icon */
+.footer .icon {
+    color: var(--primary-color);
+    height: 20px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 20px;
+}
+
+.footer .contact__phone {
+    height: 24px;
+    left: 0;
+    position: absolute;
+    top: 82px;
+    width: 143px;
+}
+
+.footer .contact__location {
+    height: 24px;
+    left: 0;
+    position: absolute;
+    top: 118px;
+    width: 254px;
+}
+
+/* ----- Định dạng phần Slogan có logo (ở giữa) ----- */
+
+.footer .slogan {
+    height: 141px;
+    left: 555px;
+    position: absolute;
+    top: 148px;
+    width: 332px;
+}
+
+.footer .slogan__logo {
+    height: 101px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 330px;
+}
+
+.footer .logo {
+    height: 53px;
+    left: 108px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 100px;
+}
+
+.footer .slogan__content {
+    color: var(--primary-color);
+    font-family: "Lobster", Helvetica;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    height: 26px;
+    left: 0;
+    letter-spacing: 0px;
+    line-height: 130%;
+    position: absolute;
+    text-align: center;
+    top: 59px;
+    width: 330px;
+}
+
+/* Thiết lập các thuộc tính chung cho các icon media */
+.footer .slogan__media {
+    color: var(--primary-color);
+    height: 32px;
+    position: absolute;
+    top: 109px;
+    width: 32px;
+}
+
+.footer .slogan__media--fb {
+    left: 78px;
+}
+
+.footer .slogan__media--ig {
+    left: 142px;
+}
+
+.footer .slogan__media--yt {
+    left: 206px;
+}
+
+/* ----- Định dạng phần Liên kết nhanh ----- */
+
+.footer .quick-links {
+    height: 220px;
+    left: 1115px;
+    position: absolute;
+    top: 132px;
+    width: 148px;
+}
+
+.footer .quick_links__name {
+    color: var(--primary-color);
+    height: 30px;
+    width: 134px;
+    left: 0;
+    top: 0;
+}
+
+.footer .quick_links__link {
+    color: var(--text);
+    font-family: "Lato", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    height: 19px;
+    left: 1px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    white-space: nowrap;
+}
+
+.footer .quick_links__link--homepage {
+    top: 46px;
+}
+
+.footer .quick_links__link--customCupcake {
+    top: 77px;
+}   
+
+.footer .quick_links__link--products {
+    top: 108px;
+}
+
+.footer .quick_links__link--intro {
+    top: 139px;
+}
+
+.footer .quick_links__link--blog {
+    top: 170px;
+}
+
+.footer .quick_links__link--support {
+    top: 201px;
+}
+
+
+/* ----- Định dạng phần Copyright ----- */
+.footer .copyright {
+    height: 30px;
+    left: 0;
+    position: absolute;
+    top: 384px;
+    width: 1442px;
+}
+
+.footer .copyright__container {
+    background-color: var(--brown);
+    height: 30px;
+    position: relative;
+    width: 1440px;
+}
+
+.footer .copyright__text {
+    color: var(--white);
+    font-family: "Lato", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    height: 11.4px;
+    width: 374px;
+    left: 533px;
+    top: 4px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    white-space: nowrap;
+}

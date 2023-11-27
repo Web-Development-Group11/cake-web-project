@@ -12,7 +12,7 @@
 
     /* Set color variants */
     --primary-color : var(--red);
-    --background-1: var(-white);
+    --background-1: var(--white);
     --background-2 : var(--pink);
     --variant : var(--blue);
     --text : var(--black);
