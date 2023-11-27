@@ -156,7 +156,7 @@ p {
   display: flex;
   align-items: stretch;
   border: 1px solid #47271c;
-  border-radius: 8px;
+  border-radius: 16px;
   font-family: 'Lato', sans-serif;
 }
 
@@ -165,7 +165,7 @@ p {
   height: 40px;
   font-size: 14px;
   padding-inline: 16px;
-  border-radius: 8px 0 0 8px;
+  border-radius:16px 0 0 16px;
   outline: none;
   border: none;
 }
@@ -174,10 +174,12 @@ p {
   display: flex;
   align-items: center;
   background-color: var(--primary-color);
-  border-radius: 8px;
+  border-radius: 16px;
 }
 
 .navBar__search-icon {
   padding-inline: 12px;
+  height: 20px;
+  width: 20px;
   color: var(--white);
 }
