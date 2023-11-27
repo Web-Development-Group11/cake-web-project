@@ -50,7 +50,7 @@ p {
 
 .nav-item__link {
   text-decoration: none;
-  color: var(--red);
+  color: var(--primary-color);
   position: relative;
   cursor: pointer;
   font-size: 20px;
@@ -62,7 +62,7 @@ p {
   bottom: -2px;
   width: 100%;
   height: 3px;
-  background-color: red;
+  background-color: var(--primary-color);
   opacity: 0;
   transition: all 0.3s ease-in-out;
   border-radius: 16px;
@@ -138,8 +138,8 @@ p {
 }
 
 .navBar__icon {
-  height: 18px;
-  width: 18px;
+  height: 20px;
+  width: 20px;
   color: var(--primary-color);
   cursor: pointer;
 }

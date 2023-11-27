@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 /* src/variable.css */
-@import 'https://fonts.googleapis.com/css?family=Lobster';
-@import 'https://fonts.googleapis.com/css2?family=Lato';
+
 
 :root {
 
@@ -20,54 +21,50 @@
     --text : var(--black);
     --highlight-text : var(--brown);
 
-
 }
-
-
-
 
 /* Set font variants */
 .heading {
-    font-family: Lobster;
+    font-family: 'Lobster', sans-serif;
     font-size: 32px;
     line-height: 1.3;
 }
 
 .title--1 {
-    font-family: Lobster;
+    font-family: 'Lobster', sans-serif;
     font-size: 24px;
     line-height: 1.3;
 }
 
 .title--2 { 
-    font-family: Lobster;
+    font-family: 'Lobster', sans-serif;
     font-size: 20px;
     line-height: 1.3;
 }
 
 .title--3 {
-    font-family: Lato;
+    font-family: 'Inter', sans-serif;
     font-size: 20px;
-    font-weight: 900;
-    line-height: 1.3;
-}
-
-.title--4 {
-    font-family: Lato;
-    font-size: 18px;
     font-weight: 700;
     line-height: 1.3;
 }
 
+.title--4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
 .body--1 {
-    font-family: Lato;
+    font-family: 'Inter', sans-serif;
     font-size: 20px;
     font-weight: 400;
     line-height: 1.5;
 }
 
 .body--2 {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.5;
