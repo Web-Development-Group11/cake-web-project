@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/image/logo.png';
 import './NavBar.css';
-import Dropdown from './Dropdown';
+import Dropdown from '../dropdown/Dropdown';
 import { FaSearch } from 'react-icons/fa';
 import { FaGift } from 'react-icons/fa6';
 import { FaUser } from 'react-icons/fa';
