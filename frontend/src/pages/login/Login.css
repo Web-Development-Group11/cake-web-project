@@ -1,0 +1,250 @@
+@import url("../../Variable.css");
+@import 'https://fonts.googleapis.com/css?family=Lato';
+p{
+  margin: 0;
+  padding: 0;
+}
+.desktop-login {
+  background-color: var(--white);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.desktop-login .div {
+  background-color: var(--white);
+  height: 1024px;
+  overflow: hidden;
+  position: relative;
+  width: 1440px;
+}
+
+.desktop-login .reg-frame {
+  background-color: var(--background-1);
+  height: 1024px;
+  position: absolute;
+  width: 790px;
+}
+
+.desktop-login .group {
+  height: 506px;
+  left: 74px;
+  position: absolute;
+  top: 245px;
+  width: 650px;
+  margin: 0;
+  padding: 0;
+}
+
+.desktop-login .username {
+  height: 102px;
+  left: 0;
+  position: absolute;
+  top: 120px;
+  width: 650px;
+}
+.desktop-login .overlap-group input{
+  background-color: var(--background-1);
+  border: 1px solid;
+  border-color: var(--highlight-text);
+  border-radius: 16px;
+  height: 62px;
+  left: 0px;
+  position: absolute;
+  top: 40px;
+  width: 613px;
+  
+}
+input{
+  padding-left: 32px;
+}
+.desktop-login .text-wrapper input{
+  background-color: var(--background-1);
+  border: 1px solid;
+  border-color: var(--highlight-text);
+  border-radius: 16px;
+  height: 62px;
+  left: 0px;
+  position: absolute;
+  top: 41px;
+  width: 613px;
+
+}
+
+.desktop-login .text-wrapper-2 {
+  color: #000000;
+  height: 26px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.desktop-login .password {
+  height: 102px;
+  left: 0;
+  position: absolute;
+  top: 242px;
+  width: 650px;
+}
+
+.desktop-login .eye-off {
+  height: 24px;
+  right:22px;
+  position: absolute;
+  top: 59px;
+  width: 24px;
+}
+
+.desktop-login .text-wrapper-3 {
+  color: #000000;
+  height: 26px;
+  right:0px;
+  position: absolute;
+  text-align: right;
+  top: 0;
+  white-space: nowrap;
+}
+
+.desktop-login .group-2 {
+  height: 88px;
+  left: 115px;
+  position: absolute;
+  top: 0;
+  width: 421px;
+}
+
+.desktop-login .title {
+  height: 42px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 421px;
+}
+
+.desktop-login .p {
+  color: var(--primary-color);
+  height: 42px;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  white-space: nowrap;
+}
+
+.desktop-login .text-wrapper-4 {
+  color: var(--text);
+  height: 30px;
+  left: 41px;
+  position: absolute;
+  text-align: center;
+  top: 58px;
+  white-space: nowrap;
+}
+
+.desktop-login .text-wrapper-5 {
+  height: 22px;
+  left: 230px;
+  position: absolute;
+  text-align: center;
+  top: 19px;
+  white-space: nowrap;
+  width: 186px;
+}
+/* Button 1 style defaut */
+.desktop-login .submit-btn .div-wrapper .btn1 {
+  background: transparent;
+  font-size: 16px;
+  font-family: Lato;
+  cursor: pointer;
+  line-height: 20px;
+  border: 2px solid var(--white);
+  border-radius: 16px;
+  box-shadow: 0 2px 0 2px var(--brown),
+              0px 3px 12px rgba(0, 0, 0, 0.10);
+  overflow: hidden;
+  height: 60px;
+  left: -231px;
+  position: absolute;
+  top: 385px;
+  width: 650px;
+  background-color: var(--primary-color);
+  justify-content: center;
+  line-height: 60px;
+  color: var(--white);
+}
+
+/* Button 1 style when hovering */
+.desktop-login .submit-btn .div-wrapper .btn1:hover {
+  background-color: var(--variant);
+  color: var(--text);
+  box-shadow: 0 2px 0 2px var(--brown),
+              0px 8px 32px rgba(0, 0, 0, 0.12)
+}
+
+/* Button 1 style when pressing */
+.desktop-login .submit-btn .div-wrapper .btn1:active {
+  box-shadow: 0 1px 0 1px var(--brown),
+              0px 1px 8px rgba(0, 0, 0, 0.12)
+}
+
+
+
+.desktop-login .dangky {
+  color: var(--text);
+  font-size: 20px;
+  font-weight: 700;
+  height: 26px;
+  left: 177px;
+  letter-spacing: 0;
+  line-height: 26px;
+  position: absolute;
+  text-align: center;
+  bottom: 0px;
+  white-space: nowrap;
+}
+
+.desktop-login .span {
+  color:var(--text);
+}
+
+.desktop-login .text-wrapper-6 {
+  text-decoration: underline;
+}
+
+.desktop-login .line {
+  height: 1px;
+  left: 33px;
+  object-fit: cover;
+  position: absolute;
+  top: 368px;
+  width: 584px;
+  background-color: var(--black);
+}
+
+.desktop-login .bng-cake {
+  height: 80px;
+  left: 329px;
+  object-fit: cover;
+  position: absolute;
+  top: 64px;
+  width: 145px;
+}
+
+.desktop-login .overlap {
+  height: 1024px;
+  left: 789px;
+  position: absolute;
+  top: 0;
+  width: 650px;
+}
+
+.desktop-login .cupcakes-with-glaze {
+  height: 1024px;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 650px;
+}

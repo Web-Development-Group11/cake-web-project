@@ -1,118 +1,155 @@
-import React, { Fragment, useState, useContext } from "react";
-import { loginReq } from "./fetchApi";
-import { LayoutContext } from "../index";
+import { useState } from "react";
+import "./Login.css";
+import logo from "../../assets/image/logo.png"
+import bg from "../../assets/image/bglogin.png"
+// import Button from '../../components/button/Button';
+import { FaRegEyeSlash } from "react-icons/fa";
 
-const Login = (props) => {
-  const { data: layoutData, dispatch: layoutDispatch } = useContext(
-    LayoutContext
-  );
 
-  const [data, setData] = useState({
-    email: "",
-    password: "",
-    error: false,
-    loading: true,
-  });
+function Login() {
+  const [username, setusername] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
 
-  const alert = (msg) => <div className="text-xs text-red-500">{msg}</div>;
+  const [errorUserName, setErrorUserName] = useState("");
+  const [errorEmail, setErrorEmail] = useState("");
+  const [errorPhone, setErrorPhone] = useState("");
+  const [errorPassword, setErrorPassword] = useState("");
 
-  const formSubmit = async () => {
-    setData({ ...data, loading: true });
-    try {
-      let responseData = await loginReq({
-        email: data.email,
-        password: data.password,
-      });
-      if (responseData.error) {
-        setData({
-          ...data,
-          loading: false,
-          error: responseData.error,
-          password: "",
-        });
-      } else if (responseData.token) {
-        setData({ email: "", password: "", loading: false, error: false });
-        localStorage.setItem("jwt", JSON.stringify(responseData));
-        window.location.href = "/";
+  const [userColor, setUserColor] = useState("");
+  const [emailColor, setEmailColor] = useState("");
+  const [phoneColor, setPhoneColor] = useState("");
+  const [passwordColor, setPasswordColor] = useState("");
+
+  function validate(e) {
+    e.preventDefault();
+    let logininfor = username;
+    let isEmail = logininfor.includes("@");
+    let isPhone = logininfor.startsWith("0") && logininfor.length === 10;
+  
+    if (isEmail) {
+      // Check email conditions
+      if (logininfor.includes("@gmail.com")) {
+        setErrorEmail("");
+        setEmailColor("green");
+      } else {
+        setErrorEmail("Email should have @gmail.com");
+        setEmailColor("red");
       }
-    } catch (error) {
-      console.log(error);
+    } else if (isPhone) {
+      // Check phone conditions
+      if (logininfor.startsWith("0") && logininfor.length === 10) {
+        setErrorPhone("");
+        setPhoneColor("green");
+      } else {
+        setErrorPhone("Phone number must be 10 digits starting with 0");
+        setPhoneColor("red");
+      }
+    } else {
+      // Check username conditions
+      if (logininfor.length > 8) {
+        setErrorUserName("");
+        setUserColor("green");
+      } else {
+        setErrorUserName("Username must be 8 letters long.");
+        setUserColor("red");
+      }
     }
-  };
+
+    if (password.length > 8) {
+      setErrorPassword("");
+      setPasswordColor("green");
+    } else {
+      setErrorPassword("Password should be 8 letters long ");
+      setPasswordColor("red");
+    }
+  }
 
   return (
-    <Fragment>
-      <div className="text-center text-2xl mb-6">Login</div>
-      {layoutData.loginSignupError ? (
-        <div className="bg-red-200 py-2 px-4 rounded">
-          You need to login for checkout. Haven't accont? Create new one.
-        </div>
-      ) : (
-        ""
-      )}
-      <form className="space-y-4">
-        <div className="flex flex-col">
-          <label htmlFor="name">
-            Username or email address
-            <span className="text-sm text-gray-600 ml-1">*</span>
-          </label>
-          <input
-            onChange={(e) => {
-              setData({ ...data, email: e.target.value, error: false });
-              layoutDispatch({ type: "loginSignupError", payload: false });
-            }}
-            value={data.email}
-            type="text"
-            id="name"
-            className={`${
-              !data.error ? "" : "border-red-500"
-            } px-4 py-2 focus:outline-none border`}
-          />
-          {!data.error ? "" : alert(data.error)}
-        </div>
-        <div className="flex flex-col">
-          <label htmlFor="password">
-            Password<span className="text-sm text-gray-600 ml-1">*</span>
-          </label>
-          <input
-            onChange={(e) => {
-              setData({ ...data, password: e.target.value, error: false });
-              layoutDispatch({ type: "loginSignupError", payload: false });
-            }}
-            value={data.password}
-            type="password"
-            id="password"
-            className={`${
-              !data.error ? "" : "border-red-500"
-            } px-4 py-2 focus:outline-none border`}
-          />
-          {!data.error ? "" : alert(data.error)}
-        </div>
-        <div className="flex flex-col space-y-2 md:flex-row md:justify-between md:items-center">
-          <div>
-            <input
-              type="checkbox"
-              id="rememberMe"
-              className="px-4 py-2 focus:outline-none border mr-1"
-            />
-            <label htmlFor="rememberMe">
-              Remember me<span className="text-sm text-gray-600">*</span>
-            </label>
+    <div className="desktop-login">
+      <form>
+      <div className="div">
+        <div className="reg-frame">
+          <div className="group">
+            <div className="username">
+              <div className="overlap-group">
+              <div className={`body--2`}>
+                <input
+                  type="text"
+                  placeholder="Tên đăng nhập/ Email/ Số điện thoại"
+                  style={{ borderColor: userColor }}
+                  value={username}
+                  onChange={(e) => setusername(e.target.value)}
+                />
+
+                <p className="error">{errorUserName}</p>
+                <p className="error">{errorEmail}</p>
+                <p className="error">{errorPhone}</p>
+              </div>
+              </div>
+
+
+              <div className="text-wrapper-2"><div className={`title--3`}>Tên đăng nhập</div></div>
+            </div>
+            <div className="password">
+              <div className="overlap-group">
+                <div className="text-wrapper" >
+                  <div className={`body--2`}>
+                  <input
+                    type="password"
+                    placeholder="Mật khẩu"
+                    style={{ borderColor: passwordColor }}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <p className="error">{errorPassword}</p>
+                  </div>
+                </div>
+                <FaRegEyeSlash className="eye-off"/>
+
+              </div>
+              <div className="text-wrapper-2"><div className= {`title--3`}>Mật khẩu</div></div>
+              <div className="text-wrapper-3"><div className= {`title--3`}>Quên mật khẩu</div></div>
+            </div>
+
+            
+            <div className="group-2">
+                <p className="p"> <span className= {`heading`}>Đăng nhập vào tài khoản của bạn</span></p>
+                <p className="text-wrapper-4"><span className= {`body--1`}>Tận hưởng những hương vị ngọt ngào!</span></p>
+            </div>
+            <div className="submit-btn">
+              <div className="overlap-group-wrapper">
+                <div className="div-wrapper">
+                  <div className="text-wrapper-5">
+                  <button className="btn1" onClick={validate} >Đăng nhập</button>
+                  </div>
+                </div>
+              </div>
+              <p className="dangky">
+                <p className= {`title--3`}>
+                <span className="span">Bạn không có tài khoản? </span>
+                <span className="text-wrapper-6">Đăng ký</span>
+                </p>
+              </p>
+            </div>
+            <hr className="line" />
           </div>
-          <a className="block text-gray-600" href="/">
-            Lost your password?
-          </a>
+          <img className="bng-cake" alt="Bng cake" src={logo}/>
         </div>
-        <div
-          onClick={(e) => formSubmit()}
-          style={{ background: "#303031" }}
-          className="font-medium px-4 py-2 text-white text-center cursor-pointer"
-        >
-          Login
+
+
+        <div className="overlap">
+          <img
+            className="cupcakes-with-glaze"
+            alt="Cupcakes with glaze"
+            src={bg}
+          />
+
         </div>
+      </div>
       </form>
-    </Fragment>
+    </div>
   );
 };
-
 export default Login;

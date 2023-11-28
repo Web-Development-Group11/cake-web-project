@@ -2,7 +2,6 @@ import React from 'react'
 import Button from '../../components/button/Button'
 import Navbar from '../../components/header/NavBar'
 import Footer from '../../components/footer/Footer'
-import desktopLogin from '../login/Login1'
 
 const Home = () => {
   return (
