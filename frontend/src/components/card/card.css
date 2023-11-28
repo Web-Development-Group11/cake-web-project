@@ -20,30 +20,10 @@
     overflow: hidden;
 }
 
-.card .product-image {
-    max-height: 276px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 276px;
-    background-color: var(--brown);
-    border-top-right-radius: 13px;
-    border-top-left-radius: 13px;
-    overflow: hidden;
-}
-.card img{
-    overflow: hidden;
-    display: block;
-    max-height: 100%;
-    max-width: 100%;
-    transition: all 0.3s ease-in-out;
-}
-.card img:hover{
-    transform: scale(1.1);
-    opacity: 0.8;
-}
+
+
 /* title */
-.card .title {
+.card .card-title {
     position: absolute;
     left: 12px;
     top: 293px;
@@ -53,7 +33,7 @@
 }
 
 .card .line {
-    background-color: var(--highlight-text);
+    background-color: var(--brown);
     height:1px;
     left: 12px;
     object-fit: cover;
@@ -80,7 +60,7 @@
 }
 
 .card .divprice{
-    color: yellow;
+    color: var(--highlight-text);
     height: 24px;
     left: 12px;
     position: absolute;
@@ -92,9 +72,9 @@
 .card .add-to-cart {
     align-items: flex-start;
     border: 1px solid;
-    border-color: var(--highlight-text);
+    border-color: var(--brown);
     border-radius: 8px;
-    box-shadow: 2px 2px 0px #47271c;
+    box-shadow: 2px 2px 0px (--brown);
     display: inline-flex;
     gap: 10px;
     left: 223px;
@@ -111,26 +91,63 @@
 
 .card.default {
     border-radius: 16px;
-    box-shadow: 0px 3px 12px #000000
+    box-shadow: 0 2px 0 2px var(--brown),
+    0px 3px 12px rgba(0, 0, 0, 0.25);
 }
 
 .card.hover {
     border-radius: 16px; 
-    box-shadow: 0px 8px 32px #000000
+    box-shadow: 4px 4px 0 4px var(--brown),
+    0px 8px 32px rgba(0, 0, 0, 0.25);
+    
+
 }
 
-.card.default .title {
+.card img{
+    max-height: 276px;
+    overflow: hidden;
+    display: block;
+    max-width: 100%;
+    transition: all 0.3s ease-in-out;
+}
+.card img:hover{
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+.card .product-image {
+    max-height: 276px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 276px;
+    border-top-right-radius: 13px;
+    border-top-left-radius: 13px;
+    overflow: hidden;
+}
+.card.default .card-title {
     color: var(--highlight-text);
 }
 
-.card.hover .title {
+.card.hover .card-title {
     color: var(--primary-color)
 }
 
 .card.default .add-to-cart {
-    background-color: var(--primary-color)
+    background-color: var(--red)
 }
 
 .card.hover .add-to-cart {
-    background-color: var(--variant);
+    background-color: var(--blue);
 }
+@keyframes img {
+    0% {
+      transform: scale(1);
+      opacity: 0.6;
+    }
+  
+    100% {
+      transform: scale(1.4);
+      opacity: 0;
+    }
+  }
