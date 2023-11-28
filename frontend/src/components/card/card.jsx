@@ -3,7 +3,10 @@ import PropTypes from "prop-types";
 import { useReducer } from "react";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
-import { FaRegStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
+import { FaStarHalf } from "react-icons/fa";
+import { FaRegStar } from "react-icons/fa6";
+import jsonData from "../../db/productsData.json";
 import "./card.css";
 
 const initialState = {
@@ -21,31 +24,9 @@ const reducer = (state, action) => {
   }
 };
 
-// Move the productItem declaration outside of the function scope
-const productItem = [
-  {
-    pId: 1,
-    pName: "Red Velvet - Cupcake",
-    pPath: "./",
-    pUrl: "https://cupcakecentral.com.au/cdn/shop/products/CLASSIC-STYLED-CC-RV-2.jpg?v=1681783033",
-    pPrice: "4.60",
-    pRate: "5.0",
-    pCatelogy: "Cupcakes",
-  },
-  {
-    pId: 2,
-    pName: "Red Velvet - Cupcake",
-    pPath: "./",
-    pUrl: "https://cupcakecentral.com.au/cdn/shop/products/CLASSIC-STYLED-CC-RV-2.jpg?v=1681783033",
-    pPrice: "4.60",
-    pRate: "5.0",
-    pCatelogy: "Cupcakes",
-  },
-];
-
-export default function Card({ status, className, productItem }) {
+export default function Card({ status, className}) {
+  
   const [state, dispatch] = useReducer(reducer, initialState);
-
   return (
     <div
       className={`card ${state.status} ${className}`}
@@ -57,31 +38,36 @@ export default function Card({ status, className, productItem }) {
       }}
     >
       <div className="overlap-group">
-        {productItem && productItem.map((item) => (
-          <div key={item.pId}>
-            <Link to={`/products/${item.pId}`}>
-              <img src={item.pUrl} alt="productimage" />
-            </Link>
-            <div className="text-wrapper">{item.pName}</div>
-            <div className="line"></div>
+        {jsonData.map((item,index) => (
+          <div key={index}>
+            <div className="product-image">
+              <Link to={`/`}>
+                <img src={item.pUrl} alt="productimage"  
+                />
+              </Link>
+            </div>
+            <div className="title">
+              <div className={`title--4`}>{item.pName}</div>
+            </div>
+            <hr className="line" />
             <div className="rate">
-              <div className="div">{item.pRate}</div>
               <div className="flex">
                 {/* Yellow Star */}
                 {[...Array(Number(item.pRate))].map((index) => (
-                  <span key={index}>
-                    <FaRegStar color="red" />
+                  <span key={index} className="stardetail">
+                    <FaStar color="#E21033" />
                   </span>
                 ))}
                 {/* White Star */}
                 {[...Array(5 - Number(item.pRate))].map((index) => (
                   <span key={index}>
-                    <FaRegStar color="white" />
+                    <FaRegStar color="#E21033"/>
                   </span>
                 ))}
               </div>
+              <div className= "div"><div className={`body--2`} >{item.pRate}</div></div>
             </div>
-            <div className="text-wrapper-2">{item.pPrice}</div>
+            <div className="divprice"><div className={`title--4`} >{item.pPrice}</div></div>
             <div className="add-to-cart">
               <FaShoppingCart
                 className="icons"
