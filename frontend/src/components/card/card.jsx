@@ -39,20 +39,20 @@ export default function Card({ status, className}) {
     >
       <div className="overlap-group">
         {jsonData.map((item,index) => (
-          <div key={index}>
+          <div key={index}  >
             <div className="product-image">
               <Link to={`/`}>
                 <img src={item.pUrl} alt="productimage"  
                 />
               </Link>
             </div>
-            <div className="title">
+            <div className="card-title">
               <div className={`title--4`}>{item.pName}</div>
             </div>
             <hr className="line" />
             <div className="rate">
               <div className="flex">
-                {/* Yellow Star */}
+                {/* Yellow Star chỉ mới làm được số chẵn, lẻ như 4.5 thì chưa*/}
                 {[...Array(Number(item.pRate))].map((index) => (
                   <span key={index} className="stardetail">
                     <FaStar color="#E21033" />
@@ -84,5 +84,4 @@ export default function Card({ status, className}) {
 Card.propTypes = {
   status: PropTypes.oneOf(["hover", "default"]),
   className: PropTypes.string,
-  productItem: PropTypes.array,
 };
