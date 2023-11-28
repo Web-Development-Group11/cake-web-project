@@ -1,0 +1,305 @@
+.desktop-login {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .desktop-login .div {
+    background-color: #ffffff;
+    height: 1024px;
+    overflow: hidden;
+    position: relative;
+    width: 1440px;
+  }
+  
+  .desktop-login .reg-frame {
+    background-color: var(--secondarybackground-1);
+    height: 1024px;
+    left: -7px;
+    position: absolute;
+    top: 5px;
+    width: 789px;
+  }
+  
+  .desktop-login .group {
+    height: 506px;
+    left: 81px;
+    position: absolute;
+    top: 240px;
+    width: 650px;
+  }
+  
+  .desktop-login .username {
+    height: 102px;
+    left: 0;
+    position: absolute;
+    top: 120px;
+    width: 654px;
+  }
+  
+  .desktop-login .overlap-group {
+    background-color: var(--secondarybackground-1);
+    border: 1px solid;
+    border-color: var(--secondaryhighlight-text);
+    border-radius: 16px;
+    height: 62px;
+    left: -1px;
+    position: absolute;
+    top: 41px;
+    width: 652px;
+  }
+  
+  .desktop-login .text-wrapper {
+    color: var(--secondaryhighlight-text);
+    font-family: var(--desktop-styles-body-2-font-family);
+    font-size: var(--desktop-styles-body-2-font-size);
+    font-style: var(--desktop-styles-body-2-font-style);
+    font-weight: var(--desktop-styles-body-2-font-weight);
+    height: 24px;
+    left: 32px;
+    letter-spacing: var(--desktop-styles-body-2-letter-spacing);
+    line-height: var(--desktop-styles-body-2-line-height);
+    position: absolute;
+    text-align: center;
+    top: 18px;
+    white-space: nowrap;
+  }
+  
+  .desktop-login .text-wrapper-2 {
+    color: #000000;
+    font-family: var(--desktop-styles-title-3-font-family);
+    font-size: var(--desktop-styles-title-3-font-size);
+    font-style: var(--desktop-styles-title-3-font-style);
+    font-weight: var(--desktop-styles-title-3-font-weight);
+    height: 26px;
+    left: 0;
+    letter-spacing: var(--desktop-styles-title-3-letter-spacing);
+    line-height: var(--desktop-styles-title-3-line-height);
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+  }
+  
+  .desktop-login .password {
+    height: 102px;
+    left: 0;
+    position: absolute;
+    top: 238px;
+    width: 656px;
+  }
+  
+  .desktop-login .eye-off {
+    height: 24px;
+    left: 604px;
+    position: absolute;
+    top: 18px;
+    width: 24px;
+  }
+  
+  .desktop-login .text-wrapper-3 {
+    color: #000000;
+    font-family: var(--desktop-styles-title-3-font-family);
+    font-size: var(--desktop-styles-title-3-font-size);
+    font-style: var(--desktop-styles-title-3-font-style);
+    font-weight: var(--desktop-styles-title-3-font-weight);
+    height: 26px;
+    left: 509px;
+    letter-spacing: var(--desktop-styles-title-3-letter-spacing);
+    line-height: var(--desktop-styles-title-3-line-height);
+    position: absolute;
+    text-align: right;
+    top: 0;
+    white-space: nowrap;
+  }
+  
+  .desktop-login .group-2 {
+    height: 88px;
+    left: 115px;
+    position: absolute;
+    top: 0;
+    width: 421px;
+  }
+  
+  .desktop-login .title {
+    height: 42px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 421px;
+  }
+  
+  .desktop-login .p {
+    color: var(--primary);
+    font-family: var(--desktop-styles-heading-font-family);
+    font-size: var(--desktop-styles-heading-font-size);
+    font-style: var(--desktop-styles-heading-font-style);
+    font-weight: var(--desktop-styles-heading-font-weight);
+    height: 42px;
+    left: 0;
+    letter-spacing: var(--desktop-styles-heading-letter-spacing);
+    line-height: var(--desktop-styles-heading-line-height);
+    position: absolute;
+    text-align: center;
+    top: 0;
+    white-space: nowrap;
+  }
+  
+  .desktop-login .text-wrapper-4 {
+    color: #000000;
+    font-family: var(--desktop-styles-body-1-font-family);
+    font-size: var(--desktop-styles-body-1-font-size);
+    font-style: var(--desktop-styles-body-1-font-style);
+    font-weight: var(--desktop-styles-body-1-font-weight);
+    height: 30px;
+    left: 41px;
+    letter-spacing: var(--desktop-styles-body-1-letter-spacing);
+    line-height: var(--desktop-styles-body-1-line-height);
+    position: absolute;
+    text-align: center;
+    top: 58px;
+    white-space: nowrap;
+  }
+  
+  .desktop-login .submit-btn {
+    height: 102px;
+    left: 0;
+    position: absolute;
+    top: 404px;
+    width: 652px;
+  }
+  
+  .desktop-login .overlap-group-wrapper {
+    height: 60px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 652px;
+  }
+  
+  .desktop-login .div-wrapper {
+    background-color: var(--primary);
+    border-radius: 16px;
+    height: 60px;
+    position: relative;
+    width: 650px;
+  }
+  
+  .desktop-login .text-wrapper-5 {
+    color: var(--secondarybackground-1);
+    font-family: var(--desktop-styles-button-font-family);
+    font-size: var(--desktop-styles-button-font-size);
+    font-style: var(--desktop-styles-button-font-style);
+    font-weight: var(--desktop-styles-button-font-weight);
+    height: 22px;
+    left: 230px;
+    letter-spacing: var(--desktop-styles-button-letter-spacing);
+    line-height: var(--desktop-styles-button-line-height);
+    position: absolute;
+    text-align: center;
+    top: 19px;
+    white-space: nowrap;
+    width: 186px;
+  }
+  
+  .desktop-login .b-n-kh-ng-c-t-i-kho {
+    color: #000000;
+    font-family: "Lato", Helvetica;
+    font-size: 20px;
+    font-weight: 700;
+    height: 26px;
+    left: 177px;
+    letter-spacing: 0;
+    line-height: 26px;
+    position: absolute;
+    text-align: center;
+    top: 76px;
+    white-space: nowrap;
+  }
+  
+  .desktop-login .span {
+    color: #000000;
+    font-family: var(--desktop-styles-title-3-font-family);
+    font-size: var(--desktop-styles-title-3-font-size);
+    font-style: var(--desktop-styles-title-3-font-style);
+    font-weight: var(--desktop-styles-title-3-font-weight);
+    letter-spacing: var(--desktop-styles-title-3-letter-spacing);
+    line-height: var(--desktop-styles-title-3-line-height);
+  }
+  
+  .desktop-login .text-wrapper-6 {
+    text-decoration: underline;
+  }
+  
+  .desktop-login .line {
+    height: 1px;
+    left: 33px;
+    object-fit: cover;
+    position: absolute;
+    top: 371px;
+    width: 584px;
+  }
+  
+  .desktop-login .bng-cake {
+    height: 80px;
+    left: 329px;
+    object-fit: cover;
+    position: absolute;
+    top: 64px;
+    width: 145px;
+  }
+  
+  .desktop-login .overlap {
+    background-color: #9a9a9a;
+    height: 1024px;
+    left: 789px;
+    position: absolute;
+    top: 0;
+    width: 651px;
+  }
+  
+  .desktop-login .logo-wrapper {
+    height: 75px;
+    left: 187px;
+    position: absolute;
+    top: 127px;
+    width: 276px;
+  }
+  
+  .desktop-login .logo {
+    height: 75px;
+    width: 278px;
+  }
+  
+  .desktop-login .overlap-group-2 {
+    background-color: #a8a6a6;
+    height: 75px;
+    position: relative;
+    width: 276px;
+  }
+  
+  .desktop-login .text-wrapper-7 {
+    color: #000000;
+    font-family: "Inter", Helvetica;
+    font-size: 20px;
+    font-weight: 600;
+    height: 24px;
+    left: 95px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 30px;
+    width: 85px;
+  }
+  
+  .desktop-login .cupcakes-with-glaze {
+    height: 1024px;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 651px;
+  }
+  
