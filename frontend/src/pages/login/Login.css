@@ -1,50 +1,59 @@
 @import url("../../Variable.css");
-@import 'https://fonts.googleapis.com/css?family=Lato';
 p{
   margin: 0;
   padding: 0;
 }
-.desktop-login {
+.login__container {
   background-color: var(--white);
+  justify-content: center;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  width: 100%;
+  flex-wrap: wrap;
 }
 
-.desktop-login .div {
-  background-color: var(--white);
-  height: 1024px;
+.login__container .login__form {
+  flex:1.2;
   overflow: hidden;
+  background-color: var(--white);
   position: relative;
-  width: 1440px;
+}
+.login__container .login__bg{
+  flex:1;
+  color: var(--red)
 }
 
-.desktop-login .reg-frame {
+.login__container .login__form--frame {
   background-color: var(--background-1);
-  height: 1024px;
-  position: absolute;
-  width: 790px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
 }
 
-.desktop-login .group {
-  height: 506px;
-  left: 74px;
+.login__container  .login__form--frame .login__form--frameinput {
+  height: 538px;
   position: absolute;
   top: 245px;
   width: 650px;
-  margin: 0;
-  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.desktop-login .username {
+.login__container .login__form--input {
   height: 102px;
   left: 0;
   position: absolute;
   top: 120px;
   width: 650px;
 }
-.desktop-login .overlap-group input{
+
+.login__container .error{
+  position: absolute;
+  top: 110px;
+}
+
+input{
   background-color: var(--background-1);
   border: 1px solid;
   border-color: var(--highlight-text);
@@ -54,26 +63,11 @@ p{
   position: absolute;
   top: 40px;
   width: 613px;
-  
-}
-input{
   padding-left: 32px;
 }
-.desktop-login .text-wrapper input{
-  background-color: var(--background-1);
-  border: 1px solid;
-  border-color: var(--highlight-text);
-  border-radius: 16px;
-  height: 62px;
-  left: 0px;
-  position: absolute;
-  top: 41px;
-  width: 613px;
 
-}
-
-.desktop-login .text-wrapper-2 {
-  color: #000000;
+.login__container .login__form--username-title {
+  color: var(--text);
   height: 26px;
   left: 0;
   position: absolute;
@@ -81,15 +75,15 @@ input{
   white-space: nowrap;
 }
 
-.desktop-login .password {
+.login__container .login__form--password {
   height: 102px;
   left: 0;
   position: absolute;
-  top: 242px;
+  top: 258px;
   width: 650px;
 }
 
-.desktop-login .eye-off {
+.login__container .eye-off {
   height: 24px;
   right:22px;
   position: absolute;
@@ -97,8 +91,8 @@ input{
   width: 24px;
 }
 
-.desktop-login .text-wrapper-3 {
-  color: #000000;
+.login__container .login__form--password-forget {
+  color: var(--text);
   height: 26px;
   right:0px;
   position: absolute;
@@ -107,7 +101,7 @@ input{
   white-space: nowrap;
 }
 
-.desktop-login .group-2 {
+.login__container .login__form--title {
   height: 88px;
   left: 115px;
   position: absolute;
@@ -115,7 +109,7 @@ input{
   width: 421px;
 }
 
-.desktop-login .title {
+.login__container .title {
   height: 42px;
   left: 0;
   position: absolute;
@@ -123,7 +117,7 @@ input{
   width: 421px;
 }
 
-.desktop-login .p {
+.login__container .p {
   color: var(--primary-color);
   height: 42px;
   left: 0;
@@ -133,7 +127,7 @@ input{
   white-space: nowrap;
 }
 
-.desktop-login .text-wrapper-4 {
+.login__container .login__form--title-slogan {
   color: var(--text);
   height: 30px;
   left: 41px;
@@ -143,17 +137,30 @@ input{
   white-space: nowrap;
 }
 
-.desktop-login .div-wrapper {
+.login__container .login__form--line {
+  height: 1px;
+  left: 33px;
+  object-fit: cover;
+  position: absolute;
+  top: 392px;
+  width: 584px;
+  background-color: var(--black);
+}
+
+.login__container .login__form--submit-btn {
+  height: 88px;
+  left: 0px;
+  position: absolute;
+  top: 0;
+  width: 421px;
+}
+.login__container .div-wrapper {
   height: 22px;
   left: 230px;
   position: absolute;
-  text-align: center;
-  top: 19px;
-  white-space: nowrap;
-  width: 186px;
 }
 /* Button 1 style defaut */
-.desktop-login .submit-btn .div-wrapper .btn1 {
+.login__container .login__form--submit-btn .div-wrapper .btn1 {
   background: transparent;
   cursor: pointer;
   border: 2px solid var(--white);
@@ -162,9 +169,9 @@ input{
               0px 3px 12px rgba(0, 0, 0, 0.10);
   overflow: hidden;
   height: 60px;
-  left: -231px;
+  left: -230px;
   position: absolute;
-  top: 385px;
+  top: 432px;
   width: 650px;
   background-color: var(--primary-color);
   justify-content: center;
@@ -173,7 +180,7 @@ input{
 }
 
 /* Button 1 style when hovering */
-.desktop-login .submit-btn .div-wrapper .btn1:hover {
+.login__container .login__form--submit-btn .div-wrapper .btn1:hover {
   background-color: var(--variant);
   color: var(--text);
   box-shadow: 0 2px 0 2px var(--brown),
@@ -181,14 +188,12 @@ input{
 }
 
 /* Button 1 style when pressing */
-.desktop-login .submit-btn .div-wrapper .btn1:active {
+.login__container .login__form--submit-btn .div-wrapper .btn1:active {
   box-shadow: 0 1px 0 1px var(--brown),
               0px 1px 8px rgba(0, 0, 0, 0.12)
 }
 
-
-
-.desktop-login .dangky {
+.login__container .login__form--register {
   color: var(--text);
   font-size: 20px;
   font-weight: 700;
@@ -202,46 +207,23 @@ input{
   white-space: nowrap;
 }
 
-.desktop-login .span {
-  color:var(--text);
+.login__container .login__form--register-text {
+  color: var(--text);
 }
 
-.desktop-login .text-wrapper-6 {
-  text-decoration: underline;
-}
-
-.desktop-login .line {
-  height: 1px;
-  left: 33px;
-  object-fit: cover;
-  position: absolute;
-  top: 368px;
-  width: 584px;
-  background-color: var(--black);
-}
-
-.desktop-login .bng-cake {
+.login__container .login__logo {
   height: 80px;
-  left: 329px;
   object-fit: cover;
   position: absolute;
   top: 64px;
   width: 145px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.desktop-login .overlap {
-  height: 1024px;
-  left: 789px;
-  position: absolute;
-  top: 0;
-  width: 650px;
-}
-
-.desktop-login .cupcakes-with-glaze {
-  height: 1024px;
-  left: 0;
+.login__container .login__bg {
   object-fit: cover;
-  position: absolute;
-  top: 0;
-  width: 650px;
+  width: 100%;
+  height: calc(100vh);
 }
+

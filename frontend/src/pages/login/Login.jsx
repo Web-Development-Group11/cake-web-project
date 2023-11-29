@@ -2,14 +2,10 @@ import { useState } from "react";
 import "./Login.css";
 import logo from "../../assets/image/logo.png"
 import bg from "../../assets/image/bglogin.png"
-// import Button from '../../components/button/Button';
 import { FaRegEyeSlash } from "react-icons/fa";
-
 
 function Login() {
   const [username, setusername] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
 
   const [errorUserName, setErrorUserName] = useState("");
@@ -18,8 +14,8 @@ function Login() {
   const [errorPassword, setErrorPassword] = useState("");
 
   const [userColor, setUserColor] = useState("");
-  const [emailColor, setEmailColor] = useState("");
-  const [phoneColor, setPhoneColor] = useState("");
+  const [setEmailColor] = useState("");
+  const [setPhoneColor] = useState("");
   const [passwordColor, setPasswordColor] = useState("");
 
   function validate(e) {
@@ -67,34 +63,39 @@ function Login() {
   }
 
   return (
-    <div className="desktop-login">
-      <form>
-      <div className="div">
-        <div className="reg-frame">
-          <div className="group">
-            <div className="username">
-              <div className="overlap-group">
-              <div className={`body--2`}>
-                <input
-                  type="text"
-                  placeholder="Tên đăng nhập/ Email/ Số điện thoại"
-                  style={{ borderColor: userColor }}
-                  value={username}
-                  onChange={(e) => setusername(e.target.value)}
-                />
-
-                <p className="error">{errorUserName}</p>
-                <p className="error">{errorEmail}</p>
-                <p className="error">{errorPhone}</p>
-              </div>
-              </div>
-
-
-              <div className="text-wrapper-2"><div className={`title--3`}>Tên đăng nhập</div></div>
+    <div className="login__container">
+      <form className="login__form ">
+        <div className="login__form--frame">
+          {/* logo */}
+          <img className="login__logo" alt="Bong cake logo" src={logo}/>
+          <div className="login__form--frameinput">
+            {/* title */}
+            <div className="login__form--title">
+                <p className="p"> <span className= {`heading`}>Đăng nhập vào tài khoản của bạn</span></p>
+                <p className="login__form--title-slogan"><span className= {`body--1`}>Tận hưởng những hương vị ngọt ngào!</span></p>
             </div>
-            <div className="password">
-              <div className="overlap-group">
-                <div className="text-wrapper" >
+            {/* input username */}
+            <div className="login__form--input">
+              <div className="login__form--username-input">
+                <div className={`body--2`}>
+                  <input
+                    type="text"
+                    placeholder="Tên đăng nhập/ Email/ Số điện thoại"
+                    style={{ borderColor: userColor }}
+                    value={username}
+                    onChange={(e) => setusername(e.target.value)}
+                  />
+                  <p className="error">{errorUserName}</p>
+                  <p className="error">{errorEmail}</p>
+                  <p className="error">{errorPhone}</p>
+                </div>
+              </div>
+              <div className="login__form--username-title"><div className={`title--3`}>Tên đăng nhập</div></div>
+            </div>
+            {/* input password */}
+            <div className="login__form--password">
+              <div>
+                <div className="login__form--password-input" >
                   <div className={`body--2`}>
                   <input
                     type="password"
@@ -107,48 +108,44 @@ function Login() {
                   </div>
                 </div>
                 <FaRegEyeSlash className="eye-off"/>
-
               </div>
-              <div className="text-wrapper-2"><div className= {`title--3`}>Mật khẩu</div></div>
-              <div className="text-wrapper-3"><div className= {`title--3`}>Quên mật khẩu</div></div>
+              <div className= {`title--3`}>
+                <div>Mật khẩu</div>
+                <div className="login__form--password-forget">Quên mật khẩu</div>
+              </div>
             </div>
-
-            
-            <div className="group-2">
-                <p className="p"> <span className= {`heading`}>Đăng nhập vào tài khoản của bạn</span></p>
-                <p className="text-wrapper-4"><span className= {`body--1`}>Tận hưởng những hương vị ngọt ngào!</span></p>
-            </div>
-            <div className="submit-btn">
-              <div className="overlap-group-wrapper">
+            {/* line */}
+            <hr className="login__form--line" />
+            {/* button */}
+            <div className="login__form--submit-btn">
+              <div >
                 <div className="div-wrapper">
                   <div className={`body--2`}>
                   <button className="btn1" onClick={validate} >Đăng nhập</button>
                   </div>
                 </div>
               </div>
-              <p className="dangky">
+             
+            </div>
+
+            <p className="login__form--register">
                 <p className= {`title--3`}>
                 <span className="span">Bạn không có tài khoản? </span>
-                <span className="text-wrapper-6">Đăng ký</span>
+                <a className="login__form--register-text" href="#">Đăng ký</a>
                 </p>
               </p>
-            </div>
-            <hr className="line" />
           </div>
-          <img className="bng-cake" alt="Bong cake logo" src={logo}/>
+
         </div>
-
-
-        <div className="overlap">
+      </form>
+      <div className="login__bg">
           <img
-            className="cupcakes-with-glaze"
+            className="login__bg"
             alt="Cupcakes with glaze"
             src={bg}
           />
 
         </div>
-      </div>
-      </form>
     </div>
   );
 };

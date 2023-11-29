@@ -7,7 +7,6 @@ import './Home.css';
 const Home = () =>{
     return (
         <div>
-            {/* <desktopLogin></desktopLogin> */}
             <Login></Login>
         </div>
     )
