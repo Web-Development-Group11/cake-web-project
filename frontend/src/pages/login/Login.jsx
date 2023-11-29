@@ -135,7 +135,7 @@ function Login() {
             </div>
             <hr className="line" />
           </div>
-          <img className="bng-cake" alt="Bng cake" src={logo}/>
+          <img className="bng-cake" alt="Bong cake logo" src={logo}/>
         </div>
 
 
