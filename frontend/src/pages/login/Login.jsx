@@ -121,7 +121,7 @@ function Login() {
             <div className="submit-btn">
               <div className="overlap-group-wrapper">
                 <div className="div-wrapper">
-                  <div className="text-wrapper-5">
+                  <div className={`body--2`}>
                   <button className="btn1" onClick={validate} >Đăng nhập</button>
                   </div>
                 </div>
