@@ -37,10 +37,14 @@ class QuantityComponent extends React.Component {
         <div className="button__quantity--minus">
           <CiSquareMinus size={50} onClick={this.decrementQuantity} className="my-icon"/>
         </div>
+
         <div className="input__quantity">              
             <input
-            type="text"
-            value={quantity}
+            type="number"
+            step="1" 
+            min="0" 
+            value="1"
+            // value={quantity}
             className={`body--1`}
             />
         </div>
@@ -77,3 +81,16 @@ export default QuantityComponent;
 //     );
 //   };
   
+
+
+                        // <div class="quantity buttons_added">                  
+                        //   <input type="number" step="1" min="0" value="1" title="Qty" class="input-text qty text">
+                        //   <div class="quantity-adjust">
+                        //     <a href="#" class="plus">
+                        //       <i class="fa fa-angle-up"></i>
+                        //     </a>
+                        //     <a href="#" class="minus">
+                        //       <i class="fa fa-angle-down"></i>
+                        //     </a>
+                        //   </div>
+                        // </div>
