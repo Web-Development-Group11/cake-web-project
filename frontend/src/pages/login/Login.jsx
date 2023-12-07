@@ -23,7 +23,7 @@ function Login() {
     let logininfor = username;
     let isEmail = logininfor.includes("@");
     let isPhone = logininfor.startsWith("0") && logininfor.length === 10;
-  
+
     if (isEmail) {
       // Check email conditions
       if (logininfor.includes("@gmail.com")) {
@@ -63,22 +63,42 @@ function Login() {
   }
 
   return (
+
+
     <div className="login__container">
-      <form className="login__form ">
-        <div className="login__form--frame">
-          {/* logo */}
-          <img className="login__logo" alt="Bong cake logo" src={logo}/>
+      <div className="login__form">
+        {/* logo */}
+        <div className="website-logo">
+          <a href="#">
+
+            <img alt="Bong cake logo" src={logo} />
+
+          </a>
+        </div>
+        {/* hinh */}
+        <div className="img-holder">
+          <div className="bg"></div>
+          <div className="info-holder">
+            <img
+              alt="Cupcakes with glaze"
+              src={bg}
+            />
+          </div>
+        </div>
+        {/* form */}
+        <form className="login__form--frame">
           <div className="login__form--frameinput">
             {/* title */}
             <div className="login__form--title">
-                <p className="p"> <span className= {`heading`}>Đăng nhập vào tài khoản của bạn</span></p>
-                <p className="login__form--title-slogan"><span className= {`body--1`}>Tận hưởng những hương vị ngọt ngào!</span></p>
+              <p className="p"> <span className={`heading`}>Đăng nhập vào tài khoản của bạn</span></p>
+              <p className="login__form--title-slogan"><span className={`body--1`}>Tận hưởng những hương vị ngọt ngào!</span></p>
             </div>
             {/* input username */}
             <div className="login__form--input">
               <div className="login__form--username-input">
                 <div className={`body--2`}>
                   <input
+                    class="form-control"
                     type="text"
                     placeholder="Tên đăng nhập/ Email/ Số điện thoại"
                     style={{ borderColor: userColor }}
@@ -97,19 +117,20 @@ function Login() {
               <div>
                 <div className="login__form--password-input" >
                   <div className={`body--2`}>
-                  <input
-                    type="password"
-                    placeholder="Mật khẩu"
-                    style={{ borderColor: passwordColor }}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                  <p className="error">{errorPassword}</p>
+                    <input
+                      class="form-control"
+                      type="password"
+                      placeholder="Mật khẩu"
+                      style={{ borderColor: passwordColor }}
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <p className="error">{errorPassword}</p>
                   </div>
                 </div>
-                <FaRegEyeSlash className="eye-off"/>
+                <FaRegEyeSlash className="eye-off" />
               </div>
-              <div className= {`title--3`}>
+              <div className={`title--3`}>
                 <div>Mật khẩu</div>
                 <div className="login__form--password-forget">Quên mật khẩu</div>
               </div>
@@ -121,31 +142,23 @@ function Login() {
               <div >
                 <div className="div-wrapper">
                   <div className={`body--2`}>
-                  <button className="btn1" onClick={validate} >Đăng nhập</button>
+                    <button className="btn1" onClick={validate} >Đăng nhập</button>
                   </div>
                 </div>
               </div>
-             
+
             </div>
 
-            <p className="login__form--register">
-                <p className= {`title--3`}>
+            <div className="login__form--register">
+              <div className={`title--3`}>
                 <span className="span">Bạn không có tài khoản? </span>
                 <a className="login__form--register-text" href="#">Đăng ký</a>
-                </p>
-              </p>
+              </div>
+            </div>
           </div>
 
-        </div>
-      </form>
-      <div className="login__bg">
-          <img
-            className="login__bg"
-            alt="Cupcakes with glaze"
-            src={bg}
-          />
-
-        </div>
+        </form>
+      </div>
     </div>
   );
 };
