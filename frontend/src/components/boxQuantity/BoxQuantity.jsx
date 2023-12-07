@@ -5,18 +5,19 @@ import "./BoxQuantity.css";
 
 class QuantityComponent extends React.Component {
   state = {
-    quantity: 1,
+    quantity: "1",
+    errorMessage: "",
   };
 
   incrementQuantity = () => {
     this.setState({
-      quantity: this.state.quantity + 1,
+      quantity: this.state.quantity === "" ? 1 : parseInt(this.state.quantity) + 1,
       errorMessage: "",
     });
   };
 
   decrementQuantity = () => {
-    const newQuantity = this.state.quantity - 1;
+    const newQuantity = parseInt(this.state.quantity) - 1;
     if (newQuantity <= 0) {
       this.setState({
         errorMessage: "",
@@ -29,29 +30,42 @@ class QuantityComponent extends React.Component {
     }
   };
 
+  handleQuantityChange = (event) => {
+    const newQuantity = event.target.value;
+    if (!isNaN(newQuantity) || newQuantity === "") {
+      this.setState({
+        quantity: newQuantity === "" ? "" : newQuantity,
+        errorMessage: "",
+      });
+    } else {
+      this.setState({
+        errorMessage: "",
+      });
+    }
+  };
+
   render() {
     const { quantity, errorMessage } = this.state;
 
     return (
       <div className="button__quantity">
         <div className="button__quantity--minus">
-          <CiSquareMinus size={50} onClick={this.decrementQuantity} className="my-icon"/>
+          <CiSquareMinus size={50} onClick={this.decrementQuantity} className="my-icon" />
         </div>
 
-        <div className="input__quantity">              
-            <input
-            type="number"
-            step="1" 
-            min="0" 
-            value="1"
-            // value={quantity}
+        <div className="input__quantity">
+          <input
+            type="text"
+            step="1"
+            min="0"
+            value={quantity}
             className={`body--1`}
-            />
+            onChange={this.handleQuantityChange}
+          />
         </div>
-
 
         <div className="button__quantity--plus">
-          <CiSquarePlus size={50} onClick={this.incrementQuantity} className="my-icon"/>
+          <CiSquarePlus size={50} onClick={this.incrementQuantity} className="my-icon" />
         </div>
 
         {errorMessage && <div className="error-message">{errorMessage}</div>}
@@ -59,38 +73,5 @@ class QuantityComponent extends React.Component {
     );
   }
 }
+
 export default QuantityComponent;
-
-// -----Để lấy số lượng tính toán -----
-// import React, { useState } from 'react';
-// const MyComponent = () => {
-//     const [quantity, setQuantity] = useState(1);
-  
-//     const onQuantityChangeCallback = (newQuantity) => {
-//       // Tính toán giá trị
-//       const totalPrice = newQuantity * 1000;
-  
-//       // Gọi hàm khác để xử lý giá trị
-//       handleTotalPriceChange(totalPrice);
-//     };
-  
-//     return (
-//       <QuantityComponent
-//         onQuantityChange={onQuantityChangeCallback}
-//       />
-//     );
-//   };
-  
-
-
-                        // <div class="quantity buttons_added">                  
-                        //   <input type="number" step="1" min="0" value="1" title="Qty" class="input-text qty text">
-                        //   <div class="quantity-adjust">
-                        //     <a href="#" class="plus">
-                        //       <i class="fa fa-angle-up"></i>
-                        //     </a>
-                        //     <a href="#" class="minus">
-                        //       <i class="fa fa-angle-down"></i>
-                        //     </a>
-                        //   </div>
-                        // </div>
