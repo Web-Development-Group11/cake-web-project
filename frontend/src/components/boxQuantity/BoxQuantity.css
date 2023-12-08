@@ -3,6 +3,8 @@
 .button__quantity{
     display: flex;
     position: relative;
+    width: 155px;
+    height: 40px;
     
 }
 .input__quantity{
