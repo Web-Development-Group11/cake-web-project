@@ -43,14 +43,6 @@ function Login() {
         setPhoneColor("red");
       }
     } else {
-      // Check username conditions
-      if (logininfor.length > 8) {
-        setErrorUserName("");
-        setUserColor("green");
-      } else {
-        setErrorUserName("Username must be 8 letters long.");
-        setUserColor("red");
-      }
     }
 
     if (password.length > 8) {
@@ -63,8 +55,6 @@ function Login() {
   }
 
   return (
-
-
     <div className="login__container">
       <div className="login__form">
         {/* logo */}
@@ -86,80 +76,92 @@ function Login() {
           </div>
         </div>
         {/* form */}
-        <form className="login__form--frame">
+        <div className="login__form--frame">
           <div className="login__form--frameinput">
             {/* title */}
             <div className="login__form--title">
-              <p className="p"> <span className={`heading`}>Đăng nhập vào tài khoản của bạn</span></p>
-              <p className="login__form--title-slogan"><span className={`body--1`}>Tận hưởng những hương vị ngọt ngào!</span></p>
+              <span className="title1" > <span className={`heading`} >Đăng nhập vào tài khoản của bạn</span></span>
+              <span className="title2"><span className={`body--1`}>Tận hưởng những hương vị ngọt ngào!</span></span>
             </div>
-            {/* input username */}
-            <div className="login__form--input">
-              <div className="login__form--username-input">
-                <div className={`body--2`}>
-                  <input
-                    class="form-control"
-                    type="text"
-                    placeholder="Tên đăng nhập/ Email/ Số điện thoại"
-                    style={{ borderColor: userColor }}
-                    value={username}
-                    onChange={(e) => setusername(e.target.value)}
-                  />
-                  <p className="error">{errorUserName}</p>
-                  <p className="error">{errorEmail}</p>
-                  <p className="error">{errorPhone}</p>
-                </div>
-              </div>
-              <div className="login__form--username-title"><div className={`title--3`}>Tên đăng nhập</div></div>
-            </div>
-            {/* input password */}
-            <div className="login__form--password">
-              <div>
-                <div className="login__form--password-input" >
+            {/* form */}
+            <form className="login__form--input">
+              {/* input username */}
+              <div className="login__form--user">
+                <div className="login__form--username-title"><div className={`title--3`}>Tên đăng nhập</div></div>
+                <div className="login__form--username-input">
                   <div className={`body--2`}>
                     <input
                       class="form-control"
+                      type="text"
+                      placeholder="Email/ Số điện thoại"
+                      style={{ borderColor: userColor }}
+                      value={username}
+                      onChange={(e) => setusername(e.target.value)}
+                    />
+
+                  </div>
+                  <div className="error-container">
+                    <p className="error">{errorEmail}</p>
+                    <p className="error">{errorPhone}</p>
+                  </div>
+
+                </div>
+
+
+              </div>
+              {/* input password */}
+
+              <div className="login__form--password">
+                <div className="login__form--password-title">
+                  <div className="login__form--password-title1">
+                    <div className="title--3">Mật khẩu</div>
+                  </div>
+                  <div className="login__form--password-title2">
+                    <a href="#">Quên mật khẩu</a>
+                  </div>
+                </div>
+                <div className="login__form--password-input" >
+                  <div className="input-wrapper">
+                    <input
+                      className={`body--2`}
                       type="password"
                       placeholder="Mật khẩu"
                       style={{ borderColor: passwordColor }}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                     />
-                    <p className="error">{errorPassword}</p>
                   </div>
+                  <FaRegEyeSlash className="eye-off" />
                 </div>
-                <FaRegEyeSlash className="eye-off" />
+                <div className="error-container">
+                  <p className="error">{errorPassword}</p>
+                </div>
               </div>
-              <div className={`title--3`}>
-                <div>Mật khẩu</div>
-                <div className="login__form--password-forget">Quên mật khẩu</div>
+              {/* line */}
+              <div className="login__form--line" >
+                <hr />
               </div>
-            </div>
-            {/* line */}
-            <hr className="login__form--line" />
-            {/* button */}
-            <div className="login__form--submit-btn">
-              <div >
+              {/* button */}
+              <div className="login__form--submit-btn">
                 <div className="div-wrapper">
                   <div className={`body--2`}>
                     <button className="btn1" onClick={validate} >Đăng nhập</button>
                   </div>
                 </div>
               </div>
-
-            </div>
-
+            </form>
+            {/* đăng ký */}
             <div className="login__form--register">
               <div className={`title--3`}>
-                <span className="span">Bạn không có tài khoản? </span>
-                <a className="login__form--register-text" href="#">Đăng ký</a>
+                <span className="span">Mật khẩu</span>
+                <a className="login__form--password-title2" href="#">Đăng ký</a>
               </div>
             </div>
-          </div>
 
-        </form>
-      </div>
-    </div>
+          </div>
+        </div>
+      </div >
+    </div >
   );
 };
 export default Login;
