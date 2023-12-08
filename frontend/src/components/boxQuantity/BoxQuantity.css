@@ -3,16 +3,15 @@
 .button__quantity{
     display: flex;
     position: relative;
-    width: 155px;
-    height: 40px;
-    
+    width: 165px; /* figma 155px*/
+    height: 50px;   /* figma 40px*/
 }
 .input__quantity{
     width: 59px;
-    height: 37px;
+    height: 37px; /* figma 40px*/
     border-radius: 8px;
     border: 2px solid black;
-    margin-top:5px;
+    margin-top:5px; /* figma 0px*/
 }
 .input__quantity input {
     width: 55px;
