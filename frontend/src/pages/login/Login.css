@@ -186,42 +186,15 @@ input {
   background-color: var(--brown);
 }
 /* ========button======== */
-.login__form--submit-btn .div-wrapper {
+.login__form--submit-btn{
   margin-top:16px;
+
+}
+button.btn2{
   width: 100%;
 }
-/* Button 1 style defaut */
-.login__container .login__form--submit-btn .div-wrapper .btn1 {
-  background: transparent;
-  cursor: pointer;
-  border: 2px solid var(--white);
-  border-radius: 16px;
-  box-shadow: 0 2px 0 2px var(--brown),
-              0px 3px 12px rgba(0, 0, 0, 0.10);
-  overflow: hidden;
-  height: 60px;
-  position: absolute;
-  top: 432px;
-  width: 100%;
-  background-color: var(--primary-color);
-  justify-content: center;
-  line-height: 60px;
-  color: var(--white);
-}
 
-/* Button 1 style when hovering */
-.login__container .login__form--submit-btn .div-wrapper .btn1:hover {
-  background-color: var(--variant);
-  color: var(--text);
-  box-shadow: 0 2px 0 2px var(--brown),
-              0px 8px 32px rgba(0, 0, 0, 0.12)
-}
 
-/* Button 1 style when pressing */
-.login__container .login__form--submit-btn .div-wrapper .btn1:active {
-  box-shadow: 0 1px 0 1px var(--brown),
-              0px 1px 8px rgba(0, 0, 0, 0.12)
-}
 /* ========REGISTER======== */
 .login__form--register {
   margin-top:32px;
@@ -231,7 +204,7 @@ input {
   text-align: center;
   white-space: nowrap;
 }
-
+         
 .login__form--register .login__form--register-text {
   color: var(--text);
 }

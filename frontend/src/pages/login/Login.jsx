@@ -3,7 +3,7 @@ import "./Login.css";
 import logo from "../../assets/image/logo.png"
 import bg from "../../assets/image/bglogin.png"
 import { FaRegEyeSlash } from "react-icons/fa";
-
+import Button from "../../components/button/Button"
 function Login() {
   const [username, setusername] = useState("");
   const [password, setPassword] = useState("");
@@ -145,7 +145,7 @@ function Login() {
               <div className="login__form--submit-btn">
                 <div className="div-wrapper">
                   <div className={`body--2`}>
-                    <button className="btn1" onClick={validate} >Đăng nhập</button>
+                    <Button type="btn2 primary" className="btn" onClick={validate} >Đăng nhập</Button>
                   </div>
                 </div>
               </div>
