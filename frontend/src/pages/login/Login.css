@@ -1,0 +1,284 @@
+@import url("../../Variable.css");
+p, html, div{
+  margin: 0;
+  padding: 0;
+}
+
+
+.login__container {
+  background-color: var(--background-1);
+  padding: 0;
+  margin: 0;
+  max-height: 100%;
+  max-width: 100%;
+}
+.login__form {
+  background-color: var(--background-1);
+  width: 100vw;
+  height: 100vh;
+}
+.login__container .img-holder{
+  color: var(--red);
+  width: 651px;
+  height: 100%;
+  float: right;
+}
+.login__form  .website-logo {
+  position: absolute;
+  width: 790px;
+  top:70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+} 
+/* ========BACKGROUND======== */
+.img-holder .bg {
+  width: 651px;
+  height: 100%;
+  position: absolute;
+  /* opacity: 0.23; */
+  background-image: none;
+  /* float: right; */
+}
+
+/* ========LOGO======== */
+
+.website-logo img {
+  height: 80px;
+  width: 145px;
+}
+
+
+/* ========FORM======== */
+/* ========fill======== */
+.login__form--frame {
+
+  background-color: var(--background-1);
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: left;
+  width: 790px;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login__form--frameinput {
+  position: absolute;
+  width: 650px;
+  /* height:506px; */
+  display: flex;
+  flex-direction: column;
+}
+.login__form--frameinput .login__form--title {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.login__form--title .title1 {
+  color: var(--primary-color);
+  height: 1em * 130%; 
+  text-align: center;
+  white-space: nowrap;
+  width: 100%;
+}
+.login__form--title .title2 {
+  color: var(--text);
+  height: 1em * 150%; 
+  text-align: center;
+  white-space: nowrap;
+  width: 100%; 
+  margin-top: 16px;
+}
+
+.login__form--frameinput .login__form--input {
+  margin-top: 120px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.login__form--input .login__form--user .login__form--username-title {
+  color: var(--text);
+  height: 1em * 150%; 
+  white-space: nowrap;
+}
+.login__form--input .login__form--user .login__form--username-input {
+  margin-top: 16px;
+}
+.login__form--input .login__form--username-input {
+  position: relative;
+}
+input {
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 32px;
+  background-color: var(--background-1);
+  border-radius: 16px;
+  border-color: var(--highlight-text);
+  height: 60px;
+}
+
+.error-container {
+  height:26px;
+  color: var(--text);
+}
+
+
+.login__form--input .login__form--password {
+  display: flex;
+  flex-direction: column;
+}
+
+.login__form--password-title {
+  display: flex;
+  flex-direction: row;
+  margin-top:8px;
+}
+
+.login__form--password-title1 {
+  flex: 1;
+  display:inline-block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.login__form--password-input{
+  margin-top:16px;
+}
+
+.login__form--password-input {
+  position: relative;
+}
+
+.login__form--password-input .eye-off {
+  position: absolute;
+  top: 50%;
+  right: 22px;
+  width: 24px;
+  height: 24px;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+/* ========line======== */
+.login__form--line {
+  margin-top:8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login__form--line hr {
+  width: 85%;
+  background-color: var(--brown);
+}
+/* ========button======== */
+.login__form--submit-btn{
+  margin-top:16px;
+
+}
+button.btn2{
+  width: 100%;
+}
+
+
+/* ========REGISTER======== */
+.login__form--register {
+  margin-top:16px;
+  color: var(--text);
+  height: 1rem*150%;
+  width: 100%;
+  text-align: center;
+}
+ 
+.login__form--register-title1 {
+  white-space: nowrap;
+}
+
+.login__form--register a{
+  display: inline-block;
+  text-decoration: underline !important;
+}
+
+
+/* @media only screen and (min-width: 768px) and (max-width: 900px) {
+  .login__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .login__form {
+    flex: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    z-index: 2; 
+  }
+
+  .login__bg {
+    flex: none;
+    filter: blur(5px);
+    z-index: 1;
+  }
+} */
+
+/* Responsive layout cho điện thoại (màn hình có chiều rộng nhỏ hơn 600px) */
+/* @media only screen and (max-width: 360px) {
+  .login__container {
+    max-width: none;
+    padding: 10px;
+  }
+} */
+
+@media (max-width: 992px) {
+  .login__form{
+      margin-left: 0;
+      width: 100%;
+      height:100vh;
+  }
+  .login__container .img-holder {
+    float:left;
+    position: absolute;
+    width: 100%;
+    height:100%
+  }
+  .img-holder .bg , img{
+    float:left;
+    background-color: var(--background-1);
+    width: 200%;
+    height:200%;
+  }
+
+
+  .login__container{
+    width: 100%;
+    height:100%
+  }
+
+  .website-logo {
+    width: 100%;
+    z-index: 3;
+  }
+  .login__form--frame{
+    z-index: 2;
+    height: 100%;
+  }
+
+  .login__form--frame .login__form--frameinput {
+    height: 600px;
+    position: absolute;
+    top: 212x;
+    left:106px;
+    width: 556px;
+  }
+
+}
