@@ -1,0 +1,226 @@
+@import url("../../Variable.css");
+
+p,
+html,
+div {
+  margin: 0;
+  padding: 0;
+}
+
+.login__container {
+  background-color: var(--background-1);
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.img-holder {
+  flex: 1;
+  order: 2;
+}
+
+.login__frame {
+  flex: 1;
+  order: 1;
+  position: relative;
+}
+
+
+/* ========BACKGROUND======== */
+.img-holder .bg {
+  height: 100%;
+  position: absolute;
+  background-image: none;
+
+}
+
+.info-holder img {
+  height: 100vh;
+  width: 100%;
+}
+
+/* ========FORM======== */
+
+/* ========logo======== */
+
+.login__frame .website-logo {
+  position: absolute;
+  top: calc(15% - 80px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+.website-logo img {
+  max-height: 80px;
+  max-width: 145px;
+}
+
+/* ========fill======== */
+.login__form {
+  background-color: var(--background-1);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login__form--frameinput{
+  width: 90%;
+}
+
+.login__form--frameinput .login__form--title {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.login__form--title .title1 {
+  margin-top: 32px;
+  color: var(--primary-color);
+  height: 1em * 130%;
+  text-align: center;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.login__form--title .title2 {
+  color: var(--text);
+  height: 1em * 150%;
+  text-align: center;
+  white-space: nowrap;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.login__form--frameinput .login__form--input {
+  margin-top: 32px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.login__form--input .login__form--user .login__form--username-title {
+  color: var(--text);
+  height: 1em * 150%;
+  white-space: nowrap;
+}
+
+.input-wrapper {
+  margin-top: 16px;
+}
+
+.text-field__input {
+  height: 60px !important;
+}
+
+.error-container {
+  height: 26px;
+  color: var(--text);
+}
+
+
+.login__form--input .login__form--password {
+  display: flex;
+  flex-direction: column;
+}
+
+.login__form--password-title {
+  display: flex;
+  flex-direction: row;
+  margin-top: 8px;
+}
+
+.login__form--password-title1 {
+  flex: 1;
+  display: inline-block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.login__form--password-input {
+  margin-top: 16px;
+}
+
+.login__form--password-input {
+  position: relative;
+}
+
+.login__form--password-input .eye-off {
+  position: absolute;
+  top: 50%;
+  right: 22px;
+  width: 24px;
+  height: 24px;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+/* ========line======== */
+.login__form--line {
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login__form--line hr {
+  width: 85%;
+  background-color: var(--brown);
+}
+
+/* ========button======== */
+.login__form--submit-btn {
+  margin-top: 16px;
+
+}
+
+button.btn2 {
+  width: 100%;
+}
+
+
+/* ========REGISTER======== */
+.login__form--register {
+  margin-top: 16px;
+  color: var(--text);
+  height: 1rem*150%;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.login__form--register-title1 {
+  white-space: nowrap;
+}
+
+.login__form--register a {
+  display: inline-block;
+  text-decoration: underline !important;
+}
+
+@media (max-width: 768px) {
+  .login__container {
+    flex-direction: column;
+  }
+  .img-holder img {
+    opacity: 0.7
+  }
+  .login__frame {
+    position: static;
+  }
+  .login__form {
+    border: 1px solid var(--highlight-text);
+    border-radius: 16px;
+    
+  }
+}
