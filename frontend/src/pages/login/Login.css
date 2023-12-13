@@ -84,7 +84,6 @@ div {
 .login__form--title .title1 {
   margin-top: 32px;
   color: var(--primary-color);
-  height: 1em * 130%;
   text-align: center;
   white-space: nowrap;
   width: 100%;
@@ -92,7 +91,6 @@ div {
 
 .login__form--title .title2 {
   color: var(--text);
-  height: 1em * 150%;
   text-align: center;
   white-space: nowrap;
   width: 100%;
@@ -108,7 +106,6 @@ div {
 
 .login__form--input .login__form--user .login__form--username-title {
   color: var(--text);
-  height: 1em * 150%;
   white-space: nowrap;
 }
 
@@ -155,15 +152,6 @@ a {
   position: relative;
 }
 
-.login__form--password-input .eye-off {
-  position: absolute;
-  top: 50%;
-  right: 22px;
-  width: 24px;
-  height: 24px;
-  transform: translateY(-50%);
-  z-index: 1;
-}
 
 /* ========line======== */
 .login__form--line {
@@ -193,7 +181,6 @@ button.btn2 {
 .login__form--register {
   margin-top: 16px;
   color: var(--text);
-  height: 1rem*150%;
   width: 100%;
   text-align: center;
   margin-bottom: 32px;
