@@ -1,4 +1,9 @@
 import React from 'react'
+import "./Register.css";
+import logo from "../../assets/image/logo.png";
+import bg from "../../assets/image/bglogin.png";
+import Button from "../../components/button/Button";
+import TextField from "../../components//textField/TextField";
 
 const Register = () => {
   return (

@@ -34,7 +34,8 @@ function App() {
             </Routes>
         
     </BrowserRouter>
-    <Login></Login>
+    {/* <Login></Login> */}
+    <Register></Register>
     </div>
   );
 }
