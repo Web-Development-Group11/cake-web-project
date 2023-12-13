@@ -1,10 +1,9 @@
 @import url("../../Variable.css");
 
-.title--4 {
-    color: var(--primary-color);
+.body {
+    margin-top: 92px;
     text-align: center;
 }
-.btn1 {
-    display: flex;
-    margin: 0 auto;
+.btn1, .btn2 {
+    margin: 20px 0;
 }
