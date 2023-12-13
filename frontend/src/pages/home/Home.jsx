@@ -9,7 +9,6 @@ const Home = () => {
       <Navbar/>
         <p>hello world</p>
         <Button type ="btn1 primary " >Liên hệ </Button>
-      <Footer/>
     </div>
   )
 }
