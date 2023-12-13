@@ -11,14 +11,14 @@ import Cart from './pages/cart/Cart';
 import Introduction from './pages/introduction/Introduction';
 import Blog from './pages/blog/Blog';
 import Navbar from './components/header/NavBar';
-import Footer from './components/footer/Footer';
+// import Footer from './components/footer/Footer';
 
 
 function App() {
   return (
     <div className="App">
     <BrowserRouter>
-        <Navbar></Navbar>
+        {/* <Navbar></Navbar> */}
             <Routes>
                 <Route path="/" element={< Home />} />
                 <Route path="/login" element={< Login />} />

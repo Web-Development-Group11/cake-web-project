@@ -108,20 +108,12 @@ p, html, div{
   height: 1em * 150%; 
   white-space: nowrap;
 }
-.login__form--input .login__form--user .login__form--username-input {
+
+.input-wrapper{
   margin-top: 16px;
 }
-.login__form--input .login__form--username-input {
-  position: relative;
-}
-input {
-  width: 100%;
-  box-sizing: border-box;
-  padding-left: 32px;
-  background-color: var(--background-1);
-  border-radius: 16px;
-  border-color: var(--highlight-text);
-  height: 60px;
+.text-field__input {
+  height: 60px !important;
 }
 
 .error-container {
