@@ -1,0 +1,153 @@
+@import url("../../Variable.css");
+
+.card {
+    height: 400px;
+    width: 276px;
+}
+
+.card .overlap-group {
+    background-color: #ffffff;
+    border: 2px solid;
+    border-color: var(--secondaryhighlight-text);
+    border-radius: 16px;
+    /* height: 404px; */
+    height: 400px;
+    /* left: -2px; */
+    position: relative;
+    /* top: -2px; */
+    /* width: 280px; */
+    width: 276px;
+}
+
+.card .product-image {
+    height: 276px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 276px;
+    background-color: #47271c;
+    border-top-right-radius: 13px;
+    border-top-left-radius: 13px;
+}
+/* title */
+.card .text-wrapper {
+    color: var(--secondaryhighlight-text);
+    font-family: "Lato-Bold", Helvetica;
+    /* font-size: 18px; */
+    font-size: 17px;
+    font-weight: 700;
+    /* width: 243px; */
+    height: 22px;
+    position: absolute;
+    left: 12px;
+    top: 292px;
+    letter-spacing: 0;
+    line-height: normal;
+    text-align: center;
+}
+
+.card .line {
+    height: 1px;
+    left: 12px;
+    object-fit: cover;
+    position: absolute;
+    top: 325px;
+    width: 252px;
+}
+
+.card .rate {
+    height: 24px;
+    left: 12px;
+    position: absolute;
+    top: 338px;
+    width: 49px;
+}
+
+/* 4.8 */
+.card .div {
+    color: #47271c;
+    font-family: var(--desktop-styles-body-2-font-family);
+    font-size: var(--desktop-styles-body-2-font-size);
+    font-style: var(--desktop-styles-body-2-font-style);
+    font-weight: var(--desktop-styles-body-2-font-weight);
+    letter-spacing: var(--desktop-styles-body-2-letter-spacing);
+    line-height: var(--desktop-styles-body-2-line-height);
+    position: absolute;
+    left: 90px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+
+
+.card .star {
+    display: flex;
+    height: 16px;
+    position: absolute;
+    width: 16px;
+    text-align: center;
+}
+
+.card .text-wrapper-2 {
+    color: var(--secondaryhighlight-text);
+    font-family: var(--desktop-styles-title-4-font-family);
+    font-size: var(--desktop-styles-title-4-font-size);
+    font-style: var(--desktop-styles-title-4-font-style);
+    font-weight: var(--desktop-styles-title-4-font-weight);
+    height: 24px;
+    left: 12px;
+    letter-spacing: var(--desktop-styles-title-4-letter-spacing);
+    line-height: var(--desktop-styles-title-4-line-height);
+    position: absolute;
+    top: 367px;
+    white-space: nowrap;
+    
+}
+
+.card .add-to-cart {
+    align-items: flex-start;
+    border: 1px solid;
+    border-color: var(--secondaryhighlight-text);
+    border-radius: 8px;
+    box-shadow: 2px 2px 0px #47271c;
+    display: inline-flex;
+    gap: 10px;
+    left: 223px;
+    padding: 10px;
+    position: absolute;
+    top: 349px;
+}
+
+.card .icons {
+    height: 20px !important;
+    position: relative !important;
+    width: 20px !important;
+}
+
+.card.default {
+    box-shadow: 5px 5px #47271c;
+    border-radius: 16px;
+}
+
+.card.hover {
+    box-shadow: 8px 8px #47271c;
+    border-radius: 16px;
+}
+
+.card.default .text-wrapper {
+    color: var(--secondaryhighlight-text);
+}
+
+.card.hover .text-wrapper {
+    color: var(--primary)
+}
+
+.card.default .add-to-cart {
+    background-color: var(--primary)
+    /* background-color: rgba(226, 16, 51, 1); */
+}
+
+.card.hover .add-to-cart {
+    background-color: var(--secondaryvariant);
+    /* background-color: rgba(161, 225, 244, 1); */
+}

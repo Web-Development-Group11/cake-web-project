@@ -6,11 +6,10 @@ import Footer from '../../components/footer/Footer'
 const Home = () => {
   return (
     <div>
-        <h1>
-        Welcome to React
-        </h1>
+      <Navbar/>
+        <p>hello world</p>
         <Button type ="btn1 primary " >Liên hệ </Button>
-      {/* <Footer/> */}
+      <Footer/>
     </div>
   )
 }
