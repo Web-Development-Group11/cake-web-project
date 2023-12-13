@@ -63,22 +63,22 @@ function Login() {
 
   return (
     <div className="login__container">
-      <div className="login__form">
+      {/* hinh */}
+      <div className="img-holder">
+        <div className="bg"></div>
+        <div className="info-holder">
+          <img alt="Cupcakes with glaze" src={bg} />
+        </div>
+      </div>
+      {/* form */}
+      <div className="login__frame">
         {/* logo */}
         <div className="website-logo">
           <a href="/">
             <img alt="Bong cake logo" src={logo} />
           </a>
         </div>
-        {/* hinh */}
-        <div className="img-holder">
-          <div className="bg"></div>
-          <div className="info-holder">
-            <img alt="Cupcakes with glaze" src={bg} />
-          </div>
-        </div>
-        {/* form */}
-        <div className="login__form--frame">
+        <div className="login__form">
           <div className="login__form--frameinput">
             {/* title */}
             <div className="login__form--title">

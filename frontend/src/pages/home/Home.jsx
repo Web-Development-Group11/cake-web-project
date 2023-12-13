@@ -7,11 +7,9 @@ import Login from '../../components/footer/Footer'
 const Home = () => {
   return (
     <div>
-      {/* <Navbar/> */}
-        {/* <p>hello world</p>
-        <Button type ="btn1 primary " >Liên hệ </Button>
-      <Footer/> */}
-      <Login></Login>
+      {/* <Button type="btn1 primary " >Liên hệ </Button> */}
+      {/* <Footer /> */}
+      {/* <Login></Login> */}
     </div>
   )
 }
