@@ -13,6 +13,7 @@ import Card from '../../components/card/Card'
 const Home = () => {
   return (
     <div>
+    <Navbar></Navbar>
       <div className="body">
         <div className="heading">Đây là heading</div>
         <div className="title--1">Đây là title 1</div>
