@@ -3,21 +3,24 @@
 .card {
     height: 400px;
     width: 276px;
-    margin: 50px;
-
 }
 
 .card .overlap-group {
     background-color: var(--white);
     border-color: var(--brown);
     border-radius: 16px;
-    height: 400px;
+    height: 100%;
     position: relative;
-    width: 276px;
+    width: 100%;
     overflow: hidden;
 }
 
-
+.card .product-image {
+    max-height: 69vh;
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+}
 
 /* title */
 .card .card-title {
@@ -112,14 +115,7 @@
     transition: all 0.3s ease-in-out;
 }
 
-.card .product-image {
-    max-height: 276px;
-    position: absolute;
-    width: 276px;
-    border-top-right-radius: 13px;
-    border-top-left-radius: 13px;
-    overflow: hidden;
-}
+
 
 .card.default .card-title {
     color: var(--highlight-text);
@@ -147,4 +143,24 @@
         transform: scale(1.4);
         opacity: 0;
     }
+}
+
+
+@media screen and (max-width: 768px) {
+    .card {
+        height: 325px;
+        width: 224px;
+    }
+
+
+
+}
+
+@media screen and (max-width: 480px) {
+    .card {
+        height: 226px;
+        width: 156px;
+    }
+
+
 }
