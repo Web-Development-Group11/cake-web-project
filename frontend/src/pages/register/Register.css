@@ -7,7 +7,7 @@ div {
   padding: 0;
 }
 
-.login__container {
+.register__container {
   background-color: var(--background-1);
   padding: 0;
   margin: 0;
@@ -20,7 +20,7 @@ div {
   order: 2;
 }
 
-.login__frame {
+.register__frame {
   flex: 1;
   order: 1;
   position: relative;
@@ -44,7 +44,7 @@ div {
 
 /* ========logo======== */
 
-.login__frame .website-logo {
+.register__frame .website-logo {
   position: absolute;
   top: calc(15% - 80px);
   left: 50%;
@@ -58,7 +58,7 @@ div {
 }
 
 /* ========fill======== */
-.login__form {
+.register__form {
   background-color: var(--background-1);
   position: absolute;
   top: 50%;
@@ -71,17 +71,17 @@ div {
   align-items: center;
 }
 
-.login__form--frameinput{
+.register__form--frameinput{
   width: 90%;
 }
 
-.login__form--frameinput .login__form--title {
+.register__form--frameinput .register__form--title {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.login__form--title .title1 {
+.register__form--title .title1 {
   margin-top: 32px;
   color: var(--primary-color);
   height: 1em * 130%;
@@ -90,7 +90,7 @@ div {
   width: 100%;
 }
 
-.login__form--title .title2 {
+.register__form--title .title2 {
   color: var(--text);
   height: 1em * 150%;
   text-align: center;
@@ -99,14 +99,14 @@ div {
   margin-top: 16px;
 }
 
-.login__form--frameinput .login__form--input {
+.register__form--frameinput .register__form--input {
   margin-top: 32px;
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.login__form--input .login__form--user .login__form--username-title {
+.register__form--input .register__form--user .register__form--username-title {
   color: var(--text);
   height: 1em * 150%;
   white-space: nowrap;
@@ -126,18 +126,18 @@ div {
 }
 
 
-.login__form--input .login__form--password {
+.register__form--input .register__form--password {
   display: flex;
   flex-direction: column;
 }
 
-.login__form--password-title {
+.register__form--password-title {
   display: flex;
   flex-direction: row;
   margin-top: 8px;
 }
 
-.login__form--password-title1 {
+.register__form--password-title1 {
   flex: 1;
   display: inline-block;
 }
@@ -147,15 +147,15 @@ a {
   color: inherit;
 }
 
-.login__form--password-input {
+.register__form--password-input {
   margin-top: 16px;
 }
 
-.login__form--password-input {
+.register__form--password-input {
   position: relative;
 }
 
-.login__form--password-input .eye-off {
+.register__form--password-input .eye-off {
   position: absolute;
   top: 50%;
   right: 22px;
@@ -166,20 +166,20 @@ a {
 }
 
 /* ========line======== */
-.login__form--line {
+.register__form--line {
   margin-top: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.login__form--line hr {
+.register__form--line hr {
   width: 85%;
   background-color: var(--brown);
 }
 
 /* ========button======== */
-.login__form--submit-btn {
+.register__form--submit-btn {
   margin-top: 16px;
 
 }
@@ -190,7 +190,7 @@ button.btn2 {
 
 
 /* ========REGISTER======== */
-.login__form--register {
+.register__form--login {
   margin-top: 16px;
   color: var(--text);
   height: 1rem*150%;
@@ -199,26 +199,26 @@ button.btn2 {
   margin-bottom: 32px;
 }
 
-.login__form--register-title1 {
+.register__form--login-title1 {
   white-space: nowrap;
 }
 
-.login__form--register a {
+.login__form--login a {
   display: inline-block;
   text-decoration: underline !important;
 }
 
 @media (max-width: 768px) {
-  .login__container {
+  .register__container {
     flex-direction: column;
   }
   .img-holder img {
     opacity: 0.7
   }
-  .login__frame {
+  .register__frame {
     position: static;
   }
-  .login__form {
+  .register__form {
     border: 1px solid var(--highlight-text);
     border-radius: 16px;
     
