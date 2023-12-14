@@ -2,13 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useReducer } from "react";
 import { Link } from "react-router-dom";
-// import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 // import { FaStarHalf } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa6";
-
-import { PiShoppingCartSimpleFill } from "react-icons/pi";
-import "./card.css";
+import "./Card.css";
 import jsonData from "../../assets/db/productsData.json";
 
 
@@ -72,7 +70,7 @@ export default function Card({ status, className}) {
             </div>
             <div className="divprice"><div className={`title--4`} >{item.pPrice}</div></div>
             <div className="add-to-cart">
-              <PiShoppingCartSimpleFill  
+              <FaShoppingCart  
                 className="icons"
                 color={state.status === "hover" ? "#47271C" : "white"}
               />
