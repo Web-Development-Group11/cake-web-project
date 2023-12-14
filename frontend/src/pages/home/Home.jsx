@@ -33,6 +33,8 @@ const Home = () => {
         <Category className="category" link="/cookie" img={cookie} title="Cookie"  description="Những chiếc bánh giòn tan và đậm đà"></Category>
         
         <Category className="category" link="/combo" img={combo} title="Combo"  description="Sự kết hợp đa dạng và hoàn hảo"></Category>
+
+        <Card></Card>
       </div>
     </div>
   )
