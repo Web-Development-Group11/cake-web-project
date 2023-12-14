@@ -39,10 +39,6 @@ img {
     color: var(--primary-color);
 }
 
-.line {
-    color: var(--brown);
-}
-
 .btn__container {
     display: flex;
     flex-direction: row;
