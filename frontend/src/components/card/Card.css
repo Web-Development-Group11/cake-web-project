@@ -6,9 +6,9 @@
 }
 
 .card .overlap-group {
-    background-color: #ffffff;
+    background-color: var(--white);
     border: 2px solid;
-    border-color: var(--secondaryhighlight-text);
+    border-color: var(--brown);
     border-radius: 16px;
     /* height: 404px; */
     height: 400px;
@@ -17,41 +17,28 @@
     /* top: -2px; */
     /* width: 280px; */
     width: 276px;
+    overflow: hidden;
 }
 
-.card .product-image {
-    height: 276px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 276px;
-    background-color: #47271c;
-    border-top-right-radius: 13px;
-    border-top-left-radius: 13px;
-}
+
+
 /* title */
-.card .text-wrapper {
-    color: var(--secondaryhighlight-text);
-    font-family: "Lato-Bold", Helvetica;
-    /* font-size: 18px; */
-    font-size: 17px;
-    font-weight: 700;
-    /* width: 243px; */
-    height: 22px;
+.card .card-title {
     position: absolute;
     left: 12px;
-    top: 292px;
+    top: 293px;
     letter-spacing: 0;
     line-height: normal;
     text-align: center;
 }
 
 .card .line {
-    height: 1px;
+    background-color: var(--brown);
+    height:1px;
     left: 12px;
     object-fit: cover;
     position: absolute;
-    top: 325px;
+    top: 319px;
     width: 252px;
 }
 
@@ -60,44 +47,22 @@
     left: 12px;
     position: absolute;
     top: 338px;
-    width: 49px;
 }
 
-/* 4.8 */
+/* star*/
 .card .div {
-    color: #47271c;
-    font-family: var(--desktop-styles-body-2-font-family);
-    font-size: var(--desktop-styles-body-2-font-size);
-    font-style: var(--desktop-styles-body-2-font-style);
-    font-weight: var(--desktop-styles-body-2-font-weight);
-    letter-spacing: var(--desktop-styles-body-2-letter-spacing);
-    line-height: var(--desktop-styles-body-2-line-height);
+    color: var(--highlight-text);
     position: absolute;
     left: 90px;
+    top: -2px;
     white-space: nowrap;
     text-align: center;
 }
 
-
-
-.card .star {
-    display: flex;
-    height: 16px;
-    position: absolute;
-    width: 16px;
-    text-align: center;
-}
-
-.card .text-wrapper-2 {
-    color: var(--secondaryhighlight-text);
-    font-family: var(--desktop-styles-title-4-font-family);
-    font-size: var(--desktop-styles-title-4-font-size);
-    font-style: var(--desktop-styles-title-4-font-style);
-    font-weight: var(--desktop-styles-title-4-font-weight);
+.card .divprice{
+    color: var(--highlight-text);
     height: 24px;
     left: 12px;
-    letter-spacing: var(--desktop-styles-title-4-letter-spacing);
-    line-height: var(--desktop-styles-title-4-line-height);
     position: absolute;
     top: 367px;
     white-space: nowrap;
@@ -107,9 +72,9 @@
 .card .add-to-cart {
     align-items: flex-start;
     border: 1px solid;
-    border-color: var(--secondaryhighlight-text);
+    border-color: var(--brown);
     border-radius: 8px;
-    box-shadow: 2px 2px 0px #47271c;
+    box-shadow: 2px 2px 0px (--brown);
     display: inline-flex;
     gap: 10px;
     left: 223px;
@@ -125,29 +90,64 @@
 }
 
 .card.default {
-    box-shadow: 5px 5px #47271c;
     border-radius: 16px;
+    box-shadow: 0 2px 0 2px var(--brown),
+    0px 3px 12px rgba(0, 0, 0, 0.25);
 }
 
 .card.hover {
-    box-shadow: 8px 8px #47271c;
-    border-radius: 16px;
+    border-radius: 16px; 
+    box-shadow: 4px 4px 0 4px var(--brown),
+    0px 8px 32px rgba(0, 0, 0, 0.25);
+    
+
 }
 
-.card.default .text-wrapper {
-    color: var(--secondaryhighlight-text);
+.card img{
+    max-height: 276px;
+    overflow: hidden;
+    display: block;
+    max-width: 100%;
+    transition: all 0.3s ease-in-out;
+}
+.card img:hover{
+    transform: scale(1.1);
+    opacity: 0.8;
 }
 
-.card.hover .text-wrapper {
-    color: var(--primary)
+.card .product-image {
+    max-height: 276px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 276px;
+    border-top-right-radius: 13px;
+    border-top-left-radius: 13px;
+    overflow: hidden;
+}
+.card.default .card-title {
+    color: var(--highlight-text);
+}
+
+.card.hover .card-title {
+    color: var(--primary-color)
 }
 
 .card.default .add-to-cart {
-    background-color: var(--primary)
-    /* background-color: rgba(226, 16, 51, 1); */
+    background-color: var(--red)
 }
 
 .card.hover .add-to-cart {
-    background-color: var(--secondaryvariant);
-    /* background-color: rgba(161, 225, 244, 1); */
+    background-color: var(--blue);
 }
+@keyframes img {
+    0% {
+      transform: scale(1);
+      opacity: 0.6;
+    }
+  
+    100% {
+      transform: scale(1.4);
+      opacity: 0;
+    }
+  }

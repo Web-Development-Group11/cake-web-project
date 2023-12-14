@@ -8,6 +8,8 @@ import tiramisu from '../../assets/category/tiramisu.png'
 import cookie from '../../assets/category/cookie.png' 
 import combo from '../../assets/category/combo.png' 
 import Footer from '../../components/footer/Footer'
+import Card from '../../components/card/Card'
+
 const Home = () => {
   return (
     <div>

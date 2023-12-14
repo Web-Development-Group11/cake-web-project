@@ -1,115 +1,90 @@
-import PropTypes from "prop-types";
 import React from "react";
+import PropTypes from "prop-types";
 import { useReducer } from "react";
-import { Icons1 } from "../../icons/Icons1";
-import "./Card.css";
+import { Link } from "react-router-dom";
+// import { FaShoppingCart } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
+// import { FaStarHalf } from "react-icons/fa";
+import { FaRegStar } from "react-icons/fa6";
 
-export const Card = ({ status, className }) => {
-  const [state, dispatch] = useReducer(reducer, {
-    status: status || "default",
-  });
+import { PiShoppingCartSimpleFill } from "react-icons/pi";
+import "./card.css";
+import jsonData from "../../assets/db/productsData.json";
 
+
+const initialState = {
+  status: "default",
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "mouse_enter":
+      return { ...state, status: "hover" };
+    case "mouse_leave":
+      return { ...state, status: "default" };
+    default:
+      return state;
+  }
+};
+
+export default function Card({ status, className}) {
+  
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <div
       className={`card ${state.status} ${className}`}
       onMouseLeave={() => {
-        dispatch("mouse_leave");
+        dispatch({ type: "mouse_leave" });
       }}
       onMouseEnter={() => {
-        dispatch("mouse_enter");
+        dispatch({ type: "mouse_enter" });
       }}
     >
       <div className="overlap-group">
-        <img
-          className="product-image"
-          alt="Product image"
-          src={
-            state.status === "hover"
-              ? "https://c.animaapp.com/Ohu87577/img/product-image-2@2x.png"
-              : "https://c.animaapp.com/Ohu87577/img/product-image@2x.png"
-          }
-        />
-        <div className="text-wrapper">Cupcake Chocolate hạnh nhân</div>
-        <img className="line" alt="Line" src="https://c.animaapp.com/Ohu87577/img/line-1-2.svg" />
-        <div className="rate">
-          <div className="div">4.8</div>
-          <div className="star">
-            <img
-            
-              alt="Star"
-              src={
-                state.status === "hover"
-                  ? "https://c.animaapp.com/Ohu87577/img/star-2.svg"
-                  : "https://c.animaapp.com/Ohu87577/img/star.svg"
-              }
-            />
-            <img
-          
-              alt="Star"
-              src={
-                state.status === "hover"
-                  ? "https://c.animaapp.com/Ohu87577/img/star-2.svg"
-                  : "https://c.animaapp.com/Ohu87577/img/star.svg"
-              }
-            />
-            <img
-        
-              alt="Star"
-              src={
-                state.status === "hover"
-                  ? "https://c.animaapp.com/Ohu87577/img/star-2.svg"
-                  : "https://c.animaapp.com/Ohu87577/img/star.svg"
-                }
-              />
-            <img
-              
-              alt="Star"
-              src={
-                state.status === "hover"
-                  ? "https://c.animaapp.com/Ohu87577/img/star-2.svg"
-                  : "https://c.animaapp.com/Ohu87577/img/star.svg"
-                }
-              />
-            <img
-              
-              alt="Star"
-              src={
-                state.status === "hover"
-                  ? "https://c.animaapp.com/Ohu87577/img/star-2.svg"
-                  : "https://c.animaapp.com/Ohu87577/img/star.svg"
-                }
-              />
-
+        {jsonData.map((item,index) => (
+          <div key={index}  >
+            <div className="product-image">
+              <Link to={`/`}>
+                <img src={item.pUrl} alt="productimage"  
+                />
+              </Link>
             </div>
-          
+            <div className="card-title">
+              <div className={`title--4`}>{item.pName}</div>
+            </div>
+            <hr className="line" />
+            <div className="rate">
+              <div className="flex">
+                {/* Yellow Star chỉ mới làm được số chẵn, lẻ như 4.5 thì chưa*/}
+                {[...Array(Number(item.pRate))].map((index) => (
+                  <span key={index} className="stardetail">
+                    <FaStar color="#E21033" />
+                  </span>
+                ))}
+                {/* White Star */}
+                {[...Array(5 - Number(item.pRate))].map((index) => (
+                  <span key={index}>
+                    <FaRegStar color="#E21033"/>
+                  </span>
+                ))}
+              </div>
+              <div className= "div"><div className={`body--2`} >{item.pRate}</div></div>
+            </div>
+            <div className="divprice"><div className={`title--4`} >{item.pPrice}</div></div>
+            <div className="add-to-cart">
+              <PiShoppingCartSimpleFill  
+                className="icons"
+                color={state.status === "hover" ? "#47271C" : "white"}
+              />
+            </div>
           </div>
-          <div className="text-wrapper-2">150,000đ</div>
-          <div className="add-to-cart">
-            <Icons1 className="icons" color={state.status === "hover" ? "#47271C" : "white"} />
-        </div>
+        ))}
       </div>
     </div>
   );
-};
-
-function reducer(state, action) {
-  switch (action) {
-    case "mouse_enter":
-      return {
-        ...state,
-        status: "hover",
-      };
-
-    case "mouse_leave":
-      return {
-        ...state,
-        status: "default",
-      };
-  }
-
-  return state;
 }
 
 Card.propTypes = {
   status: PropTypes.oneOf(["hover", "default"]),
+  className: PropTypes.string,
 };
