@@ -35,50 +35,51 @@ export default function Card({ status, className }) {
         dispatch({ type: "mouse_enter" });
       }}
     >
-      <div className="overlap-group">
-        {jsonData.map((item, index) => (
-          <div key={index}>
-            <div className="product-image">
-              <Link to={`/`}>
-                <img src={item.pUrl} alt="productimage" />
-              </Link>
-            </div>
-            <div className="card-info">
-              <div className="card-title">
-                <div className={`title--4`}>{item.pName}</div>
-              </div>
-              <hr className="line" />
-              <div className="rate">
-                <div className="flex">
-                  {[...Array(Number(item.pRate))].map((index) => (
-                    <span key={index} className="stardetail">
-                      <FaStar color="#E21033" />
-                    </span>
-                  ))}
-                  {[...Array(5 - Number(item.pRate))].map((index) => (
-                    <span key={index}>
-                      <FaRegStar color="#E21033" />
-                    </span>
-                  ))}
-                </div>
-                <div className="div">
-                  <div className={`body--2`}>{item.pRate}</div>
-                </div>
-              </div>
-              <div className="divprice">
-                <div className={`title--4`}>{item.pPrice}</div>
-              </div>
-              <div className="add-to-cart">
-                <FaShoppingCart
-                  className="icons"
-                  color={state.status === "hover" ? "#47271C" : "white"}
-                />
-              </div>
-            </div>
+      {jsonData.map((item, index) => (
+        <div key={index} className="card">
+          <div className="product-image">
+            <Link to={`/`}>
+              <img src={item.pUrl} alt="productimage" />
+            </Link>
           </div>
-        ))}
-      </div>
+          <div className="overlap-group">
+            <div className="card-title">
+              <div className={`title--4`}>{item.pName}</div>
+            </div>
+            <div className="line" >
+              <hr />
+            </div>
+            <div className="rate">
+
+              {[...Array(Number(item.pRate))].map((index) => (
+                <span key={index} className="stardetail">
+                  <FaStar color="#E21033" className="icons" />
+                </span>
+              ))}
+              {[...Array(5 - Number(item.pRate))].map((index) => (
+                <span key={index}>
+                  <FaRegStar color="#E21033" className="icons" />
+                </span>
+              ))}
+              <span className={`body--2`}> {item.pRate}</span>
+
+            </div>
+            <div className="price">
+              <div className={`title--4`}>{item.pPrice}</div>
+            </div>
+
+            <div className="add-to-cart">
+              <FaShoppingCart
+                className="icons"
+                color={state.status === "hover" ? "#47271C" : "white"}
+              />
+            </div>
+
+          </div>
+        </div>
+      ))}
     </div>
+
   );
 }
 
