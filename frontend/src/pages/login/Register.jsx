@@ -1,6 +1,6 @@
 // import React from 'react'
 import { useState } from "react";
-import "./Register.css";
+import "./Login.css";
 import logo from "../../assets/image/logo.png";
 import bg from "../../assets/image/bgregister.png";
 import Button from "../../components/button/Button";
@@ -73,41 +73,42 @@ function Register() {
 
   }
 
-
   return (
-    <div className="register__container">
+    <div className="container">
       {/* hinh */}
-      <div className="img-holder">
-        <div className="bg"></div>
-        <div className="info-holder">
+      <div className="image">
+        <div className="image__bg"></div>
+        <div className="image__holder">
           <img alt="Background" src={bg} />
         </div>
       </div>
       {/* form */}
-      <div className="register__frame">
+      <div className="frame">
         {/* logo */}
-        <div className="website-logo">
+        <div className="website__logo">
           <a href="/">
             <img alt="Bong cake logo" src={logo} />
           </a>
         </div>
-        <div className="register__form">
-          <div className="register__form--frameinput">
+        <div className="form">
+          <div className="form__frame">
             {/* title */}
-            <div className="register__form--title">
-              <span className="title1">
+            <div className="form__title">
+              <span className="form__title--title1">
                 <span className={`heading`}>Tạo tài khoản mới!</span>
               </span>
-              <span className="title2">
+              <span className="form__title--title2">
                 <span className={`body--1`}>Tận hưởng những hương vị ngọt ngào!</span>
               </span>
             </div>
             {/* form */}
-            <form className="register__form--input">
+            <form className="form__frame--input">
               {/* input username */}
-              <div className="register__form--user">
-                <div className="register__form--username-title">
-                  <div className={`title--3`}>Tên đăng nhập</div>
+              <div className="form__input">
+                <div className="form__input--title">
+                  <div className="form__input--title1">
+                    <div className={`title--3`}>Tên đăng nhập</div>
+                  </div>
                 </div>
                 <div className="input-wrapper">
                   <TextField
@@ -129,62 +130,67 @@ function Register() {
 
 
               {/* input password */}
-              <div className="register__form--password">
-                <div className="register__form--username-title">
-                  <div className="title--3">Mật khẩu</div>
+              <div className="form__input">
+                <div className="form__input--title">
+                  <div className="form__input--title1">
+                    <div className="title--3">Mật khẩu</div>
+                  </div>
                 </div>
-              </div>
-              <div className="input-wrapper">
-                <TextField
-                  className={`body--2`}
-                  type="password"
-                  placeholder="Mật khẩu"
-                  style={{ borderColor: passwordColor }}
-                  // value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <div className="error-container">
-                  <p className="error">{errorPassword}</p>
-                </div>
-              </div>
 
-              {/* re-input password */}
-              <div className="register__form--re-password">
-                <div className="register__form--username-title">
-                  <div className="title--3">Nhập lại mật khẩu</div>
+                <div className="input-wrapper">
+                  <TextField
+                    className={`body--2`}
+                    type="password"
+                    placeholder="Mật khẩu"
+                    style={{ borderColor: passwordColor }}
+                    // value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <div className="error-container">
+                    <p className="error">{errorPassword}</p>
+                  </div>
                 </div>
               </div>
-              <div className="input-wrapper">
-                <TextField
-                  className={`body--2`}
-                  type="password"
-                  placeholder="Nhập lại mật khẩu"
-                  style={{ borderColor: repasswordColor }}
-                  // value={repassword}
-                  onChange={(e) => setRePassword(e.target.value)}
-                />
-                <div className="error-container">
-                  <p className="error">{errorRePassword}</p>
+              {/* re-input password */}
+              <div className="form__input">
+                <div className="form__input--title">
+                  <div className="form__input--title1">
+                    <div className="title--3">Nhập lại mật khẩu</div>
+                  </div>
+                </div>
+
+                <div className="input-wrapper">
+                  <TextField
+                    className={`body--2`}
+                    type="password"
+                    placeholder="Nhập lại mật khẩu"
+                    style={{ borderColor: repasswordColor }}
+                    // value={repassword}
+                    onChange={(e) => setRePassword(e.target.value)}
+                  />
+                  <div className="error-container">
+                    <p className="error">{errorRePassword}</p>
+                  </div>
                 </div>
               </div>
 
               {/* line */}
-              <div className="register__form--line">
+              <div className="form__line">
                 <hr />
               </div>
               {/* button */}
-              <div className="register__form--submit-btn">
+              <div className="form__btn">
                 <Button type="btn2 primary" className="btn" onClick={validate}>
                   Đăng ký
                 </Button>
               </div>
             </form>
-            {/* đăng nhập */}
-            <div className="register__form--login">
+            {/* link */}
+            <div className="form__link">
               <div className={`title--3`}>
-                <span className="register__form--register-title1">Đã có tài khoản? </span>
-                <a className="register__form--register-title2" href="/">
-                  Đăng ký
+                <span className="form__link--title1">Đã có tài khoản? </span>
+                <a className="form__link--title2" href="/login">
+                  Đăng nhập
                 </a>
               </div>
             </div>
