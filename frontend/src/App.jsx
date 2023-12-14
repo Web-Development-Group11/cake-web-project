@@ -32,7 +32,6 @@ function App() {
                 <Route path="/introduction" element={< Introduction />} />
                 <Route path="/blog" element={< Blog />} />
             </Routes>
-        
     </BrowserRouter>
     <Login></Login>
     </div>

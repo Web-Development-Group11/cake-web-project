@@ -1,11 +1,20 @@
-const express = require('express');
-require('dotenv').config()
-const cors = require('cors');
+
+import express from 'express';
+import { configDotenv } from 'dotenv';
+import cors from 'cors';
+import userRoute from './routes/user.js';
+import bodyParser from 'body-parser';
 
 //express app
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-const homeRoute = require('./routes/home');
+
+// const homeRoute = require('./routes/home');
+app.get('/', (req, res) => {
+    res.send('hello')
+})
 
 //middleware
 app.use("/", (req, res, next) => {
@@ -21,7 +30,8 @@ app.use(cors({
 }));
 
 //routes 
-app.use('/', homeRoute);
+// app.use('/', homeRoute);
+app.use('/', userRoute)
 
 //listen for reqquest 
 app.listen(process.env.PORT, () => {
