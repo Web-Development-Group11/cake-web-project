@@ -1,11 +1,79 @@
-import React from 'react'
+// import React from 'react'
+import { useState } from "react";
 import "./Register.css";
 import logo from "../../assets/image/logo.png";
 import bg from "../../assets/image/bgregister.png";
 import Button from "../../components/button/Button";
-import TextField from "../../components//textField/TextField";
+import TextField from "../../components/textField/TextField";
 
-const Register = () => {
+function Register() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [repassword, setRePassword] = useState("");
+  const [errorEmail, setErrorEmail] = useState("");
+  const [errorUserName, setErrorUserName] = useState("");
+  const [errorPhone, setErrorPhone] = useState("");
+  const [errorPassword, setErrorPassword] = useState("");
+  const [errorRePassword, setErrorRePassword] = useState("");
+  const [userColor, setUserColor] = useState("");
+  const [emailColor, setEmailColor] = useState("");
+  const [phoneColor, setPhoneColor] = useState("");
+  const [passwordColor, setPasswordColor] = useState("");
+  const [repasswordColor, setRePasswordColor] = useState("");
+
+  function validate(e) {
+    e.preventDefault();
+    let loginInfo = username;
+    let isEmail = loginInfo.includes("@");
+    let isPhone = loginInfo.startsWith("0") && loginInfo.length === 10;
+
+    if (isEmail) {
+      // Check email conditions
+      if (loginInfo.includes("@gmail.com")) {
+        setErrorEmail("");
+        setEmailColor("green");
+      } else {
+        setErrorEmail("Email should have @gmail.com");
+        setEmailColor("red");
+      }
+    } else if (isPhone) {
+      // Check phone conditions
+      if (loginInfo.startsWith("0") && loginInfo.length === 10) {
+        setErrorPhone("");
+        setPhoneColor("green");
+      } else {
+        setErrorPhone("Phone number must be 10 digits starting with 0");
+        setPhoneColor("red");
+      }
+    } else {
+      // Check username conditions
+      if (loginInfo.length > 8) {
+        setErrorUserName("");
+        setUserColor("green");
+      } else {
+        setErrorUserName("Username must be 8 letters long.");
+        setUserColor("red");
+      }
+    }
+
+    if (password.length > 8) {
+      setErrorPassword("");
+      setPasswordColor("green");
+    } else {
+      setErrorPassword("Password should be 8 letters long");
+      setPasswordColor("red");
+    }
+    if (password === repassword) {
+      setErrorRePassword("");
+      setRePasswordColor("green");
+    } else {
+      setErrorRePassword("Password should be 8 letters long");
+      setRePasswordColor("red");
+    }
+
+  }
+
+
   return (
     <div className="register__container">
       {/* hinh */}
@@ -28,7 +96,7 @@ const Register = () => {
             {/* title */}
             <div className="register__form--title">
               <span className="title1">
-                <span className={`heading`}>Tạo tài khoản mới</span>
+                <span className={`heading`}>Tạo tài khoản mới!</span>
               </span>
               <span className="title2">
                 <span className={`body--1`}>Tận hưởng những hương vị ngọt ngào!</span>
@@ -47,10 +115,15 @@ const Register = () => {
                     type="text"
                     placeholder={"Email/ Số điện thoại"}
                     style={{ borderColor: userColor }}
-                    value={username}
+                    // value={username}
                     onChange={(e) => setUsername(e.target.value)}
-
                   />
+                  <div className="error-container">
+                    <p className="error">{errorUserName}</p>
+                    <p className="error">{errorEmail}</p>
+                    <p className="error">{errorPhone}</p>
+                  </div>
+
                 </div>
               </div>
 
@@ -67,9 +140,12 @@ const Register = () => {
                   type="password"
                   placeholder="Mật khẩu"
                   style={{ borderColor: passwordColor }}
-                  value={password}
+                  // value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
+                <div className="error-container">
+                  <p className="error">{errorPassword}</p>
+                </div>
               </div>
 
               {/* re-input password */}
@@ -82,11 +158,14 @@ const Register = () => {
                 <TextField
                   className={`body--2`}
                   type="password"
-                  placeholder="Mật khẩu"
-                  style={{ borderColor: passwordColor }}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Nhập lại mật khẩu"
+                  style={{ borderColor: repasswordColor }}
+                  // value={repassword}
+                  onChange={(e) => setRePassword(e.target.value)}
                 />
+                <div className="error-container">
+                  <p className="error">{errorRePassword}</p>
+                </div>
               </div>
 
               {/* line */}

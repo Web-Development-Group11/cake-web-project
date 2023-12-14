@@ -61,7 +61,7 @@ div {
 .register__form {
   background-color: var(--background-1);
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90%;
@@ -82,9 +82,8 @@ div {
 }
 
 .register__form--title .title1 {
-  margin-top: 32px;
+  margin-top: 8px;
   color: var(--primary-color);
-  height: 1em * 130%;
   text-align: center;
   white-space: nowrap;
   width: 100%;
@@ -92,15 +91,14 @@ div {
 
 .register__form--title .title2 {
   color: var(--text);
-  height: 1em * 150%;
   text-align: center;
   white-space: nowrap;
   width: 100%;
-  margin-top: 16px;
+  margin-top:8px;
 }
 
 .register__form--frameinput .register__form--input {
-  margin-top: 32px;
+  margin-top: 16px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -108,12 +106,11 @@ div {
 
 .register__form--input .register__form--user .register__form--username-title {
   color: var(--text);
-  height: 1em * 150%;
   white-space: nowrap;
 }
 
 .input-wrapper {
-  margin-top: 16px;
+  margin-top: 8px;
 }
 
 .text-field__input {
@@ -121,7 +118,7 @@ div {
 }
 
 .error-container {
-  height: 26px;
+  height: 24px;
   color: var(--text);
 }
 
@@ -142,39 +139,24 @@ div {
   display: inline-block;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+
+
+.register__form--password, .register__form--re-password {
+  margin-top: 8px;
 }
 
-.register__form--password-input {
-  margin-top: 16px;
-}
-
-.register__form--password-input {
-  position: relative;
-}
-
-.register__form--password-input .eye-off {
-  position: absolute;
-  top: 50%;
-  right: 22px;
-  width: 24px;
-  height: 24px;
-  transform: translateY(-50%);
-  z-index: 1;
-}
 
 /* ========line======== */
 .register__form--line {
-  margin-top: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .register__form--line hr {
-  width: 85%;
+  width: 90%;
+  height:1px;
+  border:0px; 
   background-color: var(--brown);
 }
 
@@ -189,11 +171,10 @@ button.btn2 {
 }
 
 
-/* ========REGISTER======== */
+/* ========LOGIN======== */
 .register__form--login {
-  margin-top: 16px;
+  margin-top: 8px;
   color: var(--text);
-  height: 1rem*150%;
   width: 100%;
   text-align: center;
   margin-bottom: 32px;
@@ -202,10 +183,10 @@ button.btn2 {
 .register__form--login-title1 {
   white-space: nowrap;
 }
-
-.login__form--login a {
+a {
+  text-decoration: underline;
+  color: inherit;
   display: inline-block;
-  text-decoration: underline !important;
 }
 
 @media (max-width: 768px) {

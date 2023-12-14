@@ -3,7 +3,7 @@ import "./Login.css";
 import logo from "../../assets/image/logo.png";
 import bg from "../../assets/image/bglogin.png";
 import Button from "../../components/button/Button";
-import TextField from "../../components//textField/TextField";
+import TextField from "../../components/textField/TextField";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -132,10 +132,11 @@ function Login() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
+                  <div className="error-container">
+                    <p className="error">{errorPassword}</p>
+                  </div>
                 </div>
-                <div className="error-container">
-                  <p className="error">{errorPassword}</p>
-                </div>
+
               </div>
               {/* line */}
               <div className="login__form--line">
