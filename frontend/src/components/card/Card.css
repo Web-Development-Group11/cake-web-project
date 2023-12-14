@@ -2,7 +2,7 @@
 
 .card {
     height: 400px;
-    width: 276px;
+    width: 250px;
 }
 
 .card .overlap-group {
@@ -24,8 +24,10 @@
 }
 
 .overlap-group .card-info {
-    left: calc(4/69*10vw);
-    height: 12vh;
+    /* left: calc(4/69*10vw); */
+    height: calc(100% - 69vh);
+    display: flex;
+    flex-direction: column;
 }
 
 /* title */
