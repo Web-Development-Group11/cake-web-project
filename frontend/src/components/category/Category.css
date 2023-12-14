@@ -3,15 +3,16 @@
 a {
     display: inline-block;
     text-decoration: none;
-    width: 280px;
-    height: 333px;
+    width: 250px;
+    height: 310px;
+    color: var(--brown);
 }
 
 .category {
     position: relative;
     background-color: var(--background-2);
-    width: 276px;
-    height: 276px;
+    width: 246px;
+    height: 246px;
     border: 2px solid var(--brown);
     border-radius: 16px;
     box-shadow: 2px 2px 0px var(--brown), 
@@ -20,10 +21,10 @@ a {
 
 img {
     position: absolute;
-    top:-57px;
+    top:-60px;
     transform: translateX(-50%);
-    width: 191px;
-    height: 215px;
+    width: min-content;
+    height: 180px;
     
 }
 
@@ -32,11 +33,14 @@ img {
     bottom: 16px;
     padding: 0 12px;
     text-align: left;
-    color: var(--brown);
 }
 
 .title {
     color: var(--primary-color);
+}
+
+.line {
+    color: var(--brown);
 }
 
 .btn__container {
@@ -50,6 +54,7 @@ img {
     display: flex;
     float: left;
     margin-right: 22px;
+    color: var(--brown);
 }
 
 .view__icon {
