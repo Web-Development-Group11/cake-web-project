@@ -1,0 +1,93 @@
+@import url("../../Variable.css");
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    width: 280px;
+    height: 333px;
+}
+
+.category {
+    position: relative;
+    background-color: var(--background-2);
+    width: 276px;
+    height: 276px;
+    border: 2px solid var(--brown);
+    border-radius: 16px;
+    box-shadow: 2px 2px 0px var(--brown), 
+            0px 3px 12px rgba(0, 0, 0, 0.10);
+}
+
+img {
+    position: absolute;
+    top:-57px;
+    transform: translateX(-50%);
+    width: 191px;
+    height: 215px;
+    
+}
+
+.info {
+    position: absolute;
+    bottom: 16px;
+    padding: 0 12px;
+    text-align: left;
+    color: var(--brown);
+}
+
+.title {
+    color: var(--primary-color);
+}
+
+.btn__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.description  {
+    display: flex;
+    float: left;
+    margin-right: 22px;
+}
+
+.view__icon {
+    stroke-width: 1.5px;
+    height: 40px;
+    width: 40px;
+    color: var(--white);
+}
+
+.btn {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    border: 1px solid var(--brown);
+    border-radius: 8px;
+    box-shadow: 2px 2px 0px var(--brown);
+}
+
+.category:hover {
+    box-shadow: 4px 4px 0px var(--brown), 
+                0px 8px 32px rgba(0, 0, 0, 0.12);
+
+    .btn  {
+        background-color: var(--variant);     
+    }
+
+    .view__icon {
+        color: var(--brown);
+    }
+
+    .image  {
+        transform: rotate(-10deg);
+        transform-origin: center;
+        
+    }
+}
+
+.category:active {
+    box-shadow: 2px 2px 0px var(--brown), 
+                0px 1px 8px rgba(0, 0, 0, 0.12);
+}
