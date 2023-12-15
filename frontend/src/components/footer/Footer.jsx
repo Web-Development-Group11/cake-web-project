@@ -1,6 +1,7 @@
 import React from 'react';
 import './Footer.css';
 import Button from '../button/Button';
+import { Link } from 'react-router-dom';
 import TextField from '../textField/TextField';
 
 // Import thư viện các icon
@@ -76,12 +77,12 @@ const Footer = () => {
                 <div className="footer__links-div">
                     <div className="quick-links">
                         <div className="quick_links__name title--1">Liên kết nhanh</div>
-                        <a className="body--2" href="/home">Trang chủ</a>
-                        <a className="body--2" href="/customCupcake">Custom Cupcake</a>
+                        <Link className="body--2" to="/home">Trang chủ</Link>
+                        <Link className="body--2" to="/customCupcake">Custom Cupcake</Link>
                         <a className="body--2" href="/product">Sản phẩm</a>
-                        <a className="body--2" href="/introduction">Giới thiệu</a>
-                        <a className="body--2" href="/blog">Blog</a>
-                        <a className="body--2" href="/support">Hỗ trợ</a>
+                        <Link className="body--2" to="/introduction">Giới thiệu</Link>
+                        <Link className="body--2" to="/blog">Blog</Link>
+                        <Link className="body--2" to="/support">Hỗ trợ</Link>
                     </div>
                 </div>
             </div>
