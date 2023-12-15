@@ -27,6 +27,7 @@ const Home = () => {
       <Pagination totalPages={4} />
       <button onClick={onOpen}>Click me!</button>
       <DeleteBlogModal />
+      <Footer />
     </>
   )
 }

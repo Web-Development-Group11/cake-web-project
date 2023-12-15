@@ -1,0 +1,87 @@
+
+.center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.mt-13 {
+    margin-top: 52px;
+}
+
+.page {
+    padding-top: 60px;
+    width: 100%;
+    margin-inline: 120px;
+}
+
+.navigation {
+    margin-top: 32px;
+    display: flex;
+    gap: 6px;
+}
+
+.navigation__item {
+    font-weight: 600;
+    color: black;
+    text-decoration: none;
+    font-family: 'Inter';
+}
+
+.it-content {
+    margin-top: 32px;
+    width: 100%;
+    margin-inline: 0px;
+    font-family: "Inter";
+    display: flex;
+    align-items: center;
+}
+
+.content__image {
+    flex: 1;
+    margin-right: 32px;
+}
+
+.content__text {
+    flex: 2;
+}
+
+.content__header {
+    text-align: center;
+    color: var(--red);
+    font-weight: 400;
+    font-size: 32px;
+    margin: 0;
+}
+
+.content__subhead {
+    font-weight: 700;
+    margin: 0;
+    margin-top: 16px;
+}
+
+.content__paragraph {
+    font-size: 16px;
+    color: black;
+    margin: 8px 0;
+    text-align: justify;
+}
+
+.content__paragraph-img01 {
+    width: 600px;
+    height: 450px;
+    flex-shrink: 0;
+    border-radius: 8px;
+}
+
+.content__paragraph-img02 {
+    width: 600px;
+    height: 900px;
+    flex-shrink: 0;
+}
+.brandName{
+    color: var(--red);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+} 
