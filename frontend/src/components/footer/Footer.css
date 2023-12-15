@@ -10,7 +10,7 @@
     position: relative;
     background-color: var(--background-2);
     height: 22.875rem;
-    top: 5rem;
+    top: 6rem;
 }
 
 /* ----- Định dạng phần Đăng ký nhận tin ----- */
@@ -101,15 +101,6 @@
 .quick_links__name {
     color: var(--primary-color);
 }
-
-/* Riêng icon email vì khác font icon nên phải thiết lập khác */
-/* .contact__email--symb {
-    color: var(--primary-color);
-    height: 1.5rem;
-    width: 1.5rem;
-    margin-right: 1rem;
-    box-sizing: border-box;
-} */
 
 /* Thiết lập thuộc tính chung cho các icon */
 .footer .icon {
