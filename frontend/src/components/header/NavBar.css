@@ -161,7 +161,7 @@ ul {
 .product-submenu {
   z-index: 20;
   display: none;
-  width: 12rem;
+  width: 192px;
   position: absolute;
   top: calc(100% + 16px);
   left: 0;
@@ -176,7 +176,7 @@ ul {
 }
 
 .authenticate .product-submenu {
-  width: 8rem;
+  width: 128px;
 }
 
 .authenticate .product-submenu .submenu-item {

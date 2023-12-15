@@ -1,5 +1,4 @@
 import React from 'react'
-import  './Home.css'
 import Button from '../../components/button/Button'
 import Navbar from '../../components/header/NavBar'
 import Category from '../../components/category/Category'
@@ -17,6 +16,14 @@ import DeleteBlogModal from '../../components/modal/DeleteBlogModal'
 import { useLocation } from 'react-router-dom'
 
 const Home = () => {
+  const onOpen = useModal((state) => state.onOpen);
+
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+
+  const currentPage = params.get('page') || 1;
+  console.log(currentPage)
+
   const onOpen = useModal((state) => state.onOpen);
 
   const location = useLocation();

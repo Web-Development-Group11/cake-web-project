@@ -8,6 +8,7 @@ import Changepass from './pages/login/Changpass';
 import Product from './pages/product/Product';
 import ProductDetail from './pages/productDetail/ProductDetail';
 import Support from './pages/support/Support';
+import Policy from './pages/policy/Policy';
 import Payment from './pages/payment/Payment';
 import Account from './pages/account/Account';
 import Cart from './pages/cart/Cart';
@@ -31,6 +32,7 @@ function App() {
                 <Route path="/product" element={< Product />} />
                 <Route path="productDetail" element={< ProductDetail />} />
                 <Route path="/support" element={< Support/>} />
+                <Route path="/policy" element={< Policy/>} />
                 <Route path="/payment" element={< Payment />} />
                 <Route path="/account" element={< Account />} />
                 <Route path="/cart" element={< Cart />} />

@@ -72,3 +72,6 @@
   border: none;
   font-weight: 600;
 }
+.modal__close.active {
+  color: #e21033;
+}

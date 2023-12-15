@@ -1,316 +1,278 @@
 @import url("../../Variable.css");
 
+.body--2 {
+    line-height: 1.2;
+}
+
 .footer {
-    height: 414px;
-    width: 1440px;
-}
-
-.footer .background {
+    display: flex;
+    flex-direction: column;
+    position: relative;
     background-color: var(--background-2);
-    height: 367px;
-    left: 0;
-    position: absolute;
-    top: 47px;
-    width: 1440px;
-}
-
- /* Thiết lập thuộc tính chung cho các title có trong footer */
-.footer .title {
-    font-family: "Lobster", Helvetica;
-    font-size: 24px;
-    font-weight: 400;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
+    height: 22.875rem;
+    top: 5rem;
 }
 
 /* ----- Định dạng phần Đăng ký nhận tin ----- */
-
-.footer .newsletter {
-    height: 100px;
-    left: 120px;
+.footer__newsletter {
+    display: flex;
+    align-items: center;
     position: absolute;
-    top: 0;
-    width: 1204px;
-}
-
-.footer .newsletter__form {
+    top: -3.125rem;
+    width: calc(100% - 15rem);
     background-color: var(--variant);
-    border-radius: 16px;
-    height: 100px;
-    position: relative;
-    width: 1200px;
+    margin: 0 7.5rem 1rem 7.5rem;
+    border-radius: 1rem;
+    height: 6.25rem;
 }
 
-.footer .newsletter__name {
-    color: var(--text);
-    height: 25px;
-    left: 71px;
-    top: 21px;
-    white-space: nowrap;
-    width: 163px;
-}
-
-.footer .newsletter__description {
-    color: var(--text);
-    font-family: "Lato", Helvetica;
-    font-size: 16px;
-    font-weight: 400;
-    height: 24px;
-    left: 71px;
-    letter-spacing: 0px;
+.newsletter__form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     position: absolute;
-    top: 54px;
-    white-space: nowrap;
-}
-
-.footer .newsletter__email {
-    border-radius: 16px;
-    height: 40px;
-    left: 649px;
-    position: absolute;
-    top: 25px;
-    width: 480px;
-}
-
-.footer .text-field__input {
+    text-align: left;
+    margin: 0 4.5rem;
+    width: calc(100% - 9rem);
     left: 0;
-    top: 0;
-    position: absolute;
 }
 
-.footer .btn2 {
-    height: 40px;
-    width: 100px;
-    left: 380px;
-    position: relative;
-}
-
-/* ----- Định dạng phần Liên hệ ----- */
-
-.footer .contact {
-    height: 142px;
-    left: 120px;
-    position: absolute;
-    top: 132px;
-    width: 254px;
-}
-
-.footer .contact__name {
-    color: var(--primary-color);
-    height: 30px;
-    left: 1px;
-    top: 0;
-}
-
-/* Định dạng cho các thuộc tính chung trong phần Liên hệ, bao gồm các thông tin liên lạc (contact__info) */
-.footer .contact__info {
-    color: var(--text);
-    font-family: "Lato", Helvetica;
-    font-size: 16px;
-    font-weight: 400;
-    height: 19px;
-    left: 40px;
-    letter-spacing: 0;
-    line-height: normal;
+.newsletter__title p:nth-child(1) {
     padding: 0;
-    position: absolute;
-    top: 3px;
-    white-space: nowrap;
+    margin: 0;
 }
 
-.footer .contact__email {
-    height: 24px;
-    left: 0;
+.newsletter__title p:nth-child(2) {
+    padding: 0;
+    margin: .5rem 0 0 0;
+}
+
+.newsletter__email {
+    display: flex;
+    flex-direction: row;
+    right: 0;
     position: absolute;
-    top: 46px;
-    width: 164px;
+    width: calc(100% - 36rem);
+    top: calc(50% - 1.25rem);
+}
+
+.text-field__input {
+    width: 100%;
+    position: absolute;
+    left: 0;
+}
+
+.btn2 {
+    height: 2.5rem;
+    width: 6.25rem;
+    position: absolute;
+    right: 0;
+}
+
+/* Định dạng phần Truy cập nhanh (FOOTER__LINKS) */
+
+.footer__links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    margin: 5.2rem 7.5rem 0 7.5rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.footer__links-div {
+    width: 21.875rem;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+/* Phần Liên hệ (CONTACT) */
+
+.contact__email,
+.contact__phone,
+.contact__location {
+    margin-top: .5rem;
+}
+
+.contact__name,
+.quick_links__name {
+    color: var(--primary-color);
 }
 
 /* Riêng icon email vì khác font icon nên phải thiết lập khác */
-.footer .contact__email--symb {
+/* .contact__email--symb {
     color: var(--primary-color);
-    height: 24px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 24px;
-}
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-right: 1rem;
+    box-sizing: border-box;
+} */
 
 /* Thiết lập thuộc tính chung cho các icon */
 .footer .icon {
     color: var(--primary-color);
-    height: 20px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 20px;
-}
-
-.footer .contact__phone {
-    height: 24px;
-    left: 0;
-    position: absolute;
-    top: 82px;
-    width: 143px;
-}
-
-.footer .contact__location {
-    height: 24px;
-    left: 0;
-    position: absolute;
-    top: 118px;
-    width: 254px;
+    height: 1.25rem;
+    width: 1.25rem;
+    margin-right: 1rem;
 }
 
 /* ----- Định dạng phần Slogan có logo (ở giữa) ----- */
 
-.footer .slogan {
-    height: 141px;
-    left: 555px;
-    position: absolute;
-    top: 148px;
-    width: 332px;
-}
-
-.footer .slogan__logo {
-    height: 101px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 330px;
-}
-
-.footer .logo {
-    height: 53px;
-    left: 108px;
+.logo {
+    height: 3.3125rem;
+    width: 6.25rem;
     object-fit: cover;
-    position: absolute;
-    top: 0;
-    width: 100px;
+    margin-bottom: .5rem;
 }
 
-.footer .slogan__content {
-    color: var(--primary-color);
-    font-family: "Lobster", Helvetica;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    height: 26px;
-    left: 0;
-    letter-spacing: 0px;
-    line-height: 130%;
-    position: absolute;
+.slogan {
     text-align: center;
-    top: 59px;
-    width: 330px;
+}
+
+.slogan__content {
+    color: var(--primary-color);
+}
+
+.socialmedia {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
 }
 
 /* Thiết lập các thuộc tính chung cho các icon media */
-.footer .slogan__media {
+.slogan__media {
     color: var(--primary-color);
-    height: 32px;
-    position: absolute;
-    top: 109px;
-    width: 32px;
-}
-
-.footer .slogan__media--fb {
-    left: 78px;
-}
-
-.footer .slogan__media--ig {
-    left: 142px;
-}
-
-.footer .slogan__media--yt {
-    left: 206px;
+    height: 2rem;
+    width: 2rem;
+    margin-right: 1rem;
 }
 
 /* ----- Định dạng phần Liên kết nhanh ----- */
-
-.footer .quick-links {
-    height: 220px;
-    left: 1115px;
+.quick-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     position: absolute;
-    top: 132px;
-    width: 148px;
+    right: 0;
 }
 
-.footer .quick_links__name {
-    color: var(--primary-color);
-    height: 30px;
-    width: 134px;
-    left: 0;
-    top: 0;
+.footer__links-div .quick-links a {
+    margin-top: 0.75rem;
 }
 
-.footer .quick_links__link {
+a {
     color: var(--text);
-    font-family: "Lato", Helvetica;
-    font-size: 16px;
-    font-weight: 400;
-    height: 19px;
-    left: 1px;
-    letter-spacing: 0;
-    line-height: normal;
+    text-decoration: none;
+}
+
+/* ----- Định dạng phần Copyright -----  */
+
+.copyright {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    white-space: nowrap;
-}
-
-.footer .quick_links__link--homepage {
-    top: 46px;
-}
-
-.footer .quick_links__link--customCupcake {
-    top: 77px;
-}   
-
-.footer .quick_links__link--products {
-    top: 108px;
-}
-
-.footer .quick_links__link--intro {
-    top: 139px;
-}
-
-.footer .quick_links__link--blog {
-    top: 170px;
-}
-
-.footer .quick_links__link--support {
-    top: 201px;
-}
-
-
-/* ----- Định dạng phần Copyright ----- */
-.footer .copyright {
-    height: 30px;
-    left: 0;
-    position: absolute;
-    top: 384px;
-    width: 1442px;
-}
-
-.footer .copyright__container {
+    margin-top: 2rem;
     background-color: var(--brown);
-    height: 30px;
-    position: relative;
-    width: 1440px;
+    color: var(--white);
+    text-align: center;
+    height: 2rem;
+    width: 100%;
+    bottom: 0;
 }
 
-.footer .copyright__text {
-    color: var(--white);
-    font-family: "Lato", Helvetica;
-    font-size: 16px;
-    font-weight: 400;
-    height: 11.4px;
-    width: 374px;
-    left: 533px;
-    top: 4px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    text-align: center;
-    white-space: nowrap;
+
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+
+    .footer__newsletter {
+        margin: 0 2rem 1rem 2rem;
+        width: calc(100% - 4rem);
+    }
+
+    .newsletter__form {
+        margin: 0 1.5rem;
+        width: calc(100% - 3rem);
+    }
+
+    .newsletter__email {
+        width: calc(100% - 27.85rem);
+        top: calc(50% - 1.25rem);
+    }
+
+    .footer__links {
+        margin: 5.2rem 2rem 0 2rem;
+    }
+
+    .footer__links-div {
+        width: 15rem;
+    }
+}
+
+@media screen and (max-width: 360px) {
+
+    html,
+    body {
+        font-size: 12px;
+    }
+
+    .footer {
+        height: 35rem;
+    }
+
+    .footer__newsletter {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        top: -4.5rem;
+        margin: 0 1rem .5rem 1rem;
+        width: calc(100% - 2rem);
+        height: calc(4.5rem + 2.5rem + 3rem);
+    }
+
+    .newsletter__form {
+        margin: 1rem 1.5rem;
+        width: calc(100% - 3rem);
+        height: calc(4.5rem + 2.5rem + 5rem);
+    }
+
+    .newsletter__email {
+        width: 100%;
+        top: 45%;
+    }
+
+    .footer__links {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 5.2rem 1rem 0 1rem;
+    }
+
+    .contact {
+        order: 3;
+        width: 100%;
+        margin: 2rem 1.5rem;
+    }
+
+    .quick-links {
+        left: 0;
+        margin: 0 1.5rem;
+    }
+
+    .slogan__logo {
+        position: absolute;
+        width: 12rem;
+        margin-top: 1.585rem;
+        margin-left: 5rem;
+    }
 }

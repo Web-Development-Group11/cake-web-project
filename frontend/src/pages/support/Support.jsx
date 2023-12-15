@@ -43,7 +43,7 @@ const Support = () => {
                   <input placeholder='Email' type="email" className='content__contact-input' />
                 </div>
                 <div className="center">
-                  <textArea rows={5} placeholder='Nội dung' className='content__contact-textarea' value={textArea} onChange={(e) => setTextArea(e.target.value)} />
+                  <textarea rows={5} placeholder='Nội dung' className='content__contact-textarea' value={textArea} onChange={(e) => setTextArea(e.target.value)} />
                 </div>
                 <div className="center content__contact-button">
                   <Button type='btn1 primary'>
