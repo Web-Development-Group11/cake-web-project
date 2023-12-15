@@ -4,24 +4,22 @@ import { FiChevronRight } from "react-icons/fi";
 
 const Category = (props) => {
   return (
-    <a href={props.link}>
-      <div className='category'>
-        <div className="image">
-          <img src={props.img} alt="category image" />
+    <div className='category'>
+        <div className="category__image">
+          <img src={props.img} alt="category image" id='image' />
         </div>
-        <div className="info">
-            <div className="title title--1">{props.title}</div>
-            <hr size="1" />
+        <div className="category__info">
+            <div className="category__title title--1">{props.title}</div>
+            <hr size="1"/>
             <div className="btn__container">
-                <div className="description body--2">{props.description}</div>
-                <div className="btn">
+                <div className="category__description body--2">{props.description}</div>
+                <div className="cir_btn">
                   <FiChevronRight className="view__icon" />
                 </div>
             </div>
         </div>
             
-      </div>
-    </a>
+    </div>
     
   )
 }
