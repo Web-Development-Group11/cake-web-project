@@ -8,8 +8,8 @@ import './Home.css';
 const Home = () =>{
     return (
         <div>
-            {/* <Footer></Footer> */}
-            <Password></Password>
+            <Footer></Footer>
+            {/* <Password></Password> */}
         </div>
     )
 }
