@@ -10,7 +10,8 @@
     position: relative;
     background-color: var(--background-2);
     height: 22.875rem;
-    top: 5rem;
+    width: 100%;
+    top: 6rem;
 }
 
 /* ----- Định dạng phần Đăng ký nhận tin ----- */
@@ -83,9 +84,9 @@
 }
 
 .footer__links-div {
-    width: 21.875rem;
+    width: calc(100% / 3);
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     flex-direction: column;
 }
 
@@ -101,15 +102,6 @@
 .quick_links__name {
     color: var(--primary-color);
 }
-
-/* Riêng icon email vì khác font icon nên phải thiết lập khác */
-/* .contact__email--symb {
-    color: var(--primary-color);
-    height: 1.5rem;
-    width: 1.5rem;
-    margin-right: 1rem;
-    box-sizing: border-box;
-} */
 
 /* Thiết lập thuộc tính chung cho các icon */
 .footer .icon {
@@ -218,7 +210,7 @@ a {
     }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 480px) {
 
     html,
     body {
@@ -242,7 +234,7 @@ a {
     .newsletter__form {
         margin: 1rem 1.5rem;
         width: calc(100% - 3rem);
-        height: calc(4.5rem + 2.5rem + 5rem);
+        height: calc(4.5rem + 2.5rem + 4rem);
     }
 
     .newsletter__email {
@@ -272,7 +264,7 @@ a {
     .slogan__logo {
         position: absolute;
         width: 12rem;
-        margin-top: 1.585rem;
+        margin-top: 2.275rem;
         margin-left: 5rem;
     }
 }
