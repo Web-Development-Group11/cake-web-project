@@ -32,7 +32,7 @@ const Support = () => {
                 2. Liên hệ
               </h3>
               <div className="content__contact">
-                <h3 className='content__contact-heading title--3'>
+                <h3 className='content__contact-heading title--1'>
                   Gửi thắc mắc cho chúng tôi
                 </h3>
                 <p className='content__contact-description title--4'>

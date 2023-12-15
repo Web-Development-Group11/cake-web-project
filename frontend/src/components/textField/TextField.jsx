@@ -1,13 +1,12 @@
 import React from 'react';
 import './TextField.css';
 
-const TextField = ({value, onChange, placeholder}) => {
+const TextField = ({value, placeholder}) => {
   return (
     <div>
-      <input className='text-field__input'
+      <input className='text-field__input body--2'
         type="text"
         value={value}
-        onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
       />
     </div>

@@ -68,14 +68,14 @@
 }
 
 .content__paragraph-img01 {
-    width: 600px;
+    width: 500px;
     height: 450px;
     flex-shrink: 0;
-    border-radius: 8px;
+    border-radius: 16px;
 }
 
 .content__paragraph-img02 {
-    width: 600px;
+    width: 500px;
     height: 900px;
     flex-shrink: 0;
 }

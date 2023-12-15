@@ -24,14 +24,6 @@ const Home = () => {
   const currentPage = params.get('page') || 1;
   console.log(currentPage)
 
-  const onOpen = useModal((state) => state.onOpen);
-
-  const location = useLocation();
-  const params = new URLSearchParams(location.search);
-
-  const currentPage = params.get('page') || 1;
-  console.log(currentPage)
-
   return (
     <div>
     <Navbar></Navbar>

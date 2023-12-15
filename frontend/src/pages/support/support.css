@@ -62,11 +62,8 @@
 }
 
 .content__contact-heading {
-  font-size: 24px;
-  font-weight: 600;
   margin: 0;
-  text-transform: uppercase;
-  color: var(--red);
+  color: var(--primary-color);
   text-align: center;
 }
 

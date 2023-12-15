@@ -2,14 +2,17 @@
 
 /* Định dạng cho TextField */
 .text-field__input {
-  height: 40px;
-  width: 100%;
+  height: 2.5rem;
   background-color: var(--background-1);
-  border: 1px solid var(--highlight-text);
-  border-radius: 16px;
+  border: 0.0625 solid var(--highlight-text);
+  border-radius: 1rem;
   box-sizing: border-box;
   color: var(--highlight-text);
+<<<<<<< HEAD
   font-family: "Lato", Helvetica;
   /* font-size: 16px;  */
   padding-left: 16px;
+=======
+  padding-left: 1rem;
+>>>>>>> origin/footerOfficial
 }
