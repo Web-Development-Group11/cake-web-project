@@ -4,7 +4,7 @@
 .text-field__input {
   height: 2.5rem;
   background-color: var(--background-1);
-  border: 0.0625 solid var(--highlight-text);
+  border: 0.0625rem solid var(--highlight-text);
   border-radius: 1rem;
   box-sizing: border-box;
   color: var(--highlight-text);
