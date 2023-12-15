@@ -1,7 +1,10 @@
 import { BrowserRouter,  Routes, Route } from 'react-router-dom';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
-import Register from './pages/register/Register';
+import Register from './pages/login/Register';
+import Forgetpass from './pages/login/Forgetpass';
+import Entercode from './pages/login/Entercode';
+import Changepass from './pages/login/Changpass';
 import Product from './pages/product/Product';
 import ProductDetail from './pages/productDetail/ProductDetail';
 import Support from './pages/support/Support';
@@ -22,6 +25,9 @@ function App() {
                 <Route path="/" element={< Home />} />
                 <Route path="/login" element={< Login />} />
                 <Route path="/register" element={< Register />} />
+                <Route path="/forgetpassword" element={< Forgetpass />} />
+                <Route path="/entercode" element={< Entercode />} />
+                <Route path="/changepassword" element={< Changepass />} />
                 <Route path="/product" element={< Product />} />
                 <Route path="productDetail" element={< ProductDetail />} />
                 <Route path="/support" element={< Support/>} />
@@ -32,9 +38,11 @@ function App() {
                 <Route path="/blog" element={< Blog />} />
             </Routes>
     </BrowserRouter>
+
+
+  
     </div>
   );
 }
 
 export default App;
-
