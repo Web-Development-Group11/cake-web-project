@@ -8,49 +8,51 @@ import { FaSearch } from 'react-icons/fa';
 import { FaGift } from 'react-icons/fa6';
 import { FaUser } from 'react-icons/fa';
 import { FaShoppingCart } from 'react-icons/fa';
+import { IoMenu } from "react-icons/io5";
+import { IoMdClose } from "react-icons/io";
 
 const navItems = [
   {
     id: 1,
     title: 'Trang chủ',
-    path: './',
+    path: '/',
     cName: 'nav-item',
   },
   {
     id: 2,
     title: 'Custom Cupcake',
-    path: './cuscupcake',
+    path: '/cuscupcake',
     cName: 'nav-item',
   },
   {
     id: 3,
     title: 'Sản phẩm',
-    path: './product',
+    path: '/product',
     cName: 'nav-item',
     isDropdown: true,
     dropDownItems: [
       {
         id: 1,
         title: 'Cupcake',
-        path: './cart',
+        path: '/cart',
         cName: 'submenu-item',
       },
       {
         id: 2,
         title: 'Tiramisu',
-        path: './cart',
+        path: '/cart',
         cName: 'submenu-item',
       },
       {
         id: 3,
         title: 'Cookie',
-        path: './cart',
+        path: '/cart',
         cName: 'submenu-item',
       },
       {
         id: 4,
         title: 'Combo',
-        path: './cart',
+        path: '/cart',
         cName: 'submenu-item',
       },
     ],
@@ -58,38 +60,38 @@ const navItems = [
   {
     id: 4,
     title: 'Giới thiệu',
-    path: './introduction',
+    path: '/introduction',
     cName: 'nav-item',
   },
   {
     id: 5,
     title: 'Blog',
-    path: './blog',
+    path: '/blog',
     cName: 'nav-item',
   },
   {
     id: 6,
     title: 'Hỗ trợ',
-    path: './support',
+    path: '/support',
     cName: 'nav-item',
     isDropdown: true,
     dropDownItems: [
       {
         id: 1,
         title: 'Liên hệ',
-        path: './support',
+        path: '/support',
         cName: 'submenu-item',
       },
       {
         id: 2,
         title: 'Chính sách giao hàng',
-        path: './support',
+        path: '/policy',
         cName: 'submenu-item',
       },
       {
         id: 3,
         title: 'Câu hỏi thường gặp',
-        path: './support',
+        path: '/support',
         cName: 'submenu-item',
       },
     ],
@@ -98,21 +100,39 @@ const navItems = [
 
 function Navbar() {
   const [searchOn, setSearchOn] = useState(false);
-  console.log(searchOn);
+  const [menuActive, setMenuActive] = useState(false);
+
+  const onCloseMenu = () => {
+    setMenuActive(false);
+  }
+
+  const onOpenMenu = (ev) => {
+    ev.stopPropagation();
+    setMenuActive(true);
+  }
 
   return (
-    <>
-      <nav className="navbar">
-        <div className="navbar__content">
+    <nav className="navbar">
+      <div className="navbar__content">
+        {menuActive && (
+          <div className="navbar-menu__placeholder"></div>
+        )}
+        <div className="navBar__home">
           <Link to="/">
             <img src={logo} alt="logo" className="navBar__logo"></img>
           </Link>
-          <ul className="navBar__item">
+        </div>
+        <div onClick={onCloseMenu} className={`navBar__menu ${menuActive ? 'active' : ''}`}>
+          <IoMenu onClick={onOpenMenu} className='navBar__menu-icon' />
+          <ul className="navBar__item" onClick={(ev) => ev.stopPropagation()}>
+            <li className="navBar__close">
+              <IoMdClose onClick={onCloseMenu} className='navBar__close-icon' />
+            </li>
             {navItems.map((item) => (
               <li key={item.id} className={`${item.cName} title--2`}>
                 {item.isDropdown ? (
                   <>
-                    <p className="nav-item__link" to={item.path}>
+                    <p className="nav-item__link has-drop-down" to={item.path}>
                       {item.title}
                     </p>
                     <Dropdown items={item.dropDownItems} />
@@ -125,13 +145,16 @@ function Navbar() {
               </li>
             ))}
           </ul>
-          <ul className="navBar__icons">
-            <li className="navBar__search">
-              <FaSearch
-                onClick={() => setSearchOn((state) => !state)}
-                className="navBar__icon"
-              />
-              {searchOn && (
+        </div>
+        <ul className="navBar__icons">
+          <li className="navBar__search">
+            <FaSearch
+              onClick={() => setSearchOn((state) => !state)}
+              className="navBar__icon"
+            />
+            {searchOn && (
+              <>
+                <div onClick={() => setSearchOn(false)} className="layer"></div>
                 <div className="navBar__search-bar">
                   <input
                     className="navBar__search-input"
@@ -142,27 +165,39 @@ function Navbar() {
                     <FaSearch className="navBar__search-icon" />
                   </div>
                 </div>
-              )}
-            </li>
-            <li>
-              <Link to="/gift">
-                <FaGift className="navBar__icon" />
-              </Link>
-            </li>
-            <li>
-              <Link to="/login">
-                <FaUser className="navBar__icon" />
-              </Link>
-            </li>
-            <li>
-              <Link to="/cart">
-                <FaShoppingCart className="navBar__icon" />
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </>
+              </>
+            )}
+          </li>
+          <li>
+            <Link to="/gift">
+              <FaGift className="navBar__icon" />
+            </Link>
+          </li>
+          <li>
+            <div className='nav-item has-drop-down authenticate'>
+              <FaUser className="navBar__icon" />
+              <ul className='product-submenu'>
+                <li className="product-submenu__item">
+                  <Link to='/sign-up' className={`submenu-item body--2`}>
+                    Đăng ký
+                  </Link>
+                </li>
+                <li className="product-submenu__item">
+                  <Link to='/login' className={`submenu-item body--2`}>
+                    Đăng nhập
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <Link to="/cart">
+              <FaShoppingCart className="navBar__icon" />
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </nav>
   );
 }
 

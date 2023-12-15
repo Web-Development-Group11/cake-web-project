@@ -9,11 +9,31 @@ import cookie from '../../assets/category/cookie.png'
 import combo from '../../assets/category/combo.png' 
 import Footer from '../../components/footer/Footer'
 import Card from '../../components/card/Card'
+import Pagination from '../../components/pagination'
+import { useModal } from '../../hook/useModal'
+import DeleteBlogModal from '../../components/modal/DeleteBlogModal'
+import { useLocation } from 'react-router-dom'
 
 const Home = () => {
+  const onOpen = useModal((state) => state.onOpen);
+
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+
+  const currentPage = params.get('page') || 1;
+  console.log(currentPage)
   return (
     <div>
-      <div className="body">
+      <>
+      <Navbar/>
+      {/* <div style={{paddingTop: 60}}>
+        Hello
+      </div>
+      <Pagination totalPages={4} />
+      <button onClick={onOpen}>Click me!</button>
+      <DeleteBlogModal /> */}
+    </>
+      {/* <div className="body">
         <div className="heading">Đây là heading</div>
         <div className="title--1">Đây là title 1</div>
         <div className="title--2">Đây là title 2</div>
@@ -35,7 +55,7 @@ const Home = () => {
         <Category className="category" link="/combo" img={combo} title="Combo"  description="Sự kết hợp đa dạng và hoàn hảo"></Category>
 
         <Card></Card>
-      </div>
+      </div> */}
     </div>
   )
 }
