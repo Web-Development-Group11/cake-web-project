@@ -1,10 +1,11 @@
 import React from 'react';
-import './TextField.css';
+import textfield from './TextField.module.css';
 
-const TextField = ({value, placeholder}) => {
+const TextField = ({ value, placeholder, className }) => {
   return (
-    <div>
-      <input className='text-field__input body--2'
+    <div className={`${textfield.textfield__input} ${className}`}>
+      <input
+        className={textfield.input}
         type="text"
         value={value}
         placeholder={placeholder}
