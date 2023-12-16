@@ -14,6 +14,7 @@ import { useModal } from '../../hook/useModal'
 import { useMountTransition } from '../../hook/useMountTransition'
 import DeleteBlogModal from '../../components/modal/DeleteBlogModal'
 import { useLocation } from 'react-router-dom'
+import QuantityComponent from '../../components/boxquantity/BoxQuantity.jsx'
 
 const Home = () => {
   const onOpen = useModal((state) => state.onOpen);
@@ -26,8 +27,9 @@ const Home = () => {
 
   return (
     <div>
-    <Navbar></Navbar>
+    {/* <Navbar></Navbar>
       <div className="body">
+        
         <div className="heading">Đây là heading</div>
         <div className="title--1">Đây là title 1</div>
         <div className="title--2">Đây là title 2</div>
@@ -57,8 +59,13 @@ const Home = () => {
       <Card></Card>
       <Card></Card>
       <Card></Card>
+
       
-      <Footer></Footer>
+      
+      <Footer></Footer> */}
+
+
+      <QuantityComponent></QuantityComponent>
     </div>
   )
 }
