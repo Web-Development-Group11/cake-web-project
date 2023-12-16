@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import boxqntStyles from "./Boxquantity.module.css";
+import boxQtyStyles from "./Boxquantity.module.css";
 
-const QuantityComponent = () => {
+const BoxQuantityComponent = () => {
   const [quantity, setQuantity] = useState("1");
 
   const incrementQuantity = () => {
@@ -26,21 +26,21 @@ const QuantityComponent = () => {
   };
 
   return (
-    <div className={boxqntStyles.button__overlap}>
-      <div className={boxqntStyles.button__quantity}>
+    <>
+    <div className={boxQtyStyles.button__overlap}>
+      <div className={boxQtyStyles.button__quantity}>
         <div
-          className={`${boxqntStyles.buttonWrapper} ${
-            parseInt(quantity) === 1 ? boxqntStyles.disabled : ""
-          }`}
+          className={`${boxQtyStyles.buttonWrapper} ${
+            parseInt(quantity) === 1 ? boxQtyStyles.disabled : ""}`}
           onClick={decrementQuantity}
         >
-          <span className={boxqntStyles.quantityText}>-</span>
+          <span className={boxQtyStyles.quantityText}>-</span>
         </div>
       </div>
 
-      <div className={boxqntStyles.input__quantity}>
+      <div className={boxQtyStyles.input__quantity}>
         <input
-          className={`body--1 ${boxqntStyles.inputqnt}`}
+          className={`body--1 ${boxQtyStyles.inputQty}`}
           type="text"
           step="1"
           min="1"
@@ -49,15 +49,17 @@ const QuantityComponent = () => {
         />
       </div>
 
-      <div className={boxqntStyles.button__quantity}>
+      <div className={boxQtyStyles.button__quantity}>
         <div
-          className={boxqntStyles.buttonWrapper}
+          className={boxQtyStyles.buttonWrapper}
           onClick={incrementQuantity}
         >
-          <span className={boxqntStyles.quantityText}>+</span>
+          <span className={boxQtyStyles.quantityText}>+</span>
         </div>
       </div>
     </div>
+   </>
   );
-}
-export default QuantityComponent
+};
+
+export default BoxQuantityComponent;
