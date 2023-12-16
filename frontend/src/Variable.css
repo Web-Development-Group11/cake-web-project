@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Lobster');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato');
-/* src/variable.css */
 
+html, body {
+    font-size: 16px;
+}
 
 :root {
 
@@ -27,46 +28,46 @@
 /* Set font variants */
 .heading {
     font-family: 'Lobster', sans-serif;
-    font-size: 32px;
+    font-size: 2rem;
     line-height: 1.3;
 }
 
 .title--1 {
     font-family: 'Lobster', sans-serif;
-    font-size: 24px;
+    font-size: 1.5rem;
     line-height: 1.3;
 }
 
 .title--2 { 
     font-family: 'Lobster', sans-serif;
-    font-size: 20px;
+    font-size: 1.25rem;
     line-height: 1.3;
 }
 
 .title--3 {
     font-family: 'Inter', sans-serif;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 700;
     line-height: 1.3;
 }
 
 .title--4 {
     font-family: 'Inter', sans-serif;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 600;
     line-height: 1.3;
 }
 
 .body--1 {
     font-family: 'Inter', sans-serif;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 400;
     line-height: 1.5;
 }
 
 .body--2 {
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
 }
@@ -75,61 +76,61 @@
 /* Tablet version */
 @media screen and (max-width: 768px) {
     .heading {
-        font-size: 24px
+        font-size: 1.5rem
     }
     
     .title--1 {
-        font-size: 20px
+        font-size: 1.25rem
     }
 
     .title--2 {
-        font-size: 16px
+        font-size: 1rem
     }
 
     .title--3 {
-        font-size: 16px
+        font-size: 1rem
     }
 
     .title--4 {
-        font-size: 15px
+        font-size: 0.9375rem
     }
 
     .body--1 {
-        font-size: 16px;
+        font-size: 1rem
     }
 
     .body--2 {
-        font-size: 14px;
+        font-size: 0.875rem
     }
 }
 
 /* Mobile version */
 @media screen and (max-width: 480px) {
     .heading {
-        font-size: 20px
+        font-size: 1.25rem
     }
     
     .title--1 {
-        font-size: 16px
+        font-size: 1rem
     }
 
     .title--2 {
-        font-size: 14px
+        font-size: 0.875rem
     }
 
     .title--3 {
-        font-size: 14px
+        font-size: 0.875rem
     }
 
     .title--4 {
-        font-size: 13px
+        font-size: 0.8125rem
     }
 
     .body--1 {
-        font-size: 14px;
+        font-size: 0.875rem;
     }
 
     .body--2 {
-        font-size: 12px;
+        font-size: 0.75rem;
     }
 }

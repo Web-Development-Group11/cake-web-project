@@ -1,5 +1,11 @@
 @import url("../../Variable.css");
 
+.base {
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    overflow: hidden;
+}
+
 /* Button 1 style defaut */
 .btn1 {
     background: transparent;

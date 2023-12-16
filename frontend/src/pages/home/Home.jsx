@@ -14,6 +14,7 @@ import { useModal } from '../../hook/useModal'
 import { useMountTransition } from '../../hook/useMountTransition'
 import DeleteBlogModal from '../../components/modal/DeleteBlogModal'
 import { useLocation } from 'react-router-dom'
+import './Home.css'
 
 const Home = () => {
   const onOpen = useModal((state) => state.onOpen);
@@ -32,11 +33,11 @@ const Home = () => {
         <div className="title--1">Đây là title 1</div>
         <div className="title--2">Đây là title 2</div>
         <div className="title--3">Đây là title 3</div>
-        <div className="title--4">Đây là title 1</div>
+        <div className="title--4">Đây là title 4</div>
         <div className="body--1">Đây là body 1</div>
         <div className="body--2">Đây là body 2</div>
         <Button type ="btn1 primary " >Liên hệ </Button><br />
-        <Button type ="btn1 secondary--1 " >Liên hệ </Button><br /> 
+        <Button type ="btn1 secondary--1 ">Liên hệ </Button><br /> 
         <Button type ="btn2 primary " >Liên hệ </Button><br />
         <Button type ="btn2 secondary--2 " >Liên hệ </Button><br />
 
