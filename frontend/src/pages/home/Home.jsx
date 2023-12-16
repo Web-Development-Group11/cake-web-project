@@ -14,19 +14,20 @@ import { useModal } from '../../hook/useModal'
 import { useMountTransition } from '../../hook/useMountTransition'
 import DeleteBlogModal from '../../components/modal/DeleteBlogModal'
 import { useLocation } from 'react-router-dom'
-
+import Shop from "../cart/Shop";
 const Home = () => {
-  const onOpen = useModal((state) => state.onOpen);
+  // const onOpen = useModal((state) => state.onOpen);
 
-  const location = useLocation();
-  const params = new URLSearchParams(location.search);
+  // const location = useLocation();
+  // const params = new URLSearchParams(location.search);
 
-  const currentPage = params.get('page') || 1;
-  console.log(currentPage)
+  // const currentPage = params.get('page') || 1;
+  // console.log(currentPage)
 
   return (
     <div>
-    <Navbar></Navbar>
+       <Shop />
+    {/* <Navbar></Navbar>
       <div className="body">
         <div className="heading">Đây là heading</div>
         <div className="title--1">Đây là title 1</div>
@@ -58,7 +59,7 @@ const Home = () => {
       <Card></Card>
       <Card></Card>
       
-      <Footer></Footer>
+      <Footer></Footer> */}
     </div>
   )
 }

@@ -35,7 +35,7 @@ function App() {
                 <Route path="/policy" element={< Policy/>} />
                 <Route path="/payment" element={< Payment />} />
                 <Route path="/account" element={< Account />} />
-                <Route path="/cart" element={< Cart />} />
+                <Route path="/cart" element={< Cart/>} />
                 <Route path="/introduction" element={< Introduction />} />
                 <Route path="/blog" element={< Blog />} />
             </Routes>

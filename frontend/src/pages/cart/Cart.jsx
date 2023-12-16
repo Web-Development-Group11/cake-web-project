@@ -1,214 +1,98 @@
-import React from "react";
-import Button from "../../components/button/Button";
-import Navbar from '../../components/header/NavBar'
-import Footer from '../../components/footer/Footer'
-import cartStyles from "./Cart.module.css"
-const Cart = () => {
+import { useEffect, useState } from "react";
+import classes from "./Cart.module.css";
+import { FaArrowCircleLeft } from "react-icons/fa";
+
+function Cart({ setShowCart, cart, setCart }) {
+  const [tongtien, setTongtien] = useState(0);
+
+  const thaydoisoluong = (sanpham, sl) => {
+    //tim san pham trong cart va thay doi mot luong sl
+    const idx = cart.indexOf(sanpham);
+    const arr = [...cart];
+    arr[idx].amount += sl;
+    if (arr[idx].amount == 0) arr[idx].amount = 1;
+    setCart([...arr]);
+  };
+
+  const removeProduct = (sanpham) => {
+    const arr = cart.filter((sp) => sp.id !== sanpham.id);
+    setCart([...arr]);
+  };
+  const tinhtongtien = () => {
+    let tt = 0;
+    cart.map((sp) => {
+      tt += sp.price * sp.amount;
+    });
+    setTongtien(tt);
+  };
+
+  //ham tinh tong tien tinh khi component dc render xong
+  useEffect(() => {
+    tinhtongtien();
+  });
+
+  const onCloseCartHandler = () => {
+    setShowCart(false);
+  };
   return (
-    <div >
-      <Navbar />
-      <div >
-        <div className="desktop-mu">
-          <div className="overlap">
-            <div className="gi-hng">
-              <div className="CS">
-                <div className="text-wrapper-2">Chính sách mua hàng</div>
-                <p className="vui-l-ng-ki-m-tra-k">
-                  Vui lòng kiểm tra kỹ sản phẩm và số lượng trước khi nhận hàng thanh toán
-                  <br />
-                  Liên hệ hotline 097xxxxxxx để được tư vấn chi tiết
-                </p>
+    <>
+      <div className={classes.cart__container}>
+        <div>
+          <div className={classes.cart__class}>
+            <h1>Giỏ hàng của bạn</h1>
+            {cart.map((product) => (
+              <div className={classes.row}>
+                <div className={classes.img}>
+                  <img src={product.product_image} />
+                </div>
+                <div className={classes.title}>{product.name}</div>
+                <div className={classes.controls}>
+                  <button onClick={() => thaydoisoluong(product, 1)}>+</button>
+                  <input type="text" value={product.amount} readOnly={true} />
+                  <button onClick={() => thaydoisoluong(product, -1)}>-</button>
+                </div>
+                <div className={classes.thanhtien}>
+                  {product.price * product.amount} VND
+                </div>
+                <button onClick={() => removeProduct(product)}>Remove</button>
               </div>
-              <div className="order">
-                <div className="overlap-group">
-                  <div className="tip-tc-mua">
-                    <div className="text-wrapper-3">Tiếp tục mua hàng</div>
-                    <img className="overlap-2" alt="Arrow left circle" src="/img/arrow-left-circle.svg" />
+            ))}
+          </div>
+          <div className={classes.cart__policy}>
+            <div className={classes.policy__title}>Chính sách mua hàng</div>
+            <p className={classes.policy__content}>
+              Vui lòng kiểm tra kỹ sản phẩm và số lượng trước khi nhận hàng thanh toán
+              <br />
+              Liên hệ hotline 097xxxxxxx để được tư vấn chi tiết
+            </p>
+          </div>
+
+
+          <div className={classes.cart__checkout}>
+                <div className={classes.checkout__overlap}>
+                  <div className={classes.checkout__content}>
+                    <div className={classes.checkout__content1}>Tiếp tục mua hàng</div>
+                    <FaArrowCircleLeft className={classes.checkout__arrow} alt="Arrow left circle" />
                   </div>
-                  <div className="overlap-3">
-                    <img className="line" alt="Line" src="/img/line-1.svg" />
-                    <div className="text-wrapper-4">Thông tin đơn hàng</div>
+                  <div className={classes.checkout__info}>
+                    <hr className={classes.checkout__line}></hr>
+                    <div className="">Thông tin đơn hàng</div>
                   </div>
-                  <div className="tng-tin">
-                    <p className="p">Phí vận chuyển sẽ được tính ở trang thanh toán</p>
-                    <div className="text-wrapper-5">XX0,000₫</div>
+                  <div className={classes.checkout__info2}>
+                    
+                    <div > {tongtien}</div>
                     <div className="text-wrapper-6">Tổng tiền:</div>
                     <div className="text-wrapper-7">Nhập voucher:</div>
                     <div className="nhp-voucher" />
+                    <p className={classes.checkout__info3} >Phí vận chuyển sẽ được tính ở trang thanh toán</p>
                   </div>
                 </div>
               </div>
-              <div className="ds-sp">
-                <div className="sp">
-                  <div className="overlap-4">
-                    <div className="text-wrapper-8">X</div>
-                    <div className="text-wrapper-9">45,000₫</div>
-                    <div className="text-wrapper-10">15,000₫</div>
-                    <div className="hnh">
-                      <div className="tn-sp">
-                        <div className="phn-loi">
-                          <div className="ph-n-lo-i-ph-n-lo-i">
-                            Phân loại:
-                            <br />
-                            phân loại 1
-                          </div>
-                        </div>
-                        <div className="text-wrapper-11">Tên sản phẩm</div>
-                      </div>
-                      <div className="nh" />
-                    </div>
-                    <div className="sl">
-                      <div className="overlap-2">
-                        <div className="text-wrapper-12">-</div>
-                        <div className="div-2" />
-                      </div>
-                      <div className="group">
-                        <div className="overlap-group-2">
-                          <div className="text-wrapper-12">+</div>
-                          <div className="div-2" />
-                        </div>
-                      </div>
-                      <div className="overlap-wrapper">
-                        <div className="overlap-5">
-                          <div className="text-wrapper-13">3</div>
-                          <div className="rectangle" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="overlap-group-wrapper">
-                  <div className="overlap-4">
-                    <div className="text-wrapper-8">X</div>
-                    <div className="text-wrapper-9">45,000₫</div>
-                    <div className="text-wrapper-10">15,000₫</div>
-                    <div className="hnh">
-                      <div className="tn-sp">
-                        <div className="phn-loi">
-                          <div className="ph-n-lo-i-ph-n-lo-i">
-                            Phân loại:
-                            <br />
-                            phân loại 1
-                          </div>
-                        </div>
-                        <div className="text-wrapper-11">Tên sản phẩm</div>
-                      </div>
-                      <div className="nh-2" />
-                    </div>
-                    <div className="sl">
-                      <div className="overlap-2">
-                        <div className="text-wrapper-12">-</div>
-                        <div className="div-2" />
-                      </div>
-                      <div className="group">
-                        <div className="overlap-group-2">
-                          <div className="text-wrapper-12">+</div>
-                          <div className="div-2" />
-                        </div>
-                      </div>
-                      <div className="overlap-wrapper">
-                        <div className="overlap-5">
-                          <div className="text-wrapper-13">3</div>
-                          <div className="rectangle" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="div-wrapper">
-                  <div className="overlap-4">
-                    <div className="text-wrapper-8">X</div>
-                    <div className="text-wrapper-9">45,000₫</div>
-                    <div className="text-wrapper-10">15,000₫</div>
-                    <div className="hnh">
-                      <div className="tn-sp">
-                        <div className="phn-loi">
-                          <div className="ph-n-lo-i-ph-n-lo-i">
-                            Phân loại:
-                            <br />
-                            phân loại 1
-                          </div>
-                        </div>
-                        <div className="text-wrapper-11">Tên sản phẩm</div>
-                      </div>
-                      <div className="nh-3" />
-                    </div>
-                    <div className="sl">
-                      <div className="overlap-2">
-                        <div className="text-wrapper-12">-</div>
-                        <div className="div-2" />
-                      </div>
-                      <div className="group">
-                        <div className="overlap-group-2">
-                          <div className="text-wrapper-12">+</div>
-                          <div className="div-2" />
-                        </div>
-                      </div>
-                      <div className="overlap-wrapper">
-                        <div className="overlap-5">
-                          <div className="text-wrapper-13">3</div>
-                          <div className="rectangle" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="sp-2">
-                  <div className="overlap-4">
-                    <div className="text-wrapper-8">X</div>
-                    <div className="text-wrapper-9">45,000₫</div>
-                    <div className="text-wrapper-10">15,000₫</div>
-                    <div className="hnh">
-                      <div className="tn-sp">
-                        <div className="phn-loi">
-                          <div className="ph-n-lo-i-ph-n-lo-i">
-                            Phân loại:
-                            <br />
-                            phân loại 1
-                          </div>
-                        </div>
-                        <div className="text-wrapper-11">Tên sản phẩm</div>
-                      </div>
-                      <div className="nh-4" />
-                    </div>
-                    <div className="sl">
-                      <div className="overlap-2">
-                        <div className="text-wrapper-12">-</div>
-                        <div className="div-2" />
-                      </div>
-                      <div className="group">
-                        <div className="overlap-group-2">
-                          <div className="text-wrapper-12">+</div>
-                          <div className="div-2" />
-                        </div>
-                      </div>
-                      <div className="overlap-wrapper">
-                        <div className="overlap-5">
-                          <div className="text-wrapper-13">3</div>
-                          <div className="rectangle" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="tiu">
-                <div className="navbar">
-                  <div className="text-wrapper-14">Sản phẩm</div>
-                  <div className="text-wrapper-15">Đơn giá</div>
-                  <div className="text-wrapper-16">Số tiền</div>
-                  <div className="text-wrapper-17">Số lượng</div>
-                </div>
-              </div>
-            </div>
-            <Button className="btn1" divClassName="button-instance" size="large" text="Thanh toán" type="primary" />
-          </div>
-          <div className="text-wrapper-18">Giỏ hàng của bạn</div>
-          <p className="text-wrapper-19">Trang chủ | Giỏ hàng</p>
+
         </div>
-        {/* <Footer /> */}
       </div>
-    </div>
+    </>
   );
-};
-export default Cart
+}
+
+export default Cart;
