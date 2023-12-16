@@ -1,7 +1,6 @@
 // import React from 'react'
 import { useState } from "react";
-import "./Login.css";
-import logo from "../../assets/image/logo.png";
+import "./Form.module.css";import logo from "../../assets/image/logo.png";
 import bg from "../../assets/image/bgregister.png";
 import Button from "../../components/button/Button";
 import TextField from "../../components/textField/TextField";

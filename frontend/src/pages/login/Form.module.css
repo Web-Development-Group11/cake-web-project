@@ -7,7 +7,7 @@ div {
   padding: 0;
 }
 
-.container {
+.form__container {
   background-color: var(--background-1);
   padding: 0;
   margin: 0;
@@ -15,12 +15,12 @@ div {
   flex-direction: row;
 }
 
-.image {
+.form__image {
   flex: 1;
   order: 2;
 }
 
-.frame {
+.form__frame {
   flex: 1;
   order: 1;
   position: relative;
@@ -82,20 +82,20 @@ div {
   align-items: flex-start;
 }
 
-.form__title .form__title--title1 {
+.form__title .form__title1 {
   color: var(--primary-color);
   text-align: center;
   width: 100%;
 }
 
-.form__title .form__title--title2 {
+.form__title .form__title2 {
   color: var(--text);
   text-align: center;
   width: 100%;
   margin-top: 16px;
 }
 
-.form__frame .form__frame--input {
+.form__frame .form__frameinput {
   margin-top: 16px;
   width: 100%;
   display: flex;
@@ -104,30 +104,30 @@ div {
 .form__input{
   margin-top: 8px;
 }
-.input-wrapper {
+.inputwrapper {
   margin-top: 8px;
 }
 
-.error-container {
+.errorcontainer {
   height: 24px;
   color: var(--text);
 }
 
-.form__input--title {
+.form__inputtitle {
   display: flex;
   flex-direction: row;
   color: var(--text);
 }
 
-.form__input--title1 {
+.form__inputtitle1 {
   flex: 1;
   display: inline-block;
 }
 
-a {
+/* a {
   text-decoration: none;
   color: inherit;
-}
+} */
 
 .text-field__input {
   height: 60px !important;
@@ -155,10 +155,10 @@ a {
 
 }
 
-button.btn2 {
+/* button.btn2 {
   width: 100%;
   height: 60px !important;
-}
+} */
 
 
 /* ========LINK======== */
@@ -170,10 +170,10 @@ button.btn2 {
   margin-bottom: 32px;
 }
 
-.form__link a {
+/* .form__link a {
   display: inline-block;
   text-decoration: underline !important;
-}
+} */
 
 @media (max-width: 768px) {
   .container {
