@@ -87,7 +87,7 @@ function Login() {
               </span>
               <span className={formStyles.form__title2} >
 
-              <span className="body--1" >Tận hưởng những hương vị ngọt ngào!</span></span>
+                <span className="body--1" >Tận hưởng những hương vị ngọt ngào!</span></span>
 
             </div>
             {/* form */}
@@ -96,11 +96,12 @@ function Login() {
               <div className={formStyles.form__input}>
                 <div className={formStyles.form__inputtitle}>
                   <div className={formStyles.form__inputtitle1}>
-                    <div className= "title--3">Tên đăng nhập</div>
+                    <div className="title--3">Tên đăng nhập</div>
                   </div>
                 </div>
                 <div className={formStyles.inputwrapper}>
                   <TextField
+                    className={formStyles.form__textfield}
                     type="text"
                     placeholder={"Email/ Số điện thoại"}
                     style={{ borderColor: userColor }}
