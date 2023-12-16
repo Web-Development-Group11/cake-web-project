@@ -1,9 +1,5 @@
 @import url("../../Variable.css");
 
-.body--2 {
-    line-height: 1.2;
-}
-
 .footer {
     display: flex;
     flex-direction: column;
@@ -57,13 +53,13 @@
     top: calc(50% - 1.25rem);
 }
 
-.text-field__input {
+.text_field__input {
     width: 100%;
     position: absolute;
     left: 0;
 }
 
-.btn2 {
+.button__btn2 {
     height: 2.5rem;
     width: 6.25rem;
     position: absolute;
@@ -83,7 +79,7 @@
     text-align: left;
 }
 
-.footer__links-div {
+.footer__links_div {
     width: calc(100% / 3);
     display: flex;
     justify-content: space-between;
@@ -94,7 +90,7 @@
 
 .contact__email,
 .contact__phone,
-.contact__location {
+.contact__location, .content {
     margin-top: .5rem;
 }
 
@@ -113,15 +109,15 @@
 
 /* ----- Định dạng phần Slogan có logo (ở giữa) ----- */
 
+.slogan {
+    text-align: center;
+}
+
 .logo {
     height: 3.3125rem;
     width: 6.25rem;
     object-fit: cover;
     margin-bottom: .5rem;
-}
-
-.slogan {
-    text-align: center;
 }
 
 .slogan__content {
@@ -145,17 +141,13 @@
 }
 
 /* ----- Định dạng phần Liên kết nhanh ----- */
-.quick-links {
+.quick_links {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     position: absolute;
     right: 0;
-}
-
-.footer__links-div .quick-links a {
-    margin-top: 0.75rem;
 }
 
 a {
@@ -205,7 +197,7 @@ a {
         margin: 5.2rem 2rem 0 2rem;
     }
 
-    .footer__links-div {
+    .footer__links_div {
         width: 15rem;
     }
 }
@@ -256,7 +248,7 @@ a {
         margin: 2rem 1.5rem;
     }
 
-    .quick-links {
+    .quick_links {
         left: 0;
         margin: 0 1.5rem;
     }
