@@ -7,127 +7,120 @@
     border-color: var(--brown);
     border-radius: 16px;
     overflow: hidden;
-    margin: 0px;
-    padding:0px;
-
+    margin: 0;
+    padding: 0;
 }
-.card .product-image {
+
+.card__productImage {
     max-height: 69%;
     max-width: 100%;
     overflow: hidden;
     position: relative;
 }
 
-.overlap-group {
+.card__content {
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    height: calc(31% - calc(8/69*10vw));
-    margin: calc(4/69*10vw);
+    height: calc(31% - calc(8 / 69 * 10vw));
+    margin: calc(4 / 69 * 10vw);
 }
 
-.line {
-    margin-top: calc(4/31 * 31%);
+.content__line {
+    margin-top: calc(4 / 31 * 31%);
 }
 
-.line hr {
+.content__line hr {
     width: 100%;
     background-color: var(--brown);
     border: none;
-    margin: 0px;
+    margin: 0;
     height: 1px;
 }
 
-
-/* star*/
-.rate {
-    margin-top: calc(4/31 * 31%);
+.content__rate {
+    margin-top: calc(4 / 31 * 31%);
     color: var(--highlight-text);
     display: flex;
     align-items: center;
     justify-content: left;
 }
 
+.icons {
+    position: relative !important;
+    width: 20px !important;
+    color:var(--primary-color) !important;
+}
 
-.price {
-    margin-top: calc(2/31 * 31%); 
+.content__price {
+    margin-top: calc(2 / 31 * 31%);
     color: var(--highlight-text);
 }
 
-.add-to-cart {
+.content__cart {
     position: absolute;
     bottom: 0;
     right: 0;
-    padding: calc(3/31 * 31%);
-    padding-bottom: calc(2/31 * 31%);
+    padding: calc(3 / 31 * 31%);
+    padding-bottom: calc(2 / 31 * 31%);
     border-radius: 8px;
     border: 2px solid var(--brown);
     box-shadow: 2px 2px 0px 0px var(--brown);
     margin: 2px;
 }
 
-.icons {
-    position: relative !important;
-    width: 20px !important;
-}
-
 .card.default {
     border-radius: 16px;
+    margin-bottom:4px;
+    margin-top:2px;
     border: 2px solid var(--brown);
-    box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, 0.25), 2px 2px 0px 0px var(--brown);
+    box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.25), 2px 2px 0 0 var(--brown);
 }
 
 .card.hover {
     border-radius: 16px;
     border: 2px solid var(--brown);
     border-width: 2px 4px 4px 2px;
-    box-shadow: 0px 8px 32px 0px rgba(0, 0, 0, 0.25), 2px 2px 0px 0px var(--brown);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25), 2px 2px 0 0 var(--brown);
 }
 
-.card.default img {
+.card.default .card__Image {
     max-width: 100%;
     max-height: 100%;
     transition: all 0.3s ease-in-out;
 }
 
-.card.hover img {
+.card.hover .card__Image {
     max-width: 100%;
     max-height: 100%;
     transform: scale(1.1);
     transition: all 0.3s ease-in-out;
 }
 
-
-
-.card.default .card-title {
+.card.default .content__title {
     color: var(--highlight-text);
 }
 
-.card.hover .card-title {
-    color: var(--primary-color)
+.card.hover .content__title {
+    color: var(--primary-color);
 }
 
-.card.default .add-to-cart {
-    background-color: var(--red)
+.card.default .content__cart {
+    background-color: var(--red);
 }
 
-.card.hover .add-to-cart {
+.card.hover .content__cart {
     background-color: var(--blue);
 }
 
-@keyframes img {
-    0% {
-        transform: scale(1);
-        opacity: 0.6;
-    }
-
-    100% {
-        transform: scale(1.4);
-        opacity: 0;
-    }
+.card.default .carticons {
+    color: var(--white);
 }
 
+.card.hover .carticons {
+    color: var(--brown);
+}
 
 @media screen and (max-width: 768px) {
     .card {
@@ -138,12 +131,9 @@
     .icons {
         width: 16px !important;
     }
-
-
-
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 480px) {
     .card {
         height: calc(144px * 400 / 276);
         width: 144px;
@@ -154,26 +144,23 @@
         width: 10px !important;
     }
 
-    .add-to-cart {
-        padding-left: calc(2/31 * 31%);
-        padding-right: calc(2/31 * 31%);
-        padding-bottom: 0px;
-        padding-top: 0px;
+    .content__cart {
         border-radius: 4px;
         border: 1px solid var(--brown);
-        box-shadow: 1px 1px 0px 0px var(--brown);
+        box-shadow: 1px 1px 0 0 var(--brown);
         margin: 4px;
     }
-    .line {
-        margin-top: calc(1/31 * 31%);
-    }
-    .rate {
-        margin-top: calc(1/31 * 31%);
-    }
-    
-    .price {
-        margin-top:0; 
-        color: var(--highlight-text);
+
+    .content__line {
+        margin-top: calc(1 / 31 * 31%);
     }
 
+    .content__rate {
+        margin-top: calc(1 / 31 * 31%);
+
+        .content__price {
+            margin-top: 0;
+            color: var(--highlight-text);
+        }
+    }
 }
