@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import classes from "./Cart.module.css";
 import { FaArrowCircleLeft } from "react-icons/fa";
-
+import { BoxQuantityComponent } from "../../components/boxquantity/BoxQuantity"
 function Cart({ setShowCart, cart, setCart }) {
   const [tongtien, setTongtien] = useState(0);
 
@@ -47,10 +47,7 @@ function Cart({ setShowCart, cart, setCart }) {
                 </div>
                 <div className={classes.title}>{product.name}</div>
                 <div className={classes.controls}>
-                  <button onClick={() => thaydoisoluong(product, 1)}>+</button>
-                  <input type="text" value={product.amount} readOnly={true} />
-                  <button onClick={() => thaydoisoluong(product, -1)}>-</button>
-                </div>
+                  <BoxQuantityComponent></BoxQuantityComponent>
                 <div className={classes.thanhtien}>
                   {product.price * product.amount} VND
                 </div>
