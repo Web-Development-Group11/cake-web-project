@@ -36,19 +36,22 @@ const BoxQuantityComponent = ({ height = "2.5rem" }) => {
   };
 
   const buttonHeight = parseFloat(height); 
+  const calculateFontSize = () => {
+    return `calc(${buttonHeight / 2}rem)`;
+  };
 
   return (
     <>
       <div
         className={boxQtyStyles.button__overlap}
-        style={{ height: height, width: `calc(30% * ${buttonHeight})`  }}
+        style={{ height: height, width: `calc(25% * ${buttonHeight})`  }}
       >
         <div
           className={`${boxQtyStyles.button__quantity} ${parseInt(quantity) === 1 ? boxQtyStyles.disabled : ""
             }`}
           onClick={decrementQuantity}
         >
-          <FaMinus className={boxQtyStyles.customIcon} ref={iconRef} />
+          <FaMinus className={boxQtyStyles.customIcon} ref={iconRef} style={{ fontSize: calculateFontSize() }}  />
         </div>
 
         <div className={boxQtyStyles.input__quantity}>
@@ -59,12 +62,13 @@ const BoxQuantityComponent = ({ height = "2.5rem" }) => {
             min="1"
             value={quantity}
             onChange={handleQuantityChange}
+            style={{ fontSize: calculateFontSize() }}
           />
         </div>
 
         <div className={boxQtyStyles.button__quantity} onClick={incrementQuantity}>
 
-          <FaPlus className={boxQtyStyles.customIcon} ref={iconRef} />
+          <FaPlus className={boxQtyStyles.customIcon} ref={iconRef} style={{ fontSize: calculateFontSize() }}/>
 
         </div>
       </div>

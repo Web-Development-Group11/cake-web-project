@@ -50,7 +50,7 @@ function Cart({ setShowCart, cart, setCart }) {
                 </div>
                 <div className={classes.title}>{product.name}</div>
                 <div className={classes.controls}>
-                  <BoxQuantityComponent  height = "5rem" />
+                  <BoxQuantityComponent  height = "2rem" />
                   </div>
                   <div className={classes.thanhtien}>
                     {product.price * product.amount} VND
