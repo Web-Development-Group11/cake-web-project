@@ -1,10 +1,12 @@
-import createNewUser from "../controllers/userController.js";
+import {createNewUser, loginUser } from "../controllers/userController.js";
 import  { Router }  from "express";
 
 
 const userRoute = Router();
 
-userRoute.post('/users',  createNewUser);
+userRoute.post('/users/register',  createNewUser);
+
+userRoute.post('/users/login',  loginUser);
 
 userRoute.get('/users', async (req, res) => {
   res.send('complete');

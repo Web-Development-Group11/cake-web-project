@@ -4,7 +4,7 @@ import  bcrypt  from "bcrypt";
 
 const user = new PrismaClient().user;
 // thêm người dùng mới
-const createNewUser = async (req,res) => {
+ export const createNewUser = async (req,res) => {
   try {
   const { name, email, password, username, phoneNumber } = req.body;
 //kiểm tra validate
@@ -32,13 +32,29 @@ const createNewUser = async (req,res) => {
 }
 };
 
-const loginUser = async (req,res) => {
+//người dùng đăng nhập 
+export const loginUser = async (req,res) => {
   try {
     const { username, password } = req.body;
-    const exitingUser = await user.findUnique({ where : {email : username} });
-  } catch (err) {
-    res.status(500).json({ message : err.message });
-  }
+//tìm kiếm tài khoản người dùng
+    const exitingUser = await user.findFirst({ 
+      where :  {
+        OR: [
+          {email : username},
+          {phoneNumber : username},
+        ]
+      }
+    });
+//nếu tài khoản người dùng tồn tại
+    if (exitingUser) {
+//so sánh mật khẩu trong database và mật khẩu được nhập vào
+      if (await bcrypt.compare(password, exitingUser.password)) return res.status(200).json("success")
+    }else {
+//nếu mật khẩu hoặc tài khoản sai 
+    return res.status(400).json({ message : "UserName or Password is wrong" });
+    } 
+}catch (err) {
+  res.status(500).json({ message : err.message });
+}
 };
 
-export default createNewUser;
