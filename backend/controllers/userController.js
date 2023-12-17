@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import  bcrypt  from "bcrypt";
+import jwt  from "jsonwebtoken";
 
 
 const user = new PrismaClient().user;
@@ -48,13 +49,21 @@ export const loginUser = async (req,res) => {
 //nếu tài khoản người dùng tồn tại
     if (exitingUser) {
 //so sánh mật khẩu trong database và mật khẩu được nhập vào
-      if (await bcrypt.compare(password, exitingUser.password)) return res.status(200).json("success")
+      if (await bcrypt.compare(password, exitingUser.password.toString())) {
+//tạo token
+        const id = exitingUser.id;
+        const token = jwt.sign( {id }, "jwt-secret-key", {expiresIn : "12h"});
+         res.cookie("token", token);
+        return res.status(200).json("success")
     }else {
 //nếu mật khẩu hoặc tài khoản sai 
     return res.status(400).json({ message : "UserName or Password is wrong" });
-    } 
+    }
+  } 
 }catch (err) {
   res.status(500).json({ message : err.message });
 }
 };
+
+
 
