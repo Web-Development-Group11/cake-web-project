@@ -83,11 +83,11 @@ function Login() {
             {/* title */}
             <div className={formStyles.form__title}>
               <span className={formStyles.form__title1}>
-                <span className="heading" >Đăng nhập vào tài khoản của bạn</span>
+                <span className={formStyles.heading}>Đăng nhập vào tài khoản của bạn</span>
               </span>
               <span className={formStyles.form__title2} >
 
-                <span className="body--1" >Tận hưởng những hương vị ngọt ngào!</span></span>
+                <span className={formStyles["body--1"]}>Tận hưởng những hương vị ngọt ngào!</span></span>
 
             </div>
             {/* form */}
@@ -96,7 +96,7 @@ function Login() {
               <div className={formStyles.form__input}>
                 <div className={formStyles.form__inputtitle}>
                   <div className={formStyles.form__inputtitle1}>
-                    <div className="title--3">Tên đăng nhập</div>
+                    <div className={formStyles["title--3"]}>Tên đăng nhập</div>
                   </div>
                 </div>
                 <div className={formStyles.inputwrapper}>
@@ -119,12 +119,13 @@ function Login() {
               <div className={formStyles.form__input}>
                 <div className={formStyles.form__inputtitle}>
                   <div className={formStyles.form__inputtitle1}>
-                    <div className="title--3">Mật khẩu</div>
+                    <div className={formStyles["title--3"]}>Mật khẩu</div>
                   </div>
-                  <a href="/forgetpassword" className="title--3">Quên mật khẩu</a>
+                  <a href="/forgetpassword" className={formStyles["title--3"]}>Quên mật khẩu</a>
                 </div >
                 <div className={formStyles.inputwrapper}>
                   <TextField
+                    className={formStyles.form__textfield}
                     type="password"
                     placeholder="Mật khẩu"
                     style={{ borderColor: passwordColor }}
@@ -150,7 +151,7 @@ function Login() {
             {/* link */}
             < div  >
               <div className={formStyles.form__link}>
-                <span className="title--3">
+                <span className={formStyles["title--3"]}>
                   <span className={formStyles.form__linktitle1}>Bạn không có tài khoản? </span>
                   <a className={formStyles.form__linktitle2} href="/register" >
                     Đăng ký

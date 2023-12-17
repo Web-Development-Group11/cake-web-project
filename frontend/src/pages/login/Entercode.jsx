@@ -1,5 +1,6 @@
 import { useState } from "react";
-import "./Form.module.css";import logo from "../../assets/image/logo.png";
+import formStyles from "./Form.module.css";
+import logo from "../../assets/image/logo.png";
 import bg from "../../assets/image/bgentercode.png";
 import Button from "../../components/button/Button";
 import TextField from "../../components/textField/TextField";
@@ -14,9 +15,8 @@ function Entercode() {
     const [phoneColor, setPhoneColor] = useState("");
 
     function validate(e) {
-        
         e.preventDefault();
-        history.push('/register')
+        history.push('/register');
         let loginInfo = username;
         let isEmail = loginInfo.includes("@");
         let isPhone = loginInfo.startsWith("0") && loginInfo.length === 10;
@@ -42,86 +42,88 @@ function Entercode() {
         }
     }
 
-
     return (
-        <div className="container">
+        <div className={formStyles.form__container}>
             {/* hinh */}
-            <div className="image">
-                <div className="image__bg"></div>
-                <div className="image__holder">
+            <div className={formStyles.form__image}>
+                <div className={formStyles.image__bg}></div>
+                <div className={formStyles.image__holder}>
                     <img alt="Background" src={bg} />
                 </div>
             </div>
             {/* form */}
-            <div className="frame">
+            <div className={formStyles.form__frame}>
                 {/* logo */}
-                <div className="website__logo">
+                <div className={formStyles.website__logo}>
                     <a href="/">
                         <img alt="Bong cake logo" src={logo} />
                     </a>
                 </div>
-                <div className="form">
-                    <div className="form__frame">
+                <div className={formStyles.form}>
+                    <div className={formStyles.form__frame}>
                         {/* title */}
-                        <div className="form__title">
-                            <span className="form__title--title1">
-                                <span className={`heading`}>Nhập mã xác nhận </span>
+                        <div className={formStyles.form__title}>
+                            <span className={formStyles.form__title1}>
+                                <span className={formStyles.heading}>Nhập mã xác nhận</span>
                             </span>
-                            <span className="form__title--title2">
-                                <span className={`body--1`}>Hãy nhập mã xác nhận bao gồm 6 chữ số được gửi tới bạn</span>
+                            <span className={formStyles.form__title2}>
+                                <span className={formStyles["body--1"]}>
+                                    Hãy nhập mã xác nhận bao gồm 6 chữ số được gửi tới bạn
+                                </span>
                             </span>
                         </div>
                         {/* form */}
-                        <form className="form__frame--input">
+                        <form className={formStyles.form__frameinput}>
                             {/* input username */}
-                            <div className="form__input">
-                                <div className="form__input--title">
-                                    <div className="form__input--title1">
-                                        <div className={`title--3`}>Nhập mã xác nhận</div>
+                            <div className={formStyles.form__input}>
+                                <div className={formStyles.form__inputtitle}>
+                                    <div className={formStyles.form__inputtitle1}>
+                                        <div className={formStyles["title--3"]}>Nhập mã xác nhận</div>
                                     </div>
                                 </div>
-                                <div className="input-wrapper">
+                                <div className={formStyles.inputwrapper}>
                                     <TextField
-                                        className={`body--2`}
+                                        className={formStyles["body--2"]}
                                         type="text"
-                                        placeholder={"Mã code"}
+                                        placeholder="Mã code"
                                         style={{ borderColor: userColor }}
                                         value={username}
                                         onChange={(e) => setUsername(e.target.value)}
-
                                     />
-                                    <div className="error-container">
-                                        <p className="error">{errorUserName}</p>
-                                        <p className="error">{errorEmail}</p>
-                                        <p className="error">{errorPhone}</p>
+                                    <div className={formStyles.errorcontainer}>
+                                        <p className={formStyles.error}>{errorUserName}</p>
+                                        <p className={formStyles.error}>{errorEmail}</p>
+                                        <p className={formStyles.error}>{errorPhone}</p>
                                     </div>
                                 </div>
                             </div>
-
                             {/* line */}
-                            <div className="form__line">
+                            <div className={formStyles.form__line}>
                                 <hr />
                             </div>
                             {/* button */}
-                            <div className="form__btn">
-                                <Button type="btn2 primary" className="btn" onClick={validate} >
+                            <div className={formStyles.form__btn}>
+                                <Button type="btn2 primary" className="btn" onClick={validate}
+                                >
                                     Xác nhận
                                 </Button>
                             </div>
                         </form>
                         {/* link */}
-                        <div className="form__link">
-                            <div className={`title--3`}>
-                                <span className="form__link--title1">Bạn chưa nhận được mã xác nhận? </span>
-                                <a className="form__link--title2" href="/">
+                        <div className={formStyles.form__link}>
+                            <span className={formStyles["title--3"]}>
+                                <span className={formStyles.form__linktitle1}>
+                                    Bạn chưa nhận được mã xác nhận?
+                                </span>
+                                <a className={formStyles.form__linktitle2} href="/">
                                     Gửi lại
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                                </a >
+                            </span>
+                        </div >
+                    </div >
+                </div >
+            </div >
+        </div >
     );
 }
 

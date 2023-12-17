@@ -1,5 +1,6 @@
 import { useState } from "react";
-import "./Form.module.css";import logo from "../../assets/image/logo.png";
+import formStyles from "./Form.module.css";
+import logo from "../../assets/image/logo.png";
 import bg from "../../assets/image/bgforgetpass.png";
 import Button from "../../components/button/Button";
 import TextField from "../../components/textField/TextField";
@@ -40,65 +41,63 @@ function Forgetpass() {
     } 
   }
 
-
   return (
-    <div className="container">
+    <div className={formStyles.form__container}>
       {/* hinh */}
-      <div className="image">
-        <div className="image__bg"></div>
-        <div className="image__holder">
+      <div className={formStyles.form__image}>
+        <div className={formStyles.image__bg}></div>
+        <div className={formStyles.image__holder}>
           <img alt="Background" src={bg} />
         </div>
       </div>
       {/* form */}
-      <div className="frame">
+      <div className={formStyles.form__frame}>
         {/* logo */}
-        <div className="website__logo">
+        <div className={formStyles.website__logo}>
           <a href="/">
             <img alt="Bong cake logo" src={logo} />
           </a>
         </div>
-        <div className="form">
-          <div className="form__frame">
+        <div className={formStyles.form}>
+          <div className={formStyles.form__frame}>
             {/* title */}
-            <div className="form__title">
-              <span className="form__title--title1">
-                <span className={`heading`}>Quên mật khẩu </span>
+            <div className={formStyles.form__title}>
+              <span className={formStyles.form__title1}>
+                <span className={formStyles.heading}>Quên mật khẩu </span>
               </span>
             </div>
             {/* form */}
-            <form className="form__frame--input">
+            <form className={formStyles.form__frameinput}>
               {/* input username */}
-              <div className="form__input">
-                <div className="form__input--title">
-                  <div className="form__input--title1">
-                    <div className={`title--3`}>Nhập email hoặc số điện thoại của bạn</div>
+              <div className={formStyles.form__input}>
+                <div className={formStyles.form__inputtitle}>
+                  <div className={formStyles.form__inputtitle1}>
+                    <div className={formStyles["title--3"]}>Nhập email hoặc số điện thoại của bạn</div>
                   </div>
                 </div>
-                <div className="input-wrapper">
+                <div className={formStyles.inputwrapper}>
                   <TextField
-                    className={`body--2`}
+                    className={formStyles["body--2"]}
                     type="text"
                     placeholder={"Email/ Số điện thoại"}
                     style={{ borderColor: userColor }}
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-
                   />
-                  <div className="error-container">
-                    <p className="error">{errorUserName}</p>
-                    <p className="error">{errorEmail}</p>
-                    <p className="error">{errorPhone}</p>
+                  <div lassName={formStyles.errorcontainer}>
+                    <p className={formStyles.error}>{errorUserName}</p>
+                    <p className={formStyles.error}>{errorEmail}</p>
+                    <p className={formStyles.error}>{errorPhone}</p>
                   </div>
                 </div>
               </div>
 
               {/* line */}
-              <div className="form__line">
+              <div className={formStyles.form__line}>
                 <hr />
               </div>
               {/* button */}
-              <div className="form__btn">
+              <div className={formStyles.form__btn}>
                 <Button type="btn2 primary" className="btn" onClick={validate}>
                   Gửi mã xác nhận
                 </Button>
