@@ -49,7 +49,7 @@
     flex-direction: row;
     right: 0;
     position: absolute;
-    width: calc(100% - 36rem);
+    width: calc(100% - 33.5rem);
     top: calc(50% - 1.25rem);
 }
 
@@ -59,9 +59,8 @@
     left: 0;
 }
 
-.button__btn2 {
-    height: 2.5rem;
-    width: 6.25rem;
+.registerButton {
+    width: 6rem;
     position: absolute;
     right: 0;
 }
