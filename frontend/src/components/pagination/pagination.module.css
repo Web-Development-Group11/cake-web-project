@@ -1,3 +1,4 @@
+
 .center {
   display: flex;
   justify-content: center;
@@ -6,16 +7,16 @@
 
 .pagination {
   display: flex;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .pagination__button {
   border: none;
   background-color: transparent;
-  height: 40px;
-  width: 40px;
+  height: 2.5rem;
+  width: 2.5rem;
   background-color: #ffd6e4;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,22 +29,22 @@
 }
 
 .pagination__icon {
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   color: #e21033;
 }
 
 .pagination__items {
   display: flex;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .pagination__item {
   background-color: white;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   border: 1px solid #d9d9db;
-  height: 40px;
-  width: 40px;
+  height: 2.5rem;
+  width: 2.5rem;
   font-size: 16px;
   cursor: pointer;
 }

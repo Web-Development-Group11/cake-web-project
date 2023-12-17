@@ -25,7 +25,7 @@ export default function Card({ className }) {
 
   return (
     <div
-      className={`${cardStyles.card} ${cardStyles[state.status]} ${className}`}
+      className={`card ${state[status]} ${className}`}
       onMouseLeave={() => {
         dispatch({ type: "mouse_leave" });
       }}

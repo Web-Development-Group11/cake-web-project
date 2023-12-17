@@ -17,15 +17,15 @@
 .modal__container {
   position: relative;
   background-color: white;
-  padding: 16px 32px;
-  border-radius: 20px;
-  width: 500px;
+  padding: 1rem 2rem;
+  border-radius: 1.25rem;
+  width: 31.25rem;
 }
 
 .modal__close {
   position: absolute;
-  top: 16px;
-  right: 32px;
+  top: 1rem;
+  right: 2rem;
   cursor: pointer;
   opacity: 0.8;
 }
@@ -33,32 +33,32 @@
 .modal__header {
   color: #e21033;
   margin: 0;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 700;
   line-height: 130%;
 }
 
 .modal__description {
   color: black;
-  margin-top: 20px;
-  font-size: 20px;
+  margin-top: 1.25rem;
+  font-size: 1.25rem;
   line-height: 150%;
   font-family: 'Inter';
 }
 
 .modal__action {
-  margin-top: 73px;
+  margin-top: 4.5625rem;
   display: flex;
   justify-content: flex-end;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .modal__button-destroy {
   cursor: pointer;
   color: #e21033;
   background-color: #ffeef4;
-  padding: 8px 16px;
-  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
   border: none;
   font-weight: 600;
 }
@@ -67,11 +67,12 @@
   cursor: pointer;
   color: white;
   background-color: #e21033;
-  padding: 8px 16px;
-  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
   border: none;
   font-weight: 600;
 }
+
 .modal__close.active {
   color: #e21033;
 }
