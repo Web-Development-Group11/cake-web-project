@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import classes from "./Cart.module.css";
 import { FaArrowCircleLeft } from "react-icons/fa";
-import { BoxQuantityComponent } from "../../components/boxquantity/BoxQuantity"
+import BoxQuantityComponent from '../../components/boxquantity/BoxQuantity'
+
 function Cart({ setShowCart, cart, setCart }) {
   const [tongtien, setTongtien] = useState(0);
 
