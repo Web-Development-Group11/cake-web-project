@@ -25,9 +25,10 @@ const reducer = (state, action) => {
 
 export default function Card({ status, className }) {
   const [state, dispatch] = useReducer(reducer, initialState);
+
   return (
     <div
-      className={`card ${state.status} ${className}`}
+      className={`card ${state[status]} ${className}`}
       onMouseLeave={() => {
         dispatch({ type: "mouse_leave" });
       }}

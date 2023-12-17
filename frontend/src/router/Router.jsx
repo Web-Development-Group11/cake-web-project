@@ -6,6 +6,7 @@ import Product from "../pages/product/Product";
 import ProductDetail from "../pages/productDetail/ProductDetail";
 import Support from "../pages/support/Support";
 import Policy from "../pages/policy/Policy";
+import Faq from "../pages/faq/faq";
 import Payment from "../pages/payment/Payment";
 import Account from "../pages/account/Account";
 import Cart from "../pages/cart/Cart";
@@ -13,6 +14,7 @@ import Introduction from "../pages/introduction/Introduction";
 import Blog from "../pages/blog/Blog";
 import Navbar from "../components/header/NavBar";
 import Footer from "../components/footer/Footer";
+import BlogDetail from "../pages/blogDetail/BlogDetail";
 
 const Router = () => {
     return (
@@ -26,11 +28,13 @@ const Router = () => {
                         <Route path="product_detail" element={< ProductDetail />} />
                         <Route path="/support" element={< Support/>} />
                         <Route path="/policy" element={< Policy/>} />
+                        <Route path="/faq" element={< Faq/>} />
                         <Route path="/payment" element={< Payment />} />
                         <Route path="/account" element={< Account />} />
                         <Route path="/cart" element={< Cart />} />
                         <Route path="/introduction" element={< Introduction />} />
                         <Route path="/blog" element={< Blog />} />
+                        <Route path="/blog/:blogId" element={< BlogDetail />} />
                     </Routes>
             </BrowserRouter>
         </div>

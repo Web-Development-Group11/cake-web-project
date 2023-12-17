@@ -1,0 +1,92 @@
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.page {
+  padding-top: 3.75rem;
+  width: 100%;
+  margin-inline: 7.5rem;
+}
+
+.question {
+  font-weight: 600;
+}
+
+.navigation {
+  margin-top: 2rem;
+  display: flex;
+  gap: 0.375rem;
+}
+
+.navigation__item {
+  font-weight: 600;
+  color: black;
+  text-decoration: none;
+  font-family: 'Inter';
+}
+
+.content {
+  margin-top: 2rem;
+  width: 100%;
+  margin-inline: 9.375rem;
+  font-family: "Inter";
+}
+
+.content__header {
+  text-align: center;
+  color: var(--red);
+  font-weight: 400;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.content__subhead {
+  margin: 0;
+  margin-top: 1rem;
+  color: var(--primary-color);
+}
+
+.content__paragraph {
+  color: black;
+  margin: 0.5rem 0;
+  text-align: justify;
+}
+
+.faq__searchBar {
+  width: 480px;
+  margin: 0 auto;
+  right: -30px;
+  top: 200%;
+  display: flex;
+  align-items: stretch;
+  border: 1px solid #47271c;
+  border-radius: 16px;
+  font-family: 'Inter', sans-serif;
+  margin-top: 16px;
+}
+
+.faq__searchInput {
+  width: 480px;
+  height: 40px;
+  font-size: 14px;
+  padding-inline: 16px;
+  border-radius: 16px 0 0 16px;
+  outline: none;
+  border: none;
+  z-index: 20;
+}
+
+.faq__searchButton {
+  display: flex;
+  align-items: center;
+  background-color: var(--primary-color);
+  border-radius: 16px;
+}
+
+.faq__searchIcon {
+  padding-inline: 12px;
+  height: 20px;
+  width: 20px;
+  color: var(--white);
+}

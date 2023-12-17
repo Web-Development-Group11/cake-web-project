@@ -1,5 +1,5 @@
-import React from 'react'
-import Button from '../../components/button/Button'
+import React from 'react';
+import Button from '../../components/button/Button';
 import Navbar from '../../components/header/NavBar'
 import Category from '../../components/category/Category'
 import cupcake from '../../assets/category/cupcake.png' 
@@ -14,6 +14,7 @@ import { useModal } from '../../hook/useModal'
 import { useMountTransition } from '../../hook/useMountTransition'
 import DeleteBlogModal from '../../components/modal/DeleteBlogModal'
 import { useLocation } from 'react-router-dom'
+
 
 const Home = () => {
   const onOpen = useModal((state) => state.onOpen);

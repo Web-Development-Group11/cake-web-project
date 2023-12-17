@@ -1,0 +1,122 @@
+.center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.page {
+    padding-top: 3.75rem;
+    width: 100%;
+    margin-inline: 7.5rem;
+}
+
+.navigation {
+    margin-top: 2rem;
+    display: flex;
+    gap: 0.375rem;
+    align-items: center;
+}
+
+.navigation__item {
+    font-weight: 600;
+    color: black;
+    text-decoration: none;
+    font-family: 'Inter';
+}
+
+.blog {
+    display: flex;
+    gap: 2.8125rem;
+    margin-top: 2rem;
+}
+
+.blog__suggest {
+    width: 20.5265rem;
+}
+
+.blog__border {
+    border: 2px solid var(--background-2);
+}
+
+.blog__suggest-header {
+    margin-top: 2rem;
+    margin-left: 0.875rem;
+    margin-bottom: 1.0625rem;
+    color: var(--primary-color);
+}
+
+.blog__suggest-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.blog__suggest-post {
+    padding: 1.0625rem 0.875rem;
+    border-top: 2px solid var(--background-2);
+}
+
+.blog__suggest-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.blog__suggest-img {
+    width: 8rem;
+}
+
+.blog__suggest-link:hover .blog__suggest-title {
+    color: var(--primary-color);
+}
+
+.blog__suggest-title {
+    margin: 0;
+    font-weight: 600;
+    font-family: 'Inter';
+    font-size: 16px;
+}
+
+.blog__post {
+    flex: 1;
+}
+
+.blog__post-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.blog__post-item {
+    display: flex;
+    align-items: start;
+    gap: 0.625rem;
+}
+
+.blog__post-img {
+    width: 17rem;
+}
+
+.blog__post-title {
+    margin: 0;
+    font-family: 'Inter';
+    font-weight: 600;
+}
+
+.blog__post-link:hover .blog__post-title {
+    color: var(--primary-color);
+}
+
+.blog__post-date {
+    margin-top: 0.25rem;
+    color: #4390EA;
+    font-style: italic;
+}
+
+.blog__post-desc {
+    margin-top: 0.5rem;
+    text-align: justify;
+}
