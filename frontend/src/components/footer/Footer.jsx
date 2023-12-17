@@ -22,10 +22,15 @@ const Footer = () => {
                         <p>Cập nhật những sản phẩm mới và hấp dẫn từ Bông Cake.</p>
                     </div>
                     <div className={footer.newsletter__email}>
-                        <TextField
-                            className={footer.text_field__input} placeholder="Email của bạn..."
-                        />
-                        <Button className={footer.button__btn2} type="btn2 primary">Đăng ký</Button>
+                        <div className={footer.text_field__input}>
+                            <TextField
+                                placeholder="Email của bạn..."
+                            />
+                        </div>
+
+                        <div className={footer.registerButton}>
+                            <Button type="btn2 primary">Đăng ký</Button>
+                        </div>
                     </div>
                 </div>
             </div>
