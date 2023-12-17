@@ -1,6 +1,6 @@
 import React from 'react'
 import { useModal } from '../../hook/useModal'
-import './modal.css'
+import styles from'./modal.module.css'
 import { useMountTransition } from '../../hook/useMountTransition';
 
 export default function Modal({ children }) {
@@ -13,7 +13,9 @@ export default function Modal({ children }) {
 
   return (
     <div 
-      className={`modal ${hasTransitionedIn && 'in'} ${isOpen && 'visible'}`} onClick={onClose}
+      className= {`${styles.modal} ${hasTransitionedIn && styles.in} ${
+        isOpen && styles.visible
+      }`} onClick={onClose}
     >
       {children}
     </div>

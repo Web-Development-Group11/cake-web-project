@@ -1,5 +1,5 @@
 import React from 'react';
-import './Password.css';
+import password from './Password.module.css'
 import "../../Variable.css";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
@@ -14,12 +14,12 @@ const Password = () => {
     };
 
     return (
-        <div className='password-container'>
+        <div className={password.password_container}>
             <input className='password__input body--2'
             type={showPassword ? "text" : "password"}
             placeholder="Enter Password"
             />
-            <span className='password__click' onClick={handleClick}>{icon}</span>
+            <span className={password.password__click} onClick={handleClick}>{icon}</span>
         </div>
     );
   };

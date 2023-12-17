@@ -1,0 +1,33 @@
+.content__contactInputs {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.content__contactInput {
+    flex: 1;
+    border-radius: 1rem;
+    padding: 1rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    outline: none;
+}
+
+.content__contactTextarea {
+    margin-top: 1rem;
+    width: 100%;
+    border-radius: 1rem;
+    padding: 1rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    outline: none;
+    resize: none;
+}
+
+.content__contactButton {
+    margin-top: 1rem;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}

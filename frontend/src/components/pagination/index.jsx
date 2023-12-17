@@ -1,5 +1,5 @@
 import React from 'react'
-import './pagination.css'
+import styles from './pagination.module.css'
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import { useSearchParams } from 'react-router-dom';
 
@@ -37,19 +37,19 @@ export default function Pagination({ totalPages }) {
   }
 
   return (
-    <div className="center">
-      <div className="pagination">
+    <div className={styles.center}>
+      <div className={styles.pagination}>
         <button 
-          className={`pagination__button ${Number(currentPage) === 1 ? 'inactive' : ''}`} 
+          className={`${styles.pagination__button} ${Number(currentPage) === 1 ? styles.inactive : ''}`} 
           onClick={handlePrevious}
         >
-          <GrFormPrevious className='pagination__icon' />
+          <GrFormPrevious className= {styles.pagination__icon} />
         </button>
-        <div className="pagination__items">
+        <div className={styles.pagination__items}>
           {pages.map((page, idx) => (
             <button 
               key={idx} 
-              className={`pagination__item ${Number(currentPage) === page ? 'active' : ''}`}
+              className={`${styles.pagination__item} ${Number(currentPage) === page ? styles.active : ''}`}
               onClick={() => handleChoosePage(page)}
             >
               {page}
@@ -57,10 +57,10 @@ export default function Pagination({ totalPages }) {
           ))}
         </div>
         <button 
-          className={`pagination__button ${Number(currentPage) === totalPages ? 'inactive' : ''}`}
+          className={`${styles.pagination__button} ${Number(currentPage) === totalPages ? styles.inactive : ''}`}
           onClick={handleNext}
         >
-          <GrFormNext className='pagination__icon' />
+          <GrFormNext className={styles.pagination__icon} />
         </button>
       </div>
     </div>

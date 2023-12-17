@@ -1,11 +1,8 @@
-import React from "react";
+import React, { useReducer } from "react";
 import PropTypes from "prop-types";
-import { useReducer } from "react";
 import { Link } from "react-router-dom";
-import { FaShoppingCart } from "react-icons/fa";
-import { FaStar } from "react-icons/fa";
-import { FaRegStar } from "react-icons/fa6";
-import "./Card.css";
+import { FaShoppingCart, FaStar, FaRegStar } from "react-icons/fa";
+import cardStyles from "./Card.module.css";
 import jsonData from "../../assets/db/productsData.json";
 
 const initialState = {
@@ -23,11 +20,12 @@ const reducer = (state, action) => {
   }
 };
 
-export default function Card({ status, className }) {
+export default function Card({ className }) {
   const [state, dispatch] = useReducer(reducer, initialState);
+
   return (
     <div
-      className={`card ${state.status} ${className}`}
+      className={`card ${state[status]} ${className}`}
       onMouseLeave={() => {
         dispatch({ type: "mouse_leave" });
       }}
@@ -36,54 +34,47 @@ export default function Card({ status, className }) {
       }}
     >
       {jsonData.map((item, index) => (
-        <div key={index} className="card">
-          <div className="product-image">
+        <div key={index} className={cardStyles.card}>
+          <div className={cardStyles.card__productImage}>
             <Link to={`/`}>
-              <img src={item.pUrl} alt="productimage" />
+              <img className={cardStyles.card__Image} src={item.pUrl} alt="productimage" />
             </Link>
           </div>
-          <div className="overlap-group">
-            <div className="card-title">
+          <div className={cardStyles.card__content}>
+            <div className={cardStyles.content__title}>
               <div className={`title--4`}>{item.pName}</div>
             </div>
-            <div className="line" >
+            <div className={cardStyles.content__line}>
               <hr />
             </div>
-            <div className="rate">
-
-              {[...Array(Number(item.pRate))].map((index) => (
-                <span key={index} className="stardetail">
-                  <FaStar color="#E21033" className="icons" />
+            <div className={cardStyles.content__rate}>
+              {[...Array(Number(item.pRate))].map((_, index) => (
+                <span key={index} className={cardStyles.starDetail}>
+                  <FaStar className={cardStyles.icons} />
                 </span>
               ))}
-              {[...Array(5 - Number(item.pRate))].map((index) => (
+              {[...Array(5 - Number(item.pRate))].map((_, index) => (
                 <span key={index}>
-                  <FaRegStar color="#E21033" className="icons" />
+                  <FaRegStar className={cardStyles.icons} />
                 </span>
               ))}
-              <span className={`body--2`}> {item.pRate}</span>
-
+              <span className={`body--2`}>{item.pRate}</span>
             </div>
-            <div className="price">
+            <div className={cardStyles.content__price}>
               <div className={`title--4`}>{item.pPrice}</div>
             </div>
-
-            <div className="add-to-cart">
+            <div className={cardStyles.content__cart}>
               <FaShoppingCart
-                className="icons"
-                color={state.status === "hover" ? "#47271C" : "white"}
+                className={cardStyles.carticons}
               />
             </div>
-
           </div>
         </div>
       ))}
     </div>
-
   );
 }
 
 Card.propTypes = {
-  status: PropTypes.oneOf(["hover", "default"]),
   className: PropTypes.string,
 };

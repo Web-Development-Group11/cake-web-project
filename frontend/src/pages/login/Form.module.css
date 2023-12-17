@@ -7,7 +7,7 @@ div {
   padding: 0;
 }
 
-.container {
+.form__container {
   background-color: var(--background-1);
   padding: 0;
   margin: 0;
@@ -15,12 +15,12 @@ div {
   flex-direction: row;
 }
 
-.image {
+.form__image {
   flex: 1;
   order: 2;
 }
 
-.frame {
+.form__frame {
   flex: 1;
   order: 1;
   position: relative;
@@ -35,7 +35,7 @@ div {
 
 }
 
-.image__holder img {
+.image__holder .image {
   height: 100vh;
   width: 100%;
 }
@@ -52,7 +52,7 @@ div {
   z-index: 1000;
 }
 
-.website__logo img {
+.website__logo .logoimg {
   max-height: 80px;
   max-width: 145px;
 }
@@ -82,20 +82,20 @@ div {
   align-items: flex-start;
 }
 
-.form__title .form__title--title1 {
+.form__title .form__title1 {
   color: var(--primary-color);
   text-align: center;
   width: 100%;
 }
 
-.form__title .form__title--title2 {
+.form__title .form__title2 {
   color: var(--text);
   text-align: center;
   width: 100%;
   margin-top: 16px;
 }
 
-.form__frame .form__frame--input {
+.form__frame .form__frameinput {
   margin-top: 16px;
   width: 100%;
   display: flex;
@@ -104,49 +104,46 @@ div {
 .form__input{
   margin-top: 8px;
 }
-.input-wrapper {
+.inputwrapper {
   margin-top: 8px;
 }
 
-.error-container {
+.errorcontainer {
   height: 24px;
   color: var(--text);
 }
 
-.form__input--title {
+.form__inputtitle {
   display: flex;
   flex-direction: row;
   color: var(--text);
 }
 
-.form__input--title1 {
+.form__inputtitle1 {
   flex: 1;
   display: inline-block;
 }
 
-a {
+/* a {
   text-decoration: none;
   color: inherit;
-}
+} */
 
-.text-field__input {
+.form__textfield {
   height: 60px !important;
 }
 
 
 /* ========line======== */
 .form__line {
-  margin-top: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.form__line hr {
   width: 90%;
   height:1.5px;
   border:0px; 
   background-color: var(--brown);
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ========button======== */
@@ -155,10 +152,10 @@ a {
 
 }
 
-button.btn2 {
+/* button.btn2 {
   width: 100%;
   height: 60px !important;
-}
+} */
 
 
 /* ========LINK======== */
@@ -170,16 +167,16 @@ button.btn2 {
   margin-bottom: 32px;
 }
 
-.form__link a {
+/* .form__link a {
   display: inline-block;
   text-decoration: underline !important;
-}
+} */
 
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
   }
-  .image__holder img {
+  .image__holder .image {
     opacity: 0.7
   }
   .frame {
