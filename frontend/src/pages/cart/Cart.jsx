@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import classes from "./Cart.module.css";
 import { FaArrowCircleLeft } from "react-icons/fa";
-import BoxQuantityComponent from '../../components/boxquantity/BoxQuantity'
+import BoxQuantityComponent from '../../components/boxquantity/BoxQuantity';
 
 function Cart({ setShowCart, cart, setCart }) {
   const [tongtien, setTongtien] = useState(0);
@@ -11,7 +11,7 @@ function Cart({ setShowCart, cart, setCart }) {
     const idx = cart.indexOf(sanpham);
     const arr = [...cart];
     arr[idx].amount += sl;
-    if (arr[idx].amount == 0) arr[idx].amount = 1;
+    if (arr[idx].amount === 0) arr[idx].amount = 1;
     setCart([...arr]);
   };
 
@@ -19,9 +19,10 @@ function Cart({ setShowCart, cart, setCart }) {
     const arr = cart.filter((sp) => sp.id !== sanpham.id);
     setCart([...arr]);
   };
+
   const tinhtongtien = () => {
     let tt = 0;
-    cart.map((sp) => {
+    cart.forEach((sp) => {
       tt += sp.price * sp.amount;
     });
     setTongtien(tt);
@@ -30,11 +31,12 @@ function Cart({ setShowCart, cart, setCart }) {
   //ham tinh tong tien tinh khi component dc render xong
   useEffect(() => {
     tinhtongtien();
-  });
+  }, [cart]); // Added cart as a dependency
 
   const onCloseCartHandler = () => {
     setShowCart(false);
   };
+
   return (
     <>
       <div className={classes.cart__container}>
@@ -42,17 +44,19 @@ function Cart({ setShowCart, cart, setCart }) {
           <div className={classes.cart__class}>
             <h1>Giỏ hàng của bạn</h1>
             {cart.map((product) => (
-              <div className={classes.row}>
+              <div key={product.id} className={classes.row}>
                 <div className={classes.img}>
-                  <img src={product.product_image} />
+                  <img src={product.product_image} alt={product.name} />
                 </div>
                 <div className={classes.title}>{product.name}</div>
                 <div className={classes.controls}>
-                  <BoxQuantityComponent></BoxQuantityComponent>
-                <div className={classes.thanhtien}>
-                  {product.price * product.amount} VND
-                </div>
-                <button onClick={() => removeProduct(product)}>Remove</button>
+                  <BoxQuantityComponent  height = "5rem" />
+                  </div>
+                  <div className={classes.thanhtien}>
+                    {product.price * product.amount} VND
+                  </div>
+                  <button onClick={() => removeProduct(product)}>Remove</button>
+                
               </div>
             ))}
           </div>
@@ -65,28 +69,25 @@ function Cart({ setShowCart, cart, setCart }) {
             </p>
           </div>
 
-
           <div className={classes.cart__checkout}>
-                <div className={classes.checkout__overlap}>
-                  <div className={classes.checkout__content}>
-                    <div className={classes.checkout__content1}>Tiếp tục mua hàng</div>
-                    <FaArrowCircleLeft className={classes.checkout__arrow} alt="Arrow left circle" />
-                  </div>
-                  <div className={classes.checkout__info}>
-                    <hr className={classes.checkout__line}></hr>
-                    <div className="">Thông tin đơn hàng</div>
-                  </div>
-                  <div className={classes.checkout__info2}>
-                    
-                    <div > {tongtien}</div>
-                    <div className="text-wrapper-6">Tổng tiền:</div>
-                    <div className="text-wrapper-7">Nhập voucher:</div>
-                    <div className="nhp-voucher" />
-                    <p className={classes.checkout__info3} >Phí vận chuyển sẽ được tính ở trang thanh toán</p>
-                  </div>
-                </div>
+            <div className={classes.checkout__overlap}>
+              <div className={classes.checkout__content}>
+                <div className={classes.checkout__content1}>Tiếp tục mua hàng</div>
+                <FaArrowCircleLeft className={classes.checkout__arrow} alt="Arrow left circle" />
               </div>
-
+              <div className={classes.checkout__info}>
+                <hr className={classes.checkout__line}></hr>
+                <div className="">Thông tin đơn hàng</div>
+              </div>
+              <div className={classes.checkout__info2}>
+                <div>{tongtien}</div>
+                <div className="text-wrapper-6">Tổng tiền:</div>
+                <div className="text-wrapper-7">Nhập voucher:</div>
+                <div className="nhp-voucher" />
+                <p className={classes.checkout__info3}>Phí vận chuyển sẽ được tính ở trang thanh toán</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
