@@ -67,7 +67,7 @@ function Changepass() {
       <div className={formStyles.form__image}>
         <div className={formStyles.image__bg}></div>
         <div className={formStyles.image__holder}>
-          <img alt="Background" src={bg} />
+          <img className={formStyles.image} alt="Background" src={bg} />
         </div>
       </div>
       {/* form */}
@@ -75,7 +75,7 @@ function Changepass() {
         {/* logo */}
         <div className={formStyles.website__logo}>
           <a href="/">
-            <img alt="Bong cake logo" src={logo} />
+            <img  className={formStyles.logoimg} alt="Bong cake logo" src={logo} />
           </a>
         </div>
         <div className={formStyles.form}>
@@ -131,9 +131,7 @@ function Changepass() {
                 </div>
               </div>
               {/* line */}
-              <div className={formStyles.form__line}>
-                <hr />
-              </div>
+              <hr className={formStyles.form__line} />
               {/* button */}
               <div className={formStyles.form__btn}>
               <Button type="btn2 primary" className="btn" onClick={validate}>

@@ -35,7 +35,7 @@ div {
 
 }
 
-.image__holder img {
+.image__holder .image {
   height: 100vh;
   width: 100%;
 }
@@ -52,7 +52,7 @@ div {
   z-index: 1000;
 }
 
-.website__logo img {
+.website__logo .logoimg {
   max-height: 80px;
   max-width: 145px;
 }
@@ -136,17 +136,14 @@ div {
 
 /* ========line======== */
 .form__line {
-  margin-top: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.form__line hr {
   width: 90%;
   height:1.5px;
   border:0px; 
   background-color: var(--brown);
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ========button======== */
@@ -179,7 +176,7 @@ div {
   .container {
     flex-direction: column;
   }
-  .image__holder img {
+  .image__holder .image {
     opacity: 0.7
   }
   .frame {
