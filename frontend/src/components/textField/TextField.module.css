@@ -1,7 +1,7 @@
 @import url("../../Variable.css");
 
 /* Định dạng cho TextField */
-.text-field__input {
+.input {
   height: 2.5rem;
   width: 100%;
   background-color: var(--background-1);

@@ -23,7 +23,7 @@ const Footer = () => {
                     </div>
                     <div className={footer.newsletter__email}>
                         <TextField
-                            className={`${footer.text_field__input} placeholder="Email của bạn..."`}
+                            className={footer.text_field__input} placeholder="Email của bạn..."
                         />
                         <Button className={footer.button__btn2} type="btn2 primary">Đăng ký</Button>
                     </div>
