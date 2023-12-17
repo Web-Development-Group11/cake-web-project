@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Login.css";
+import formStyles from "./Form.module.css";
 import logo from "../../assets/image/logo.png";
 import bg from "../../assets/image/bglogin.png";
 import Button from "../../components/button/Button";
@@ -62,106 +62,106 @@ function Login() {
   }
 
   return (
-    <div className="container">
+    <div className={formStyles.form__container}>
       {/* hinh */}
-      <div className="image">
-        <div className="image__bg"></div>
-        <div className="image__holder">
-          <img alt="Background" src={bg} />
+      <div className={formStyles.form__image}>
+        <div className={formStyles.image__bg}></div>
+        <div className={formStyles.image__holder}>
+          <img className={formStyles.image} alt="Background" src={bg} />
         </div>
       </div>
       {/* form */}
-      <div className="frame">
+      <div className={formStyles.form__frame}>
         {/* logo */}
-        <div className="website__logo">
+        <div className={formStyles.website__logo}>
           <a href="/">
-            <img alt="Bong cake logo" src={logo} />
+            <img  className={formStyles.logoimg} alt="Bong cake logo" src={logo} />
           </a>
         </div>
-        <div className="form">
-          <div className="form__frame">
+        <div className={formStyles.form}>
+          <div className={formStyles.form__frame}>
             {/* title */}
-            <div className="form__title">
-              <span className="form__title--title1">
-                <span className={`heading`}>Đăng nhập vào tài khoản của bạn</span>
+            <div className={formStyles.form__title}>
+              <span className={formStyles.form__title1}>
+                <span className={formStyles.heading}>Đăng nhập vào tài khoản của bạn</span>
               </span>
-              <span className="form__title--title2">
-                <span className={`body--1`}>Tận hưởng những hương vị ngọt ngào!</span>
-              </span>
+              <span className={formStyles.form__title2} >
+
+                <span className={formStyles["body--1"]}>Tận hưởng những hương vị ngọt ngào!</span></span>
+
             </div>
             {/* form */}
-            <form className="form__frame--input">
+            <form className={formStyles.form__frameinput}>
               {/* input username */}
-              <div className="form__input">
-                <div className="form__input--title">
-                  <div className="form__input--title1">
-                    <div className={`title--3`}>Tên đăng nhập</div>
+              <div className={formStyles.form__input}>
+                <div className={formStyles.form__inputtitle}>
+                  <div className={formStyles.form__inputtitle1}>
+                    <div className={formStyles["title--3"]}>Tên đăng nhập</div>
                   </div>
                 </div>
-                <div className="input-wrapper">
+                <div className={formStyles.inputwrapper}>
                   <TextField
-                    className={`body--2`}
+                    className={formStyles.form__textfield}
                     type="text"
                     placeholder={"Email/ Số điện thoại"}
                     style={{ borderColor: userColor }}
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-
                   />
-                  <div className="error-container">
-                    <p className="error">{errorUserName}</p>
-                    <p className="error">{errorEmail}</p>
-                    <p className="error">{errorPhone}</p>
+                  <div className={formStyles.errorcontainer}>
+                    <p className={formStyles.error}>{errorUserName}</p>
+                    <p className={formStyles.error}>{errorEmail}</p>
+                    <p className={formStyles.error}>{errorPhone}</p>
                   </div>
                 </div>
               </div>
               {/* input password */}
-              <div className="form__input">
-                <div className="form__input--title">
-                  <div className="form__input--title1">
-                    <div className="title--3">Mật khẩu</div>
+              <div className={formStyles.form__input}>
+                <div className={formStyles.form__inputtitle}>
+                  <div className={formStyles.form__inputtitle1}>
+                    <div className={formStyles["title--3"]}>Mật khẩu</div>
                   </div>
-                    <a href="/forgetpassword" className="title--3">Quên mật khẩu</a>
-                </div>
-                <div className="input-wrapper">
+                  <a href="/forgetpassword" className={formStyles["title--3"]}>Quên mật khẩu</a>
+                </div >
+                <div className={formStyles.inputwrapper}>
                   <TextField
-                    className={`body--2`}
+                    className={formStyles.form__textfield}
                     type="password"
                     placeholder="Mật khẩu"
                     style={{ borderColor: passwordColor }}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
-                  <div className="error-container">
-                    <p className="error">{errorPassword}</p>
+                  <div className={formStyles.errorcontainer}>
+                    <p className={formStyles.error}>{errorPassword}</p>
                   </div>
                 </div>
-
-              </div>
+              </div >
               {/* line */}
-              <div className="form__line">
-                <hr />
-              </div>
+   
+                <hr className={formStyles.form__line} />
+     
               {/* button */}
-              <div className="form__btn">
+              < div className={formStyles.form__btn} >
                 <Button type="btn2 primary" className="btn" onClick={validate}>
                   Đăng nhập
                 </Button>
-              </div>
-            </form>
+              </div >
+            </form >
             {/* link */}
-            <div className="form__link">
-              <div className={`title--3`}>
-                <span className="form__link--title1">Bạn không có tài khoản? </span>
-                <a className="form__link--title2" href="/register">
-                  Đăng ký
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+            < div  >
+              <div className={formStyles.form__link}>
+                <span className={formStyles["title--3"]}>
+                  <span className={formStyles.form__linktitle1}>Bạn không có tài khoản? </span>
+                  <a className={formStyles.form__linktitle2} href="/register" >
+                    Đăng ký
+                  </a ></span>
+              </div >
+            </div >
+          </div >
+        </div >
+      </div >
+    </div >
   );
 }
 
