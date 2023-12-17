@@ -1,0 +1,58 @@
+@import url(../../Variable.css);
+
+.container {
+    background-image: url('/frontend/src/assets/image/bgBanner.png');   
+    height: 100vh;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-evenly;
+}
+  
+.container img {
+    max-width: 70%;
+}
+  
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding-left: 1rem;
+}
+  
+.content .title {
+    color: var(--primary-color);
+    text-align: justify;
+    max-width: 37.5rem;
+}
+  
+.content .mainText {
+    text-align: justify;
+    max-width: 37.5rem;
+}
+
+/* Media queries */
+  
+@media (max-width: 884px) {
+    .container {
+      flex-direction: column;
+    }
+
+    .content {
+      /* margin-top: 4rem; */
+      width: 100%;
+      align-items: center
+    }
+
+    .content .item {
+        padding: 0 1rem;
+    }
+    .content .title {
+      text-align: center;
+    }
+    .content .mainText {
+      text-align: center;
+    }
+}
+  
