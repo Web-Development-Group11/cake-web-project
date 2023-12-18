@@ -4,6 +4,8 @@ import jwt  from "jsonwebtoken";
 
 
 const user = new PrismaClient().user;
+
+
 // thêm người dùng mới
  export const createNewUser = async (req,res) => {
   try {
@@ -33,6 +35,7 @@ const user = new PrismaClient().user;
 }
 };
 
+
 //người dùng đăng nhập 
 export const loginUser = async (req,res) => {
   try {
@@ -48,12 +51,15 @@ export const loginUser = async (req,res) => {
     });
 //nếu tài khoản người dùng tồn tại
     if (exitingUser) {
+      console.log(exitingUser);
 //so sánh mật khẩu trong database và mật khẩu được nhập vào
-      if (await bcrypt.compare(password, exitingUser.password.toString())) {
+      if (await bcrypt.compare(password, exitingUser.password)) {
 //tạo token
         const name = exitingUser.name;
-        const token = jwt.sign( {name }, "jwt-secret-key", {expiresIn : "1d"});
-         res.cookie("token", token);
+        const key = process.env.SECRET_KEY;
+        const token =  jwt.sign( exitingUser, key, {expiresIn : "1d"});
+        console.log(token);
+        res.cookie("token", token, {httpOnly : true});
         return res.status(200).json({Status : "success"});
     }else {
 //nếu mật khẩu hoặc tài khoản sai 
@@ -64,6 +70,11 @@ export const loginUser = async (req,res) => {
   res.status(500).json({ message : err.message });
 }
 };
+
+export const logoutUser = async (req,res) => {
+  res.clearCookie("token");
+  return res.json({Status : "logout success"});
+}
 
 
 

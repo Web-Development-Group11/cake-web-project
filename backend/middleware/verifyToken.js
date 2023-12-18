@@ -1,16 +1,19 @@
 import jwt from "jsonwebtoken";
 
- export const verifyToken = (req, res, next) => {
+ export const verifyToken = async (req, res, next) => {
     
     const secretKey = process.env.SECRET_KEY;
-
-    const token = req.cookies.token;
+    const token = await req.cookies.token;
 
     if(!token) return res.status(401).json({message : "Unauthorized"});
-
-    jwt.verify(token, "jwt-secret-key", (err, decoded) => {
+    try {
+    const user = jwt.verify(token,secretKey, (err, decoded) => {
         if(err) return res.status(403).json({message : "Forbidden"});
-        req.body.name = decoded.name;
+        req.user = decoded.user;
         next();
     });
+} catch (error) {
+    res.clearCookie("token")
+    return res.status(500).json({message : error.message});
+    }
 }
