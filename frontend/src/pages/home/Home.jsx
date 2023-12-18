@@ -3,19 +3,9 @@ import Button from '../../components/button/Button';
 import Navbar from '../../components/header/NavBar'
 import Banner from '../../components/banner/Banner'
 import Category from '../../components/category/Category'
-import cupcake from '../../assets/category/cupcake.png' 
-import tiramisu from '../../assets/category/tiramisu.png'
-import Card from '../../components/card/Card' 
-import cookie from '../../assets/category/cookie.png' 
-import combo from '../../assets/category/combo.png' 
-import Footer from '../../components/footer/Footer'
-import Pagination from '../../components/pagination'
-import Modal from '../../components/modal/Modal'
-import { useModal } from '../../hook/useModal'
-import { useMountTransition } from '../../hook/useMountTransition'
-import DeleteBlogModal from '../../components/modal/DeleteBlogModal'
-import { useLocation } from 'react-router-dom'
-import BoxQuantityComponent from '../../components/boxquantity/BoxQuantity'
+import Card from '../../components/card/Card'
+import './Home.css'
+
 
 const Home = () => {
 
@@ -45,18 +35,9 @@ const Home = () => {
         <Category className="category" link="/cookie" img="/src/assets/category/cookie.png" title="Cookie"  description="Những chiếc bánh giòn tan và đậm đà"></Category>
         
         <Category className="category" link="/combo" img="/src/assets/category/combo.png" title="Combo"  description="Sự kết hợp đa dạng và hoàn hảo"></Category>
+
+        <Card></Card>
       </div>
-      <Pagination totalPages={4} />
-      <button onClick={onOpen}>Click me!</button>
-      <DeleteBlogModal />
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-
-      <Footer></Footer> 
-
-      <BoxQuantityComponent></BoxQuantityComponent>
     </div>
   )
 }
