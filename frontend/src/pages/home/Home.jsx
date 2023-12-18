@@ -3,6 +3,7 @@ import Button from '../../components/button/Button';
 import Navbar from '../../components/header/NavBar'
 import Banner from '../../components/banner/Banner'
 import Category from '../../components/category/Category'
+import Card from '../../components/card/Card'
 import './Home.css'
 
 
@@ -34,6 +35,8 @@ const Home = () => {
         <Category className="category" link="/cookie" img="/src/assets/category/cookie.png" title="Cookie"  description="Những chiếc bánh giòn tan và đậm đà"></Category>
         
         <Category className="category" link="/combo" img="/src/assets/category/combo.png" title="Combo"  description="Sự kết hợp đa dạng và hoàn hảo"></Category>
+
+        <Card></Card>
       </div>
     </div>
   )
