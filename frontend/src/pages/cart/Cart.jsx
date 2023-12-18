@@ -9,18 +9,22 @@ import Footer from '../../components/footer/Footer';
 function Cart({ setShowCart, cart, setCart }) {
   const [tongtien, setTongtien] = useState(0);
 
-  const thaydoisoluong = (sanpham, sl) => {
-    //tim san pham trong cart va thay doi mot luong sl
-    const idx = cart.indexOf(sanpham);
-    const arr = [...cart];
-    arr[idx].amount += sl;
-    if (arr[idx].amount === 0) arr[idx].amount = 1;
-    setCart([...arr]);
+  const handleQuantityChange = (productId, newQuantity) => {
+    const updatedCart = cart.map((product) => {
+      if (product.id === productId) {
+        return {
+          ...product,
+          amount: newQuantity,
+        };
+      }
+      return product;
+    });
+    setCart(updatedCart);
   };
 
   const removeProduct = (sanpham) => {
-    const arr = cart.filter((sp) => sp.id !== sanpham.id);
-    setCart([...arr]);
+    const updatedCart = cart.filter((sp) => sp.id !== sanpham.id);
+    setCart(updatedCart);
   };
 
   const tinhtongtien = () => {
@@ -31,40 +35,59 @@ function Cart({ setShowCart, cart, setCart }) {
     setTongtien(tt);
   };
 
-  //ham tinh tong tien tinh khi component dc render xong
-  useEffect(() => {
-    tinhtongtien();
-  }, [cart]); // Added cart as a dependency
-
-  const onCloseCartHandler = () => {
-    setShowCart(false);
+  const formatPrice = (price) => {
+    return price.toLocaleString();
   };
 
+  // Calculate the total price when the component is rendered or when the cart changes
+  useEffect(() => {
+    tinhtongtien();
+  }, [cart]);
   return (
     <>
-    <Header></Header>
+      <Header></Header>
       <div className={cartStyles.cart__container}>
         <div className={`heading ${cartStyles.head}`}>Giỏ hàng của bạn</div>
 
-        <div className={cartStyles.cart__class}>
-
-          {cart.map((product) => (
-            <div key={product.id} className={cartStyles.row}>
-              <div className={cartStyles.img}>
-                <img src={product.product_image} alt={product.name} />
-              </div>
-              <div className={cartStyles.title}>{product.name}</div>
-              <div className={cartStyles.controls}>
-                <BoxQuantityComponent height="1.5rem" />
-              </div>
-              <div className={cartStyles.thanhtien}>
-                {product.price * product.amount} VND
-              </div>
-              <FaXmark onClick={() => removeProduct(product)} />
-
-            </div>
-          ))}
-        </div>
+        <table className={cartStyles.cart__class}>
+          <thead>
+            <tr className={`title--2 ${cartStyles.class_header}`}>
+              <th className={cartStyles.header__col1}>Sản phẩm</th>
+              <th className={cartStyles.col2}>Đơn giá</th>
+              <th className={cartStyles.col2}>Số lượng</th>
+              <th className={cartStyles.col2}>Số tiền</th>
+              <th className={cartStyles.col3}></th>
+            </tr>
+          </thead>
+          <tbody>
+            {cart.map((product) => (
+              <tr key={product.id} className={`body--1 ${cartStyles.class_row}`}>
+                <td className={`${cartStyles.col1}`}>
+                  <div className={cartStyles.product_img}>
+                    <img className={cartStyles.img} src={product.product_image} alt={product.name} />
+                  </div>
+                  <span className={cartStyles.product_name}>{product.name}</span>
+                </td>
+                <td className={cartStyles.col2}>
+                  <span>{formatPrice(product.price)} đ</span>
+                </td>
+                <td className={cartStyles.col2}>
+                  <BoxQuantityComponent
+                    height="1.5rem"
+                    quantity={product.amount}
+                    onQuantityChange={(newQuantity) => handleQuantityChange(product.id, newQuantity)}
+                  />
+                </td>
+                <td className={cartStyles.col2}>
+                  {formatPrice(product.price * product.amount)} đ
+                </td>
+                <td className={cartStyles.col3}>
+                  <FaXmark onClick={() => removeProduct(product)} />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
         <div className={cartStyles.cart__policy}>
           <div className={cartStyles.policy__title}>Chính sách mua hàng</div>
           <p className={cartStyles.policy__content}>

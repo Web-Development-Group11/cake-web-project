@@ -61,7 +61,7 @@ function Shop() {
                       src={product.product_image}
                       className={classes.prodimg}
                     />
-                    <h4>{product.price} $</h4>
+                    <h4>{product.price} đ </h4>
                     <button onClick={() => onClickProductHandler(product)}>
                       Detail
                     </button>{" "}

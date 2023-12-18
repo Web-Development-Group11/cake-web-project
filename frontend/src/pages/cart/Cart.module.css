@@ -1,21 +1,85 @@
 @import url("../../Variable.css");
-.cart__container{
+
+.cart__container {
   width: calc(100vw - 15rem);
-  margin:0px;
-  padding:0px;
+  margin: 0px;
+  padding: 0px;
+  margin-top: 60px;
+
 }
-.head{
+
+.cart__container .cart__class {
+  width: 62.5%;
+}
+
+.cart__class .class_header,
+.cart__class .class_row {
+  text-align: center;
+  display: flex ;
+  justify-content: center;
+  align-items: center;
+}
+.header__col1{
+  width: 40%;
+}
+.col1 {
+  width: 40%;
+  display: flex;
+  
+
+}
+
+.col2 {
+  width: calc((100% - 40% - 8%) / 3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.col3 {
+  width: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.product_name{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.col1 .product_img{
+  width: calc(4/15 * 100%);
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+
+
+}
+.img{
+  width: 100%;  
+}
+.col1__row{
+  display:flex;
+}
+.head {
   width: 100%;
   color: var(--primary-color);
   text-align: center;
 }
+
 .row {
   display: flex;
   justify-content: space-between;
 }
+
 .img img {
   width: 50px;
 }
-.controls{
+
+.controls {
   height: 1rem;
 }
