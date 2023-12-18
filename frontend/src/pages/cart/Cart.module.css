@@ -1,13 +1,10 @@
 @import url("../../Variable.css");
-/* Cart.module.css */
 
 .cart__container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   width: calc(100vw - 15rem);
-  margin: 0;
-  padding: 0;
+  margin: auto;
   margin-top: 5rem;
   flex-direction: row; 
 }
@@ -156,13 +153,13 @@
   .head{
     margin-top: 1rem;
   }
-  .cart__container .cart__class {
+  .cart__class {
     flex-basis: 100%;
     width: 100%;
 
   }
   
-  .cart__container .cart__checkout {
+  .cart__checkout {
     width: 100%;
     margin-top: 1rem;
   }

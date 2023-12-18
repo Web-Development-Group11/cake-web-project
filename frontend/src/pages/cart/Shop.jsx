@@ -1,28 +1,16 @@
 import { useEffect, useState } from "react";
-import { categories } from "./category";
 import { products } from "./product";
 import classes from "./Shop.module.css";
 import Header from "./Header";
 import Cart from "./Cart";
 function Shop() {
-  const [selectedCategory, setCategory] = useState(null);
-  const [isShowModal, setShowModal] = useState(false);
-  const [selectedProduct, setProduct] = useState(null);
+  const [selectedCategory] = useState(null);
+
   const [cart, setCart] = useState([]);
   const [isShowCart, setShowCart] = useState(false);
 
-  const onClickCategoryHandler = (cat_id) => {
-    setCategory(cat_id);
-  };
 
-  const onClickProductHandler = (product) => {
-    setProduct(product);
-    setShowModal(true);
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
-  };
+ 
 
   const onAddtoCartHandler = (product) => {
     if (cart.indexOf(product) !== -1) return null;
@@ -62,9 +50,7 @@ function Shop() {
                       className={classes.prodimg}
                     />
                     <h4>{product.price} đ </h4>
-                    <button onClick={() => onClickProductHandler(product)}>
-                      Detail
-                    </button>{" "}
+                    {" "}
                     &nbsp;
                     {cart.indexOf(product) !== -1 ? (
                       <span className={classes.datontai}>
