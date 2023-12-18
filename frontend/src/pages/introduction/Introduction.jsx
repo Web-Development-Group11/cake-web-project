@@ -37,7 +37,7 @@ export default function Introduction() {
                 <img src={store02} alt="store02" className="content__paragraph-img02" />
               </div>
               <div className="content__text">
-                <h2 className='content__header heading'>Câu chuyện về Bông cake</h2>
+                <h2 className='content__header heading'>Tầm nhìn, Sứ mệnh, Giá trị cốt lõi</h2>
                 <h3 className='content__subhead body--1'>
                     Tầm nhìn
                   </h3>

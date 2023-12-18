@@ -3,37 +3,102 @@ import Button from '../../components/button/Button'
 import Navbar from '../../components/header/NavBar'
 import Banner from '../../components/banner/Banner'
 import Category from '../../components/category/Category'
-import './Home.css'
+import Card from '../../components/card/Card'
+import Footer from '../../components/footer/Footer'
+import { Link } from 'react-router-dom'
+import home from './Home.module.css'
 
 const Home = () => {
 
 
   return (
     <div>
-    <Navbar></Navbar>
-    
-      <div className="home__content">
+      <Navbar></Navbar>
+      <div className={home.banner}>
         <Banner></Banner>
-        <div className="heading">Đây là heading</div>
-        <div className="title--1">Đây là title 1</div>
-        <div className="title--2">Đây là title 2</div>
-        <div className="title--3">Đây là title 3</div>
-        <div className="title--4">Đây là title 4</div>
-        <div className="body--1">Đây là body 1</div>
-        <div className="body--2">Đây là body 2</div>
-        <Button type ="btn1 primary ">Liên hệ </Button><br />
-        <Button type ="btn1 secondary--1 ">Liên hệ </Button><br /> 
-        <Button type ="btn2 primary " >Liên hệ </Button><br />
-        <Button type ="btn2 secondary--2 " >Liên hệ </Button><br />
-
-        <Category className="category" link="/cupcake" img="/src/assets/category/cupcake.png" title="Cupcake"  description="Món ăn nhẹ ngọt ngào và đáng yêu"></Category>
-
-        <Category className="category" link="/tiramisu" img="/src/assets/category/tiramisu.png" title="Tiramisu"  description="Món bánh ngọt sang trọng và béo ngậy"></Category>
-
-        <Category className="category" link="/cookie" img="/src/assets/category/cookie.png" title="Cookie"  description="Những chiếc bánh giòn tan và đậm đà"></Category>
-        
-        <Category className="category" link="/combo" img="/src/assets/category/combo.png" title="Combo"  description="Sự kết hợp đa dạng và hoàn hảo"></Category>
       </div>
+    
+      <div className={home.content}>
+
+        <div className={home.category__container}>
+          <Link className={home.category__item} to = './cupcake'>
+            <Category img="/src/assets/category/cupcake.png" title="Cupcake"  description="Món ăn nhẹ ngọt ngào và đáng yêu"></Category>
+          </Link>
+
+          <Link className={home.category__item} to = './tiramisu'>
+            <Category img="/src/assets/category/tiramisu.png" title="Tiramisu"  description="Món bánh ngọt sang trọng và béo ngậy"></Category>
+          </Link>
+
+          <Link className={home.category__item} to = './cookie'>
+            <Category img="/src/assets/category/cookie.png" title="Cookie"  description="Những chiếc bánh giòn tan và đậm đà"></Category>
+          </Link>
+
+          <Link className={home.category__item} to = './combo'>
+            <Category img="/src/assets/category/combo.png" title="Combo"  description="Sự kết hợp đa dạng và hoàn hảo"></Category>
+          </Link>
+
+        </div>
+
+        <div className={home.product}>
+          <div className={`${home.product__title} heading`}>Sản phẩm nổi bật</div>
+          <div className={home.product__container}>
+            <Link className={home.product__item}>
+              <Card></Card>
+            </Link>
+            <Link className={home.product__item}>
+              <Card></Card>
+            </Link>
+            <Link className={home.product__item}>
+              <Card></Card>
+            </Link>
+            <Link className={home.product__item}>
+              <Card></Card>
+            </Link>
+            <Link className={home.product__item}>
+              <Card></Card>
+            </Link>
+            <Link className={home.product__item}>
+              <Card></Card>
+            </Link>
+            <Link className={home.product__item}>
+              <Card></Card>
+            </Link>
+            <Link className={home.product__item}>
+              <Card></Card>
+            </Link>
+          </div>
+          <Link className={home.product__btn} to = '/product'>
+            <Button type="btn1 primary">Xem thêm</Button>
+          </Link>
+        </div>
+
+        <div className={home.cuscup__container}>
+          <div className={home.cuscup__image}>
+            <img src="/src/assets/image/customcupcake.png" alt="Custom Cupcake" />
+          </div> 
+          <div className={home.cuscup__content}>
+            <div className={`${home.cuscup__title} heading`}>Custom Cupcake</div>
+            <div className={`${home.cuscup_mainText} body--2`}>Bạn có muốn một chiếc bánh cupcake độc đáo và riêng biệt cho mình? Bạn muốn tạo ra những chiếc bánh cupcake đáng yêu và ấn tượng cho những người thân yêu của mình? Hãy đến với Bông cake, nơi bạn có thể custom cupcake theo ý thích của bạn!</div>
+            <Link to = './cuscupcake'>
+              <Button type="btn1 primary">Xem ngay</Button>
+            </Link>
+          </div>
+        </div>
+
+        <div className={home.randombox__container}>
+          <div className={home.randombox__image}> 
+            <img src="/src/assets/image/randombox.png" alt="Random Box" />
+          </div>
+          <div className={home.randombox__content}>
+            <div className={`${home.randombox__title} heading`}>Random Box</div>
+            <div className={`${home.randombox_mainText} body--2`}>Bạn có đang phân vân không biết lựa chọn phẩm nào? Random box sẽ đề xuất cho bạn những sản phẩm ngẫu nhiên, mang đến những trải nghiệm mới lạ và thú vị. Thử ngay để tận hưởng sự bất ngờ!</div>
+            <Link to = './randombox'>
+              <Button type="btn1 primary">Xem ngay</Button>
+            </Link>
+          </div> 
+        </div>
+      </div>
+      <Footer></Footer>
     </div>
   )
 }
