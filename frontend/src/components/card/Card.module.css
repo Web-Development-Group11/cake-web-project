@@ -29,6 +29,8 @@
     flex-direction: column;
     height: calc(31% - calc(8 / 69 * 10vw));
     margin: calc(4 / 69 * 10vw);
+    text-align: left;
+
 }
 
 .content__line {
@@ -102,6 +104,7 @@
 
 .card.default .content__title {
     color: var(--highlight-text);
+    text-align: left;
 }
 
 .card.hover .content__title {
@@ -114,6 +117,7 @@
 
 .card.hover .content__cart {
     background-color: var(--blue);
+    
 }
 
 .card.default .carticons {
