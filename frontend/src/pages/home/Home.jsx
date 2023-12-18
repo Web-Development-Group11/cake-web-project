@@ -27,8 +27,8 @@ const Home = () => {
 
   return (
     <div>
-      {/* <Shop /> */}
-      <BoxQuantityComponent height="1.5rem" />
+      <Shop />
+      {/* <BoxQuantityComponent height="1.5rem" /> */}
     {/* <Navbar></Navbar>
       <div className="body">
         <div className="heading">Đây là heading</div>

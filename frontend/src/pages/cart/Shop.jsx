@@ -47,7 +47,6 @@ function Shop() {
     <div className={classes.container}>
       <Header soluong={cart.length} setShowCart={setShowCart} />
       <div className={classes.row}>
-        <h1>Shopping Cart Demo</h1>
       </div>
       <div className={classes.row}>
         <div className={classes.right}>
