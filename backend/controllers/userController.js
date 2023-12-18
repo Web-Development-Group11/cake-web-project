@@ -51,10 +51,10 @@ export const loginUser = async (req,res) => {
 //so sánh mật khẩu trong database và mật khẩu được nhập vào
       if (await bcrypt.compare(password, exitingUser.password.toString())) {
 //tạo token
-        const id = exitingUser.id;
-        const token = jwt.sign( {id }, "jwt-secret-key", {expiresIn : "12h"});
+        const name = exitingUser.name;
+        const token = jwt.sign( {name }, "jwt-secret-key", {expiresIn : "1d"});
          res.cookie("token", token);
-        return res.status(200).json("success")
+        return res.status(200).json({Status : "success"});
     }else {
 //nếu mật khẩu hoặc tài khoản sai 
     return res.status(400).json({ message : "UserName or Password is wrong" });
