@@ -59,14 +59,3 @@
     border-color: var(--brown);
 }
 
-@media screen and (max-width: 768px) {
-    .button__quantity {
-      height: calc(55%  * var(--button-height));
-    }
-  }
-  
-  @media screen and (max-width: 480px) {
-    .button__quantity {
-        height: calc(25%  * var(--button-height));
-    }
-  }

@@ -50,13 +50,13 @@ function Cart({ setShowCart, cart, setCart }) {
                 </div>
                 <div className={classes.title}>{product.name}</div>
                 <div className={classes.controls}>
-                  <BoxQuantityComponent  height = "2rem" />
-                  </div>
-                  <div className={classes.thanhtien}>
-                    {product.price * product.amount} VND
-                  </div>
-                  <button onClick={() => removeProduct(product)}>Remove</button>
-                
+                  <BoxQuantityComponent height="1.5rem" />
+                </div>
+                <div className={classes.thanhtien}>
+                  {product.price * product.amount} VND
+                </div>
+                <button onClick={() => removeProduct(product)}>Remove</button>
+
               </div>
             ))}
           </div>

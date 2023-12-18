@@ -5,14 +5,20 @@ import { FaMinus } from "react-icons/fa";
 
 const BoxQuantityComponent = ({ height = "2.5rem" }) => {
   const [quantity, setQuantity] = useState("1");
-  const iconRef = useRef(null);
+  const minusIconRef = useRef(null);
+  const plusIconRef = useRef(null);
 
   useEffect(() => {
-    if (iconRef.current) {
-      const parentWidth = iconRef.current.parentNode.offsetWidth;
-      iconRef.current.style.fontSize = `${parentWidth}rem`;
+    if (minusIconRef.current) {
+      const parentWidth = minusIconRef.current.parentNode.offsetWidth;
+      minusIconRef.current.style.fontSize = `${parentWidth}rem`;
     }
-  }, [height]); 
+
+    if (plusIconRef.current) {
+      const parentWidth = plusIconRef.current.parentNode.offsetWidth;
+      plusIconRef.current.style.fontSize = `${parentWidth}rem`;
+    }
+  }, [height]);
 
   const incrementQuantity = () => {
     setQuantity((prevQuantity) => {
@@ -35,23 +41,31 @@ const BoxQuantityComponent = ({ height = "2.5rem" }) => {
     }
   };
 
-  const buttonHeight = parseFloat(height); 
+  const buttonHeight = parseFloat(height);
   const calculateFontSize = () => {
     return `calc(${buttonHeight / 2}rem)`;
   };
+
+  const minWidth = `${buttonHeight * 3}rem`; 
+  const maxWidth = `${buttonHeight *4}rem`; 
+  
+  console.log("minWidth:", minWidth);
+  console.log("maxWidth:", maxWidth);
+  
 
   return (
     <>
       <div
         className={boxQtyStyles.button__overlap}
-        style={{ height: height, width: `calc(25% * ${buttonHeight})`  }}
+        style={{ height: height,  minWidth: minWidth, maxWidth: maxWidth }}
+        
       >
         <div
           className={`${boxQtyStyles.button__quantity} ${parseInt(quantity) === 1 ? boxQtyStyles.disabled : ""
             }`}
           onClick={decrementQuantity}
         >
-          <FaMinus className={boxQtyStyles.customIcon} ref={iconRef} style={{ fontSize: calculateFontSize() }}  />
+          <FaMinus className={boxQtyStyles.customIcon} ref={minusIconRef} style={{ fontSize: calculateFontSize() }} />
         </div>
 
         <div className={boxQtyStyles.input__quantity}>
@@ -68,7 +82,7 @@ const BoxQuantityComponent = ({ height = "2.5rem" }) => {
 
         <div className={boxQtyStyles.button__quantity} onClick={incrementQuantity}>
 
-          <FaPlus className={boxQtyStyles.customIcon} ref={iconRef} style={{ fontSize: calculateFontSize() }}/>
+          <FaPlus className={boxQtyStyles.customIcon} ref={plusIconRef} style={{ fontSize: calculateFontSize() }} />
 
         </div>
       </div>
