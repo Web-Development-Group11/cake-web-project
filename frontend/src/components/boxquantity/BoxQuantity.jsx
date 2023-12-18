@@ -61,7 +61,7 @@ const BoxQuantityComponent = ({ height = "2.5rem", quantity, onQuantityChange })
     <>
       <div className={boxQtyStyles.button__overlap} style={{ height: height, minWidth: minWidth, maxWidth: maxWidth }}>
         <div className={`${boxQtyStyles.button__quantity} ${parseInt(localQuantity) === 1 ? boxQtyStyles.disabled : ""}`} onClick={decrementQuantity}>
-          <FaMinus className={boxQtyStyles.customIcon} ref={minusIconRef} style={{ fontSize: calculateFontSize() }} />
+          <FaMinus className={boxQtyStyles.customIcon} refs={minusIconRef} style={{ fontSize: calculateFontSize() }} />
         </div>
 
         <div className={boxQtyStyles.input__quantity}>
@@ -77,7 +77,7 @@ const BoxQuantityComponent = ({ height = "2.5rem", quantity, onQuantityChange })
         </div>
 
         <div className={boxQtyStyles.button__quantity} onClick={incrementQuantity}>
-          <FaPlus className={boxQtyStyles.customIcon} ref={plusIconRef} style={{ fontSize: calculateFontSize() }} />
+          <FaPlus className={boxQtyStyles.customIcon} refs={plusIconRef} style={{ fontSize: calculateFontSize() }} />
         </div>
       </div>
     </>
