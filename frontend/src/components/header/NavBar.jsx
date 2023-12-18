@@ -91,7 +91,7 @@ const navItems = [
       {
         id: 3,
         title: 'Câu hỏi thường gặp',
-        path: '/support',
+        path: '/faq',
         cName: 'submenu-item',
       },
     ],
@@ -125,7 +125,8 @@ function Navbar() {
         <div onClick={onCloseMenu} className={`navBar__menu ${menuActive ? 'active' : ''}`}>
           <IoMenu onClick={onOpenMenu} className='navBar__menu-icon' />
           <ul className="navBar__item" onClick={(ev) => ev.stopPropagation()}>
-            <li className="navBar__close">
+            <li className='navBar__mobile-header'>
+              <img src={logo} alt="logo" className="navBar__mobile-logo"></img>
               <IoMdClose onClick={onCloseMenu} className='navBar__close-icon' />
             </li>
             {navItems.map((item) => (
