@@ -126,7 +126,7 @@ function Cart({ setShowCart, cart, setCart }) {
                 <div className={cartStyles.info1__amount}>  {formatPrice(tongtien)}</div>
               </div>
 
-              <div className={cartStyles.checkout__info3}>
+              <div className={`body--2 ${cartStyles.checkout__info3}`} >
                 <div className={cartStyles.info2__title}>Nhập voucher:</div>
                 <div className={cartStyles.checkout__info2}>
                   <div className={cartStyles.info1__title}>
@@ -159,7 +159,7 @@ function Cart({ setShowCart, cart, setCart }) {
 
           {/* chính sách */}
           <div className={cartStyles.cart__policy}>
-            <div className={`title--2 ${cartStyles.policy__title}`} >Chính sách mua hàng</div>
+            <a href="/policy" className={`title--2 ${cartStyles.policy__title}`} >Chính sách giao hàng </a>
             <ul className={`body--2 ${cartStyles.policy__content}`} >
               <li>Vui lòng kiểm tra kỹ sản phẩm và số lượng trước khi nhận hàng thanh toán</li>
               <li>Liên hệ hotline 0123456789 để được tư vấn chi tiết</li>
