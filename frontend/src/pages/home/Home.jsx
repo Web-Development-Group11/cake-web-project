@@ -14,7 +14,6 @@ import { useModal } from '../../hook/useModal'
 import { useMountTransition } from '../../hook/useMountTransition'
 import DeleteBlogModal from '../../components/modal/DeleteBlogModal'
 import { useLocation } from 'react-router-dom'
-import Shop from "../cart/Shop";
 import BoxQuantityComponent from '../../components/boxquantity/BoxQuantity'
 const Home = () => {
   // const onOpen = useModal((state) => state.onOpen);
@@ -27,7 +26,6 @@ const Home = () => {
 
   return (
     <div>
-      <Shop />
       {/* <BoxQuantityComponent height="1.5rem" /> */}
     {/* <Navbar></Navbar>
       <div className="body">
