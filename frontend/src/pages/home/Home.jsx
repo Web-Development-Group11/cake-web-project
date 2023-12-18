@@ -54,10 +54,7 @@ const Home = () => {
       <Card></Card>
       <Card></Card>
 
-      
-      
-      <Footer></Footer> */}
-
+      <Footer></Footer> 
 
       <BoxQuantityComponent></BoxQuantityComponent>
     </div>
