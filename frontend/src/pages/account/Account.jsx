@@ -7,6 +7,7 @@ import Footer from '../../components/footer/Footer'
 import acct from './Account.module.css'
 import { Link } from 'react-router-dom'
 
+
 const Account = () => {
   return (
     <div>
