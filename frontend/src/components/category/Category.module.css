@@ -3,8 +3,8 @@
 .category {
     position: relative;
     background-color: var(--background-2);
-    width: 16rem;
-    height: 16rem;
+    width: 15rem;
+    height: 15rem;
     border: 2px solid var(--brown);
     border-radius: 1rem;
     box-shadow: 2px 2px 0px var(--brown), 
