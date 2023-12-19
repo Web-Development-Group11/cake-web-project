@@ -4,7 +4,8 @@ import { configDotenv } from 'dotenv';
 import cors from 'cors';
 import userRoute from './routes/user.js';
 import bodyParser from 'body-parser';
-import productRouter from './routes/product.js';
+import blogRoutes from './routes/blog.js';
+import productRoutes from './routes/product.js';
 
 //express app
 const app = express();
@@ -33,7 +34,8 @@ app.use(cors({
 //routes 
 // app.use('/', homeRoute);
 app.use('/', userRoute)
-app.use('/', productRouter)
+app.use('/', productRoutes)
+app.use('/', blogRoutes)
 
 //listen for reqquest 
 app.listen(process.env.PORT, () => {

@@ -39,28 +39,25 @@ const user = new PrismaClient().user;
 //người dùng đăng nhập 
 export const loginUser = async (req,res) => {
   try {
-    const { username, password } = req.body;
+    const { email, phoneNumber, password } = req.body;
 //tìm kiếm tài khoản người dùng
     const exitingUser = await user.findFirst({ 
       where :  {
         OR: [
-          {email : username},
-          {phoneNumber : username},
+          {email : email},
+          {phoneNumber : phoneNumber},
         ]
       }
     });
 //nếu tài khoản người dùng tồn tại
     if (exitingUser) {
-      console.log(exitingUser);
 //so sánh mật khẩu trong database và mật khẩu được nhập vào
       if (await bcrypt.compare(password, exitingUser.password)) {
 //tạo token
-        const name = exitingUser.name;
-        const key = process.env.SECRET_KEY;
-        const token =  jwt.sign( exitingUser, key, {expiresIn : "1d"});
-        console.log(token);
+        const { name }= exitingUser;
+        const token =  jwt.sign( {name}, process.env.SECRET_KEY, {expiresIn : "1d"});
         res.cookie("token", token, {httpOnly : true});
-        return res.status(200).json({Status : "success"});
+        return res.status(200).json({Status : "success", token});
     }else {
 //nếu mật khẩu hoặc tài khoản sai 
     return res.status(400).json({ message : "UserName or Password is wrong" });
