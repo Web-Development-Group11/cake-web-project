@@ -1,4 +1,11 @@
 import React from 'react'
+import Button from '../../components/button/Button';
+import Navbar from '../../components/header/NavBar'
+import Card from '../../components/card/Card'
+import Tab from '../../components/tab/Tab'
+import Footer from '../../components/footer/Footer'
+import acct from './Account.module.css'
+import { Link } from 'react-router-dom'
 
 
 const Account = () => {
