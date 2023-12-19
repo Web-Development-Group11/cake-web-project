@@ -122,6 +122,7 @@ function Navbar() {
             <img src={logo} alt="logo" className="navBar__logo"></img>
           </Link>
         </div>
+        
         <div onClick={onCloseMenu} className={`navBar__menu ${menuActive ? 'active' : ''}`}>
           <IoMenu onClick={onOpenMenu} className='navBar__menu-icon' />
           <ul className="navBar__item" onClick={(ev) => ev.stopPropagation()}>

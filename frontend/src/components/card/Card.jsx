@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { FaShoppingCart, FaStar, FaRegStar } from "react-icons/fa";
 import cardStyles from "./Card.module.css";
-import jsonData from "../../assets/db/productsData.json";
 
 const initialState = {
   status: "default",
@@ -20,12 +19,12 @@ const reducer = (state, action) => {
   }
 };
 
-export default function Card({ className }) {
+export default function Card({ product }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
     <div
-     className={`${cardStyles.card} ${cardStyles[state.status]} ${className}`}
+      className={`${cardStyles.card} ${cardStyles[state.status]}`}
       onMouseLeave={() => {
         dispatch({ type: "mouse_leave" });
       }}
@@ -33,48 +32,49 @@ export default function Card({ className }) {
         dispatch({ type: "mouse_enter" });
       }}
     >
-      {jsonData.map((item, index) => (
-        <div key={index} className={cardStyles.card}>
-          <div className={cardStyles.card__productImage}>
-            <Link to={`/`}>
-              <img className={cardStyles.card__Image} src={item.pUrl} alt="productimage" />
-            </Link>
-          </div>
-          <div className={cardStyles.card__content}>
-            <div className={cardStyles.content__title}>
-              <div className={`title--4`}>{item.pName}</div>
-            </div>
-            <div className={cardStyles.content__line}>
-              <hr />
-            </div>
-            <div className={cardStyles.content__rate}>
-              {[...Array(Number(item.pRate))].map((_, index) => (
-                <span key={index} className={cardStyles.starDetail}>
-                  <FaStar className={cardStyles.icons} />
-                </span>
-              ))}
-              {[...Array(5 - Number(item.pRate))].map((_, index) => (
-                <span key={index}>
-                  <FaRegStar className={cardStyles.icons} />
-                </span>
-              ))}
-              <span className={`body--2`}>{item.pRate}</span>
-            </div>
-            <div className={cardStyles.content__price}>
-              <div className={`title--4`}>{item.pPrice}</div>
-            </div>
-            <div className={cardStyles.content__cart}>
-              <FaShoppingCart
-                className={cardStyles.carticons}
-              />
-            </div>
-          </div>
+      <div className={cardStyles.card__productImage}>
+        <Link to={`/product/${product.specific_type}/${product.title}`}>
+          <img className={cardStyles.card__Image} src={product.image_urls.image_url_0} alt={product.title} />
+        </Link>
+      </div>
+      <div className={cardStyles.card__content}>
+        <div className={cardStyles.content__title}>
+          <div className={`title--4`}>{product.title}</div>
         </div>
-      ))}
+        <div className={cardStyles.content__line}>
+          <hr />
+        </div>
+        <div className={cardStyles.content__rate}>
+          {[...Array(5)].map((_, index) => (
+            <span key={index} className={cardStyles.starDetail}>
+              {index < Math.round(product.pRate) ? (
+                <FaStar className={cardStyles.icons} />
+              ) : (
+                <FaRegStar className={cardStyles.icons} />
+              )}
+            </span>
+          ))}
+          <span className={`body--2`}>{product.pRate}</span>
+        </div>
+        <div className={cardStyles.content__price}>
+          <div className={`title--4`}>{product.price}</div>
+        </div>
+        <div className={cardStyles.content__cart}>
+          <FaShoppingCart className={cardStyles.carticons} />
+        </div>
+      </div>
     </div>
   );
 }
 
 Card.propTypes = {
-  className: PropTypes.string,
+  product: PropTypes.shape({
+    specific_type: PropTypes.string,
+    title: PropTypes.string,
+    price: PropTypes.string,
+    pRate: PropTypes.number,
+    image_urls: PropTypes.shape({
+      image_url_0: PropTypes.string,
+    }),
+  }),
 };
