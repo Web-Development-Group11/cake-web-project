@@ -8,12 +8,30 @@ import Footer from '../../components/footer/Footer'
 import { Link } from 'react-router-dom'
 import home from './Home.module.css'
 
+
+
+import Breadcrumb from './Breadcrumb';
+
+
 const Home = () => {
 
+  const breadcrumbItems = [
+    { text: 'Home', url: '/' },
+    { text: 'Products', url: '/products' },
+    { text: 'Category', url: '/products/category' },
+    { text: 'Current Page', url: '/products/category/current' },
+  ];
 
   return (
     <div>
-      <Navbar></Navbar>
+       <h1>Your Page Title</h1>
+      <Breadcrumb items={breadcrumbItems} />
+      {/* Other content of your page */}
+
+
+
+
+      {/* <Navbar></Navbar>
       <div className={home.banner}>
         <Banner></Banner>
       </div>
@@ -98,7 +116,7 @@ const Home = () => {
           </div> 
         </div>
       </div>
-      <Footer></Footer>
+      <Footer></Footer> */}
     </div>
   )
 }
