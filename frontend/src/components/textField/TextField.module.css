@@ -16,7 +16,7 @@
     height: 100%;
 }
 
-input {
+.input {
     flex: 1;
     height: 100%;
     background-color: var(--background-1);
