@@ -7,6 +7,12 @@ import styles from './Tab.module.css';
 const Tab = () => {
     const [activeTab, setActiveTab] = useState('customerInfo');
 
+    const user = {
+      name: 'Đào Huyền Anh',
+      id: '01234455657',
+      avatar: '/src/assets/image/avatar.png', // Replace with user avatar URL
+    };
+
     // This is just placeholder data. Replace this with your actual data.
     const orders = [
       {
@@ -21,28 +27,40 @@ const Tab = () => {
   
     return (
       <div className={styles.tab__container}>
-        <div className={styles.tab__header}>
-          <div 
-            className={`${styles.tab} ${activeTab=== 'customerInfo' ? styles.active : ''} title--3`} 
-            onClick={() => setActiveTab('customerInfo')}
-          >
-            Thông tin khách hàng
+        <div className={styles.container__wrapper}>
+          <div className={styles.user__container}>
+            <img src={user.avatar} alt="User Avatar" className={styles.avatar} />
+            <div className={styles.user__info}>
+              <p className='title--1' style={{ color: 'var(--primary-color)' }}>{user.name}</p>
+              <p className='title--3'>ID: {user.id}</p>
+            </div>
+            <div className={styles.signout}>
+              <Button type='btn1 primary'>Đăng xuất</Button>
+            </div>
           </div>
-          <div 
-            className={`${styles.tab} ${activeTab === 'orderHistory' ? styles.active : ''} title--3`} 
-            onClick={() => setActiveTab('orderHistory')}
-          >
-            Lịch sử đặt hàng
-          </div>
-          <div 
-            className={`${styles.tab} ${activeTab === 'myOrders' ? styles.active : ''} title--3`} 
-            onClick={() => setActiveTab('myOrders')}
-          >
-            Đơn hàng của tôi
+          <div className={styles.tab__header}>
+            <div 
+              className={`${styles.tab} ${activeTab=== 'customerInfo' ? styles.active : ''} title--3`} 
+              onClick={() => setActiveTab('customerInfo')}
+            >
+              Thông tin khách hàng
+            </div>
+            <div 
+              className={`${styles.his__box} ${styles.tab} ${activeTab === 'orderHistory' ? styles.active : ''} title--3`} 
+              onClick={() => setActiveTab('orderHistory')}
+            >
+              Lịch sử đặt hàng
+            </div>
+            <div 
+              className={`${styles.tab} ${activeTab === 'myOrders' ? styles.active : ''} title--3`} 
+              onClick={() => setActiveTab('myOrders')}
+            >
+              Đơn hàng của tôi
+            </div>
           </div>
         </div>
   
-        <div className={styles.tabContent}>
+        <div className={styles.tab__content}>
           {activeTab === 'customerInfo' && (
             <div className={styles.customerInfo}>
               <div className={`${styles.title} heading`}>Thông tin khách hàng</div>
