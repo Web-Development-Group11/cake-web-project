@@ -1,4 +1,4 @@
-import {createNewUser, loginUser } from "../controllers/userController.js";
+import {createNewUser, loginUser } from "../controllers/authenticationController.js";
 import  { Router }  from "express";
 
 

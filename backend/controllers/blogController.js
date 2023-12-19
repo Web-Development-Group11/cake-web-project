@@ -6,11 +6,12 @@ const blog = new PrismaClient().blog;
 export const getBlog = async (req, res) => {
     try {
         const info = await blog.findMany();
-        return res.status(200).json({data: info})
-    }catch (error) {
-        res.status(404).json({message: error.message})
-    }finally {( async  () => {
-        await blog.$disconnect();
+        return res.status(200).json({ data: info })
+    } catch (error) {
+        res.status(404).json({ message: error.message })
+    } finally {
+        (async () => {
+            await blog.$disconnect();
         })
     };
 }
@@ -18,15 +19,16 @@ export const getBlog = async (req, res) => {
 export const getSuggestBlog = async (res, req) => {
     try {
         const info = await blog.findMany({
-            orderBy : {
-                views : 'desc'
+            orderBy: {
+                views: 'desc'
             }
         });
-        return res.status(200).json({data: info});
+        return res.status(200).json({ data: info });
     } catch (error) {
-        res.status(404).json({message: error.message});
-    } finally { (async () => {
-        await   blog.$disconnect();
+        res.status(404).json({ message: error.message });
+    } finally {
+        (async () => {
+            await blog.$disconnect();
         });
     }
 }
@@ -34,15 +36,16 @@ export const getSuggestBlog = async (res, req) => {
 export const getBlogBySlug = async (req, res) => {
     try {
         const info = await blog.findFirst({
-            where : {
-                slug : req.params.slug
+            where: {
+                slug: req.params.slug
             }
         });
-        return res.status(200).json({data: info})
+        return res.status(200).json({ data: info })
     } catch (error) {
-        res.status(404).json({message: error.message})
-    } finally { (async () => {
-        await blog.$disconnect();
+        res.status(404).json({ message: error.message })
+    } finally {
+        (async () => {
+            await blog.$disconnect();
         });
     }
 }
