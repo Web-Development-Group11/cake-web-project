@@ -1,0 +1,141 @@
+@import url('../../Variable.css');
+
+.tab__container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+  
+.tab__header {
+    display: flex;
+    justify-content: space-around;
+    /* list-style: none; */
+    padding: 0;
+    /* border-bottom: 2px solid var(--brown); */
+    border: 1px solid var(--brown);
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.tab {
+    flex: 1;
+    height: 104px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: var(--background-2);
+    border: 1px solid var(--brown);
+    /* position: relative; */
+    overflow: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.active {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+  
+.tab::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+  
+.active::after {
+    background-color: var(--white);
+}
+  
+/* .tabs button {
+    background: none;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+}
+  
+.tabs button:hover {
+    background-color: #ddd;
+}
+  
+.tabs button.active {
+    color: white;
+    background-color: #ff0000;
+} */
+  
+/* .tabContent {
+    border-top: 1px solid #ddd;
+} */
+  
+.orderHistory {
+    display: flex;
+    flex-direction: column;
+}
+  
+.orderHistory .order {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+  
+.orderHistory .order img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+  
+.orderHistory .order p {
+    margin: 0;
+}
+  
+.orderHistory .order button {
+    margin-left: auto;
+    padding: 5px 10px;
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+  
+.orderHistory .order button:hover {
+    background-color: #cc0000;
+}
+
+.title {
+  color: var(--primary-color);
+  padding: 0;
+  margin-top: 4rem;
+}
+
+fieldset {
+  margin-top: 2rem;
+  border: 1px solid var(--brown);
+  border-left: none ;
+  border-right: none ;
+  padding: 2rem 0;
+}
+
+legend {
+  margin-left: 2rem;
+}
+
+input {
+  width: 23.5rem;
+}
+
+form label {
+    margin-bottom: 1rem;
+}
+
+/* .form__button button {
+    padding: 10px 100px
+} */
