@@ -176,9 +176,7 @@ function Navbar() {
           </li>
           <li>
             <div className='nav-item has-drop-down authenticate'>
-              <Link to ="/account">
-                <FaUser className="navBar__icon" />
-              </Link>
+              <FaUser className="navBar__icon" />
               <ul className='product-submenu'>
                 <li className="product-submenu__item">
                   <Link to='/sign-up' className={`submenu-item body--2`}>
