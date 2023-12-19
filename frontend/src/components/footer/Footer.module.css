@@ -243,8 +243,9 @@ a {
 
     .contact {
         order: 3;
-        width: 100%;
+        max-width: 100%;
         margin: 2rem 1.5rem;
+        right: 0;
     }
 
     .quick_links {

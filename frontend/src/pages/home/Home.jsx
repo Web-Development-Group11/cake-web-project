@@ -14,6 +14,7 @@ const Home = () => {
     <div>
     <Navbar></Navbar>
     
+   
       <div className="home__content">
         <Banner></Banner>
         <div className="heading">Đây là heading</div>
