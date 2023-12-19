@@ -17,7 +17,6 @@ const Account = () => {
           <p className={acct.navigation__item}>|</p>
           <Link className={acct.navigation__item} to={'/account'}>Trang tài khoản</Link>
         </div>
-
         <div className={acct.tab}>
           <Tab></Tab>
         </div>
