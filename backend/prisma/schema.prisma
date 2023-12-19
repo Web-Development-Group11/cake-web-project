@@ -6,6 +6,48 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
+model Blog {
+  id          String       @id @default(auto()) @map("_id") @db.ObjectId
+  comments    BlogComments
+  content     BlogContent
+  coverImage  String
+  publishdate String
+  slug        String
+  title       String
+  views       Int
+}
+
+type BlogComments {
+  author  String
+  comment String
+  email   String
+}
+
+type BlogContent {
+  paragraph1 String
+  paragraph2 BlogContentParagraph2
+  paragraph3 String
+}
+
+type BlogContentParagraph2 {
+  content BlogContentParagraph2Content
+  title   String
+}
+
+type BlogContentParagraph2Content {
+  content  String
+  opentime String
+  phone    String
+  price    String
+}
+model Product {
+  id                  String           @id @default(auto()) @map("_id") @db.ObjectId
+  image_urls          ProductImageUrls
+  price               String
+  product_description String
+  specific_type       String
+  title               String
+}
 
 type ProductImageUrls {
   image_url_0 String
@@ -16,14 +58,7 @@ type ProductImageUrls {
   image_url_5 String?
 }
 
-model Product {
-  id                  String           @id @default(auto()) @map("_id") @db.ObjectId
-  image_urls          ProductImageUrls
-  price               String
-  product_description String
-  specific_type       String
-  title               String
-}
+
 
 model User {
   id          String @id @default(auto()) @map("_id") @db.ObjectId

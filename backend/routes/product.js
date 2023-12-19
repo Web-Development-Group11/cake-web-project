@@ -1,10 +1,10 @@
 import { getProduct, getRandomProduct } from "../controllers/cardController.js";
 import { Router } from "express";
 
-const productRouter = new Router();
+const productRoutes = new Router();
 
-productRouter.get('/products', getProduct);
+productRoutes.get('/products', getProduct);
 
-productRouter.get('/products/random', getRandomProduct);
+productRoutes.get('/products/random', getRandomProduct);
 
-export default productRouter;
+export default productRoutes;
