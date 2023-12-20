@@ -143,7 +143,9 @@ legend {
 
 .contact {
     display: flex;
-    gap: 15rem;
+   justify-content: space-between;
+   width: 100%;
+   margin-right: 0.25rem;
 }
 .contact__left, .contact__right {
     display: flex;
