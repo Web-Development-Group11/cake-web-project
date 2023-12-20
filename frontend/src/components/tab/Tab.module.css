@@ -72,23 +72,17 @@
     color: var(--white);
 }
   
-/* .tab::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 2px;
-    width: 100%;
-    background-color: transparent;
-    transition: background-color 0.3s ease;
-} */
-  
-/* .active::after {
-    background-color: var(--white);
-} */
-  
 .tab__content {
     border: none;
+}
+
+.acct__info {
+    display: flex;
+    width: 100%;
+    align-items: flex-end;
+    align-content: flex-end;
+    gap: 15rem;
+    flex-wrap: wrap;
 }
   
 .orderHistory {
@@ -138,21 +132,57 @@ fieldset {
   border: 1px solid var(--brown);
   border-left: none ;
   border-right: none ;
-  padding: 2rem 0;
+  border-bottom: none;
+  padding: 0;
+  padding-top: 2rem;
 }
 
 legend {
   margin-left: 2rem;
 }
 
-input {
-  width: 23.5rem;
+.contact {
+    display: flex;
+    gap: 15rem;
+}
+.contact__left, .contact__right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
 }
 
-form label {
-    margin-bottom: 1rem;
+.subcontact {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem
 }
 
-/* .form__button button {
-    padding: 10px 100px
-} */
+.input__change {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+.input__item {
+    height: 2.5rem;
+    width: 23.5rem;
+}
+
+.change__text {
+    text-decoration: underline;
+}
+
+.line {
+    width: 100%;
+    box-sizing: border-box;
+    border-color: var(--black);
+}
+
+.update__btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 0.25rem;
+    box-sizing: border-box;
+}
