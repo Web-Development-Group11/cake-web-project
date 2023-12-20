@@ -1,3 +1,7 @@
+// Hướng dẫn sử dụng: ở trang cần sử dụng breadcumb
+// import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
+// <Breadcrumb  />
+
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import breadcrumbStyles from './Breadcrumb.module.css';
@@ -39,29 +43,39 @@ const Breadcrumb = () => {
   }, [blogId, productId]);
 
   const pathnames = location.pathname.split('/').filter((x) => x);
+  const getBreadcrumbName = (pathname) => {
+    const words = pathname.split('_');
+    const formattedWords = words.map((word, index) => {
+      if (index === 0) {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      }
+      return word;
+    });
+    return formattedWords.join(' ');
+  };
 
   return (
-    <nav className={breadcrumbStyles.breadcrumb}>
-      <ul className={breadcrumbStyles.breadcrumbList}>
-        <li className={breadcrumbStyles.breadcrumbItem}>
-          <Link to="/" className={breadcrumbStyles.breadcrumbLink}>
+    <nav >
+      <ul className={`body--1 ${breadcrumbStyles.breadcrumbList}`}>
+        <li >
+          <Link to="/" >
             Home
           </Link>
         </li>
         {pathnames.map((pathname, index) => {
           const url = `/${pathnames.slice(0, index + 1).join('/')}`;
           const isLastItem = index === pathnames.length - 1;
-          const formattedPathname = formatBreadcrumb(pathname);
+          const breadcrumbName = getBreadcrumbName(pathname);
 
           return (
             <React.Fragment key={index}>
               <li className={breadcrumbStyles.breadcrumbSeparator}>|</li>
-              <li className={breadcrumbStyles.breadcrumbItem}>
+              <li >
                 {isLastItem ? (
-                  <span className={breadcrumbStyles.breadcrumbText}>{formattedPathname}</span>
+                  <span >{breadcrumbName}</span>
                 ) : (
-                  <Link to={url} className={breadcrumbStyles.breadcrumbLink}>
-                    {formattedPathname}
+                  <Link to={url} >
+                    {breadcrumbName}
                   </Link>
                 )}
               </li>
@@ -71,25 +85,18 @@ const Breadcrumb = () => {
         {blogName && (
           <>
             <li className={breadcrumbStyles.breadcrumbSeparator}>|</li>
-            <li className={breadcrumbStyles.breadcrumbItem}>{blogName}</li>
+            <li>{blogName}</li>
           </>
         )}
         {productName && (
           <>
             <li className={breadcrumbStyles.breadcrumbSeparator}>|</li>
-            <li className={breadcrumbStyles.breadcrumbItem}>{productName}</li>
+            <li>{productName}</li>
           </>
         )}
       </ul>
     </nav>
   );
-};
-
-const formatBreadcrumb = (pathname) => {
-  const words = pathname.split('_').map((word) => {
-    return word.charAt(0).toUpperCase() + word.slice(1);
-  });
-  return words.join(' ');
 };
 
 export default Breadcrumb;

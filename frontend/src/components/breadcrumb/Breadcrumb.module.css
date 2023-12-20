@@ -1,5 +1,6 @@
+@import url("../../Variable.css");
+
 .breadcrumbList {
-  /* CSS cho breadcrumb list */
   list-style: none;
   display: flex;
   align-items: center;
@@ -7,20 +8,8 @@
   margin: 0;
 }
 
-.breadcrumbItem {
-  /* CSS cho breadcrumb item */
-}
 
 .breadcrumbSeparator {
-  /* CSS cho breadcrumb separator */
-  margin: 0 5px;
+  margin: 0 0.5rem;
 
-}
-
-.breadcrumbLink {
-  /* CSS cho breadcrumb link */
-}
-
-.breadcrumbText {
-  text-transform: capitalize; /* Chuyển đổi chữ cái đầu tiên thành chữ in hoa */
 }

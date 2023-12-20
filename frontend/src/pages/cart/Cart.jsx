@@ -8,12 +8,9 @@ import Footer from '../../components/footer/Footer'
 import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 
 const Cart = () => {
-  const breadcrumbItems = [
-    {url: '/cart' },
-  ];
   return (
     <div >
-    <Breadcrumb items={breadcrumbItems} />
+    <Breadcrumb  />
     </div >
 
   )
