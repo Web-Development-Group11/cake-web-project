@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from '../../components/button/Button';
 import Navbar from '../../components/header/NavBar'
-import Card from '../../components/card/Card'
+// import Card from '../../components/card/Card'
 import Tab from '../../components/tab/Tab'
 import Footer from '../../components/footer/Footer'
 import acct from './Account.module.css'
@@ -24,6 +24,7 @@ const Account = () => {
         </div>
         
       </div>
+      <Footer></Footer>
     </div>
   )
 }
