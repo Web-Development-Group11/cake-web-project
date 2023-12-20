@@ -25,13 +25,13 @@ const Router = () => {
                         <Route path="/login" element={< Login />} />
                         <Route path="/register" element={< Register />} />
                         <Route path="/product" element={< Product />} />
-                        <Route path="product_detail" element={< ProductDetail />} />
+                        <Route path="/product/:productId" element={< ProductDetail />} />
                         <Route path="/support" element={< Support/>} />
                         <Route path="/policy" element={< Policy/>} />
                         <Route path="/faq" element={< Faq/>} />
                         <Route path="/payment" element={< Payment />} />
                         <Route path="/account" element={< Account />} />
-                        <Route path="/cart" element={< Cart />} />
+                        <Route path="/mycart" element={< Cart />} />
                         <Route path="/introduction" element={< Introduction />} />
                         <Route path="/blog" element={< Blog />} />
                         <Route path="/blog/:blogId" element={< BlogDetail />} />

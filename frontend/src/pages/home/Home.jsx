@@ -10,26 +10,18 @@ import home from './Home.module.css'
 
 
 
-import Breadcrumb from './Breadcrumb';
+import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 
 
 const Home = () => {
 
   const breadcrumbItems = [
-    { text: 'Home', url: '/' },
-    { text: 'Products', url: '/products' },
-    { text: 'Category', url: '/products/category' },
-    { text: 'Current Page', url: '/products/category/current' },
+    { text: 'Home', url: '' },
   ];
 
   return (
     <div>
-       <h1>Your Page Title</h1>
       <Breadcrumb items={breadcrumbItems} />
-      {/* Other content of your page */}
-
-
-
 
       {/* <Navbar></Navbar>
       <div className={home.banner}>
