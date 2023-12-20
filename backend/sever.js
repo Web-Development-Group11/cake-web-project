@@ -10,6 +10,7 @@ import productRoutes from './routes/product.js';
 //express app
 const app = express();
 app.use(express.json());
+app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
 
