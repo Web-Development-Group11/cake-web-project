@@ -5,6 +5,9 @@ import Navbar from '../../components/header/NavBar'
 import Card from '../../components/card/Card'
 import jsonData from "../../assets/db/productsData.json";
 import Footer from '../../components/footer/Footer'
+import ProductSort from './ProductSort';
+import TextFieldWithIcon from '../../components/textFieldWithIcon/TextFieldWithIcon';
+import TextField from '../../components/textField/TextField';
 
 const productCategories = [
   {
@@ -40,6 +43,14 @@ const productCategories = [
 ]
 
 const Product = () => {
+  const handleSortChange = (newSortValue) => {
+    setFilters((preFilters) => ({
+      ... preFilters,
+      _sort: newSortValue,
+    }));
+  };
+
+
   return (
     <>
       <Navbar />
@@ -73,16 +84,11 @@ const Product = () => {
             <div className='product__list'>
               <div className="header">
                 <h2 className="heading">Sản phẩm</h2>
+
+                <ProductSort currentSort='price' onChange={handleSortChange} />
               </div>
 
               <div className="product__list-item">
-                {/* {jsonData.map((category) => (
-                  <div key={category.products} className="product__card">
-                    {category.products.map((product) => (
-                      <Card key={product.title} product={product} />
-                    ))}
-                  </div>
-                ))} */}
                 {jsonData.map((category) => (
                   category.products.map((product) => (
                     <Card key={product.title} className="product__card" product={product} />
@@ -97,8 +103,6 @@ const Product = () => {
         </div>
 
       </div>
-
-   
 
       <Footer />
     </>
