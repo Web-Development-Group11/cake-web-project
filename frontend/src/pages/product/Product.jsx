@@ -5,7 +5,6 @@ import Navbar from '../../components/header/NavBar'
 import Card from '../../components/card/Card'
 import jsonData from "../../assets/db/productsData.json";
 import Footer from '../../components/footer/Footer'
-import TextFieldWithIcon from '../../components/textFieldWithIcon/TextFieldWithIcon';
 
 const productCategories = [
   {
