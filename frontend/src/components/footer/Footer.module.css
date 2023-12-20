@@ -61,8 +61,10 @@
     left: 0;
 }
 
-.registerButton {
-    width: 6rem;
+.register_button button {
+    height: 2.5rem;
+    width: 6.375rem;
+    padding: 0.5rem 0.125rem;
     position: absolute;
     right: 0;
 }

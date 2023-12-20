@@ -28,7 +28,7 @@ const Footer = () => {
                             />
                         </div>
 
-                        <div className={footer.registerButton}>
+                        <div className={footer.register_button}>
                             <Button type="btn2 primary">Đăng ký</Button>
                         </div>
                     </div>
