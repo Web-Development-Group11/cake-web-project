@@ -4,6 +4,8 @@ import logo from "../../assets/image/logo.png";
 import bg from "../../assets/image/bgregister.png";
 import Button from "../../components/button/Button";
 import TextField from "../../components/textField/TextField";
+import TextFieldWithIcon from "../../components/textFieldWithIcon/TextFieldWithIcon";
+import { Link } from "react-router-dom";
 
 function Register() {
   const [username, setUsername] = useState("");
@@ -77,17 +79,15 @@ function Register() {
       <div className={formStyles.form__image}>
         <div className={formStyles.image__bg}></div>
         <div className={formStyles.image__holder}>
-          <img className={formStyles.image}  alt="Background" src={bg} />
+          <img className={formStyles.image} alt="Background" src={bg} />
         </div>
       </div>
       {/* form */}
-      <div className={formStyles.form__frame}>
+      <div className={formStyles.form__frameoverlap}>
         {/* logo */}
-        <div className={formStyles.website__logo}>
-          <a href="/">
-            <img className={formStyles.logoimg} alt="Bong cake logo" src={logo} />
-          </a>
-        </div>
+        <Link to="/" className={formStyles.website__logo}>
+          <img className={formStyles.logoimg} alt="Bong cake logo" src={logo} />
+        </Link>
         <div className={formStyles.form}>
           <div className={formStyles.form__frame}>
             {/* title */}
@@ -100,20 +100,19 @@ function Register() {
               </span>
             </div>
             {/* form */}
-            <form className={formStyles.form__frameinput}>
+            <form className={formStyles.form__frameinput} onSubmit={validate}>
               {/* input username */}
               <div className={formStyles.form__input}>
                 <div className={formStyles.form__inputtitle}>
                   <div className={formStyles.form__inputtitle1}>
-                    <div className={formStyles.inputwrapper}>Tên đăng nhập</div>
+                    <div className={formStyles["title--3"]}>Tên đăng nhập</div>
                   </div>
                 </div>
-                <div className={formStyles["input-wrapper"]}>
+                <div className={formStyles.inputwrapper}>
                   <TextField
-                    className={formStyles["body--2"]}
-                    type="text"
                     placeholder={"Email/ Số điện thoại"}
                     style={{ borderColor: userColor }}
+                    Value={username}
                     onChange={(e) => setUsername(e.target.value)}
                   />
                   <div className={formStyles.errorcontainer}>
@@ -131,11 +130,10 @@ function Register() {
                   </div>
                 </div>
                 <div className={formStyles.inputwrapper}>
-                  <TextField
-                    className={formStyles["body--2"]}
-                    type="password"
+                  <TextFieldWithIcon
                     placeholder="Nhập mật khẩu"
                     style={{ borderColor: passwordColor }}
+                    value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   <div className={formStyles.errorcontainer}>
@@ -151,12 +149,11 @@ function Register() {
                   </div>
                 </div>
                 <div className={formStyles.inputwrapper}>
-                  <TextField
-                    className={formStyles["body--2"]}
-                    type="password"
+                  <TextFieldWithIcon
                     placeholder="Nhập lại mật khẩu"
-                    style={{ borderColor: repasswordColor }}
-                    onChange={(e) => setRePassword(e.target.value)}
+                    style={{ borderColor: passwordColor }}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                   <div className={formStyles.errorcontainer}>
                     <p className={formStyles.error}>{errorRePassword}</p>
@@ -167,11 +164,11 @@ function Register() {
               {/* line */}
               <hr className={formStyles.form__line} />
               {/* button */}
-              <div className={formStyles.form__btn}>
-                <Button type="btn2 primary" className="btn" onClick={validate}>
+              < div className={formStyles.form__btn} >
+                <Button type="btn2 primary button" onClick={validate}>
                   Đăng ký
                 </Button>
-              </div>
+              </div >
             </form>
             {/* link */}
             <div className={formStyles.form__link}>
