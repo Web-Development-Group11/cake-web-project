@@ -4,7 +4,7 @@ import "../../Variable.css";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 
-const TextFieldWithIcon = (value, placeholder) => {
+const TextFieldWithIcon = ({value, placeholder}) => {
     const [showContent, setShowContent] = React.useState(false);
 
     const icon = showContent ? <FaEye /> : <FaEyeSlash />;
@@ -19,8 +19,8 @@ const TextFieldWithIcon = (value, placeholder) => {
                 <input
                     className={`${textfieldicon.textfieldicon__input} body--2`}
                     type={showContent ? "text" : "password"}
-                    value = {value}
-                    placeholder = {placeholder}
+                    value={value}
+                    placeholder={placeholder}
                 />
                 <span className={textfieldicon.textfieldicon__click} onClick={handleClick}>{icon}</span>
             </div>
