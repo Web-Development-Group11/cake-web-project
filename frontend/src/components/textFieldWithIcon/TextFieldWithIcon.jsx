@@ -4,7 +4,7 @@ import "../../Variable.css";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 
-const TextFieldWithIcon = (value, placeholder) => {
+const TextFieldWithIcon =({ value, placeholder }) => {
     const [showContent, setShowContent] = React.useState(false);
 
     const icon = showContent ? <FaEye /> : <FaEyeSlash />;
