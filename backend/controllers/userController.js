@@ -5,7 +5,6 @@ const user = new PrismaClient().user;
 
 export const getUser = async (req, res) => {
     const id = req.user.exitingUser.id ;
-    console.log(id);
     try {
         const info = await user.findUnique({
             where: {
@@ -24,24 +23,13 @@ export const getUser = async (req, res) => {
 
 export const updateUsers = async (req, res) => {
   const id = req.user.exitingUser.id ;
-  const {name, email, phoneNumber, password, city, district, ward, address} = req.body;
+  const data = req.body;
     try {
-        const info = await user.updateFirst({
+        const info = await user.update({
             where: {
                 id: id
             },
-            data: {
-                name: name,
-                email: email,
-                phoneNumber: phoneNumber,
-                password: password,
-                addressDetails: {
-                  city: city,
-                  district: district,
-                  ward: ward,
-                  address: address
-                }
-            }
+            data: data,
         });
         res.status(200).json({ data: info })
     } catch (error) {
