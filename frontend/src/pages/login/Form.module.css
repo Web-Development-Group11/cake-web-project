@@ -10,12 +10,12 @@
 }
 
 .form__image {
-  flex: 1;
+  flex: 40%;
   order: 2;
 }
 
 .form__frameoverlap {
-  flex: 1;
+  flex: 60%;
   order: 1;
   position: relative;
 }
@@ -90,21 +90,17 @@
   display: flex;
   flex-direction: column;
 }
-  
+
 .inputwrapper {
   margin-top: 0.5rem;
   height: 3.75rem;
 }
 
-.errorcontainer {
+.errorcontainer {  
+  margin-top: 0.25rem;
   height: 1.5rem;
-  color: var(--text);
-}
-
-.errorMsg {
   color: var(--primary-color);
 }
-
 .form__inputtitle {
   display: flex;
   flex-direction: row;

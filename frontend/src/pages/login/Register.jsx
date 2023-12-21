@@ -92,7 +92,7 @@ function Register() {
       setConfirmPasswordError(validation.confirmPasswordError);
       setConfirmPasswordErrorMsg(validation.confirmPasswordErrorMsg);
     } else {
-      window.location.href = "/";
+      window.location.href = "/login";
       // logic check BE here
     }
   }
@@ -125,7 +125,7 @@ function Register() {
               </span>
             </div>
             {/* form */}
-            <form className={formStyles.form__frameinput}>
+            <form className={formStyles.form__frameinput} onSubmit={submitForm}>
               {/* input username */}
               <div className={formStyles.form__input}>
                 <div className={formStyles.form__inputtitle}>
@@ -140,9 +140,9 @@ function Register() {
                     value={username}
                     onChange={(value) => changeInputValue("username", value)}
                   />
-                  <div className={formStyles.errorcontainer}>
-                    {usernameError && <div className={formStyles.errorMsg}>{usernameErrorMsg}</div>}
-                  </div>
+                </div>
+                <div className={formStyles.errorcontainer}>
+                  {usernameError && <div className={formStyles.errorMsg}>{usernameErrorMsg}</div>}
                 </div>
               </div>
               {/* input password */}
@@ -155,13 +155,13 @@ function Register() {
                 <div className={formStyles.inputwrapper}>
                   <TextFieldWithIcon
                     placeholder={"Mật khẩu"}
-                    className="form-control"
                     value={password}
                     onChange={(value) => changeInputValue("password", value)}
                   />
-                  <div className={formStyles.errorcontainer}>
-                    {passwordError && <div className={formStyles.errorMsg}>{passwordErrorMsg}</div>}
-                  </div>
+
+                </div>
+                <div className={formStyles.errorcontainer}>
+                  {passwordError && <div className={formStyles.errorMsg}>{passwordErrorMsg}</div>}
                 </div>
               </div>
               {/* input confirm password */}
@@ -174,13 +174,12 @@ function Register() {
                 <div className={formStyles.inputwrapper}>
                   <TextFieldWithIcon
                     placeholder={"Nhập lại mật khẩu"}
-                    className="form-control"
                     value={confirmPassword}
                     onChange={(value) => changeInputValue("confirmPassword", value)}
                   />
-                  <div className={formStyles.errorcontainer}>
-                    {confirmPasswordError && <div className={formStyles.errorMsg}>{confirmPasswordErrorMsg}</div>}
-                  </div>
+                </div>
+                <div className={formStyles.errorcontainer}>
+                  {confirmPasswordError && <div className={formStyles.errorMsg}>{confirmPasswordErrorMsg}</div>}
                 </div>
               </div>
               {/* line */}
@@ -203,8 +202,8 @@ function Register() {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   )
 }
 

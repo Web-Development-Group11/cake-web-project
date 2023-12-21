@@ -84,8 +84,6 @@ function Login() {
             </div>
             {/* form */}
             <div className={formStyles.form__frameoverlap}>
-
-
                 {/* form */}
                 <div className={formStyles.form}>
                     {/* logo */}
@@ -134,7 +132,6 @@ function Login() {
                                 <div className={formStyles.inputwrapper}>
                                     <TextFieldWithIcon
                                         placeholder={"Mật khẩu"}
-                                        className="form-control"
                                         value={password}
                                         onChange={(value) => changeInputValue("password", value)}
                                     />
