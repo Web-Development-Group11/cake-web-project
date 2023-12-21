@@ -6,6 +6,7 @@ import Button from "../../components/button/Button";
 import TextField from "../../components/textField/TextField";
 import TextFieldWithIcon from "../../components/textFieldWithIcon/TextFieldWithIcon";
 import { Link } from "react-router-dom";
+import { validateUsername, validatePassword} from "./validationForm";
 
 function Login() {
     const [username, setUsername] = useState("");
