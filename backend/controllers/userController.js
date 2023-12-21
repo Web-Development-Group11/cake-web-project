@@ -4,15 +4,14 @@ const user = new PrismaClient().user;
 
 
 export const getUser = async (req, res) => {
-    const id = req.user.id;
+    const id = req.user.exitingUser.id ;
     console.log(id);
     try {
         const info = await user.findUnique({
             where: {
-                _id: id
+                id: id
             }
         });
-        res.status(200).json( true);
         res.status(200).json({ data: info })
     } catch (error) {
         res.status(500).json({ message: error.message })
@@ -23,28 +22,33 @@ export const getUser = async (req, res) => {
     }
 }
 
-// export const updateUsers = async (req, res) => {
-//     try {
-//         const info = await user.updateMany({
-//             where: {
-//                 id: req.params.id
-//             },
-//             data: {
-//                 name: req.body.name,
-//                 email: req.body.email,
-//                 password: <PASSWORD>,
-//                 role: req.body.role,
-//                 status: req.body.status,
-//                 created_at: req.body.created_at,
-//                 updated_at: req.body.updated_at,
-//             }
-//         });
-//         res.status(200).json({ data: info })
-//     } catch (error) {
-//         res.status(500).json({ message: error.message })
-//     } finally {
-//         async () => {
-//             await user.$disconnect()
-//         }
-//     }
-// }
+export const updateUsers = async (req, res) => {
+  const id = req.user.exitingUser.id ;
+  const {name, email, phoneNumber, password, city, district, ward, address} = req.body;
+    try {
+        const info = await user.updateFirst({
+            where: {
+                id: id
+            },
+            data: {
+                name: name,
+                email: email,
+                phoneNumber: phoneNumber,
+                password: password,
+                addressDetails: {
+                  city: city,
+                  district: district,
+                  ward: ward,
+                  address: address
+                }
+            }
+        });
+        res.status(200).json({ data: info })
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    } finally {
+        async () => {
+            await user.$disconnect()
+        }
+    }
+}

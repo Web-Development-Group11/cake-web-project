@@ -43,8 +43,6 @@ export const createNewUser = async (req, res) => {
 export const loginUser = async (req, res) => {
   try {
     const { email, phoneNumber, password } = req.body;
-
-
     //tìm kiếm tài khoản người dùng
     const exitingUser = await user.findFirst({
       where: {
@@ -54,12 +52,9 @@ export const loginUser = async (req, res) => {
         ]
       }
     });
-
-
     //nếu tài khoản người dùng tồn tại
     if (exitingUser) {
       //so sánh mật khẩu trong database và mật khẩu được nhập vào
-
       if (await bcrypt.compare(password, exitingUser.password)) {
 
         //tạo token
