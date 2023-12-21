@@ -36,9 +36,9 @@ export default function Introduction() {
               <div className={styles.content__image}>
                 <img src={store02} alt="store02" className={styles.content__paragraphimg02} />
               </div>
-              <div className={styles.contentText}>
-                <h2 className={`${styles.content__header} heading`}>Tầm nhìn, Sứ mệnh, giá trị cốt lõi</h2>
-                <h3 className={`${styles.content__subhead} title--3`}>
+              <div className="content__text">
+                <h2 className='content__header heading'>Tầm nhìn, Sứ mệnh, Giá trị cốt lõi</h2>
+                <h3 className='content__subhead body--1'>
                     Tầm nhìn
                   </h3>
                 <p className={`${styles.content__paragraph} body--1`}>

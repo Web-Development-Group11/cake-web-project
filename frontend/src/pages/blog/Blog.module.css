@@ -75,7 +75,13 @@
     font-weight: 600;
     font-family: 'Inter';
     font-size: 16px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    white-space: pre-wrap;
 }
+
 
 .blog__post {
     flex: 1;

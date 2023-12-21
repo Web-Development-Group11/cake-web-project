@@ -1,16 +1,24 @@
 import React from 'react';
 import textfield from './TextField.module.css';
 
-const TextField = ({ value, placeholder, className }) => {
+const TextField = ({ value, placeholder, className, onChange }) => {
+  const handleChange = (e) => {
+    const newValue = e.target.value;
+    onChange(newValue);
+  };
   return (
-    <div className={`${textfield.textfield__input} ${className}`}>
-      <input
-        className={textfield.input}
-        type="text"
-        value={value}
-        placeholder={placeholder}
-      />
+    <div className={textfield.textfield_container}>
+      <div className={textfield.textfield__input}>
+        <input
+          className={textfield.input}
+          type="text"
+          value={value}
+          placeholder={placeholder}
+          onChange={handleChange}
+        />
+      </div>
     </div>
+
   );
 };
 

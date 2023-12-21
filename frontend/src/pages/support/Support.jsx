@@ -41,11 +41,6 @@ const Support = () => {
                   Bạn hãy điền nội dung tin nhắn vào form bên dưới và gửi cho chúng tôi. Chúng tôi sẽ trả lời bạn sau khi nhận được.
                 </p>
                 <ContactForm />
-                <div className={`${styles.center} ${styles.content__contactButton}`}>
-                  <Button type='btn1 primary'>
-                    Gửi cho chúng tôi
-                  </Button>
-                </div>
                 <div className={styles.mt_13}>
                   <p className={`${styles.content__paragraph} body--1`}>
                     Ngoài ra, bạn có thể liên hệ với Bông Cake bằng các cách sau đây:

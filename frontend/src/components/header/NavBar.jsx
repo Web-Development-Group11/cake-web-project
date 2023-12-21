@@ -10,6 +10,8 @@ import { FaUser } from 'react-icons/fa';
 import { FaShoppingCart } from 'react-icons/fa';
 import { IoMenu } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
+import { useModal } from '../../hook/useModal';
+import { axiosClient } from '../../api/axios'
 
 const navItems = [
   {
@@ -102,6 +104,21 @@ function Navbar() {
   const [searchOn, setSearchOn] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
 
+  const onOpen = useModal((state) => state.onOpen);
+  const setData = useModal((state) => state.setData)
+
+  const handleOpenRandomBox = async () => {
+    onOpen('randomBox');
+
+    try {
+      const response = await axiosClient('/products/random');
+
+      setData(response.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const onCloseMenu = () => {
     setMenuActive(false);
   }
@@ -122,6 +139,7 @@ function Navbar() {
             <img src={logo} alt="logo" className="navBar__logo"></img>
           </Link>
         </div>
+        
         <div onClick={onCloseMenu} className={`navBar__menu ${menuActive ? 'active' : ''}`}>
           <IoMenu onClick={onOpenMenu} className='navBar__menu-icon' />
           <ul className="navBar__item" onClick={(ev) => ev.stopPropagation()}>
@@ -133,9 +151,9 @@ function Navbar() {
               <li key={item.id} className={`${item.cName} title--2`}>
                 {item.isDropdown ? (
                   <>
-                    <p className="nav-item__link has-drop-down" to={item.path}>
+                    <Link className="nav-item__link has-drop-down" to={item.path}>
                       {item.title}
-                    </p>
+                    </Link>
                     <Dropdown items={item.dropDownItems} />
                   </>
                 ) : (
@@ -170,13 +188,15 @@ function Navbar() {
             )}
           </li>
           <li>
-            <Link to="/gift">
+            <div onClick={handleOpenRandomBox}>
               <FaGift className="navBar__icon" />
-            </Link>
+            </div>
           </li>
           <li>
             <div className='nav-item has-drop-down authenticate'>
-              <FaUser className="navBar__icon" />
+              <Link to='/account'>
+                <FaUser className="navBar__icon" />
+              </Link>
               <ul className='product-submenu'>
                 <li className="product-submenu__item">
                   <Link to='/sign-up' className={`submenu-item body--2`}>

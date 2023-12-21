@@ -2,9 +2,10 @@ import React from 'react'
 import './Button.css'
 
 const Button = (props) => {
-  const {type, children} = props;
+  const {type, children, onSubmit} = props;
+  
   return (
-    <button className={type}>{children}</button>
+    <button onClick={onSubmit} className={type}>{children}</button>
   )
 }
 

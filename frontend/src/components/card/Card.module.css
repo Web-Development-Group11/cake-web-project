@@ -1,10 +1,11 @@
 @import url("../../Variable.css");
 
 .card {
-    width: 15.375rem;
-    height: calc(250px * 400 / 276);
+    width: 16.25rem;
+    height: calc(16.25rem * 400 / 276);
     background-color: var(--white);
     border-color: var(--brown);
+    border-radius: 1rem;
     overflow: hidden;
     margin: 0;
     padding: 0;
@@ -68,12 +69,20 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    padding: calc(3 / 31 * 31%);
-    padding-bottom: calc(2 / 31 * 31%);
+    padding: calc(4 / 40 * 40%);
+    padding-bottom: calc(2 / 40 * 40%);
     border-radius: 8px;
     border: 2px solid var(--brown);
     box-shadow: 2px 2px 0px 0px var(--brown);
     margin: 2px;
+}
+
+.card.default {
+    border-radius: 1rem;
+    margin-bottom:4px;
+    margin-top:2px;
+    border: 2px solid var(--brown);
+    box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.25), 2px 2px 0 0 var(--brown);
 }
 
 .card.hover {
@@ -130,12 +139,16 @@
 
 @media screen and (max-width: 768px) {
     .card {
-        height: calc(210px * 400 / 276);
-        width: 203px;
+        height: calc(14rem * 400 / 276);
+        width: 14rem;
     }
 
     .icons {
         width: 16px !important;
+    }
+
+    .content__cart {
+        margin-bottom: 0.5rem;
     }
 }
 
@@ -143,7 +156,7 @@
     .card {
         height: calc(144px * 400 / 276);
         width: 144px;
-        border-radius: 8px;
+        border-radius: 0.5rem;
     }
 
     .icons {
@@ -167,6 +180,7 @@
         .content__price {
             margin-top: 0;
             color: var(--highlight-text);
+            bottom: 0.5rem
         }
     }
 }

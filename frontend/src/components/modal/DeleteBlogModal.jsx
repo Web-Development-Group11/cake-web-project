@@ -6,15 +6,9 @@ import { useModal } from '../../hook/useModal';
 
 export default function DeleteBlogModal() {
   const onClose = useModal((state) => state.onClose);
-  const [closeButtonActive, setCloseButtonActive] = useState(false);
+  const name = useModal((state) => state.name);
 
-  const handleMouseEnter = () => {
-    setCloseButtonActive(true);
-  };
-
-  const handleMouseLeave = () => {
-    setCloseButtonActive(false);
-  };
+  if (name !== 'deleteBlog') return null;
 
   return (
     <Modal>
@@ -23,10 +17,8 @@ export default function DeleteBlogModal() {
         onClick={(ev) => ev.stopPropagation()}
       >
         <IoMdClose
-          className={`${styles.modal__close} ${closeButtonActive ? styles.active : ''}`}
+          className={`${styles.modal__close}`}
           onClick={onClose}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
         />
         <h3 className={styles.modal__header}>Xóa bài viết đã chọn</h3>
         <p className={styles.modal__description}>

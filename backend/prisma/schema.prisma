@@ -6,16 +6,6 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
-model Blog {
-  id          String       @id @default(auto()) @map("_id") @db.ObjectId
-  comments    BlogComments
-  content     BlogContent
-  coverImage  String
-  publishdate String
-  slug        String
-  title       String
-  views       Int
-}
 
 type BlogComments {
   author  String
@@ -24,22 +14,37 @@ type BlogComments {
 }
 
 type BlogContent {
-  paragraph1 String
-  paragraph2 BlogContentParagraph2
-  paragraph3 String
+  description String?
+  /// Multiple data types found: String: 85.7%, Array(String): 14.3% out of 7 sampled entries
+  detail      Json?
+  imageUrl    String?
+  type        String
 }
 
-type BlogContentParagraph2 {
-  content BlogContentParagraph2Content
-  title   String
+type ProductImageUrls {
+  image_url_0  String
+  image_url_1  String
+  image_url_2  String?
+  image_url_3  String?
+  image_url_4  String?
+  image_url_5  String?
+  image_urls_0 String?
+  image_urls_1 String?
+  image_urls_2 String?
+  image_urls_3 String?
 }
 
-type BlogContentParagraph2Content {
-  content  String
-  opentime String
-  phone    String
-  price    String
+model Blog {
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  comments    BlogComments
+  content     BlogContent[]
+  coverImage  String
+  publishdate DateTime      @db.Date
+  slug        String
+  title       String
+  views       String
 }
+
 model Product {
   id                  String           @id @default(auto()) @map("_id") @db.ObjectId
   image_urls          ProductImageUrls
@@ -48,17 +53,6 @@ model Product {
   specific_type       String
   title               String
 }
-
-type ProductImageUrls {
-  image_url_0 String
-  image_url_1 String
-  image_url_2 String?
-  image_url_3 String?
-  image_url_4 String?
-  image_url_5 String?
-}
-
-
 
 model User {
   id          String @id @default(auto()) @map("_id") @db.ObjectId

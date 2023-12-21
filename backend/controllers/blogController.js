@@ -16,7 +16,7 @@ export const getBlog = async (req, res) => {
     };
 }
 
-export const getSuggestBlog = async (res, req) => {
+export const getSuggestBlog = async (req, res) => {
     try {
         const info = await blog.findMany({
             orderBy: {

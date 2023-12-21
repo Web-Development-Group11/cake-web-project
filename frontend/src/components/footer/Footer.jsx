@@ -18,8 +18,8 @@ const Footer = () => {
             <div className={footer.footer__newsletter}>
                 <div className={footer.newsletter__form}>
                     <div className={footer.newsletter__title}>
-                        <p className={`${footer.content} title--1`}>Đăng ký nhận tin</p>
-                        <p>Cập nhật những sản phẩm mới và hấp dẫn từ Bông Cake.</p>
+                        <p className={`${footer.title} title--1`}>Đăng ký nhận tin</p>
+                        <p className={`${footer.content} body--2`}>Cập nhật những sản phẩm mới và hấp dẫn từ Bông Cake.</p>
                     </div>
                     <div className={footer.newsletter__email}>
                         <div className={footer.text_field__input}>
@@ -28,7 +28,7 @@ const Footer = () => {
                             />
                         </div>
 
-                        <div className={footer.registerButton}>
+                        <div className={footer.register_button}>
                             <Button type="btn2 primary">Đăng ký</Button>
                         </div>
                     </div>
@@ -66,7 +66,7 @@ const Footer = () => {
                         <img
                             className={footer.logo}
                             alt="Bong cake logo"
-                            src=".././images/logoBongcake.png"
+                            src="/src/assets/image/logo.png"
                         />
                         <div className={`${footer.slogan__content} title--2`}>
                             Thiên đường bánh ngọt dành riêng cho bạn

@@ -4,44 +4,50 @@ import logo from "../../assets/image/logo.png";
 import bg from "../../assets/image/bgentercode.png";
 import Button from "../../components/button/Button";
 import TextField from "../../components/textField/TextField";
+import { Link } from "react-router-dom";
+import {validateCode} from "./validationForm";
+
 
 function Entercode() {
-    const [username, setUsername] = useState("");
-    const [errorEmail, setErrorEmail] = useState("");
-    const [errorUserName, setErrorUserName] = useState("");
-    const [errorPhone, setErrorPhone] = useState("");
-    const [userColor, setUserColor] = useState("");
-    const [emailColor, setEmailColor] = useState("");
-    const [phoneColor, setPhoneColor] = useState("");
+    const [code, setCode] = useState("");
+    const [codeError, setCodeError] = useState(false);
+    const [codeErrorMsg, setCodeErrorMsg] = useState("");
+    function changeInputValue(name, value) {
+        if (name === "code") {
+            setCode(value);
+            setCodeError(false);
+            setCodeErrorMsg("");
+        } 
+    }
+    function validationForm() {
+        let returnData = {
+            codeError: false,
+            codeErrorMsg: "",
+        };
 
-    function validate(e) {
+        const codeError = validateCode(code);
+
+        if (codeError) {
+            returnData = {
+                ...returnData,
+                codeError: true,
+                codeErrorMsg: codeError
+            };
+        }
+
+        return returnData;
+    }
+    function submitForm(e) {
         e.preventDefault();
-        history.push('/register');
-        let loginInfo = username;
-        let isEmail = loginInfo.includes("@");
-        let isPhone = loginInfo.startsWith("0") && loginInfo.length === 10;
-
-        if (isEmail) {
-            // Check email conditions
-            if (loginInfo.includes("@gmail.com")) {
-                setErrorEmail("");
-                setEmailColor("green");
-            } else {
-                setErrorEmail("Email should have @gmail.com");
-                setEmailColor("red");
-            }
-        } else if (isPhone) {
-            // Check phone conditions
-            if (loginInfo.startsWith("0") && loginInfo.length === 10) {
-                setErrorPhone("");
-                setPhoneColor("green");
-            } else {
-                setErrorPhone("Phone number must be 10 digits starting with 0");
-                setPhoneColor("red");
-            }
+        const validation = validationForm();
+        if (validation.codeError) {
+            setCodeError(validation.codeError);
+            setCodeErrorMsg(validation.codeErrorMsg);
+        } else {
+            window.location.href = "/changepassword";
+            // logic check BE ở đây 
         }
     }
-
     return (
         <div className={formStyles.form__container}>
             {/* hinh */}
@@ -52,14 +58,12 @@ function Entercode() {
                 </div>
             </div>
             {/* form */}
-            <div className={formStyles.form__frame}>
-                {/* logo */}
-                <div className={formStyles.website__logo}>
-                    <a href="/">
-                        <img className={formStyles.logoimg} alt="Bong cake logo" src={logo} />
-                    </a>
-                </div>
+            <div className={formStyles.form__frameoverlap}>
                 <div className={formStyles.form}>
+                    {/* logo */}
+                    <Link to="/" className={formStyles.website__logo}>
+                        <img className={formStyles.logoimg} alt="Bong cake logo" src={logo} />
+                    </Link>
                     <div className={formStyles.form__frame}>
                         {/* title */}
                         <div className={formStyles.form__title}>
@@ -73,7 +77,7 @@ function Entercode() {
                             </span>
                         </div>
                         {/* form */}
-                        <form className={formStyles.form__frameinput}>
+                        <form className={formStyles.form__frameinput}onSubmit={submitForm}>
                             {/* input username */}
                             <div className={formStyles.form__input}>
                                 <div className={formStyles.form__inputtitle}>
@@ -83,29 +87,24 @@ function Entercode() {
                                 </div>
                                 <div className={formStyles.inputwrapper}>
                                     <TextField
-                                        className={formStyles["body--2"]}
-                                        type="text"
-                                        placeholder="Mã code"
-                                        style={{ borderColor: userColor }}
-                                        value={username}
-                                        onChange={(e) => setUsername(e.target.value)}
+                                        placeholder={"Mã xác nhận"}
+                                        name="code"
+                                        value={code}
+                                        onChange={(value) => changeInputValue("code", value)}
                                     />
-                                    <div className={formStyles.errorcontainer}>
-                                        <p className={formStyles.error}>{errorUserName}</p>
-                                        <p className={formStyles.error}>{errorEmail}</p>
-                                        <p className={formStyles.error}>{errorPhone}</p>
-                                    </div>
+                                </div>
+                                <div className={formStyles.errorcontainer}>
+                                    {codeError && <div className={formStyles.errorMsg}>{codeErrorMsg}</div>}
                                 </div>
                             </div>
                             {/* line */}
                             <hr className={formStyles.form__line} />
                             {/* button */}
-                            <div className={formStyles.form__btn}>
-                                <Button type="btn2 primary" className="btn" onClick={validate}
-                                >
+                            < div className={formStyles.form__btn} >
+                                <Button type="btn2 primary button">
                                     Xác nhận
                                 </Button>
-                            </div>
+                            </div >
                         </form>
                         {/* link */}
                         <div className={formStyles.form__link}>
