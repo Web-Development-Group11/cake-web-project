@@ -1,15 +1,9 @@
-import {createNewUser, loginUser } from "../controllers/userController.js";
-import  { Router }  from "express";
+import { getUser } from "../controllers/userController.js";
+import { Router } from "express";
+import { verifyToken } from "../middleware/verifyToken.js";
 
+const userRoute = new Router();
 
-const userRoute = Router();
-
-userRoute.post('/users/register',  createNewUser);
-
-userRoute.post('/users/login',  loginUser);
-
-userRoute.get('/users', async (req, res) => {
-  res.send('complete');
-})
+userRoute.get("/user", verifyToken, getUser);
 
 export default userRoute;

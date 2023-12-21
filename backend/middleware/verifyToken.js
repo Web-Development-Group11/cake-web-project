@@ -7,9 +7,10 @@ import jwt from "jsonwebtoken";
 
     if(!token) return res.status(401).json({message : "Unauthorized"});
     try {
-    const user = jwt.verify(token,secretKey, (err, decoded) => {
+    const user = jwt.verify(token, secretKey, (err, decoded) => {
         if(err) return res.status(403).json({message : "Forbidden"});
-        req.user = decoded.user;
+        req.user = decoded;
+        console.log(req.user);
         next();
     });
 } catch (error) {
