@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../../components/button/Button';
 import Navbar from '../../components/header/NavBar'
 import Banner from '../../components/banner/Banner'
@@ -13,7 +13,20 @@ import { axiosClient } from '../../api/axios';
 const Home = () => {
   const onOpen = useModal((state) => state.onOpen);
   const setData = useModal((state) => state.setData);
+  const [product, setProduct] = useState();
 
+  useEffect(() => {
+    const getProduct = async ()=> {
+    try { 
+      const response = await axiosClient.get('/products');
+      console.log(response);
+      setProduct(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+getProduct();
+},[]);
   const handleOpenRandomBox = async () => {
     onOpen('randomBox');
 
@@ -25,7 +38,7 @@ const Home = () => {
       console.log(error);
     }
   }
-
+  
   return (
     <div>
       <Navbar></Navbar>
@@ -57,30 +70,11 @@ const Home = () => {
         <div className={home.product}>
           <div className={`${home.product__title} heading`}>Sản phẩm nổi bật</div>
           <div className={home.product__container}>
-            <Link className={home.product__item}>
-              <Card></Card>
+          {product?.map((product, index) => (
+            <Link className={home.product__item} key={index}>
+              <Card product={product} ></Card>
             </Link>
-            <Link className={home.product__item}>
-              <Card></Card>
-            </Link>
-            <Link className={home.product__item}>
-              <Card></Card>
-            </Link>
-            <Link className={home.product__item}>
-              <Card></Card>
-            </Link>
-            <Link className={home.product__item}>
-              <Card></Card>
-            </Link>
-            <Link className={home.product__item}>
-              <Card></Card>
-            </Link>
-            <Link className={home.product__item}>
-              <Card></Card>
-            </Link>
-            <Link className={home.product__item}>
-              <Card></Card>
-            </Link>
+          ))}
           </div>
           <Link className={home.product__btn} to = '/product'>
             <Button type="btn1 primary">Xem thêm</Button>
