@@ -6,60 +6,71 @@ import Button from "../../components/button/Button";
 import TextField from "../../components/textField/TextField";
 import TextFieldWithIcon from "../../components/textFieldWithIcon/TextFieldWithIcon";
 import { Link } from "react-router-dom";
+import { validatePassword, validateConfirmPassword } from "./validationForm";
 
 function Changepass() {
-  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errorEmail, setErrorEmail] = useState("");
-  const [errorUserName, setErrorUserName] = useState("");
-  const [errorPhone, setErrorPhone] = useState("");
-  const [errorPassword, setErrorPassword] = useState("");
-  const [userColor, setUserColor] = useState("");
-  const [emailColor, setEmailColor] = useState("");
-  const [phoneColor, setPhoneColor] = useState("");
-  const [passwordColor, setPasswordColor] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordError, setPasswordError] = useState(false);
+  const [confirmPasswordError, setConfirmPasswordError] = useState(false);
+  const [passwordErrorMsg, setPasswordErrorMsg] = useState("");
+  const [confirmPasswordErrorMsg, setConfirmPasswordErrorMsg] = useState("");
 
-  function validate(e) {
-    e.preventDefault();
-    let loginInfo = username;
-    let isEmail = loginInfo.includes("@");
-    let isPhone = loginInfo.startsWith("0") && loginInfo.length === 10;
+  function changeInputValue(name, value) {
+    if (name === "password") {
+      setPassword(value);
+      setPasswordError(false);
+      setPasswordErrorMsg("");
+    } else if (name === "confirmPassword") {
+      setConfirmPassword(value);
+      setConfirmPasswordError(false);
+      setConfirmPasswordErrorMsg("");
+    }
+  }
 
-    if (isEmail) {
-      // Check email conditions
-      if (loginInfo.includes("@gmail.com")) {
-        setErrorEmail("");
-        setEmailColor("green");
-      } else {
-        setErrorEmail("Email should have @gmail.com");
-        setEmailColor("red");
-      }
-    } else if (isPhone) {
-      // Check phone conditions
-      if (loginInfo.startsWith("0") && loginInfo.length === 10) {
-        setErrorPhone("");
-        setPhoneColor("green");
-      } else {
-        setErrorPhone("Phone number must be 10 digits starting with 0");
-        setPhoneColor("red");
-      }
-    } else {
-      // Check username conditions
-      if (loginInfo.length > 8) {
-        setErrorUserName("");
-        setUserColor("green");
-      } else {
-        setErrorUserName("Username must be 8 letters long.");
-        setUserColor("red");
-      }
+  function validationForm() {
+    let returnData = {
+      passwordError: false,
+      confirmPasswordError: false,
+      passwordErrorMsg: "",
+      confirmPasswordErrorMsg: ""
+    };
+    const passwordError = validatePassword(password);
+    const confirmPasswordError = validateConfirmPassword(password, confirmPassword);
+
+    if (passwordError) {
+      returnData = {
+        ...returnData,
+        passwordError: true,
+        passwordErrorMsg: passwordError
+      };
     }
 
-    if (password.length > 8) {
-      setErrorPassword("");
-      setPasswordColor("green");
+    if (confirmPasswordError) {
+      returnData = {
+        ...returnData,
+        confirmPasswordError: true,
+        confirmPasswordErrorMsg: confirmPasswordError
+      };
+    }
+    return returnData;
+  }
+
+  function submitForm(e) {
+    e.preventDefault();
+
+    const validation = validationForm();
+
+    if (validation.passwordError ||
+      validation.confirmPasswordError
+    ) {
+      setPasswordError(validation.passwordError);
+      setPasswordErrorMsg(validation.passwordErrorMsg);
+      setConfirmPasswordError(validation.confirmPasswordError);
+      setConfirmPasswordErrorMsg(validation.confirmPasswordErrorMsg);
     } else {
-      setErrorPassword("Password should be 8 letters long");
-      setPasswordColor("red");
+      window.location.href = "/login";
+      // logic check BE here
     }
   }
 
@@ -74,11 +85,11 @@ function Changepass() {
       </div>
       {/* form */}
       <div className={formStyles.form__frameoverlap}>
-        {/* logo */}
-        <Link to="/" className={formStyles.website__logo}>
-          <img className={formStyles.logoimg} alt="Bong cake logo" src={logo} />
-        </Link>
         <div className={formStyles.form}>
+          {/* logo */}
+          <Link to="/" className={formStyles.website__logo}>
+            <img className={formStyles.logoimg} alt="Bong cake logo" src={logo} />
+          </Link>
           <div className={formStyles.form__frame}>
             {/* title */}
             <div className={formStyles.form__title}>
@@ -87,7 +98,7 @@ function Changepass() {
               </span>
             </div>
             {/* form */}
-            <form className={formStyles.form__frameinput} onSubmit={validate}>
+            <form className={formStyles.form__frameinput} onSubmit={submitForm}>
               {/* input mật khẩu */}
               <div className={formStyles.form__input}>
                 <div className={formStyles.form__inputtitle}>
@@ -96,15 +107,15 @@ function Changepass() {
                   </div>
                 </div>
                 <div className={formStyles.inputwrapper}>
-                <TextFieldWithIcon
-                    placeholder={"Mật khẩu mới"}
-                    style={{ borderColor: passwordColor }}
-                    defaultValue={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                  <TextFieldWithIcon
+                    placeholder={"Nhập mật khẩu mới"}
+                    value={password}
+                    onChange={(value) => changeInputValue("password", value)}
                   />
-                  <div className={formStyles.errorcontainer}>
-                    <p className={formStyles.error}>{errorPassword}</p>
-                  </div>
+
+                </div>
+                <div className={formStyles.errorcontainer}>
+                  {passwordError && <div className={formStyles.errorMsg}>{passwordErrorMsg}</div>}
                 </div>
               </div>
               {/* input password */}
@@ -116,21 +127,20 @@ function Changepass() {
                 </div>
                 <div className={formStyles.inputwrapper}>
                   <TextFieldWithIcon
-                    placeholder={"Mật khẩu mới"}
-                    style={{ borderColor: passwordColor }}
-                    defaultValue={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder={"Nhập lại mật khẩu mới"}
+                    value={confirmPassword}
+                    onChange={(value) => changeInputValue("confirmPassword", value)}
                   />
-                  <div className={formStyles.errorcontainer}>
-                    <p className={formStyles.error}>{errorPassword}</p>
-                  </div>
+                </div>
+                <div className={formStyles.errorcontainer}>
+                  {confirmPasswordError && <div className={formStyles.errorMsg}>{confirmPasswordErrorMsg}</div>}
                 </div>
               </div>
               {/* line */}
               <hr className={formStyles.form__line} />
               {/* button */}
               < div className={formStyles.form__btn} >
-                <Button type="btn2 primary button" onClick={validate}>
+                <Button type="btn2 primary button">
                   Thay đổi
                 </Button>
               </div >

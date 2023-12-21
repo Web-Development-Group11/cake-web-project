@@ -6,42 +6,56 @@ import Button from "../../components/button/Button";
 import TextField from "../../components/textField/TextField";
 import TextFieldWithIcon from "../../components/textFieldWithIcon/TextFieldWithIcon";
 import { Link } from "react-router-dom";
+import { validateUsername } from "./validationForm";
 
 function Forgetpass() {
   const [username, setUsername] = useState("");
-  const [errorEmail, setErrorEmail] = useState("");
-  const [errorUserName, setErrorUserName] = useState("");
-  const [errorPhone, setErrorPhone] = useState("");
-  const [userColor, setUserColor] = useState("");
-  const [emailColor, setEmailColor] = useState("");
-  const [phoneColor, setPhoneColor] = useState("");
+  const [usernameError, setUsernameError] = useState(false);
+  const [usernameErrorMsg, setUsernameErrorMsg] = useState("");
 
-  function validate(e) {
-    e.preventDefault();
-    let loginInfo = username;
-    let isEmail = loginInfo.includes("@");
-    let isPhone = loginInfo.startsWith("0") && loginInfo.length === 10;
-
-    if (isEmail) {
-      // Check email conditions
-      if (loginInfo.includes("@gmail.com")) {
-        setErrorEmail("");
-        setEmailColor("green");
-      } else {
-        setErrorEmail("Email should have @gmail.com");
-        setEmailColor("red");
-      }
-    } else if (isPhone) {
-      // Check phone conditions
-      if (loginInfo.startsWith("0") && loginInfo.length === 10) {
-        setErrorPhone("");
-        setPhoneColor("green");
-      } else {
-        setErrorPhone("Phone number must be 10 digits starting with 0");
-        setPhoneColor("red");
-      }
+  function changeInputValue(name, value) {
+    if (name === "username") {
+      setUsername(value);
+      setUsernameError(false);
+      setUsernameErrorMsg("");
     }
   }
+
+  function validationForm() {
+    let returnData = {
+      usernameError: false,
+      usernameErrorMsg: "",
+    };
+
+    const usernameError = validateUsername(username);
+
+    if (usernameError) {
+      returnData = {
+        ...returnData,
+        usernameError: true,
+        usernameErrorMsg: usernameError
+      };
+    }
+
+
+
+    return returnData;
+  }
+
+  function submitForm(e) {
+    e.preventDefault();
+
+    const validation = validationForm();
+
+    if (validation.usernameError || validation.passwordError) {
+      setUsernameError(validation.usernameError);
+      setUsernameErrorMsg(validation.usernameErrorMsg);
+    } else {
+      window.location.href = "/entercode";
+      // logic check BE ở đây 
+    } 
+  }
+
 
   return (
     <div className={formStyles.form__container}>
@@ -54,11 +68,11 @@ function Forgetpass() {
       </div>
       {/* form */}
       <div className={formStyles.form__frameoverlap}>
-        {/* logo */}
-        <Link to="/" className={formStyles.website__logo}>
-          <img className={formStyles.logoimg} alt="Bong cake logo" src={logo} />
-        </Link>
         <div className={formStyles.form}>
+          {/* logo */}
+          <Link to="/" className={formStyles.website__logo}>
+            <img className={formStyles.logoimg} alt="Bong cake logo" src={logo} />
+          </Link>
           <div className={formStyles.form__frame}>
             {/* title */}
             <div className={formStyles.form__title}>
@@ -67,7 +81,7 @@ function Forgetpass() {
               </span>
             </div>
             {/* form */}
-            <form className={formStyles.form__frameinput} onSubmit={validate}>
+            <form className={formStyles.form__frameinput} onSubmit={submitForm}>
               {/* input username */}
               <div className={formStyles.form__input}>
                 <div className={formStyles.form__inputtitle}>
@@ -78,15 +92,13 @@ function Forgetpass() {
                 <div className={formStyles.inputwrapper}>
                   <TextField
                     placeholder={"Email/ Số điện thoại"}
-                    style={{ borderColor: userColor }}
-                    Value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    name="username"
+                    value={username}
+                    onChange={(value) => changeInputValue("username", value)}
                   />
-                  <div lassName={formStyles.errorcontainer}>
-                    <p className={formStyles.error}>{errorUserName}</p>
-                    <p className={formStyles.error}>{errorEmail}</p>
-                    <p className={formStyles.error}>{errorPhone}</p>
-                  </div>
+                </div>
+                <div className={formStyles.errorcontainer}>
+                  {usernameError && <div className={formStyles.errorMsg}>{usernameErrorMsg}</div>}
                 </div>
               </div>
 
@@ -94,7 +106,7 @@ function Forgetpass() {
               <hr className={formStyles.form__line} />
               {/* button */}
               < div className={formStyles.form__btn} >
-                <Button type="btn2 primary button" onClick={validate}>
+                <Button type="btn2 primary button">
                   Gửi mã xác nhận
                 </Button>
               </div >
