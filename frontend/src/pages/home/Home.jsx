@@ -107,9 +107,9 @@ const Home = () => {
           <div className={home.randombox__content}>
             <div className={`${home.randombox__title} heading`}>Random Box</div>
             <div className={`${home.randombox_mainText} body--2`}>Bạn có đang phân vân không biết lựa chọn phẩm nào? Random box sẽ đề xuất cho bạn những sản phẩm ngẫu nhiên, mang đến những trải nghiệm mới lạ và thú vị. Thử ngay để tận hưởng sự bất ngờ!</div>
-            <Link to = './randombox'>
+            <div onClick={handleOpenRandomBox}>
               <Button type="btn1 primary">Xem ngay</Button>
-            </Link>
+            </div>
           </div> 
         </div>
       </div>
