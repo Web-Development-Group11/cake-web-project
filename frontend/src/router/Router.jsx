@@ -1,4 +1,4 @@
-import { BrowserRouter , Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../pages/home/Home";
 import Login from "../pages/login/Login";
 import Register from "../pages/login/Register";
@@ -7,7 +7,8 @@ import ProductDetail from "../pages/productDetail/ProductDetail";
 import Support from "../pages/support/Support";
 import Policy from "../pages/policy/Policy";
 import Faq from "../pages/faq/faq";
-import Payment from "../pages/payment/Payment";
+import PaymentPageGuest from '../pages/payment/PaymentPageGuest';
+import PaymentPageAuthenticated from '../pages/payment/PaymentPageAuthenticated'; 
 import Account from "../pages/account/Account";
 import Cart from "../pages/cart/Cart";
 import Introduction from "../pages/introduction/Introduction";
@@ -20,25 +21,25 @@ const Router = () => {
     return (
         <div className="App">
             <BrowserRouter>
-                    <Routes>
-                        <Route path="/" element={< Home />} />
-                        <Route path="/login" element={< Login />} />
-                        <Route path="/register" element={< Register />} />
-                        <Route path="/product" element={< Product />} />
-                        <Route path="product_detail" element={< ProductDetail />} />
-                        <Route path="/support" element={< Support/>} />
-                        <Route path="/policy" element={< Policy/>} />
-                        <Route path="/faq" element={< Faq/>} />
-                        <Route path="/payment" element={< Payment />} />
-                        <Route path="/account" element={< Account />} />
-                        <Route path="/cart" element={< Cart />} />
-                        <Route path="/introduction" element={< Introduction />} />
-                        <Route path="/blog" element={< Blog />} />
-                        <Route path="/blog/:blogId" element={< BlogDetail />} />
-                    </Routes>
+                <Routes>
+                    <Route path="/" element={< Home />} />
+                    <Route path="/login" element={< Login />} />
+                    <Route path="/register" element={< Register />} />
+                    <Route path="/product" element={< Product />} />
+                    <Route path="product_detail" element={< ProductDetail />} />
+                    <Route path="/support" element={< Support />} />
+                    <Route path="/policy" element={< Policy />} />
+                    <Route path="/faq" element={< Faq />} />
+                    <Route path="/thanh_toán_(chưa_đăng_nhập)" element={< PaymentPageGuest />} />
+                    <Route path="/thanh_toán" element={< PaymentPageAuthenticated />} />                        <Route path="/account" element={< Account />} />
+                    <Route path="/cart" element={< Cart />} />
+                    <Route path="/introduction" element={< Introduction />} />
+                    <Route path="/blog" element={< Blog />} />
+                    <Route path="/blog/:blogId" element={< BlogDetail />} />
+                </Routes>
             </BrowserRouter>
         </div>
-      );
+    );
 }
 
 export default Router;

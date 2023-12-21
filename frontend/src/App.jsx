@@ -10,7 +10,8 @@ import ProductDetail from './pages/productDetail/ProductDetail';
 import Support from './pages/support/Support';
 import Policy from './pages/policy/Policy';
 import Faq from './pages/faq/faq';
-import Payment from './pages/payment/Payment';
+import PaymentPageGuest from './pages/payment/PaymentPageGuest';
+import PaymentPageAuthenticated from './pages/payment/PaymentPageAuthenticated';
 import Account from './pages/account/Account';
 import Cart from './pages/cart/Cart';
 import Introduction from './pages/introduction/Introduction';
@@ -38,7 +39,8 @@ function App() {
                 <Route path="/support" element={< Support/>} />
                 <Route path="/policy" element={< Policy/>} />
                 <Route path="/faq" element={< Faq/>} />
-                <Route path="/payment" element={< Payment />} />
+                <Route path="/paymentpageguest" element={< PaymentPageGuest />} />
+                <Route path="/paymentpageauth" element={< PaymentPageAuthenticated />} />
                 <Route path="/account" element={< Account />} />
                 <Route path="/cart" element={< Cart/>} />
                 <Route path="/introduction" element={< Introduction />} />

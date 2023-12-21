@@ -70,7 +70,7 @@
         0px 3px 12px rgba(0, 0, 0, 0.10);
 }
 
-.secondary--2 {
+.secondary--2 { 
     background-color: var(--background-2);
     color: var(--primary-color);
     border: 2px solid var(--primary-color);
