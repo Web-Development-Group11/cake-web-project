@@ -8,68 +8,66 @@ import TextFieldWithIcon from "../../components/textFieldWithIcon/TextFieldWithI
 import { Link } from "react-router-dom";
 
 function Register() {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [repassword, setRePassword] = useState("");
-  const [errorEmail, setErrorEmail] = useState("");
-  const [errorUserName, setErrorUserName] = useState("");
-  const [errorPhone, setErrorPhone] = useState("");
-  const [errorPassword, setErrorPassword] = useState("");
-  const [errorRePassword, setErrorRePassword] = useState("");
-  const [userColor, setUserColor] = useState("");
-  const [emailColor, setEmailColor] = useState("");
-  const [phoneColor, setPhoneColor] = useState("");
-  const [passwordColor, setPasswordColor] = useState("");
-  const [repasswordColor, setRePasswordColor] = useState("");
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [emailErrorMsg, setEmailErrorMsg] = useState("");
+  const [passwordErrorMsg, setPasswordErrorMsg] = useState("");
 
-  function validate(e) {
+  function changeInputValue(name, value) {
+    if (name === "email") {
+      setEmail(value);
+      setEmailError(false);
+      setEmailErrorMsg("");
+    } else if (name === "password") {
+      setPassword(value);
+      setPasswordError(false);
+      setPasswordErrorMsg("");
+    }
+  }
+
+  function validationForm() {
+    let returnData = {
+      emailError: false,
+      passwordError: false,
+      emailErrorMsg: "",
+      passwordErrorMsg: ""
+    };
+
+    const re = /\S+@\S+\.\S+/;
+    if (!re.test(email)) {
+      returnData = {
+        ...returnData,
+        emailError: true,
+        emailErrorMsg: "Không đúng định dạng email"
+      };
+    }
+
+    if (password.length < 8) {
+      returnData = {
+        ...returnData,
+        passwordError: true,
+        passwordErrorMsg: "Mật khẩu phải lớn hơn 8 ký tự"
+      };
+    }
+
+    return returnData;
+  }
+
+  function submitForm(e) {
     e.preventDefault();
-    let loginInfo = username;
-    let isEmail = loginInfo.includes("@");
-    let isPhone = loginInfo.startsWith("0") && loginInfo.length === 10;
 
-    if (isEmail) {
-      // Check email conditions
-      if (loginInfo.includes("@gmail.com")) {
-        setErrorEmail("");
-        setEmailColor("green");
-      } else {
-        setErrorEmail("Email should have @gmail.com");
-        setEmailColor("red");
-      }
-    } else if (isPhone) {
-      // Check phone conditions
-      if (loginInfo.startsWith("0") && loginInfo.length === 10) {
-        setErrorPhone("");
-        setPhoneColor("green");
-      } else {
-        setErrorPhone("Phone number must be 10 digits starting with 0");
-        setPhoneColor("red");
-      }
-    } else {
-      // Check username conditions
-      if (loginInfo.length > 8) {
-        setErrorUserName("");
-        setUserColor("green");
-      } else {
-        setErrorUserName("Username must be 8 letters long.");
-        setUserColor("red");
-      }
-    }
+    const validation = validationForm();
 
-    if (password.length > 8) {
-      setErrorPassword("");
-      setPasswordColor("green");
+    if (validation.emailError || validation.passwordError) {
+      setEmailError(validation.emailError);
+      setEmailErrorMsg(validation.emailErrorMsg);
+      setPasswordError(validation.passwordError);
+      setPasswordErrorMsg(validation.passwordErrorMsg);
     } else {
-      setErrorPassword("Password should be 8 letters long");
-      setPasswordColor("red");
-    }
-    if (password === repassword) {
-      setErrorRePassword("");
-      setRePasswordColor("green");
-    } else {
-      setErrorRePassword("Password should be 8 letters long");
-      setRePasswordColor("red");
+      window.location.href = "/";
+      // logic check BE ở đây 
     }
   }
 
@@ -128,9 +126,9 @@ function Register() {
                   <div className={formStyles.form__inputtitle1}>
                     <div className={formStyles["title--3"]}>Mật khẩu</div>
                   </div>
-                </div>  
+                </div>
                 <div className={formStyles.inputwrapper}>
-                <TextFieldWithIcon
+                  <TextFieldWithIcon
                     placeholder={"Nhập mật khẩu"}
                     style={{ borderColor: passwordColor }}
                     defaultValue={password}
@@ -149,7 +147,7 @@ function Register() {
                   </div>
                 </div>
                 <div className={formStyles.inputwrapper}>
-                <TextFieldWithIcon
+                  <TextFieldWithIcon
                     placeholder={"Nhập lại mật khẩu"}
                     style={{ borderColor: passwordColor }}
                     defaultValue={password}
