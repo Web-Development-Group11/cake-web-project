@@ -129,7 +129,8 @@ function Login() {
                                     <div className={formStyles.form__inputtitle1}>
                                         <div className={formStyles["title--3"]}>Mật khẩu</div>
                                     </div>
-                                </div>
+                                    <a href="/forgetpassword" className={formStyles["title--3"]}>Quên mật khẩu</a>
+                                </div >
                                 <div className={formStyles.inputwrapper}>
                                     <TextFieldWithIcon
                                         placeholder={"Mật khẩu"}
