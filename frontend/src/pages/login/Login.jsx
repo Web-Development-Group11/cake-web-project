@@ -4,6 +4,8 @@ import logo from "../../assets/image/logo.png";
 import bg from "../../assets/image/bglogin.png";
 import Button from "../../components/button/Button";
 import TextField from "../../components/textField/TextField";
+import TextFieldWithIcon from "../../components/textFieldWithIcon/TextFieldWithIcon";
+import { Link } from "react-router-dom";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -17,49 +19,73 @@ function Login() {
   const [phoneColor, setPhoneColor] = useState("");
   const [passwordColor, setPasswordColor] = useState("");
 
-  function validate(e) {
-    e.preventDefault();
-    let loginInfo = username;
-    let isEmail = loginInfo.includes("@");
-    let isPhone = loginInfo.startsWith("0") && loginInfo.length === 10;
-
+  const validate = (event) => {
+    event.preventDefault();
+  
+    let isEmail = username.includes("@");
+    let isPhone = username.startsWith("0") && username.length === 10;
+    let hasError = false; // Track if any errors are present
+  
+    // Validate email
     if (isEmail) {
-      // Check email conditions
-      if (loginInfo.includes("@gmail.com")) {
+      if (username.endsWith("@gmail.com")) {
         setErrorEmail("");
         setEmailColor("green");
       } else {
-        setErrorEmail("Email should have @gmail.com");
+        setErrorEmail("Email should end with @gmail.com");
         setEmailColor("red");
+        hasError = true; // Set error flag
       }
-    } else if (isPhone) {
-      // Check phone conditions
-      if (loginInfo.startsWith("0") && loginInfo.length === 10) {
+    } else {
+      setErrorEmail("");
+      setEmailColor(""); // Reset the color if not an email
+    }
+  
+    // Validate phone number
+    if (isPhone) {
+      if (/^\d+$/.test(username)) {
         setErrorPhone("");
         setPhoneColor("green");
       } else {
-        setErrorPhone("Phone number must be 10 digits starting with 0");
+        setErrorPhone("Phone number must contain only digits");
         setPhoneColor("red");
+        hasError = true; // Set error flag
       }
     } else {
-      // Check username conditions
-      if (loginInfo.length > 8) {
-        setErrorUserName("");
-        setUserColor("green");
-      } else {
-        setErrorUserName("Username must be 8 letters long.");
+      setErrorPhone("");
+      setPhoneColor(""); // Reset the color if not a phone number
+    }
+  
+    // Validate username
+    if (!isEmail && !isPhone) {
+      if (username.trim() === "") {
+        setErrorUserName("Bạn chưa nhập tên đăng nhập");
         setUserColor("red");
+        hasError = true; // Set error flag
+      } else {
+        setErrorUserName("");
+        setUserColor("");
       }
     }
-
-    if (password.length > 8) {
+  
+    // Validate password
+    if (password.length >= 8) {
       setErrorPassword("");
       setPasswordColor("green");
     } else {
-      setErrorPassword("Password should be 8 letters long");
+      setErrorPassword("Mật khẩu phải có ít nhất 8 ký tự");
       setPasswordColor("red");
+      hasError = true; // Set error flag
     }
-  }
+  
+    // If any errors are present, you can handle them or display a message to the user
+    if (hasError) {
+      return; // Don't proceed with form submission
+    }
+  
+    // Submit the form or perform any other actions
+    console.log("Form submitted successfully!");
+  };
 
   return (
     <div className={formStyles.form__container}>
@@ -71,13 +97,12 @@ function Login() {
         </div>
       </div>
       {/* form */}
-      <div className={formStyles.form__frame}>
+      <div className={formStyles.form__frameoverlap}>
         {/* logo */}
-        <div className={formStyles.website__logo}>
-          <a href="/">
-            <img  className={formStyles.logoimg} alt="Bong cake logo" src={logo} />
-          </a>
-        </div>
+        <Link to="/" className={formStyles.website__logo}>
+          <img className={formStyles.logoimg} alt="Bong cake logo" src={logo} />
+        </Link>
+        {/* form */}
         <div className={formStyles.form}>
           <div className={formStyles.form__frame}>
             {/* title */}
@@ -91,7 +116,7 @@ function Login() {
 
             </div>
             {/* form */}
-            <form className={formStyles.form__frameinput}>
+            <form className={formStyles.form__frameinput} onSubmit={validate}>
               {/* input username */}
               <div className={formStyles.form__input}>
                 <div className={formStyles.form__inputtitle}>
@@ -101,11 +126,9 @@ function Login() {
                 </div>
                 <div className={formStyles.inputwrapper}>
                   <TextField
-                    className={formStyles.form__textfield}
-                    type="text"
                     placeholder={"Email/ Số điện thoại"}
                     style={{ borderColor: userColor }}
-                    value={username}
+                    Value={username}
                     onChange={(e) => setUsername(e.target.value)}
                   />
                   <div className={formStyles.errorcontainer}>
@@ -124,26 +147,23 @@ function Login() {
                   <a href="/forgetpassword" className={formStyles["title--3"]}>Quên mật khẩu</a>
                 </div >
                 <div className={formStyles.inputwrapper}>
-                  <TextField
-                    className={formStyles.form__textfield}
-                    type="password"
-                    placeholder="Mật khẩu"
+                  <TextFieldWithIcon
+                    placeholder={"Mật khẩu"}
                     style={{ borderColor: passwordColor }}
-                    value={password}
+                    defaultValue={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
+
                   <div className={formStyles.errorcontainer}>
                     <p className={formStyles.error}>{errorPassword}</p>
                   </div>
                 </div>
               </div >
               {/* line */}
-   
-                <hr className={formStyles.form__line} />
-     
+              <hr className={formStyles.form__line} />
               {/* button */}
               < div className={formStyles.form__btn} >
-                <Button type="btn2 primary" className="btn" onClick={validate}>
+                <Button type="btn2 primary button" onClick={validate}>
                   Đăng nhập
                 </Button>
               </div >

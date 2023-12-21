@@ -4,6 +4,8 @@ import logo from "../../assets/image/logo.png";
 import bg from "../../assets/image/bgchangepass.png";
 import Button from "../../components/button/Button";
 import TextField from "../../components/textField/TextField";
+import TextFieldWithIcon from "../../components/textFieldWithIcon/TextFieldWithIcon";
+import { Link } from "react-router-dom";
 
 function Changepass() {
   const [username, setUsername] = useState("");
@@ -71,37 +73,33 @@ function Changepass() {
         </div>
       </div>
       {/* form */}
-      <div className={formStyles.form__frame}>
+      <div className={formStyles.form__frameoverlap}>
         {/* logo */}
-        <div className={formStyles.website__logo}>
-          <a href="/">
-            <img  className={formStyles.logoimg} alt="Bong cake logo" src={logo} />
-          </a>
-        </div>
+        <Link to="/" className={formStyles.website__logo}>
+          <img className={formStyles.logoimg} alt="Bong cake logo" src={logo} />
+        </Link>
         <div className={formStyles.form}>
           <div className={formStyles.form__frame}>
             {/* title */}
             <div className={formStyles.form__title}>
               <span className={formStyles.form__title1}>
-                <span   className={formStyles.heading} >Đổi mật khẩu mới</span>
+                <span className={formStyles.heading} >Đổi mật khẩu mới</span>
               </span>
             </div>
             {/* form */}
-            <form  className={formStyles.form__frameinput}>
-              {/* input username */}
+            <form className={formStyles.form__frameinput} onSubmit={validate}>
+              {/* input mật khẩu */}
               <div className={formStyles.form__input}>
                 <div className={formStyles.form__inputtitle}>
                   <div className={formStyles.form__inputtitle1}>
                     <div className={formStyles["title--3"]}>Nhập mật khẩu mới</div>
                   </div>
                 </div>
-                <div lassName={formStyles.inputwrapper}>
-                  <TextField
-                    className={formStyles.form__textfield}
-                    type="password"
-                    placeholder={"Mật khẩu"}
-                    style={{ borderColor: userColor }}
-                    value={username}
+                <div className={formStyles.inputwrapper}>
+                <TextFieldWithIcon
+                    placeholder={"Mật khẩu mới"}
+                    style={{ borderColor: passwordColor }}
+                    defaultValue={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   <div className={formStyles.errorcontainer}>
@@ -117,12 +115,10 @@ function Changepass() {
                   </div>
                 </div>
                 <div className={formStyles.inputwrapper}>
-                  <TextField
-                    className={formStyles.form__textfield}
-                    type="password"
-                    placeholder="Mật khẩu"
+                  <TextFieldWithIcon
+                    placeholder={"Mật khẩu mới"}
                     style={{ borderColor: passwordColor }}
-                    value={password}
+                    defaultValue={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   <div className={formStyles.errorcontainer}>
@@ -133,16 +129,16 @@ function Changepass() {
               {/* line */}
               <hr className={formStyles.form__line} />
               {/* button */}
-              <div className={formStyles.form__btn}>
-              <Button type="btn2 primary" className="btn" onClick={validate}>
+              < div className={formStyles.form__btn} >
+                <Button type="btn2 primary button" onClick={validate}>
                   Thay đổi
                 </Button>
-              </div>
+              </div >
             </form>
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 

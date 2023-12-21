@@ -4,6 +4,8 @@ import logo from "../../assets/image/logo.png";
 import bg from "../../assets/image/bgforgetpass.png";
 import Button from "../../components/button/Button";
 import TextField from "../../components/textField/TextField";
+import TextFieldWithIcon from "../../components/textFieldWithIcon/TextFieldWithIcon";
+import { Link } from "react-router-dom";
 
 function Forgetpass() {
   const [username, setUsername] = useState("");
@@ -38,7 +40,7 @@ function Forgetpass() {
         setErrorPhone("Phone number must be 10 digits starting with 0");
         setPhoneColor("red");
       }
-    } 
+    }
   }
 
   return (
@@ -47,17 +49,15 @@ function Forgetpass() {
       <div className={formStyles.form__image}>
         <div className={formStyles.image__bg}></div>
         <div className={formStyles.image__holder}>
-          <img className={formStyles.image}  alt="Background" src={bg} />
+          <img className={formStyles.image} alt="Background" src={bg} />
         </div>
       </div>
       {/* form */}
-      <div className={formStyles.form__frame}>
+      <div className={formStyles.form__frameoverlap}>
         {/* logo */}
-        <div className={formStyles.website__logo}>
-          <a href="/">
-            <img  className={formStyles.logoimg} alt="Bong cake logo" src={logo} />
-          </a>
-        </div>
+        <Link to="/" className={formStyles.website__logo}>
+          <img className={formStyles.logoimg} alt="Bong cake logo" src={logo} />
+        </Link>
         <div className={formStyles.form}>
           <div className={formStyles.form__frame}>
             {/* title */}
@@ -67,7 +67,7 @@ function Forgetpass() {
               </span>
             </div>
             {/* form */}
-            <form className={formStyles.form__frameinput}>
+            <form className={formStyles.form__frameinput} onSubmit={validate}>
               {/* input username */}
               <div className={formStyles.form__input}>
                 <div className={formStyles.form__inputtitle}>
@@ -77,11 +77,9 @@ function Forgetpass() {
                 </div>
                 <div className={formStyles.inputwrapper}>
                   <TextField
-                    className={formStyles["body--2"]}
-                    type="text"
                     placeholder={"Email/ Số điện thoại"}
                     style={{ borderColor: userColor }}
-                    value={username}
+                    Value={username}
                     onChange={(e) => setUsername(e.target.value)}
                   />
                   <div lassName={formStyles.errorcontainer}>
@@ -95,11 +93,11 @@ function Forgetpass() {
               {/* line */}
               <hr className={formStyles.form__line} />
               {/* button */}
-              <div className={formStyles.form__btn}>
-                <Button type="btn2 primary" className="btn" onClick={validate}>
+              < div className={formStyles.form__btn} >
+                <Button type="btn2 primary button" onClick={validate}>
                   Gửi mã xác nhận
                 </Button>
-              </div>
+              </div >
             </form>
           </div>
         </div>

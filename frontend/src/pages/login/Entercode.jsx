@@ -4,7 +4,8 @@ import logo from "../../assets/image/logo.png";
 import bg from "../../assets/image/bgentercode.png";
 import Button from "../../components/button/Button";
 import TextField from "../../components/textField/TextField";
-
+import TextFieldWithIcon from "../../components/textFieldWithIcon/TextFieldWithIcon";
+import { Link } from "react-router-dom";
 function Entercode() {
     const [username, setUsername] = useState("");
     const [errorEmail, setErrorEmail] = useState("");
@@ -52,13 +53,11 @@ function Entercode() {
                 </div>
             </div>
             {/* form */}
-            <div className={formStyles.form__frame}>
+            <div className={formStyles.form__frameoverlap}>
                 {/* logo */}
-                <div className={formStyles.website__logo}>
-                    <a href="/">
-                        <img className={formStyles.logoimg} alt="Bong cake logo" src={logo} />
-                    </a>
-                </div>
+                <Link to="/" className={formStyles.website__logo}>
+                    <img className={formStyles.logoimg} alt="Bong cake logo" src={logo} />
+                </Link>
                 <div className={formStyles.form}>
                     <div className={formStyles.form__frame}>
                         {/* title */}
@@ -73,7 +72,7 @@ function Entercode() {
                             </span>
                         </div>
                         {/* form */}
-                        <form className={formStyles.form__frameinput}>
+                        <form className={formStyles.form__frameinput} onSubmit={validate}>
                             {/* input username */}
                             <div className={formStyles.form__input}>
                                 <div className={formStyles.form__inputtitle}>
@@ -83,11 +82,9 @@ function Entercode() {
                                 </div>
                                 <div className={formStyles.inputwrapper}>
                                     <TextField
-                                        className={formStyles["body--2"]}
-                                        type="text"
-                                        placeholder="Mã code"
+                                        placeholder={"Mã code"}
                                         style={{ borderColor: userColor }}
-                                        value={username}
+                                        Value={username}
                                         onChange={(e) => setUsername(e.target.value)}
                                     />
                                     <div className={formStyles.errorcontainer}>
@@ -100,12 +97,11 @@ function Entercode() {
                             {/* line */}
                             <hr className={formStyles.form__line} />
                             {/* button */}
-                            <div className={formStyles.form__btn}>
-                                <Button type="btn2 primary" className="btn" onClick={validate}
-                                >
+                            < div className={formStyles.form__btn} >
+                                <Button type="btn2 primary button" onClick={validate}>
                                     Xác nhận
                                 </Button>
-                            </div>
+                            </div >
                         </form>
                         {/* link */}
                         <div className={formStyles.form__link}>
