@@ -1,7 +1,11 @@
 import React from 'react';
 import textfield from './TextField.module.css';
 
-const TextField = ({ value, placeholder, className }) => {
+const TextField = ({ value, placeholder, className, onChange }) => {
+  const handleChange = (e) => {
+    const newValue = e.target.value;
+    onChange(newValue);
+  };
   return (
     <div className={textfield.textfield_container}>
       <div className={textfield.textfield__input}>
@@ -10,6 +14,7 @@ const TextField = ({ value, placeholder, className }) => {
           type="text"
           value={value}
           placeholder={placeholder}
+          onChange={handleChange}
         />
       </div>
     </div>
