@@ -4,6 +4,8 @@ import TextField from '../textField/TextField'
 import Button from '../button/Button';
 import styles from './Tab.module.css';
 import { Link } from 'react-router-dom'
+import { FaRegClock, FaRegMap } from "react-icons/fa";
+import { FiFileText, FiBox, FiTruck, FiInbox, FiStar } from "react-icons/fi";
 
 const Tab = () => {
     const [activeTab, setActiveTab] = useState('customerInfo');
@@ -15,14 +17,14 @@ const Tab = () => {
     };
 
     const [userData, setUserData] = useState({
-      email: '',
-      phoneNumber: '*********999',
-      displayName: '',
-      password: '',
-      province: 'Thủ Đức',
-      district: '',
+      email: 'huyenanhdao@gmail.com',
+      phoneNumber: '0398607486',
+      displayName: 'huyenanhdao910',
+      password: '********',
+      city: 'Hồ Chí Minh',
+      district: 'Thủ Đức',
       ward: ' Linh Xuân',
-      address: 'Cổng chính KTX Khu B Đại học Quốc gia',
+      address: 'KTX Khu B ĐHQG',
     });
   
     const handleInputChange = (e) => {
@@ -39,11 +41,13 @@ const Tab = () => {
     // This is just placeholder data. Replace this with your actual data.
     const orders = [
       {
-        image: 'path/to/image.jpg',
-        name: 'No sugar cake',
+        image: '/src/assets/image/order-img.png',
+        name: 'Red Velvet Cupcake',
         price: '45.000đ',
-        date: 'July 30 at 10:00 AM',
-        orderNumber: 'T23456789ABCXYZ123'
+        quantity: 1,
+        date: '01-01-2023',
+        orderNumber: '123456789ABCXYZ123',
+        status: 'Đang vận chuyển'
       },
       // Add more orders here...
     ];
@@ -83,7 +87,7 @@ const Tab = () => {
           </div>
         </div>
 
-        {/* TabContent of Customer Info Tab */}
+        {/* TabContent of Customer Information Tab */}
         <div className={styles.tab__content}>
           {activeTab === 'customerInfo' && (
             <div className={styles.customerInfo}>
@@ -144,15 +148,15 @@ const Tab = () => {
 
                     </div>
 
-                    {/* Right field include: province, district, ward and location */}
+                    {/* Right field include: city, district, ward and location */}
                     <div className={styles.contact__right}>
 
-                      {/* Province field */}
+                      {/* City field */}
                       <div className={styles.subcontact}>
-                        <label htmlFor="province" className='title--4'>Tỉnh/Thành phố</label>
+                        <label htmlFor="city" className='title--4'>Tỉnh/Thành phố</label>
                         <div className={styles.input__change}>
                           <div className={styles.input__item}>
-                            <TextField value={userData.province} ></TextField>
+                            <TextField value={userData.city} ></TextField>
                           </div>
                         </div>
                       </div>
@@ -182,7 +186,7 @@ const Tab = () => {
                         <label htmlFor="location" className='title--4'>Địa chỉ</label>
                         <div className={styles.input__change}>
                           <div className={styles.input__item}>
-                            <TextField value={userData.location} ></TextField>
+                            <TextField value={userData.address} ></TextField>
                           </div>
                         </div>
                       </div>
@@ -198,7 +202,7 @@ const Tab = () => {
                       <div className="body--2">
                         <div> {user.name} | {userData.phoneNumber}</div>
                         <div> {userData.address} </div>
-                        <div>{`Phường ${userData.ward}, Quận ${userData.district}, Thành Phố ${userData.province} `}</div>
+                        <div>{`Phường ${userData.ward}, Quận ${userData.district}, Thành Phố ${userData.city} `}</div>
                       </div>
                       <hr size="1" className={styles.line}/>
                     </div>
@@ -211,22 +215,168 @@ const Tab = () => {
             </div>
             
           )}
+
+          {/* TabContent of Order History Tab */}
           {activeTab === 'orderHistory' && (
             <div className={styles.orderHistory}>
               {orders.map((order, index) => (
+
+                // Style for each order
                 <div key={index} className={styles.order}>
-                  <img src={order.image} alt={order.name} />
-                  <p>{order.name}</p>
-                  <p>{order.price}</p>
-                  <p>Order time: {order.date}</p>
-                  <p>Order Number: {order.orderNumber}</p>
-                  <button>Reorder</button>
-                  <button>View Details</button>
+
+                  {/* Style for OrderID and Status */}
+                  <div className={`${styles.orderID} title--3`}>
+                    <div> ID đơn hàng: {order.orderNumber} </div>
+                    <div>|</div>
+                    <div> {order.status} </div>
+                  </div>
+
+                  {/* Style for product info */}
+                  <div className={styles.product}>
+                    <img src={order.image} alt={order.name} />
+                    <div className={styles.product__info}>
+                      <div className='title--1' style={{color: 'var(--primary-color)'}}>{order.name}</div>
+                      <div className='title--3'>{order.price}</div>
+                      <div className='title--3'>Số lượng: {order.quantity}</div>
+                    </div>
+                  </div>
+
+                  {/* Style for order info */}
+                  <div className={styles.order__info}>
+
+                    {/* Style for delivery info */}
+                    <div className={styles.delivery_info}>
+                    
+                      <div className={`${styles.subinfo} body--2`}><FaRegClock size="20px"/>Đơn hàng đã được giao tới bạn vào ngày {order.date}</div>
+                      <div className={`${styles.subinfo} body--2`}><FaRegMap size="20px"/>Địa chỉ nhận hàng: {userData.address}, {userData.ward}, {userData.district}, {userData.city} 
+                      </div>  
+                    </div>
+
+                    {/* Style for order price */}
+                    <div className={styles.order_price}>
+                      <div className="title--3">Thành tiền: {order.price}</div>
+                      <Link to = '/support'>
+                        <Button type='btn1 primary'>Đánh giá</Button>
+                      </Link>
+                    </div>
+                    
+                  </div>
                 </div>
               ))}
             </div>
           )}
-          {activeTab === 'myOrders' && <p>My Orders Content</p>}
+          {activeTab === 'myOrders' && (
+            // TabContent of Order Status
+            <div className={styles.orderStatus}>
+            {orders.map((order, index) => (
+
+              // Style for each order
+              <div key={index} className={styles.order}>
+
+                {/* Style for OrderID and Status */}
+                <div className={`${styles.orderID} title--3`}>
+                  <div> ID đơn hàng: {order.orderNumber} </div>
+                  <div>|</div>
+                  <div> {order.status} </div>
+                </div>
+
+                {/* Style for product info */}
+                <div className={styles.product}>
+                  <img src={order.image} alt={order.name} />
+                  <div className={styles.product__info}>
+                    <div className='title--1' style={{color: 'var(--primary-color)'}}>{order.name}</div>
+                    <div className='title--3'>{order.price}</div>
+                    <div className='title--3'>Số lượng: {order.quantity}</div>
+                  </div>
+                </div>
+
+                {/* Style for order process */}
+                <div className={styles.process__container}>
+
+                  {/* Style for confirm process */}
+                  <div className={styles.process__item}>
+                    <div className={styles.icon__process}>
+                      <FiFileText size="40px" />
+                    </div>
+                    <div className={styles.process__content}>
+                      <div className="title--3" style={{textAlign:'center'}}>Xác nhận đơn hàng</div>
+                      <div className="body--2">09:00 01-01-2023</div>
+                    </div>
+                  </div>
+                  
+                  {/* Style for prepare process */}
+                  <div className={styles.process__item}>
+                    <div className={styles.icon__process}>
+                      <FiBox size="40px" />
+                    </div>
+                    <div className={styles.process__content}>
+                      <div className="title--3" style={{textAlign:'center'}}>Đơn hàng đang được chuẩn bị</div>
+                      <div className="body--2">09:00 01-01-2023</div>
+                    </div>
+                  </div>
+
+                  {/* Style for delivery process */}
+                  <div className={styles.process__item}>
+                    <div className={`${styles.icon__process} ${styles.proccessing}`}>
+                      <FiTruck size="40px"/>
+                    </div>
+                    <div className={styles.process__content}>
+                      <div className="title--3" style={{textAlign:'center'}}>Đã giao cho đơn vị vận chuyển</div>
+                      <div className="body--2">09:00 01-01-2023</div>
+                    </div>
+                  </div>
+
+                  {/* Style for on road process */}
+                  <div className={styles.process__item}>
+                    <div className={styles.icon__process}>
+                      <FiInbox size="40px" />
+                    </div>
+                    <div className={styles.process__content}>
+                      <div className="title--3" style={{textAlign:'center'}}>Đơn hàng đang trên đường tới</div>
+                      <div className="body--2">09:00 01-01-2023</div>
+                    </div>
+                  </div>
+
+                  {/* Style for review process */}
+                  <div className={styles.process__item}>
+                    <div className={styles.icon__process}>
+                      <FiStar size="40px" />
+                    </div>
+                    <div className={styles.process__content}>
+                      <div className="title--3" style={{textAlign:'center'}}>Nhận xét</div>
+                    </div>
+                  </div>
+
+                  
+                </div>
+
+                {/* Style for order info */}
+                <div className={styles.order__info}>
+
+                  {/* Style for delivery info */}
+                  <div className={styles.delivery_info}>
+                  
+                    <div className={`${styles.subinfo} body--2`}><FaRegClock size="20px"/>Đơn hàng đã được giao tới bạn vào ngày {order.date}</div>
+                    <div className={`${styles.subinfo} body--2`}><FaRegMap size="20px"/>Địa chỉ nhận hàng: {userData.address}, {userData.ward}, {userData.district}, {userData.city} 
+                    </div>  
+                  </div>
+
+                  {/* Style for order price */}
+                  <div className={styles.order_price}>
+                    <div className="title--3">Thành tiền: {order.price}</div>
+                    <div className={styles.btn__recieve}>
+                      <Button type='btn2 primary'>Đã nhận được hàng</Button>
+                    </div>
+                    <Link to = '/support'>
+                      <Button type='btn2 secondary--2'>Yêu cầu trả hàng/hoàn tiền</Button>
+                    </Link>
+                  </div>
+                  
+                </div>
+              </div>
+            ))}
+          </div>
+          )}
         </div>
       </div>
     );
