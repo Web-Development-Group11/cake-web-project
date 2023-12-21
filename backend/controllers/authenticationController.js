@@ -1,7 +1,9 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import cookieParser from "cookie-parser";
 
+const cookie = cookieParser();
 
 const user = new PrismaClient().user;
 
@@ -41,6 +43,8 @@ export const createNewUser = async (req, res) => {
 export const loginUser = async (req, res) => {
   try {
     const { email, phoneNumber, password } = req.body;
+
+
     //tìm kiếm tài khoản người dùng
     const exitingUser = await user.findFirst({
       where: {
@@ -50,14 +54,19 @@ export const loginUser = async (req, res) => {
         ]
       }
     });
+
+
     //nếu tài khoản người dùng tồn tại
     if (exitingUser) {
       //so sánh mật khẩu trong database và mật khẩu được nhập vào
+
       if (await bcrypt.compare(password, exitingUser.password)) {
+
         //tạo token
-        const name = exitingUser.name;
-        const token = jwt.sign({ name }, process.env.SECRET_KEY, { expiresIn: "1d" });
+        const token = jwt.sign({ exitingUser }, process.env.SECRET_KEY, { expiresIn: "1d" });
+
         res.cookie("token", token, { httpOnly: true });
+
         return res.status(200).json({ Status: "success", token });
       } else {
         //nếu mật khẩu hoặc tài khoản sai 

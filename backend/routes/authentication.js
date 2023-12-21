@@ -2,14 +2,11 @@ import {createNewUser, loginUser } from "../controllers/authenticationController
 import  { Router }  from "express";
 
 
-const userRoute = Router();
+const authenticationRoute = Router();
 
-userRoute.post('/users/register',  createNewUser);
+authenticationRoute.post('/register',  createNewUser);
 
-userRoute.post('/users/login',  loginUser);
+authenticationRoute.post('/login',  loginUser);
 
-userRoute.get('/users', async (req, res) => {
-  res.send('complete');
-})
 
-export default userRoute;
+export default authenticationRoute;

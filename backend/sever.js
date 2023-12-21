@@ -2,16 +2,18 @@
 import express from 'express';
 import { configDotenv } from 'dotenv';
 import cors from 'cors';
-import userRoute from './routes/authentication.js';
-import bodyParser from 'body-parser';
 import blogRoutes from './routes/blog.js';
 import productRoutes from './routes/product.js';
+import cookieParser from 'cookie-parser';
+import authenticationRoute from './routes/authentication.js';
+import userRoute from './routes/user.js';
+
 
 //express app
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(cookieParser());
 
 
 // const homeRoute = require('./routes/home');
@@ -34,9 +36,10 @@ app.use(cors({
 }));
 
 //routes 
-app.use('/', userRoute)
+app.use('/', authenticationRoute)
 app.use('/', productRoutes)
 app.use('/', blogRoutes)
+app.use('/',userRoute)
 
 //listen for reqquest 
 app.listen(process.env.PORT, () => {
