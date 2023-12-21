@@ -96,10 +96,10 @@ function Changepass() {
                   </div>
                 </div>
                 <div className={formStyles.inputwrapper}>
-                  <TextFieldWithIcon
-                    placeholder="Mật khẩu"
+                <TextFieldWithIcon
+                    placeholder={"Mật khẩu mới"}
                     style={{ borderColor: passwordColor }}
-                    value={password}
+                    defaultValue={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   <div className={formStyles.errorcontainer}>
@@ -116,9 +116,9 @@ function Changepass() {
                 </div>
                 <div className={formStyles.inputwrapper}>
                   <TextFieldWithIcon
-                    placeholder="Mật khẩu mới"
+                    placeholder={"Mật khẩu mới"}
                     style={{ borderColor: passwordColor }}
-                    value={password}
+                    defaultValue={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   <div className={formStyles.errorcontainer}>

@@ -128,12 +128,12 @@ function Register() {
                   <div className={formStyles.form__inputtitle1}>
                     <div className={formStyles["title--3"]}>Mật khẩu</div>
                   </div>
-                </div>
+                </div>  
                 <div className={formStyles.inputwrapper}>
-                  <TextFieldWithIcon
-                    placeholder="Nhập mật khẩu"
+                <TextFieldWithIcon
+                    placeholder={"Nhập mật khẩu"}
                     style={{ borderColor: passwordColor }}
-                    value={password}
+                    defaultValue={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   <div className={formStyles.errorcontainer}>
@@ -149,10 +149,10 @@ function Register() {
                   </div>
                 </div>
                 <div className={formStyles.inputwrapper}>
-                  <TextFieldWithIcon
-                    placeholder="Nhập lại mật khẩu"
+                <TextFieldWithIcon
+                    placeholder={"Nhập lại mật khẩu"}
                     style={{ borderColor: passwordColor }}
-                    value={password}
+                    defaultValue={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   <div className={formStyles.errorcontainer}>
