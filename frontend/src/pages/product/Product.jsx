@@ -5,9 +5,9 @@ import Navbar from '../../components/header/NavBar'
 import Card from '../../components/card/Card'
 import jsonData from "../../assets/db/productsData.json";
 import Footer from '../../components/footer/Footer'
-import ProductSort from './ProductSort';
-import TextFieldWithIcon from '../../components/textFieldWithIcon/TextFieldWithIcon';
-import TextField from '../../components/textField/TextField';
+import ProductSort from './productSort/ProductSort';
+import Pagination from '../../components/pagination/index';
+
 
 const productCategories = [
   {
@@ -45,10 +45,17 @@ const productCategories = [
 const Product = () => {
   const handleSortChange = (newSortValue) => {
     setFilters((preFilters) => ({
-      ... preFilters,
+      ...preFilters,
       _sort: newSortValue,
     }));
   };
+
+  const sortFilter = [
+    { id: 1, title: 'Từ A-Z', value: 'title:ASC', cName: 'yourClassName' },
+    { id: 2, title: 'Từ Z-A', value: 'title:DESC', cName: 'yourClassName' },
+    { id: 3, title: 'Giá thấp tới cao', value: 'price:ASC', cName: 'yourClassName' },
+    { id: 4, title: 'Giá cao xuống thấp', value: 'price:DESC', cName: 'yourClassName' },
+  ];
 
 
   return (
@@ -66,11 +73,13 @@ const Product = () => {
               <p className="product__filter-heading title--2">
                 Danh mục sản phẩm
               </p>
+
+              {/* Lọc sản phẩm theo danh mục */}
               <ul className="product-categories">
                 {productCategories.map((category) => (
                   <li
                     key={category.id}
-                    className={`${category.cName} title--4`}>
+                    className={`${category.cName} body--2`}>
                     <Link className="category-item__link" to={category.path}>
                       {category.title}
                     </Link>
@@ -83,9 +92,12 @@ const Product = () => {
 
             <div className='product__list'>
               <div className="header">
-                <h2 className="heading">Sản phẩm</h2>
+                <p className="heading">Sản phẩm</p>
 
-                <ProductSort currentSort='price' onChange={handleSortChange} />
+                <div className='product__sort'>
+                  <ProductSort items={sortFilter} />
+                </div>
+
               </div>
 
               <div className="product__list-item">
@@ -95,7 +107,9 @@ const Product = () => {
                   ))
                 ))}
               </div>
-
+              <div className='product__pagination'>
+                <Pagination totalPages={6} />
+              </div>
             </div>
 
           </div>

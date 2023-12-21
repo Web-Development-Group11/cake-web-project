@@ -34,7 +34,7 @@ function App() {
                 <Route path="/entercode" element={< Entercode />} />
                 <Route path="/changepassword" element={< Changepass />} />
                 <Route path="/product" element={< Product />} />
-                <Route path="productDetail" element={< ProductDetail />} />
+                <Route path="/productDetail" element={< ProductDetail />} />
                 <Route path="/support" element={< Support/>} />
                 <Route path="/policy" element={< Policy/>} />
                 <Route path="/faq" element={< Faq/>} />
