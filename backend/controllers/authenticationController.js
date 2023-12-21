@@ -29,7 +29,6 @@ export const createNewUser = async (req, res) => {
         password: hashPassword,
         username,
         phoneNumber,
-        slug,
       },
     });
     res.status(200).json({ data: newUser });
