@@ -26,10 +26,3 @@
     color: var(--highlight-text);
     padding-left: 1rem;
 }
-.textfield_container.error {
-    border-color: green;
-  }
-  
-  .error {
-    border-color: pink;    
-  }

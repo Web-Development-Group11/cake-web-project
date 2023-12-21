@@ -14,47 +14,47 @@ function Login() {
     const [passwordError, setPasswordError] = useState(false);
     const [usernameErrorMsg, setUsernameErrorMsg] = useState("");
     const [passwordErrorMsg, setPasswordErrorMsg] = useState("");
-  
+
     function changeInputValue(name, value) {
-      if (name === "username") {
-        setUsername(value);
-        setUsernameError(false);
-        setUsernameErrorMsg("");
-      } else if (name === "password") {
-        setPassword(value);
-        setPasswordError(false);
-        setPasswordErrorMsg("");
-      }
+        if (name === "username") {
+            setUsername(value);
+            setUsernameError(false);
+            setUsernameErrorMsg("");
+        } else if (name === "password") {
+            setPassword(value);
+            setPasswordError(false);
+            setPasswordErrorMsg("");
+        }
     }
-  
+
     function validationForm() {
-      let returnData = {
-        usernameError: false,
-        passwordError: false,
-        usernameErrorMsg: "",
-        passwordErrorMsg: ""
-      };
-  
-      const usernameError = validateUsername(username);
-      const passwordError = validatePassword(password);
-  
-      if (usernameError) {
-        returnData = {
-          ...returnData,
-          usernameError: true,
-          usernameErrorMsg: usernameError
+        let returnData = {
+            usernameError: false,
+            passwordError: false,
+            usernameErrorMsg: "",
+            passwordErrorMsg: ""
         };
-      }
-  
-      if (passwordError) {
-        returnData = {
-          ...returnData,
-          passwordError: true,
-          passwordErrorMsg: passwordError
-        };
-      }
-  
-      return returnData;
+
+        const usernameError = validateUsername(username);
+        const passwordError = validatePassword(password);
+
+        if (usernameError) {
+            returnData = {
+                ...returnData,
+                usernameError: true,
+                usernameErrorMsg: usernameError
+            };
+        }
+
+        if (passwordError) {
+            returnData = {
+                ...returnData,
+                passwordError: true,
+                passwordErrorMsg: passwordError
+            };
+        }
+
+        return returnData;
     }
 
     function submitForm(e) {
@@ -84,13 +84,14 @@ function Login() {
             </div>
             {/* form */}
             <div className={formStyles.form__frameoverlap}>
-                {/* logo */}
+
 
                 {/* form */}
                 <div className={formStyles.form}>
-                <Link to="/" className={formStyles.website__logo}>
-                    <img className={formStyles.logoimg} alt="Bong cake logo" src={logo} />
-                </Link>
+                    {/* logo */}
+                    <Link to="/" className={formStyles.website__logo}>
+                        <img className={formStyles.logoimg} alt="Bong cake logo" src={logo} />
+                    </Link>
                     <div className={formStyles.form__frame}>
                         {/* title */}
                         <div className={formStyles.form__title}>

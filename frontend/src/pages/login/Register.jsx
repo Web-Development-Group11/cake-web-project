@@ -6,49 +6,69 @@ import Button from "../../components/button/Button";
 import TextField from "../../components/textField/TextField";
 import TextFieldWithIcon from "../../components/textFieldWithIcon/TextFieldWithIcon";
 import { Link } from "react-router-dom";
-
+import { validateUsername, validatePassword, validateConfirmPassword } from "./validationForm";
 function Register() {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [usernameError, setUsernameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-  const [emailErrorMsg, setEmailErrorMsg] = useState("");
+  const [confirmPasswordError, setConfirmPasswordError] = useState(false);
+  const [usernameErrorMsg, setUsernameErrorMsg] = useState("");
   const [passwordErrorMsg, setPasswordErrorMsg] = useState("");
+  const [confirmPasswordErrorMsg, setConfirmPasswordErrorMsg] = useState("");
 
   function changeInputValue(name, value) {
-    if (name === "email") {
-      setEmail(value);
-      setEmailError(false);
-      setEmailErrorMsg("");
+    if (name === "username") {
+      setUsername(value);
+      setUsernameError(false);
+      setUsernameErrorMsg("");
     } else if (name === "password") {
       setPassword(value);
       setPasswordError(false);
       setPasswordErrorMsg("");
+    } else if (name === "confirmPassword") {
+      setConfirmPassword(value);
+      setConfirmPasswordError(false);
+      setConfirmPasswordErrorMsg("");
     }
   }
 
   function validationForm() {
     let returnData = {
-      emailError: false,
+      usernameError: false,
       passwordError: false,
-      emailErrorMsg: "",
-      passwordErrorMsg: ""
+      confirmPasswordError: false,
+      usernameErrorMsg: "",
+      passwordErrorMsg: "",
+      confirmPasswordErrorMsg: ""
     };
 
-    const re = /\S+@\S+\.\S+/;
-    if (!re.test(email)) {
+    const usernameError = validateUsername(username);
+    const passwordError = validatePassword(password);
+    const confirmPasswordError = validateConfirmPassword(password, confirmPassword);
+
+    if (usernameError) {
       returnData = {
         ...returnData,
-        emailError: true,
-        emailErrorMsg: "Không đúng định dạng email"
+        usernameError: true,
+        usernameErrorMsg: usernameError
       };
     }
 
-    if (password.length < 8) {
+    if (passwordError) {
       returnData = {
         ...returnData,
         passwordError: true,
-        passwordErrorMsg: "Mật khẩu phải lớn hơn 8 ký tự"
+        passwordErrorMsg: passwordError
+      };
+    }
+
+    if (confirmPasswordError) {
+      returnData = {
+        ...returnData,
+        confirmPasswordError: true,
+        confirmPasswordErrorMsg: confirmPasswordError
       };
     }
 
@@ -60,14 +80,20 @@ function Register() {
 
     const validation = validationForm();
 
-    if (validation.emailError || validation.passwordError) {
-      setEmailError(validation.emailError);
-      setEmailErrorMsg(validation.emailErrorMsg);
+    if (
+      validation.usernameError ||
+      validation.passwordError ||
+      validation.confirmPasswordError
+    ) {
+      setUsernameError(validation.usernameError);
+      setUsernameErrorMsg(validation.usernameErrorMsg);
       setPasswordError(validation.passwordError);
       setPasswordErrorMsg(validation.passwordErrorMsg);
+      setConfirmPasswordError(validation.confirmPasswordError);
+      setConfirmPasswordErrorMsg(validation.confirmPasswordErrorMsg);
     } else {
       window.location.href = "/";
-      // logic check BE ở đây 
+      // logic check BE here
     }
   }
 
@@ -82,11 +108,12 @@ function Register() {
       </div>
       {/* form */}
       <div className={formStyles.form__frameoverlap}>
-        {/* logo */}
-        <Link to="/" className={formStyles.website__logo}>
-          <img className={formStyles.logoimg} alt="Bong cake logo" src={logo} />
-        </Link>
+
         <div className={formStyles.form}>
+          {/* logo */}
+          <Link to="/" className={formStyles.website__logo}>
+            <img className={formStyles.logoimg} alt="Bong cake logo" src={logo} />
+          </Link>
           <div className={formStyles.form__frame}>
             {/* title */}
             <div className={formStyles.form__title}>
@@ -98,7 +125,7 @@ function Register() {
               </span>
             </div>
             {/* form */}
-            <form className={formStyles.form__frameinput} onSubmit={validate}>
+            <form className={formStyles.form__frameinput}>
               {/* input username */}
               <div className={formStyles.form__input}>
                 <div className={formStyles.form__inputtitle}>
@@ -109,14 +136,12 @@ function Register() {
                 <div className={formStyles.inputwrapper}>
                   <TextField
                     placeholder={"Email/ Số điện thoại"}
-                    style={{ borderColor: userColor }}
-                    Value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    name="username"
+                    value={username}
+                    onChange={(value) => changeInputValue("username", value)}
                   />
                   <div className={formStyles.errorcontainer}>
-                    <p className={formStyles.error}>{errorUserName}</p>
-                    <p className={formStyles.error}>{errorEmail}</p>
-                    <p className={formStyles.error}>{errorPhone}</p>
+                    {usernameError && <div className={formStyles.errorMsg}>{usernameErrorMsg}</div>}
                   </div>
                 </div>
               </div>
@@ -129,13 +154,13 @@ function Register() {
                 </div>
                 <div className={formStyles.inputwrapper}>
                   <TextFieldWithIcon
-                    placeholder={"Nhập mật khẩu"}
-                    style={{ borderColor: passwordColor }}
-                    defaultValue={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder={"Mật khẩu"}
+                    className="form-control"
+                    value={password}
+                    onChange={(value) => changeInputValue("password", value)}
                   />
                   <div className={formStyles.errorcontainer}>
-                    <p className={formStyles.error}>{errorPassword}</p>
+                    {passwordError && <div className={formStyles.errorMsg}>{passwordErrorMsg}</div>}
                   </div>
                 </div>
               </div>
@@ -149,13 +174,12 @@ function Register() {
                 <div className={formStyles.inputwrapper}>
                   <TextFieldWithIcon
                     placeholder={"Nhập lại mật khẩu"}
-                    style={{ borderColor: passwordColor }}
-                    defaultValue={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    className="form-control"
+                    value={confirmPassword}
+                    onChange={(value) => changeInputValue("confirmPassword", value)}
                   />
                   <div className={formStyles.errorcontainer}>
-                    <p className={formStyles.error}>{errorRePassword}</p>
-
+                    {confirmPasswordError && <div className={formStyles.errorMsg}>{confirmPasswordErrorMsg}</div>}
                   </div>
                 </div>
               </div>
@@ -163,7 +187,7 @@ function Register() {
               <hr className={formStyles.form__line} />
               {/* button */}
               < div className={formStyles.form__btn} >
-                <Button type="btn2 primary button" onClick={validate}>
+                <Button type="btn2 primary button">
                   Đăng ký
                 </Button>
               </div >
