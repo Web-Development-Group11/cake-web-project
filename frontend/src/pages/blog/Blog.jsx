@@ -1,12 +1,54 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './Blog.module.css'
 import Navbar from '../../components/header/NavBar'
 import Footer from '../../components/footer/Footer'
 import { Link } from 'react-router-dom'
 import BlogSuggest from '../../assets/image/suggest_post.png'
 import BlogPost from '../../assets/image/post.png'
+import { axiosClient } from '../../api/axios'
 
 const Blog = () => {
+  const [posts, setPosts] = useState();
+  const [suggestedPosts, setSuggestedPosts] = useState()
+
+  useEffect(() => {
+    const getPosts = async () => {
+      try {
+        const response = await axiosClient.get('/blog');
+
+        setPosts(response.data.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    const getSuggestedPosts = async () => {
+      try {
+        const response = await axiosClient.get('/blog/suggested-blog');
+
+        setSuggestedPosts(response.data.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    getPosts();
+    getSuggestedPosts();
+  }, [])
+
+  console.log(suggestedPosts)
+
+  const processDate = (date) => {
+    const dateObject = new Date(date);
+
+    // Format the date as a string in the desired format
+    const outputString = (dateObject.getDate() < 10 ? '0' : '') + dateObject.getDate() + '/' +
+                      ((dateObject.getMonth() + 1) < 10 ? '0' : '') + (dateObject.getMonth() + 1) + '/' +
+                      dateObject.getFullYear();
+    
+    return outputString;
+  }
+
   return (
     <>
       <Navbar />
@@ -22,71 +64,33 @@ const Blog = () => {
               <div className={styles.blog__border}>
                 <h2 className={`${styles['blog__suggest-header']} title--2`}>Bài viết nổi bật</h2>
                 <ul className={styles['blog__suggest-list']}>
-                  <li className={styles['blog__suggest-post']}>
-                    <Link Link to='/blog/1' className={styles['blog__suggest-link']}>
-                      <img className={styles['blog__suggest-img']} src={BlogSuggest} alt="" />
-                      <h3 className={styles['blog__suggest-title']}>Hướng dẫn chọn bánh cupcake ngon cho bữa...</h3>
-                    </Link>
-                  </li>
-                  <li className={styles['blog__suggest-post']}>
-                    <Link Link to='/blog/1' className={styles['blog__suggest-link']}>
-                      <img className={styles['blog__suggest-img']} src={BlogSuggest} alt="" />
-                      <h3 className={styles['blog__suggest-title']}>Hướng dẫn chọn bánh cupcake ngon cho bữa...</h3>
-                    </Link>
-                  </li>
-                  <li className={styles['blog__suggest-post']}>
-                    <Link Link to='/blog/1' className={styles['blog__suggest-link']}>
-                      <img className={styles['blog__suggest-img']} src={BlogSuggest} alt="" />
-                      <h3 className={styles['blog__suggest-title']}>Hướng dẫn chọn bánh cupcake ngon cho bữa...</h3>
-                    </Link>
-                  </li>
-                  <li className={styles['blog__suggest-post']}>
-                    <Link Link to='/blog/1' className={styles['blog__suggest-link']}>
-                      <img className={styles['blog__suggest-img']} src={BlogSuggest} alt="" />
-                      <h3 className={styles['blog__suggest-title']}>Hướng dẫn chọn bánh cupcake ngon cho bữa...</h3>
-                    </Link>
-                  </li>
+                  {suggestedPosts?.map((post, idx) => (
+                    <li key={idx} className={styles['blog__suggest-post']}>
+                      <Link Link to={`/blog/${post.slug}`} className={styles['blog__suggest-link']}>
+                        <img className={styles['blog__suggest-img']} src={`/image/${post.coverImage}`} alt="" />
+                        <h3 className={styles['blog__suggest-title']}>{post.title}</h3>
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
             <div className={styles.blog__post}>
               <ul className={styles['blog__post-list']}>
-                <li className={styles['blog__post-item']}>
-                  <Link to='/blog/1'>
-                    <img className={styles['blog__post-img']} src={BlogPost} alt="" />
-                  </Link>
-                  <div className={styles['blog__post-content']}>
-                    <Link to='/blog/1' className={styles['blog__post-link']}>
-                      <h3 className={styles['blog__post-title']}>Bánh cupcake - sự lựa chọn tuyệt vời cho những bữa tiệc đông người</h3>
+                {posts?.map((post, idx) => (
+                  <li key={idx} className={styles['blog__post-item']}>
+                    <Link to={`/blog/${post.slug}`}>
+                      <img className={styles['blog__post-img']} src={`/image/${post.coverImage}`} alt="" />
                     </Link>
-                    <p className={styles['blog__post-date']}>Ngày đăng: 02/11/2023</p>
-                    <p className={styles['blog__post-desc']}>Bài viết này, Bông sẽ gợi ý cho bạn các tiệm bánh ngọt ngon nhất Sài Gòn mà Bông đã tham khảo và chọn lọc. Hi vọng rằng bài viết này sẽ mang đến cho bạn những trải nghiệm tốt và tìm cho mình một địa điểm bánh ngọt phù hợp với khẩu vị...</p>
-                  </div>
-                </li>
-                <li className={styles['blog__post-item']}>
-                  <Link to='/blog/1'>
-                    <img className={styles['blog__post-img']} src={BlogPost} alt="" />
-                  </Link>
-                  <div className={styles['blog__post-content']}>
-                    <Link to='/blog/1' className={styles['blog__post-link']}>
-                      <h3 className={styles['blog__post-title']}>Bánh cupcake - sự lựa chọn tuyệt vời cho những bữa tiệc đông người</h3>
-                    </Link>
-                    <p className={styles['blog__post-date']}>Ngày đăng: 02/11/2023</p>
-                    <p className={styles['blog__post-desc']}>Bài viết này, Bông sẽ gợi ý cho bạn các tiệm bánh ngọt ngon nhất Sài Gòn mà Bông đã tham khảo và chọn lọc. Hi vọng rằng bài viết này sẽ mang đến cho bạn những trải nghiệm tốt và tìm cho mình một địa điểm bánh ngọt phù hợp với khẩu vị...</p>
-                  </div>
-                </li>
-                <li className={styles['blog__post-item']}>
-                  <Link to='/blog/1'>
-                    <img className={styles['blog__post-img']} src={BlogPost} alt="" />
-                  </Link>
-                  <div className={styles['blog__post-content']}>
-                    <Link to='/blog/1' className={styles['blog__post-link']}>
-                      <h3 className={styles['blog__post-title']}>Bánh cupcake - sự lựa chọn tuyệt vời cho những bữa tiệc đông người</h3>
-                    </Link>
-                    <p className={styles['blog__post-date']}>Ngày đăng: 02/11/2023</p>
-                    <p className={styles['blog__post-desc']}>Bài viết này, Bông sẽ gợi ý cho bạn các tiệm bánh ngọt ngon nhất Sài Gòn mà Bông đã tham khảo và chọn lọc. Hi vọng rằng bài viết này sẽ mang đến cho bạn những trải nghiệm tốt và tìm cho mình một địa điểm bánh ngọt phù hợp với khẩu vị...</p>
-                  </div>
-                </li>
+                    <div className={styles['blog__post-content']}>
+                      <Link to='/blog/top-20-tiem-banh-ngot' className={styles['blog__post-link']}>
+                        <h3 className={styles['blog__post-title']}>{post.title}</h3>
+                      </Link>
+                      <p className={styles['blog__post-date']}>Ngày đăng: {processDate(post.publishdate)}</p>
+                      <p className={styles['blog__post-desc']}>{post.content[0].detail}</p>
+                    </div>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

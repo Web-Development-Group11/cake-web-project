@@ -7,9 +7,24 @@ import Card from '../../components/card/Card'
 import Footer from '../../components/footer/Footer'
 import { Link } from 'react-router-dom'
 import home from './Home.module.css'
+import { useModal } from '../../hook/useModal';
+import { axiosClient } from '../../api/axios';
 
 const Home = () => {
+  const onOpen = useModal((state) => state.onOpen);
+  const setData = useModal((state) => state.setData);
 
+  const handleOpenRandomBox = async () => {
+    onOpen('randomBox');
+
+    try {
+      const response = await axiosClient.get('/products/random');
+
+      setData(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div>

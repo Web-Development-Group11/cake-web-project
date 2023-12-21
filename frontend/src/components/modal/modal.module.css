@@ -28,10 +28,16 @@
   right: 2rem;
   cursor: pointer;
   opacity: 0.8;
+  transition: all 0.1s ease-in-out; 
+}
+
+.modal__close:hover {
+  color: var(--primary-color);
+  opacity: 1;
 }
 
 .modal__header {
-  color: #e21033;
+  color: var(--primary-color);
   margin: 0;
   font-size: 1.25rem;
   font-weight: 700;
@@ -55,7 +61,7 @@
 
 .modal__button-destroy {
   cursor: pointer;
-  color: #e21033;
+  color: var(--primary-color);
   background-color: #ffeef4;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
@@ -66,13 +72,9 @@
 .modal__button-accept {
   cursor: pointer;
   color: white;
-  background-color: #e21033;
+  background-color: var(--primary-color);
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   border: none;
   font-weight: 600;
-}
-
-.modal__close.active {
-  color: #e21033;
 }

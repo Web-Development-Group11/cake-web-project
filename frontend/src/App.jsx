@@ -43,7 +43,7 @@ function App() {
                 <Route path="/cart" element={< Cart/>} />
                 <Route path="/introduction" element={< Introduction />} />
                 <Route path="/blog" element={< Blog />} />
-                <Route path="/blog/:blogId" element={< BlogDetail />} />
+                <Route path="/blog/:blogSlug" element={< BlogDetail />} />
             </Routes>
     </BrowserRouter>
     </div>

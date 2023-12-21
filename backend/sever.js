@@ -12,7 +12,6 @@ import userRoute from './routes/user.js';
 //express app
 const app = express();
 app.use(express.json());
-app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
@@ -31,9 +30,9 @@ app.use("/", (req, res, next) => {
 
 //middleware handleing cors policy
 app.use(cors({
-    origin: 'http://localhost:process.env.PORT',
+    origin: `http://localhost:${process.env.CLIENT_PORT}`,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type']
+    allowedHeaders: ['Content-Type'],
 }));
 
 //routes 
