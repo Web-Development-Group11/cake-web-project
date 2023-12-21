@@ -33,6 +33,7 @@ app.use(cors({
     origin: `http://localhost:${process.env.CLIENT_PORT}`,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type'],
+    credentials: true,
 }));
 
 //routes 

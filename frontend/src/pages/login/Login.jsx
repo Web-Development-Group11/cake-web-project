@@ -6,6 +6,8 @@ import Button from "../../components/button/Button";
 import TextField from "../../components/textField/TextField";
 import TextFieldWithIcon from "../../components/textFieldWithIcon/TextFieldWithIcon";
 import { Link } from "react-router-dom";
+import { axiosClient } from "../../api/axios";
+import { validateUsername, validatePassword} from "./validationForm";
 
 function Login() {
     const [username, setUsername] = useState("");
@@ -35,8 +37,8 @@ function Login() {
             passwordErrorMsg: ""
         };
 
-        const usernameError = validateUsername(username);
-        const passwordError = validatePassword(password);
+        // const usernameError = validateUsername(username);
+        // const passwordError = validatePassword(password);
 
         if (usernameError) {
             returnData = {
@@ -69,9 +71,17 @@ function Login() {
             setPasswordErrorMsg(validation.passwordErrorMsg);
         } else {
             window.location.href = "/";
+            try { 
+                const response = axiosClient.post('/login', {username , password})
+                 if (response.statusCode === 200) {
+                    navigtate('/');
+            } 
             // logic check BE ở đây 
+        } catch (e) {
+            console.log(e);
         }
     }
+}
 
     return (
         <div className={formStyles.form__container}>
