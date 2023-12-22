@@ -38,9 +38,8 @@ export default function Card({ product }) {
         </Link>
       </div>
       <div className={cardStyles.card__content}>
-        <div className={cardStyles.content__title}>
-          <div className={`title--4`}>{product.title}</div>
-        </div>
+        <div className={`${cardStyles.content__title} title--4`}>{product.title}</div>
+
         <div className={cardStyles.content__line}>
           <hr />
         </div>
