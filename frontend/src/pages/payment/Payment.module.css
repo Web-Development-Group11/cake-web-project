@@ -1,0 +1,170 @@
+@import url("../../Variable.css");
+
+.center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.payment {
+    /* xem các trang  */
+    padding-top: 5.75rem;
+    width: 100%;
+    margin-inline: 7.5rem;
+}
+
+.payment .payment__container {
+    gap: 2.8125rem;
+    display: flex;
+    margin-top: 2rem;
+
+}
+
+.payment__orderOverlap {
+    flex: 1;
+    order: 2;
+
+}
+
+.payment__orderDetail {
+
+    border: 2px solid var(--brown);
+    border-radius: 16px;
+}
+
+.payment__cusInfo {
+    flex: 2;
+    order: 1;
+
+}
+
+.cusInfo__overlap {
+    border: 2px solid var(--brown);
+    border-radius: 16px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.payment__delivery {
+    flex: 2;
+    order: 1;
+}
+
+
+/* Chi tiết đơn hàng  */
+.orderDetail__head {
+    color: var(--primary-color);
+    padding: 0.75rem;
+}
+
+.orderDetail__line {
+    width: 100%;
+    border: 1px solid var(--brown);
+    padding: 0;
+    margin: 0;
+}
+
+.orderDetail__info {
+    padding: 1.5rem;
+}
+
+/* card sản phẩm */
+.orderDetail__product {
+    height: 10rem;
+    width: 100%;
+    /* border: 1px solid; */
+    margin: 0;
+}
+
+.checkout__info1 {
+    display: flex;
+    justify-content: space-between;
+}
+.info1__sumup{
+    color: var(--primary-color)
+
+}
+.info1__title{
+    margin-bottom:1rem;
+}
+
+
+/*  thông tin nhận hàng */
+.cusInfo__head {
+    color: var(--primary-color);
+    margin-top:1rem;
+    margin-bottom:1rem;
+}
+.cusInfo__head1{
+    margin-top:1rem;
+    margin-bottom:1rem;
+
+
+}
+.cusInfo__row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+
+.cusInfo__col1 {
+    flex: 55%;
+    height: 40px;
+
+
+}
+
+.cusInfo__col2 {
+    flex: 45%;
+    margin-left: 2rem;
+
+}
+
+.cusInfo__col1Note {
+    flex: 100%;
+    height: 120px;
+    margin-top: 0;
+}
+
+
+/* checkbox */
+.cusInfo__checkbox .checkbox__item {
+    display: block;
+    cursor: pointer;
+    position: relative;
+    margin-top:1rem;
+    margin-bottom:1rem;
+
+}
+
+.cusInfo__checkbox .checkbox__item .checkbox {
+    display: none;
+    
+
+}
+
+.cusInfo__checkbox .checkbox__item::before {
+    content: '';
+    display: inline-block;
+    border: 1px solid var(--brown);
+    position: relative;
+    top: 0.25rem;
+    margin-right: 0.5rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 0.25rem;
+    background-color: transparent;
+
+}
+
+.cusInfo__checkbox .checkbox__item .checkbox__icon {
+    position: absolute;
+    left: 0.15rem;
+    top: 0.45rem;
+    display: none;
+    font-size: 1rem;
+}
+
+.cusInfo__checkbox .checkbox__item .checkbox:checked~.checkbox__icon {
+    display: block;
+}
