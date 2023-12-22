@@ -93,13 +93,8 @@ function Register() {
       setConfirmPasswordError(validation.confirmPasswordError);
       setConfirmPasswordErrorMsg(validation.confirmPasswordErrorMsg);
     } else {
-      try { 
-        const res = axiosClient.post('/register', {username , password })
-        console.log(res);
-        
-      }
-    }
   }
+}
 
   return (
     <div className={formStyles.form__container}>
