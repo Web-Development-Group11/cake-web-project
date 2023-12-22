@@ -8,8 +8,10 @@ import paymentStyles from './Payment.module.css'
 import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 import { FaCheck } from "react-icons/fa";
 import AddSelect from '../../components/AddSelect/addSelect';
+import Tab from '../../components/tab/Tab'
 
-const PaymentPageGuest  = () => {
+
+const PaymentPageGuest = () => {
   return (
     <>
       <Navbar />
@@ -81,7 +83,7 @@ const PaymentPageGuest  = () => {
               <div className={paymentStyles.cusInfo__overlap}>
                 <div className={`title--1 ${paymentStyles.cusInfo__head}`}>Thông tin nhận hàng</div>
 
-                <div className={paymentStyles.cusInfo__row}>
+                <fieldset className={paymentStyles.cusInfo__row}>
                   <div className={paymentStyles.cusInfo__col1}>
                     <TextField
                       placeholder="Họ và tên"
@@ -92,127 +94,107 @@ const PaymentPageGuest  = () => {
                       placeholder="Số điện thoại"
                     />
                   </div>
-                </div>
 
-                <div className={paymentStyles.cusInfo__row}>
-                  <div className={paymentStyles.cusInfo__col1}>
-                    <TextField
-                      placeholder="Email"
-                    />
+
+                  <div className={paymentStyles.cusInfo__row}>
+                    <div className={paymentStyles.cusInfo__col1}>
+                      <TextField
+                        placeholder="Email"
+                      />
+                    </div>
+                  </div>
+
+
+                  <div className={paymentStyles.cusInfo__row}>
+                    <div className={paymentStyles.cusInfo__col1}>
+                      <TextField
+                        placeholder="Địa chỉ cụ thể"
+                      />
+                    </div>
+                  </div>
+
+                  <div className={paymentStyles.cusInfo__row}>
+                    <div className={paymentStyles.cusInfo__col1Note}>
+                      <TextField
+                        placeholder="Ghi chú"
+                      />
+                    </div>
+                  </div>
+                </fieldset>
+                {/* Phương thức vận chuyển */}
+                <div className={`body--1 ${paymentStyles.cusInfo__overlap}`}>
+                  <div className={`title--1 ${paymentStyles.cusInfo__head}`}>Phương thức vận chuyển</div>
+                  <div className={paymentStyles.cusInfo__checkbox}>
+                    <label className={paymentStyles.checkbox__item} >
+                      <input
+                        className={paymentStyles.checkbox}
+                        type="checkbox"
+                        id="checkbox1"
+
+                      />
+                      Giao hàng hoả tốc (trong 2h)
+                      <FaCheck className={paymentStyles.checkbox__icon} />
+                    </label>
+                    <label className={paymentStyles.checkbox__item} >
+
+
+                      <input
+                        className={paymentStyles.checkbox}
+                        type="checkbox"
+                        id="checkbox2"
+
+
+                      />
+                      Giao hàng tiêu chuẩn (2-3 ngày)
+                      <FaCheck className={paymentStyles.checkbox__icon} />
+                    </label>
                   </div>
                 </div>
+                {/* Phương thức thanh toán */}
+                <div className={`body--1 ${paymentStyles.cusInfo__overlap}`}>
+                  <div className={`title--1 ${paymentStyles.cusInfo__head}`}>Phương thức thanh toán</div>
+                  <div className={paymentStyles.cusInfo__checkbox}>
 
-                <div className={paymentStyles.cusInfo__row}>
-                  <div className={paymentStyles.cusInfo__col1}>
-                    <AddSelect
-                      showProvince={true}
-                      selectedProvince={userData.province}
-                      onProvinceChange={handleChange('province')}
-                
-                    />
+                    <label className={paymentStyles.checkbox__item} >
+                      <input
+                        className={paymentStyles.checkbox}
+                        type="checkbox"
+                        id="checkbox1"
+                      />
+                      Thanh toán khi nhận hàng (COD)
+                      <FaCheck className={paymentStyles.checkbox__icon} />
+                    </label>
+                    <label className={paymentStyles.checkbox__item} >
+
+
+                      <input
+                        className={paymentStyles.checkbox}
+                        type="checkbox"
+                        id="checkbox2"
+                      />
+                      Thanh toán bằng Ví MoMo
+                      <FaCheck className={paymentStyles.checkbox__icon} />
+                    </label>
+
+                    <label className={paymentStyles.checkbox__item} >
+                      <input
+                        className={paymentStyles.checkbox}
+                        type="checkbox"
+                        id="checkbox2"
+                      />
+                      Thanh toán bằng thẻ ATM/VISA/MASTER
+                      <FaCheck className={paymentStyles.checkbox__icon} />
+                    </label>
                   </div>
-                  <div className={paymentStyles.cusInfo__col2}>
-                    <TextField
-                      placeholder="Số điện thoại"
-                    />
-                  </div>
-                  <div className={paymentStyles.cusInfo__col2}>
-                    <TextField
-                      placeholder="Số điện thoại"
-                    />
-                  </div>
-                </div>
-
-                <div className={paymentStyles.cusInfo__row}>
-                  <div className={paymentStyles.cusInfo__col1}>
-                    <TextField
-                      placeholder="Địa chỉ cụ thể"
-                    />
-                  </div>
-                </div>
-
-                <div className={paymentStyles.cusInfo__row}>
-                  <div className={paymentStyles.cusInfo__col1Note}>
-                    <TextField
-                      placeholder="Ghi chú"
-                    />
-                  </div>
-                </div>
-              </div>
-              {/* Phương thức vận chuyển */}
-              <div className={`body--1 ${paymentStyles.cusInfo__overlap}`}>
-                <div className={`title--1 ${paymentStyles.cusInfo__head}`}>Phương thức vận chuyển</div>
-                <div className={paymentStyles.cusInfo__checkbox}>
-                  <label className={paymentStyles.checkbox__item} >
-                    <input
-                      className={paymentStyles.checkbox}
-                      type="checkbox"
-                      id="checkbox1"
-
-                    />
-                    Giao hàng hoả tốc (trong 2h)
-                    <FaCheck className={paymentStyles.checkbox__icon} />
-                  </label>
-                  <label className={paymentStyles.checkbox__item} >
-
-
-                    <input
-                      className={paymentStyles.checkbox}
-                      type="checkbox"
-                      id="checkbox2"
-
-
-                    />
-                    Giao hàng tiêu chuẩn (2-3 ngày)
-                    <FaCheck className={paymentStyles.checkbox__icon} />
-                  </label>
-                </div>
-              </div>
-              {/* Phương thức thanh toán */}
-              <div className={`body--1 ${paymentStyles.cusInfo__overlap}`}>
-                <div className={`title--1 ${paymentStyles.cusInfo__head}`}>Phương thức thanh toán</div>
-                <div className={paymentStyles.cusInfo__checkbox}>
-
-                  <label className={paymentStyles.checkbox__item} >
-                    <input
-                      className={paymentStyles.checkbox}
-                      type="checkbox"
-                      id="checkbox1"
-                    />
-                    Thanh toán khi nhận hàng (COD)
-                    <FaCheck className={paymentStyles.checkbox__icon} />
-                  </label>
-                  <label className={paymentStyles.checkbox__item} >
-
-
-                    <input
-                      className={paymentStyles.checkbox}
-                      type="checkbox"
-                      id="checkbox2"
-                    />
-                    Thanh toán bằng Ví MoMo
-                    <FaCheck className={paymentStyles.checkbox__icon} />
-                  </label>
-
-                  <label className={paymentStyles.checkbox__item} >
-                    <input
-                      className={paymentStyles.checkbox}
-                      type="checkbox"
-                      id="checkbox2"
-                    />
-                    Thanh toán bằng thẻ ATM/VISA/MASTER
-                    <FaCheck className={paymentStyles.checkbox__icon} />
-                  </label>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <Footer />
+        <Footer />
 
-    </>
-  )
+      </>
+      )
 }
 
-export default PaymentPageGuest 
+      export default PaymentPageGuest 
