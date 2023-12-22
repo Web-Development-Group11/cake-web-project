@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/header/NavBar'
 import './ProductDetail.css';
 import '../../Variable.css';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Card from '../../components/card/Card';
 import Button from '../../components/button/Button';
 // import TextField from '../../components/textField/TextField';
-import BoxQuantityComponent from '../../components/boxquantity/BoxQuantity';
+// import BoxQuantityComponent from '../../components/boxquantity/BoxQuantity';
 import Footer from '../../components/footer/Footer';
 import TabReview from './tab/TabReview';
-
+import { axiosClient } from '../../api/axios';
 import Rating from '@mui/material/Rating';
 
 
@@ -19,14 +19,26 @@ import Rating from '@mui/material/Rating';
 
 export default function ProductDetail() {
   // Hinh anh hiển thị
-  const [selectedImage, setSelectedImage] = useState('https://cupcakecentral.com.au/cdn/shop/products/CLASSIC-INDIVIDUAL-CUT-CC-RV.jpg?v=1681779929');
+  const [selectedImage, setSelectedImage] = useState();
   const [selectedThumbnail, setSelectedThumbnail] = useState(0);
-
+  const {id} = useParams();
+  const [product, setProduct] = useState();
   const handleImageClick = (newImage, index) => {
     setSelectedImage(newImage);
     setSelectedThumbnail(index);
   };
-
+  useEffect(() => {
+    const getProduct = async ()=> {
+    try { 
+      const response = await axiosClient.get(`/products/${id}`);
+      console.log(response.data.data);
+      setProduct(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+getProduct();
+},[id]);
   // Sample Card
   const sampleProduct = {
     specific_type: "some_type",
@@ -49,6 +61,7 @@ export default function ProductDetail() {
           </div>
 
           <div className='productDetail'>
+          {product ?(
             <div className='productDetail__info'>
               <div className="productDetail__info_img">
                 <div className="productDetail__info_img-big">
@@ -57,21 +70,21 @@ export default function ProductDetail() {
                 <div className="productDetail__info_img-small">
                   <img
                     className={`selectable-image ${selectedThumbnail === 0 ? 'selected' : ''}`}
-                    src="https://cupcakecentral.com.au/cdn/shop/products/CLASSIC-INDIVIDUAL-CUT-CC-RV.jpg?v=1681779929"
+                    src={product.image_urls.image_url_0}
                     alt=""
-                    onClick={() => handleImageClick('https://cupcakecentral.com.au/cdn/shop/products/CLASSIC-INDIVIDUAL-CUT-CC-RV.jpg?v=1681779929', 0)}
+                    onClick={() => handleImageClick(product.image_urls.image_url_0, 0)}
                   />
                   <img
                     className={`selectable-image ${selectedThumbnail === 1 ? 'selected' : ''}`}
-                    src="https://cupcakecentral.com.au/cdn/shop/products/CLASSIC-STYLED-CC-RV-2.jpg?v=1681783033"
+                    src={product.image_urls.image_url_1}
                     alt=""
-                    onClick={() => handleImageClick('https://cupcakecentral.com.au/cdn/shop/products/CLASSIC-STYLED-CC-RV-2.jpg?v=1681783033', 1)}
+                    onClick={() => handleImageClick(product.image_urls.image_url_1, 1)}
                   />
                   <img
                     className={`selectable-image ${selectedThumbnail === 2 ? 'selected' : ''}`}
-                    src="https://cupcakecentral.com.au/cdn/shop/products/CLASSIC-STYLED-CC-RV.jpg?v=1681783033"
+                    src={product.image_urls.image_url_2}
                     alt=""
-                    onClick={() => handleImageClick('https://cupcakecentral.com.au/cdn/shop/products/CLASSIC-STYLED-CC-RV.jpg?v=1681783033', 2)}
+                    onClick={() => handleImageClick(product.image_urls.image_url_2, 2)}
                   />
                   <img
                     className={`selectable-image ${selectedThumbnail === 3 ? 'selected' : ''}`}
@@ -83,9 +96,10 @@ export default function ProductDetail() {
               </div>
 
               {/* Thông tin sản phẩm */}
-              <div className="productDetail__info_text">
+              
+              <div className="productDetail__info_text" >
 
-                <p className="productDetail__info_text-name title--1">Tên sản phẩm</p>
+                <p className="productDetail__info_text-name title--1">{product.title}</p>
                 <div className="productDetail__rating-star">
 
                 </div>
@@ -93,16 +107,15 @@ export default function ProductDetail() {
                   style={{ color: '#E21033' }}
                   name="half-rating-read" defaultValue={4.5} precision={0.5} readOnly />
 
-                <p className="productDetail__info_text-price title--1">45.000</p>
+                <p className="productDetail__info_text-price title--1">{product.price}</p>
 
                 <div className="productDetail__info_text-description body--2">
-                  Mô tả sản phẩm ngắn gọn Mô tả sản phẩm ngắn gọn Mô tả sản phẩm ngắn gọn Mô tả sản phẩm ngắn gọn Mô tả sản phẩm ngắn gọn Mô tả sản phẩm ngắn gọn Mô tả sản phẩm ngắn gọn Mô tả sản phẩm ngắn gọn
+                  {product.product_description}
                 </div>
                 <div className="productDetail__info_text-quantity body--2">
                   <span className='title--3'>Số lượng</span>
-                  <BoxQuantityComponent height="2.5rem" />
+                  {/* <BoxQuantityComponent height="2.5rem" /> */}
                 </div>
-
                 <div className="productDetail__info_text-button">
                   <div className="addToCart_button">
                     <Button type="btn1 secondary--1">Thêm vào giỏ hàng</Button>
@@ -113,6 +126,7 @@ export default function ProductDetail() {
                 </div>
               </div>
             </div>
+            ):(<p>đang tải sản phẩm</p>)}
 
             {/* Sản phẩm nổi bật */}
             <div className="productDetail__outstanding">

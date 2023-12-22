@@ -6,6 +6,7 @@ import Button from "../../components/button/Button";
 import TextField from "../../components/textField/TextField";
 import TextFieldWithIcon from "../../components/textFieldWithIcon/TextFieldWithIcon";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { validateUsername, validatePassword, validateConfirmPassword } from "./validationForm";
 import { axiosClient } from "../../api/axios";
 function Register() {
@@ -18,6 +19,7 @@ function Register() {
   const [usernameErrorMsg, setUsernameErrorMsg] = useState("");
   const [passwordErrorMsg, setPasswordErrorMsg] = useState("");
   const [confirmPasswordErrorMsg, setConfirmPasswordErrorMsg] = useState("");
+  const navigate = useNavigate();
 
   function changeInputValue(name, value) {
     if (name === "username") {
@@ -93,6 +95,16 @@ function Register() {
       setConfirmPasswordError(validation.confirmPasswordError);
       setConfirmPasswordErrorMsg(validation.confirmPasswordErrorMsg);
     } else {
+      try {
+        const response = await axiosClient.post('/register', {username, password})
+        if (response.statusCode === 200) {
+          navigate('/login');
+      }else {
+        alert('Wrong username or password')
+      }
+  } catch (e) {
+    console.log(e);
+    }
   }
 }
 

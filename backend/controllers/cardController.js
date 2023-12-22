@@ -32,3 +32,21 @@ export const getRandomProduct = async (req, res) => {
         }
     }
 }
+
+export const getProductById = async (req, res) =>{
+    const id = req.params.id;
+    try { 
+        const data = await product.findUnique({
+            where : {
+            id : id
+        }
+        });
+        res.status(200).json({ data : data });
+    } catch(err) {
+        res.status(500).json({ message : err.message });
+    }finally {
+        async() => {
+            await product.$disconnect();
+        };
+    }
+}

@@ -33,7 +33,7 @@ export default function Card({ product }) {
       }}
     >
       <div className={cardStyles.card__productImage}>
-        <Link to={`/product/${product.specific_type}/${product.title}`}>
+        <Link to={`/productDetail/${product.id}`}>
           <img className={cardStyles.card__Image} src={product.image_urls.image_url_0} alt={product.title} />
         </Link>
       </div>
