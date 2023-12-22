@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import TextFieldWithIcon from '../textFieldWithIcon/TextFieldWithIcon'
+import AddSelect from '../../components/AddSelect/addSelect';
 import TextField from '../textField/TextField'
 import Button from '../button/Button';
 import styles from './Tab.module.css';
@@ -10,29 +11,29 @@ import { FiFileText, FiBox, FiTruck, FiInbox, FiStar } from "react-icons/fi";
 const Tab = () => {
     const [activeTab, setActiveTab] = useState('customerInfo');
 
-    const user = {
-      name: 'Đào Huyền Anh',
-      id: '01234455657',
-      avatar: '/src/assets/image/avatar.png', 
-    };
+    const [isDisabled, setIsDisabled] = useState(false);
 
     const [userData, setUserData] = useState({
+      username: 'Đào Huyền Anh',
+      id: '01234455657',
+      avatar: '/src/assets/image/avatar.png', 
       email: 'huyenanhdao@gmail.com',
       phoneNumber: '0398607486',
-      displayName: 'huyenanhdao910',
       password: '********',
-      city: 'Hồ Chí Minh',
+      province: 'Hồ Chí Minh',
       district: 'Thủ Đức',
-      ward: ' Linh Xuân',
+      ward: ' Linh Xuân', 
       address: 'KTX Khu B ĐHQG',
     });
   
-    const handleInputChange = (e) => {
-      const { name, value } = e.target;
-      setUserData({ ...userData, [name]: value });
+    const handleChange = (name) => (value) => {
+      setUserData((prevUserData) => ({
+        ...prevUserData,
+        [name]: value,
+      }));
     };
-  
-    const handleUpdateAddress = () => {
+    const handleSubmit = (e) => {
+      e.preventDefault();
       // Xử lý cập nhật thông tin địa chỉ khi nhấn nút "Cập nhật"
       // Ví dụ: gọi API hoặc thực hiện các tác vụ cần thiết
       console.log('Thông tin cập nhật:', userData);
@@ -56,10 +57,10 @@ const Tab = () => {
       <div className={styles.tab__container}>
         <div className={styles.container__wrapper}>
           <div className={styles.user__container}>
-            <img src={user.avatar} alt="User Avatar" className={styles.avatar} />
+            <img src={userData.avatar} alt="User Avatar" className={styles.avatar} />
             <div className={styles.user__info}>
-              <p className='title--1' style={{ color: 'var(--primary-color)' }}>{user.name}</p>
-              <p className='title--3'>ID: {user.id}</p>
+              <p className='title--1' style={{ color: 'var(--primary-color)' }}>{userData.username}</p>
+              <p className='title--3'>ID: {userData.id}</p>
             </div>
             <div className={styles.signout}>
               <Button type='btn1 primary'>Đăng xuất</Button>
@@ -91,7 +92,7 @@ const Tab = () => {
         <div className={styles.tab__content}>
           {activeTab === 'customerInfo' && (
             <div className={styles.customerInfo}>
-              <form action="">
+              <form onSubmit={handleSubmit}>
                 <div className={`${styles.title} heading`}>Thông tin khách hàng</div>
                 <fieldset className={styles.acct__info}>
 
@@ -99,15 +100,15 @@ const Tab = () => {
                   <legend className={`${styles.subtitle} title--3`}>Tài khoản và bảo mật</legend>
                   <div className={styles.contact}>
 
-                    {/* Left field include: email, phoneNumber, displayName and password */}
+                    {/* Left field include: email, phoneNumber, name and password */}
                     <div className={styles.contact__left}>
 
                       {/* Email field */}
                       <div className={styles.subcontact}>
-                        <label htmlFor="email" className='title--4'>Email</label>
+                        <label className='title--4'>Email</label>
                         <div className={styles.input__change}>
                           <div className={styles.input__item}>
-                            <TextFieldWithIcon value={userData.email} ></TextFieldWithIcon>
+                            <TextFieldWithIcon name="email" value={userData.email}></TextFieldWithIcon>
                           </div>
                           <Link to = '/forgetpassword' className={`${styles.change__text} body--2`}>Thay đổi</Link>
                         </div>
@@ -115,31 +116,31 @@ const Tab = () => {
 
                       {/* PhoneNumber field */}
                       <div className={styles.subcontact}>
-                        <label htmlFor="phoneNumber" className='title--4'>Điện thoại</label>
+                        <label className='title--4'>Điện thoại</label>
                         <div className={styles.input__change}>
                           <div className={styles.input__item}>
-                            <TextFieldWithIcon value={userData.phoneNumber} ></TextFieldWithIcon>
+                            <TextFieldWithIcon name="phoneNumber" value={userData.phoneNumber}></TextFieldWithIcon>
                           </div>
                           <Link to = '/forgetpassword' className={`${styles.change__text} body--2`}>Thay đổi</Link>
                         </div>
                       </div>
 
-                      {/* DisplayName field */}
+                      {/* Display name field */}
                       <div className={styles.subcontact}>
-                        <label htmlFor="displayName" className='title--4'>Tên hiển thị</label>
+                        <label className='title--4'>Tên hiển thị</label>
                         <div className={styles.input__change}>
-                          <div className={styles.input__item} onChange={handleInputChange}>
-                            <TextField value={userData.displayName} ></TextField>
+                          <div className={styles.input__item} >
+                            <TextField name="username" value={userData.username} onChange={handleChange('username')} ></TextField>
                           </div>
                         </div>
                       </div>
 
                       {/* Password field */}
                       <div className={styles.subcontact}>
-                        <label htmlFor="password" className='title--4'>Mật khẩu</label>
+                        <label className='title--4'>Mật khẩu</label>
                         <div className={styles.input__change}>
                           <div className={styles.input__item}>
-                            <TextFieldWithIcon value={userData.password} ></TextFieldWithIcon>
+                            <TextFieldWithIcon name="password" value={userData.password} disabled={true}></TextFieldWithIcon>
                           </div>
                           <Link to = '/changePassword' className={`${styles.change__text} body--2`}>Thay đổi</Link>
                         </div>
@@ -148,45 +149,27 @@ const Tab = () => {
 
                     </div>
 
-                    {/* Right field include: city, district, ward and location */}
+                    {/* Right field include: province, district, ward and location */}
                     <div className={styles.contact__right}>
 
-                      {/* City field */}
-                      <div className={styles.subcontact}>
-                        <label htmlFor="city" className='title--4'>Tỉnh/Thành phố</label>
-                        <div className={styles.input__change}>
-                          <div className={styles.input__item}>
-                            <TextField value={userData.city} ></TextField>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* District field */}
-                      <div className={styles.subcontact}>
-                        <label htmlFor="district" className='title--4'>Quận/Huyện</label>
-                        <div className={styles.input__change}>
-                          <div className={styles.input__item}>
-                            <TextField value={userData.district} ></TextField>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      {/* Ward field */}
-                      <div className={styles.subcontact}>
-                        <label htmlFor="ward" className='title--4'>Xã/Phường</label>
-                        <div className={styles.input__change}>
-                          <div className={styles.input__item}>
-                            <TextField value={userData.ward} ></TextField>
-                          </div>
-                        </div>
-                      </div>
+                    <AddSelect
+                      showProvince={true}
+                      showDistrict={true}
+                      showWard={true}
+                      selectedProvince={userData.province}
+                      selectedDistrict={userData.district}
+                      selectedWard={userData.ward}
+                      onProvinceChange={handleChange('province')}
+                      onDistrictChange={handleChange('district')}
+                      onWardChange={handleChange('ward')}
+                    />
 
                       {/* Location field */}
                       <div className={styles.subcontact}>
-                        <label htmlFor="location" className='title--4'>Địa chỉ</label>
+                        <label className='title--4'>Địa chỉ</label>
                         <div className={styles.input__change}>
                           <div className={styles.input__item}>
-                            <TextField value={userData.address} ></TextField>
+                            <TextField name="address" value={userData.address} onChange={handleChange('address')} ></TextField>
                           </div>
                         </div>
                       </div>
@@ -200,15 +183,15 @@ const Tab = () => {
                   <div className={styles.loc__container}>
                     <div className={styles.loc__detail}>
                       <div className="body--2">
-                        <div> {user.name} | {userData.phoneNumber}</div>
+                        <div> {userData.username} | {userData.phoneNumber}</div>
                         <div> {userData.address} </div>
-                        <div>{`Phường ${userData.ward}, Quận ${userData.district}, Thành Phố ${userData.city} `}</div>
+                        <div>{`${userData.ward}, ${userData.district}, ${userData.province} `}</div>
                       </div>
                       <hr size="1" className={styles.line}/>
                     </div>
                   </div>
                 </fieldset>
-                <div className={styles.update__btn} onClick={handleUpdateAddress}>
+                <div className={styles.update__btn} >
                   <Button type='btn1 secondary--1'>Cập nhật</Button>
                 </div>
               </form>
@@ -248,7 +231,7 @@ const Tab = () => {
                     <div className={styles.delivery_info}>
                     
                       <div className={`${styles.subinfo} body--2`}><FaRegClock size="20px"/>Đơn hàng đã được giao tới bạn vào ngày {order.date}</div>
-                      <div className={`${styles.subinfo} body--2`}><FaRegMap size="20px"/>Địa chỉ nhận hàng: {userData.address}, {userData.ward}, {userData.district}, {userData.city} 
+                      <div className={`${styles.subinfo} body--2`}><FaRegMap size="20px"/>Địa chỉ nhận hàng: {userData.address}, {userData.ward}, {userData.district}, {userData.province} 
                       </div>  
                     </div>
 
@@ -357,7 +340,7 @@ const Tab = () => {
                   <div className={styles.delivery_info}>
                   
                     <div className={`${styles.subinfo} body--2`}><FaRegClock size="20px"/>Đơn hàng đã được giao tới bạn vào ngày {order.date}</div>
-                    <div className={`${styles.subinfo} body--2`}><FaRegMap size="20px"/>Địa chỉ nhận hàng: {userData.address}, {userData.ward}, {userData.district}, {userData.city} 
+                    <div className={`${styles.subinfo} body--2`}><FaRegMap size="20px"/>Địa chỉ nhận hàng: {userData.address}, {userData.ward}, {userData.district}, {userData.province} 
                     </div>  
                   </div>
 
