@@ -7,6 +7,7 @@ import Button from '../../components/button/Button';
 import paymentStyles from './Payment.module.css'
 import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 import { FaCheck } from "react-icons/fa";
+import AddSelect from '../../components/AddSelect/addSelect';
 
 const PaymentPageGuest  = () => {
   return (
@@ -79,6 +80,7 @@ const PaymentPageGuest  = () => {
               {/* thông tin nhận hàng */}
               <div className={paymentStyles.cusInfo__overlap}>
                 <div className={`title--1 ${paymentStyles.cusInfo__head}`}>Thông tin nhận hàng</div>
+
                 <div className={paymentStyles.cusInfo__row}>
                   <div className={paymentStyles.cusInfo__col1}>
                     <TextField
@@ -96,6 +98,27 @@ const PaymentPageGuest  = () => {
                   <div className={paymentStyles.cusInfo__col1}>
                     <TextField
                       placeholder="Email"
+                    />
+                  </div>
+                </div>
+
+                <div className={paymentStyles.cusInfo__row}>
+                  <div className={paymentStyles.cusInfo__col1}>
+                    <AddSelect
+                      showProvince={true}
+                      selectedProvince={userData.province}
+                      onProvinceChange={handleChange('province')}
+                
+                    />
+                  </div>
+                  <div className={paymentStyles.cusInfo__col2}>
+                    <TextField
+                      placeholder="Số điện thoại"
+                    />
+                  </div>
+                  <div className={paymentStyles.cusInfo__col2}>
+                    <TextField
+                      placeholder="Số điện thoại"
                     />
                   </div>
                 </div>
