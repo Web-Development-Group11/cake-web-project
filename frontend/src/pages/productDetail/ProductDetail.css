@@ -1,0 +1,136 @@
+@import url("../../Variable.css");
+
+.productDetail__screen {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+.productDetail__page {
+    padding-top: 3.75rem;
+    width: 75rem;
+    margin-left: 7.5rem;
+    margin-right: 7.5rem;
+}
+
+/*  */
+
+.productDetail {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 4rem;
+    position: relative;
+}
+
+.productDetail__info {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+    height: 39.5rem;
+}
+
+.productDetail__info_img {
+    position: absolute;
+    width: calc(100% - 4rem - 53%);
+    height: 100%;
+}
+
+.productDetail__info_img-big {
+    height: calc(100% - 8.25rem);
+}
+
+.productDetail__info_img-big img {
+    width: 100%;
+    border-radius: 1rem;
+}
+
+.productDetail__info_img-small {
+    display: flex;
+    justify-content: space-between;
+    bottom: 0;
+    left: 0;
+}
+
+.productDetail__info_img-small img {
+    width: 6.25rem;
+    height: 6.25rem;
+    object-fit: cover;
+    margin-top: 2rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.selectable-image:hover, .selected-image:focus, .selectable-image.selected {
+    border: 0.125rem solid var(--brown);
+}
+
+
+/* content */
+.productDetail__info_text {
+    position: relative;
+    width: 53%;
+    height: calc(100% - 8.25rem);
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+}
+
+.productDetail__info_text-name {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.productDetail__info_text-price {
+    margin: 1rem 0;
+}
+
+.productDetail__info_text-quantity {
+    position: absolute;
+    bottom: 5.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.productDetail__info_text-button {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.addToCart_button, .buyNow_button {
+    margin-right: 2rem;
+    margin-top: 2rem;
+}
+
+.addToCart_button button, .buyNow_button button {
+    height: 3.5rem;
+    width: 12rem;
+}
+
+/* Sản phẩm nổi bât */
+.productDetail__outstanding {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+    gap: 2rem;
+}
+
+.productDetail__outstanding_title {
+    text-align: center;
+}
+
+.productDetail__outstanding_card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Review */

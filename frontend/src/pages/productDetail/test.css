@@ -1,0 +1,673 @@
+.desktop-vit-nh-gi {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.desktop-vit-nh-gi .div-2 {
+    background-color: #ffffff;
+    height: 2655px;
+    position: relative;
+    width: 1440px;
+}
+
+.desktop-vit-nh-gi .trang-ch-s-n-ph-m-s {
+    color: #000000;
+    font-family: var(--desktop-styles-body-1-font-family);
+    font-size: var(--desktop-styles-body-1-font-size);
+    font-style: var(--desktop-styles-body-1-font-style);
+    font-weight: var(--desktop-styles-body-1-font-weight);
+    height: 30px;
+    left: 121px;
+    letter-spacing: var(--desktop-styles-body-1-letter-spacing);
+    line-height: var(--desktop-styles-body-1-line-height);
+    position: absolute;
+    top: 131px;
+    white-space: nowrap;
+}
+
+.desktop-vit-nh-gi .overlap {
+    height: 500px;
+    left: 84px;
+    position: absolute;
+    top: 226px;
+    width: 573px;
+}
+
+.desktop-vit-nh-gi .group {
+    background-image: url(https://c.animaapp.com/LRsy0thE/img/rectangle-10-1.svg);
+    background-position: 50% 50%;
+    background-size: cover;
+    height: 500px;
+    left: 36px;
+    position: absolute;
+    top: 0;
+    width: 500px;
+}
+
+.desktop-vit-nh-gi .left-instance {
+    height: 74px !important;
+    left: 0 !important;
+    position: absolute !important;
+    top: 216px !important;
+    width: 74px !important;
+}
+
+.desktop-vit-nh-gi .right-instance {
+    height: 74px !important;
+    left: 499px !important;
+    position: absolute !important;
+    top: 216px !important;
+    width: 74px !important;
+}
+
+.desktop-vit-nh-gi .rectangle {
+    height: 100px;
+    left: 120px;
+    object-fit: cover;
+    position: absolute;
+    top: 758px;
+    width: 100px;
+}
+
+.desktop-vit-nh-gi .rectangle-2 {
+    height: 100px;
+    left: 520px;
+    object-fit: cover;
+    position: absolute;
+    top: 758px;
+    width: 100px;
+}
+
+.desktop-vit-nh-gi .rectangle-3 {
+    height: 100px;
+    left: 387px;
+    object-fit: cover;
+    position: absolute;
+    top: 758px;
+    width: 100px;
+}
+
+.desktop-vit-nh-gi .rectangle-4 {
+    height: 100px;
+    left: 253px;
+    object-fit: cover;
+    position: absolute;
+    top: 758px;
+    width: 100px;
+}
+
+.desktop-vit-nh-gi .header {
+    height: 108px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1440px;
+}
+
+.desktop-vit-nh-gi .overlap-2 {
+    height: 500px;
+    left: 684px;
+    position: absolute;
+    top: 226px;
+    width: 645px;
+}
+
+.desktop-vit-nh-gi .group-2 {
+    height: 500px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 645px;
+}
+
+.desktop-vit-nh-gi .text-wrapper-6 {
+    color: #e21033;
+    font-family: var(--desktop-styles-title-1-font-family);
+    font-size: var(--desktop-styles-title-1-font-size);
+    font-style: var(--desktop-styles-title-1-font-style);
+    font-weight: var(--desktop-styles-title-1-font-weight);
+    height: 31px;
+    left: 2px;
+    letter-spacing: var(--desktop-styles-title-1-letter-spacing);
+    line-height: var(--desktop-styles-title-1-line-height);
+    position: absolute;
+    top: 0;
+    width: 129px;
+}
+
+.desktop-vit-nh-gi .text-wrapper-7 {
+    color: #000000;
+    font-family: var(--desktop-styles-title-1-font-family);
+    font-size: var(--desktop-styles-title-1-font-size);
+    font-style: var(--desktop-styles-title-1-font-style);
+    font-weight: var(--desktop-styles-title-1-font-weight);
+    height: 31px;
+    left: 0;
+    letter-spacing: var(--desktop-styles-title-1-letter-spacing);
+    line-height: var(--desktop-styles-title-1-line-height);
+    position: absolute;
+    top: 93px;
+    white-space: nowrap;
+}
+
+.desktop-vit-nh-gi .s-lng {
+    height: 26px;
+    left: 2px;
+    position: absolute;
+    top: 397px;
+    width: 90px;
+}
+
+.desktop-vit-nh-gi .text-wrapper-8 {
+    color: #000000;
+    font-family: var(--desktop-styles-title-3-font-family);
+    font-size: var(--desktop-styles-title-3-font-size);
+    font-style: var(--desktop-styles-title-3-font-style);
+    font-weight: var(--desktop-styles-title-3-font-weight);
+    height: 26px;
+    left: 0;
+    letter-spacing: var(--desktop-styles-title-3-letter-spacing);
+    line-height: var(--desktop-styles-title-3-line-height);
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+}
+
+.desktop-vit-nh-gi .star-2 {
+    height: 30px;
+    left: 2px;
+    position: absolute;
+    top: 47px;
+    width: 189px;
+}
+
+.desktop-vit-nh-gi .star-3 {
+    height: 27px;
+    left: 1px;
+    position: absolute;
+    top: 0;
+    width: 28px;
+}
+
+.desktop-vit-nh-gi .star-4 {
+    height: 27px;
+    left: 159px;
+    position: absolute;
+    top: 0;
+    width: 28px;
+}
+
+.desktop-vit-nh-gi .star-5 {
+    height: 27px;
+    left: 120px;
+    position: absolute;
+    top: 0;
+    width: 28px;
+}
+
+.desktop-vit-nh-gi .star-6 {
+    height: 27px;
+    left: 80px;
+    position: absolute;
+    top: 0;
+    width: 28px;
+}
+
+.desktop-vit-nh-gi .star-7 {
+    height: 27px;
+    left: 40px;
+    position: absolute;
+    top: 0;
+    width: 28px;
+}
+
+.desktop-vit-nh-gi .button-1 {
+    display: flex !important;
+    left: 1px !important;
+    position: absolute !important;
+    top: 459px !important;
+    width: 194px !important;
+}
+
+.desktop-vit-nh-gi .button-instance {
+    display: flex !important;
+    left: 225px !important;
+    min-width: unset !important;
+    position: absolute !important;
+    top: 459px !important;
+    width: 194px !important;
+}
+
+.desktop-vit-nh-gi .m-t-s-n-ph-m-ng-n-g {
+    color: #000000;
+    font-family: var(--desktop-styles-body-2-font-family);
+    font-size: var(--desktop-styles-body-2-font-size);
+    font-style: var(--desktop-styles-body-2-font-style);
+    font-weight: var(--desktop-styles-body-2-font-weight);
+    height: 72px;
+    left: 2px;
+    letter-spacing: var(--desktop-styles-body-2-letter-spacing);
+    line-height: var(--desktop-styles-body-2-line-height);
+    position: absolute;
+    text-align: justify;
+    top: 168px;
+    width: 637px;
+}
+
+.desktop-vit-nh-gi .span {
+    color: #000000;
+    font-family: var(--desktop-styles-body-2-font-family);
+    font-size: var(--desktop-styles-body-2-font-size);
+    font-style: var(--desktop-styles-body-2-font-style);
+    font-weight: var(--desktop-styles-body-2-font-weight);
+    letter-spacing: var(--desktop-styles-body-2-letter-spacing);
+    line-height: var(--desktop-styles-body-2-line-height);
+}
+
+.desktop-vit-nh-gi .text-wrapper-9 {
+    font-family: var(--desktop-styles-body-2-font-family);
+    font-size: var(--desktop-styles-body-2-font-size);
+    font-style: var(--desktop-styles-body-2-font-style);
+    font-weight: var(--desktop-styles-body-2-font-weight);
+    letter-spacing: var(--desktop-styles-body-2-letter-spacing);
+    line-height: var(--desktop-styles-body-2-line-height);
+}
+
+.desktop-vit-nh-gi .input-stepper-instance {
+    left: 122px !important;
+    position: absolute !important;
+    top: 390px !important;
+    width: 155px !important;
+}
+
+.desktop-vit-nh-gi .design-component-instance-node {
+    border: 1px solid !important;
+    border-color: #47271c !important;
+    border-radius: 8px !important;
+    flex: 0 0 auto !important;
+    overflow: hidden !important;
+}
+
+.desktop-vit-nh-gi .icon-instance-node-2 {
+    height: 24px !important;
+    position: relative !important;
+    width: 24px !important;
+}
+
+.desktop-vit-nh-gi .input-stepper-2 {
+    background-color: var(--secondarybackground-1) !important;
+    flex: 0 0 auto !important;
+}
+
+.desktop-vit-nh-gi .input-stepper-3 {
+    color: var(--primary) !important;
+    font-family: "Inter", Helvetica !important;
+    font-size: 20px !important;
+    font-style: unset !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    line-height: 30px !important;
+    margin-bottom: -2px !important;
+    margin-top: -4px !important;
+    text-align: center !important;
+}
+
+.desktop-vit-nh-gi .input-stepper-4 {
+    border-color: var(--secondarytext) !important;
+}
+
+.desktop-vit-nh-gi .input-stepper-5 {
+    border-radius: 8px !important;
+    flex: 0 0 auto !important;
+}
+
+.desktop-vit-nh-gi .input-stepper-6 {
+    background-color: #ffffff !important;
+    border: 1px solid !important;
+    border-color: #000000 !important;
+    flex: 0 0 auto !important;
+}
+
+.desktop-vit-nh-gi .sn-phm-lin-quan {
+    height: 474px;
+    left: 95px;
+    position: absolute;
+    top: 922px;
+    width: 1254px;
+}
+
+.desktop-vit-nh-gi .div-wrapper {
+    height: 42px;
+    left: 517px;
+    position: absolute;
+    top: 0;
+    width: 217px;
+}
+
+.desktop-vit-nh-gi .text-wrapper-10 {
+    color: #e21033;
+    font-family: var(--desktop-styles-heading-font-family);
+    font-size: var(--desktop-styles-heading-font-size);
+    font-style: var(--desktop-styles-heading-font-style);
+    font-weight: var(--desktop-styles-heading-font-weight);
+    left: 0;
+    letter-spacing: var(--desktop-styles-heading-letter-spacing);
+    line-height: var(--desktop-styles-heading-line-height);
+    position: absolute;
+    text-align: center;
+    top: 0;
+    white-space: nowrap;
+}
+
+.desktop-vit-nh-gi .overlap-3 {
+    height: 400px;
+    left: -12px;
+    position: absolute;
+    top: 74px;
+    width: 1278px;
+}
+
+.desktop-vit-nh-gi .frame-2 {
+    align-items: flex-start;
+    display: flex;
+    gap: 32px;
+    left: 37px;
+    position: absolute;
+    top: 0;
+    width: 1200px;
+}
+
+.desktop-vit-nh-gi .card-instance {
+    position: relative !important;
+}
+
+.desktop-vit-nh-gi .right-1 {
+    height: 74px !important;
+    left: 1204px !important;
+    position: absolute !important;
+    top: 166px !important;
+    width: 74px !important;
+}
+
+.desktop-vit-nh-gi .left-1 {
+    height: 74px !important;
+    left: 0 !important;
+    position: absolute !important;
+    top: 166px !important;
+    width: 74px !important;
+}
+
+.desktop-vit-nh-gi .footer {
+    height: 414px;
+    left: 0;
+    position: absolute;
+    top: 2241px;
+    width: 1440px;
+}
+
+.desktop-vit-nh-gi .vit-nh-gi {
+    height: 717px;
+    left: 120px;
+    position: absolute;
+    top: 1460px;
+    width: 1200px;
+}
+
+.desktop-vit-nh-gi .overlap-4 {
+    background-color: var(--secondarybackground-1);
+    border: 2px solid;
+    border-color: #47271c;
+    border-radius: 16px;
+    height: 721px;
+    left: -2px;
+    position: relative;
+    top: -2px;
+    width: 1204px;
+}
+
+.desktop-vit-nh-gi .nh-gi {
+    height: 69px;
+    left: 71px;
+    position: absolute;
+    top: 41px;
+    width: 660px;
+}
+
+.desktop-vit-nh-gi .tab-instance {
+    background-color: var(--secondarybackgroung-2) !important;
+    border: 1px solid !important;
+    border-color: var(--secondaryhighlight-text) !important;
+    display: flex !important;
+    height: 69px !important;
+    left: 0 !important;
+    position: absolute !important;
+    top: 0 !important;
+    width: 322px !important;
+}
+
+.desktop-vit-nh-gi .tab-2 {
+    color: var(--secondarytext) !important;
+    font-family: var(--desktop-styles-title-3-font-family) !important;
+    font-size: var(--desktop-styles-title-3-font-size) !important;
+    font-style: var(--desktop-styles-title-3-font-style) !important;
+    font-weight: var(--desktop-styles-title-3-font-weight) !important;
+    letter-spacing: var(--desktop-styles-title-3-letter-spacing) !important;
+    line-height: var(--desktop-styles-title-3-line-height) !important;
+    margin-top: unset !important;
+}
+
+.desktop-vit-nh-gi .tab-3 {
+    background-color: var(--primary) !important;
+    border: 1px solid !important;
+    border-color: var(--secondaryhighlight-text) !important;
+    display: flex !important;
+    height: 69px !important;
+    left: 338px !important;
+    position: absolute !important;
+    top: 0 !important;
+    width: 322px !important;
+}
+
+.desktop-vit-nh-gi .tab-4 {
+    color: var(--secondarybackground-1) !important;
+    font-family: var(--desktop-styles-title-3-font-family) !important;
+    font-size: var(--desktop-styles-title-3-font-size) !important;
+    font-style: var(--desktop-styles-title-3-font-style) !important;
+    font-weight: var(--desktop-styles-title-3-font-weight) !important;
+    letter-spacing: var(--desktop-styles-title-3-letter-spacing) !important;
+    line-height: var(--desktop-styles-title-3-line-height) !important;
+    margin-top: unset !important;
+}
+
+.desktop-vit-nh-gi .overlap-wrapper {
+    height: 543px;
+    left: 70px;
+    position: absolute;
+    top: 142px;
+    width: 1061px;
+}
+
+.desktop-vit-nh-gi .overlap-5 {
+    background-color: var(--secondarybackgroung-2);
+    border-radius: 16px;
+    height: 543px;
+    position: relative;
+    width: 1059px;
+}
+
+.desktop-vit-nh-gi .text-field {
+    height: 120px;
+    left: 65px;
+    position: absolute;
+    top: 221px;
+    width: 929px;
+}
+
+.desktop-vit-nh-gi .overlap-group-2 {
+    background-color: var(--secondarybackground-1);
+    border: 1px solid;
+    border-color: var(--secondaryhighlight-text);
+    border-radius: 8px;
+    height: 122px;
+    position: relative;
+    top: 1px;
+}
+
+.desktop-vit-nh-gi .text-wrapper-11 {
+    color: var(--secondaryhighlight-text);
+    font-family: var(--desktop-styles-body-2-font-family);
+    font-size: var(--desktop-styles-body-2-font-size);
+    font-style: var(--desktop-styles-body-2-font-style);
+    font-weight: var(--desktop-styles-body-2-font-weight);
+    height: 24px;
+    left: 16px;
+    letter-spacing: var(--desktop-styles-body-2-letter-spacing);
+    line-height: var(--desktop-styles-body-2-line-height);
+    position: absolute;
+    top: 18px;
+    white-space: nowrap;
+    width: 131px;
+}
+
+.desktop-vit-nh-gi .p {
+    color: #000000;
+    font-family: var(--desktop-styles-title-1-font-family);
+    font-size: var(--desktop-styles-title-1-font-size);
+    font-style: var(--desktop-styles-title-1-font-style);
+    font-weight: var(--desktop-styles-title-1-font-weight);
+    left: 63px;
+    letter-spacing: var(--desktop-styles-title-1-letter-spacing);
+    line-height: var(--desktop-styles-title-1-line-height);
+    position: absolute;
+    top: 35px;
+    white-space: nowrap;
+    width: 318px;
+}
+
+.desktop-vit-nh-gi .overlap-group-wrapper {
+    height: 40px;
+    left: 64px;
+    position: absolute;
+    top: 97px;
+    width: 517px;
+}
+
+.desktop-vit-nh-gi .overlap-6 {
+    background-color: var(--secondarybackground-1);
+    border: 1px solid;
+    border-color: var(--secondaryhighlight-text);
+    border-radius: 8px;
+    height: 42px;
+    position: relative;
+}
+
+.desktop-vit-nh-gi .text-wrapper-12 {
+    color: var(--secondaryhighlight-text);
+    font-family: var(--desktop-styles-body-2-font-family);
+    font-size: var(--desktop-styles-body-2-font-size);
+    font-style: var(--desktop-styles-body-2-font-style);
+    font-weight: var(--desktop-styles-body-2-font-weight);
+    height: 18px;
+    left: 16px;
+    letter-spacing: var(--desktop-styles-body-2-letter-spacing);
+    line-height: var(--desktop-styles-body-2-line-height);
+    position: absolute;
+    top: 9px;
+    white-space: nowrap;
+    width: 78px;
+}
+
+.desktop-vit-nh-gi .input {
+    background-color: var(--secondarybackground-1);
+    border: 1px solid;
+    border-color: var(--secondaryhighlight-text);
+    border-radius: 8px;
+    color: var(--secondaryhighlight-text);
+    font-family: var(--desktop-styles-body-2-font-family);
+    font-size: var(--desktop-styles-body-2-font-size);
+    font-style: var(--desktop-styles-body-2-font-style);
+    font-weight: var(--desktop-styles-body-2-font-weight);
+    height: 24px;
+    left: 65px;
+    letter-spacing: var(--desktop-styles-body-2-letter-spacing);
+    line-height: var(--desktop-styles-body-2-line-height);
+    padding: 0;
+    padding-left: 16px;
+    position: absolute;
+    top: 153px;
+    white-space: nowrap;
+    width: 929px;
+}
+
+.desktop-vit-nh-gi .text-field-2 {
+    background-color: var(--secondarybackground-1);
+    border: 1px solid;
+    border-color: var(--secondaryhighlight-text);
+    border-radius: 8px;
+    height: 40px;
+    left: 613px;
+    position: absolute;
+    top: 98px;
+    width: 380px;
+}
+
+.desktop-vit-nh-gi .text-wrapper-13 {
+    color: var(--secondaryhighlight-text);
+    font-family: var(--desktop-styles-body-2-font-family);
+    font-size: var(--desktop-styles-body-2-font-size);
+    font-style: var(--desktop-styles-body-2-font-style);
+    font-weight: var(--desktop-styles-body-2-font-weight);
+    height: 18px;
+    left: 16px;
+    letter-spacing: var(--desktop-styles-body-2-letter-spacing);
+    line-height: var(--desktop-styles-body-2-line-height);
+    position: absolute;
+    top: 8px;
+    white-space: nowrap;
+    width: 100px;
+}
+
+.desktop-vit-nh-gi .mc-hi-lng {
+    height: 66px;
+    left: 65px;
+    position: absolute;
+    top: 373px;
+    width: 337px;
+}
+
+.desktop-vit-nh-gi .text-wrapper-14 {
+    color: #000000;
+    font-family: var(--desktop-styles-title-3-font-family);
+    font-size: var(--desktop-styles-title-3-font-size);
+    font-style: var(--desktop-styles-title-3-font-style);
+    font-weight: var(--desktop-styles-title-3-font-weight);
+    left: 1px;
+    letter-spacing: var(--desktop-styles-title-3-letter-spacing);
+    line-height: var(--desktop-styles-title-3-line-height);
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+    width: 334px;
+}
+
+.desktop-vit-nh-gi .rating-instance {
+    display: flex !important;
+    height: 24px !important;
+    left: 0 !important;
+    position: absolute !important;
+    top: 42px !important;
+    width: 153px !important;
+}
+
+.desktop-vit-nh-gi .button-1-instance {
+    display: flex !important;
+    left: 447px !important;
+    min-width: unset !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    top: 470px !important;
+    width: 162px !important;
+}
