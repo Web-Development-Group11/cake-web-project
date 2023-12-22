@@ -126,20 +126,6 @@ function Cart({ setShowCart, cart, setCart }) {
                 <div className={cartStyles.info1__amount}>  {formatPrice(tongtien)}</div>
               </div>
 
-              <div className={`body--2 ${cartStyles.checkout__info3}`} >
-                <div className={cartStyles.info2__title}>Nhập voucher:</div>
-                <div className={cartStyles.checkout__info2}>
-                  <div className={cartStyles.info1__title}>
-                    <TextField
-                      placeholder="Nhập voucher"
-                    />
-                  </div>
-                  <div className={cartStyles.info2__btn}>
-                    <Button type="btn1 secondary--2">Áp dụng</Button>
-                  </div>
-                </div>
-              </div>
-
               <div className={`body--2 ${cartStyles.checkout__info3}`}>Phí vận chuyển sẽ được tính ở trang thanh toán</div>
 
               <div className={cartStyles.checkout__btn}>
@@ -169,7 +155,7 @@ function Cart({ setShowCart, cart, setCart }) {
         </div>
       </div>
 
-      {/* <Footer></Footer> */}
+      <Footer></Footer>
 
     </>
   );
