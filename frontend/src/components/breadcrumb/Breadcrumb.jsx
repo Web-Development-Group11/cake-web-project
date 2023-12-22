@@ -43,13 +43,26 @@ const Breadcrumb = () => {
   }, [blogId, productId]);
 
   const pathnames = location.pathname.split('/').filter((x) => x);
+  const vietnameseBreadcrumbNames = {
+    home: 'Trang chủ',
+    blog: 'Blog',
+    product: 'Sản phẩm',
+    paymentpageguest: 'Thanh toán',
+    paymentpageauth: 'Thanh toán',
+    support: 'Hỗ trợ khách hàng',
+    policy: 'Hỗ trợ khách hàng',
+    faq: 'Hỗ trợ khách hàng',
+    account: 'Tài khoản',
+    cart: 'Giỏ hàng',
+    
+  };
   const getBreadcrumbName = (pathname) => {
     const words = pathname.split('_');
     const formattedWords = words.map((word, index) => {
       if (index === 0) {
-        return word.charAt(0).toUpperCase() + word.slice(1);
+        return vietnameseBreadcrumbNames[word] || word.charAt(0).toUpperCase() + word.slice(1);
       }
-      return word;
+      return vietnameseBreadcrumbNames[word] || word;
     });
     return formattedWords.join(' ');
   };
@@ -59,7 +72,7 @@ const Breadcrumb = () => {
       <ul className={`body--1 ${breadcrumbStyles.breadcrumbList}`}>
         <li >
           <Link to="/" >
-            Home
+          Trang chủ
           </Link>
         </li>
         {pathnames.map((pathname, index) => {

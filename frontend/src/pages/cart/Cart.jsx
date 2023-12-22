@@ -5,10 +5,9 @@ import { FaXmark } from "react-icons/fa6";
 import BoxQuantityComponent from '../../components/boxquantity/BoxQuantity';
 import Header from '../../components/header/NavBar';
 import Footer from '../../components/footer/Footer';
-import TextField from '../../components/textField/TextField';
 import Button from '../../components/button/Button';
 import { Link } from 'react-router-dom';
-
+import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 
 function Cart({ setShowCart, cart, setCart }) {
   const [tongtien, setTongtien] = useState(0);
@@ -67,7 +66,7 @@ function Cart({ setShowCart, cart, setCart }) {
       <Header></Header>
       <div className={cartStyles.cart__container}>
         {/* Breadcrumb */}
-        <div>Trang chủ | Giỏ hàng </div>
+        <Breadcrumb  />
         {/* Tiêu đề */}
         <div className={`heading ${cartStyles.head}`}>Giỏ hàng của bạn</div>
         {/* Giỏ hàng */}
