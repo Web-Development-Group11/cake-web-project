@@ -20,7 +20,7 @@ import Footer from './components/footer/Footer';
 import ScrollToTop from './components/scroll/scroll';
 import BlogDetail from './pages/blogDetail/BlogDetail';
 
-import Shop from './pages/cart/Shop';
+// import Shop from './pages/cart/Shop';
 
 function App() {
   return (
@@ -46,7 +46,7 @@ function App() {
                 <Route path="/blog" element={< Blog />} />
                 <Route path="/blog/:blogSlug" element={< BlogDetail />} />
 
-                <Route path="/test" element={< Shop />} />
+                {/* <Route path="/test" element={< Shop />} /> */}
 
             </Routes>
     </BrowserRouter>
