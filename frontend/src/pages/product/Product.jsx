@@ -43,12 +43,12 @@ const productCategories = [
 ]
 
 const Product = () => {
-  const handleSortChange = (newSortValue) => {
-    setFilters((preFilters) => ({
-      ...preFilters,
-      _sort: newSortValue,
-    }));
-  };
+  // const handleSortChange = (newSortValue) => {
+  //   setFilters((preFilters) => ({
+  //     ...preFilters,
+  //     _sort: newSortValue,
+  //   }));
+  // };
 
   const sortFilter = [
     { id: 1, title: 'Từ A-Z', value: 'title:ASC', cName: 'yourClassName' },

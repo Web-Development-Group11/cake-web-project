@@ -1,0 +1,426 @@
+@import url('../../../Variable.css');
+
+/* Style for Tab Navigation*/
+.tabReview__container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 4rem auto 0 auto;
+    overflow: hidden;
+    border: 0.125rem solid var(--brown);
+    border-radius: 1rem;
+    box-sizing: border-box;
+}
+
+/* Container of tab and user_info */
+.container__wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-inline: 4rem;
+    margin-bottom: 2rem;
+    gap: 2rem;
+}
+
+/* Style for 2 Tab Header */
+.tabReview__header {
+    display: flex;
+    justify-content: flex-start;
+    overflow: hidden;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* Style for each Tab */
+.tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+    width: 20rem;
+    border-radius: 1rem;
+    border: 0.0625rem solid var(--brown);
+    background-color: var(--background-2);
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/*  */
+.tabReview__content {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* writeReview */
+.writeReview {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    background-color: var(--background-2);
+    border-radius: 1rem;
+}
+
+.writeReview__nameAndPhone {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.writeReview__name {
+    width: 32rem;
+    height: 2.5rem;
+}
+
+.writeReview__phone {
+    width: calc(100% - 32rem - 2rem);
+    height: 2.5rem;
+}
+
+.writeReview__email {
+    width: 100%;
+    height: 2.5rem;
+    margin-top: 1rem;
+}
+
+.writeReview__review {
+    width: 100%;
+    height: 7.5rem;
+    margin-top: 1rem;
+}
+
+.writeReview__satisfaction {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.writeReview__postButton {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+/* readReview */
+.readReview {
+    display: flex;
+    flex-direction: column;
+}
+
+.readReview__ratingFilter {
+    display: flex;
+    width: 100%;
+    border: 0.0625rem solid var(--brown);
+    border-radius: 1rem;
+    box-sizing: border-box;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.readReview__ratingFilter_total {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.readReview__ratingFilter_filter {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin-left: auto;
+}
+
+.readReview__ratingFilter_filter__label {
+    margin-right: 1rem;
+}
+
+.readReview__ratingFilter_filter__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.0625rem solid var(--brown);
+    border-radius: .5rem;
+    height: 2.5rem;
+    width: 6.25rem;
+    cursor: pointer;
+}
+
+.readReview__ratingFilter_filter__content:hover, .selectedFilter {
+    background-color: var(--background-2);
+    color: var(--primary-color);
+}
+
+
+/* Binh luan */
+
+.readReview__list__item {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    background-color: var(--background-2);
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}
+
+.readReview__list__item_infoUser {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.readReview__list__item_info .date {
+    font-size: .75rem;
+}
+
+.readReview__list__item_cmt {
+    margin-top: 1rem;
+    margin-left: 4.5rem;
+}
+
+
+
+
+/* Style for tab when actived */
+.active {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-decoration: underline 1px solid var(--white);
+    text-underline-offset: 1rem;
+}
+  
+.tabReview__content {
+    border: none;
+}
+
+/* Style for Customer Information TabContent */
+.acct__info {
+    display: flex;
+    width: 100%;
+    align-items: flex-end;
+    align-content: flex-end;
+    gap: 15rem;
+    flex-wrap: wrap;
+}
+
+.title {
+  color: var(--primary-color);
+  padding: 0;
+  margin-top: 4rem;
+}
+
+fieldset {
+  margin-top: 2rem;
+  border: 1px solid var(--brown);
+  border-left: none ;
+  border-right: none ;
+  border-bottom: none;
+  padding: 0;
+  padding-top: 2rem;
+}
+
+legend {
+  margin-left: 2rem;
+}
+
+.contact {
+    display: flex;
+   justify-content: space-between;
+   width: 100%;
+   margin-right: 0.25rem;
+}
+.contact__left, .contact__right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.subcontact {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem
+}
+
+.input__change {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+.input__item {
+    height: 2.5rem;
+    width: 23.5rem;
+}
+
+.change__text {
+    text-decoration: underline;
+}
+
+.line {
+    width: 100%;
+    box-sizing: border-box;
+    border-color: var(--black);
+}
+
+.update__btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 0.25rem;
+    box-sizing: border-box;
+}
+
+/* Style for Order History TabContent */
+.orderHistory {
+    display: flex;
+    flex-direction: column;
+}
+  
+.order {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6rem;
+    border: 2px solid var(--brown);
+    border-radius: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.orderID {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    width: calc(100% - 8rem);
+    padding-top: 1rem;
+}
+
+.product {
+    display: flex;
+    background-color: var(--background-2);
+    border-radius: 1rem;
+    width: calc(100% - 8rem);
+    margin-top: 1rem;
+}
+
+.product img {
+    width: 14rem;
+    height: 14rem;
+    margin: 1rem;
+    margin-right: 4rem;
+}
+
+.product__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
+}
+.order__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: calc(100% - 8rem);
+    margin: 2rem 0;
+}
+
+.delivery_info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 2rem;
+    max-width: 37.5rem;
+    
+}
+.subinfo {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+  
+.order_price {
+    float: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-items: flex-end;
+    gap: 1rem;
+}
+
+/* Style for Order History TabContent */
+
+.orderStatus .order_price {
+    align-items: center;
+}
+.orderStatus {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn__recieve button {
+    padding: 10px 48px;
+}
+
+/* .process {
+    position: relative;
+    overflow: hidden;
+}
+
+.line__process {
+    border: 2px solid var(--primary-color);
+    width: 100%;
+    position: absolute;
+    top: 108px;
+} */
+
+.process__container {
+    display: flex;
+    flex-shrink: 0;
+    margin: 4rem 0;
+    width: calc(100% - 2rem);
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.process__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: 220px;
+}
+
+.icon__process {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary-color);
+    background-color: var(--white);
+    padding: 20px;
+    border: 4px solid var(--primary-color);
+    border-radius: 100%;
+}
+
+.process__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    max-width: 220px;
+}
+
+.proccessing {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
