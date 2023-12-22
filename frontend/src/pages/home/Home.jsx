@@ -71,9 +71,9 @@ getProduct();
           <div className={`${home.product__title} heading`}>Sản phẩm nổi bật</div>
           <div className={home.product__container}>
           {product?.map((product, index) => (
-            <Link className={home.product__item} key={index}>
+            <div className={home.product__item} key={index}>
               <Card product={product} ></Card>
-            </Link>
+            </div>
           ))}
           </div>
           <Link className={home.product__btn} to = '/product'>

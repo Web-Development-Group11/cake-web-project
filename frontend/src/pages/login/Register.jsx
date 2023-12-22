@@ -7,6 +7,7 @@ import TextField from "../../components/textField/TextField";
 import TextFieldWithIcon from "../../components/textFieldWithIcon/TextFieldWithIcon";
 import { Link } from "react-router-dom";
 import { validateUsername, validatePassword, validateConfirmPassword } from "./validationForm";
+import { axiosClient } from "../../api/axios";
 function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -75,7 +76,7 @@ function Register() {
     return returnData;
   }
 
-  function submitForm(e) {
+  async function submitForm(e) {
     e.preventDefault();
 
     const validation = validationForm();
@@ -92,8 +93,11 @@ function Register() {
       setConfirmPasswordError(validation.confirmPasswordError);
       setConfirmPasswordErrorMsg(validation.confirmPasswordErrorMsg);
     } else {
-      window.location.href = "/login";
-      // logic check BE here
+      try { 
+        const res = axiosClient.post('/register', {username , password })
+        console.log(res);
+        
+      }
     }
   }
 

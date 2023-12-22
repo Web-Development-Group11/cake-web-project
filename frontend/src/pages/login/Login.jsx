@@ -6,6 +6,9 @@ import Button from "../../components/button/Button";
 import TextField from "../../components/textField/TextField";
 import TextFieldWithIcon from "../../components/textFieldWithIcon/TextFieldWithIcon";
 import { Link } from "react-router-dom";
+import { axiosClient } from "../../api/axios";
+import { useNavigate } from "react-router-dom";
+import { validateUsername, validatePassword} from "./validationForm";
 
 function Login() {
     const [username, setUsername] = useState("");
@@ -14,6 +17,7 @@ function Login() {
     const [passwordError, setPasswordError] = useState(false);
     const [usernameErrorMsg, setUsernameErrorMsg] = useState("");
     const [passwordErrorMsg, setPasswordErrorMsg] = useState("");
+    const navigtate = useNavigate();
 
     function changeInputValue(name, value) {
         if (name === "username") {
@@ -35,8 +39,8 @@ function Login() {
             passwordErrorMsg: ""
         };
 
-        const usernameError = validateUsername(username);
-        const passwordError = validatePassword(password);
+        // const usernameError = validateUsername(username);
+        // const passwordError = validatePassword(password);
 
         if (usernameError) {
             returnData = {
@@ -57,9 +61,9 @@ function Login() {
         return returnData;
     }
 
-    function submitForm(e) {
+       async function  submitForm(e) {
         e.preventDefault();
-
+        
         const validation = validationForm();
 
         if (validation.usernameError || validation.passwordError) {
@@ -68,10 +72,22 @@ function Login() {
             setPasswordError(validation.passwordError);
             setPasswordErrorMsg(validation.passwordErrorMsg);
         } else {
-            window.location.href = "/";
             // logic check BE ở đây 
+            try { 
+                const response=  await  axiosClient.post('/login', {username , password})
+                console.log(response)
+                 if (response.status == 200) {
+                    navigtate('/');
+            } 
+            else {
+                navigtate('/login');
+            }
+        } catch (e) {
+            console.log(e);
         }
     }
+}
+
 
     return (
         <div className={formStyles.form__container}>

@@ -199,7 +199,7 @@ function Navbar() {
               </Link>
               <ul className='product-submenu'>
                 <li className="product-submenu__item">
-                  <Link to='/sign-up' className={`submenu-item body--2`}>
+                  <Link to='/register' className={`submenu-item body--2`}>
                     Đăng ký
                   </Link>
                 </li>

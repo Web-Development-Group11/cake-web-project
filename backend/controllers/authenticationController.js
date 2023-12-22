@@ -11,7 +11,7 @@ const user = new PrismaClient().user;
 // thêm người dùng mới
 export const createNewUser = async (req, res) => {
   try {
-    const { name, email, password, username, phoneNumber } = req.body;
+    const { data } = req.body;
     //kiểm tra validate
     if (typeof email !== "string") return res.status(404).json({ message: "invalid email" });
     //kiểm tra người dùng tồn tại bằng email
@@ -23,13 +23,7 @@ export const createNewUser = async (req, res) => {
     const hashPassword = await bcrypt.hash(password, 10);
     //tạo người dùng mới 
     const newUser = await user.create({
-      data: {
-        name,
-        email,
-        password: hashPassword,
-        username,
-        phoneNumber,
-      },
+      data: data,
     });
     res.status(200).json({ data: newUser });
   } catch (error) {
@@ -41,13 +35,13 @@ export const createNewUser = async (req, res) => {
 //người dùng đăng nhập 
 export const loginUser = async (req, res) => {
   try {
-    const { email, phoneNumber, password } = req.body;
+    const { username, password } = req.body;
     //tìm kiếm tài khoản người dùng
     const exitingUser = await user.findFirst({
       where: {
         OR: [
-          { email: email },
-          { phoneNumber: phoneNumber },
+          { email: username },
+          { phoneNumber: username },
         ]
       }
     });
@@ -59,9 +53,12 @@ export const loginUser = async (req, res) => {
         //tạo token
         const token = jwt.sign({ exitingUser }, process.env.SECRET_KEY, { expiresIn: "1d" });
 
-        res.cookie("token", token, { httpOnly: true });
+        res.cookie("token", token, { maxAge : 60*60*1000 ,httpOnly: true, secure : true, sameSite :"strict", });
 
-        return res.status(200).json({ Status: "success", token });
+
+        res.status(200).json({token})
+
+
       } else {
         //nếu mật khẩu hoặc tài khoản sai 
         return res.status(400).json({ message: "UserName or Password is wrong" });

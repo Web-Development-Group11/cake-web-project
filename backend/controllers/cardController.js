@@ -4,7 +4,7 @@ const product = new PrismaClient().product;
 
 export const getProduct = async (req, res) => {
     try {
-        const info = await product.findMany();
+        const info = await product.findMany({take: 8});
         res.status(200).json({ data: info })
     } catch (error) {
         res.status(500).json({ message: error.message })
