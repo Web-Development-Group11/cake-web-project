@@ -7,6 +7,7 @@ import TextField from "../../components/textField/TextField";
 import TextFieldWithIcon from "../../components/textFieldWithIcon/TextFieldWithIcon";
 import { Link } from "react-router-dom";
 import { axiosClient } from "../../api/axios";
+import { useNavigate } from "react-router-dom";
 import { validateUsername, validatePassword} from "./validationForm";
 
 function Login() {
@@ -16,6 +17,7 @@ function Login() {
     const [passwordError, setPasswordError] = useState(false);
     const [usernameErrorMsg, setUsernameErrorMsg] = useState("");
     const [passwordErrorMsg, setPasswordErrorMsg] = useState("");
+    const navigtate = useNavigate();
 
     function changeInputValue(name, value) {
         if (name === "username") {
@@ -59,9 +61,9 @@ function Login() {
         return returnData;
     }
 
-    function submitForm(e) {
+       async function  submitForm(e) {
         e.preventDefault();
-
+        
         const validation = validationForm();
 
         if (validation.usernameError || validation.passwordError) {
@@ -70,18 +72,22 @@ function Login() {
             setPasswordError(validation.passwordError);
             setPasswordErrorMsg(validation.passwordErrorMsg);
         } else {
-            window.location.href = "/";
+            // logic check BE ở đây 
             try { 
-                const response = axiosClient.post('/login', {username , password})
-                 if (response.statusCode === 200) {
+                const response=  await  axiosClient.post('/login', {username , password})
+                console.log(response)
+                 if (response.status == 200) {
                     navigtate('/');
             } 
-            // logic check BE ở đây 
+            else {
+                navigtate('/login');
+            }
         } catch (e) {
             console.log(e);
         }
     }
 }
+
 
     return (
         <div className={formStyles.form__container}>
