@@ -150,6 +150,7 @@
     align-items: flex-start;
     position: absolute;
     right: 0;
+    width: fit-content;
 }
 
 a {
@@ -243,7 +244,7 @@ a {
 
     .contact {
         order: 3;
-        width: 100%;
+        width: fit-content;
         margin: 2rem 1.5rem;
     }
 
@@ -256,12 +257,13 @@ a {
     .quick_links {
         left: 0;
         margin: 0 1.5rem;
+        width: fit-content;
     }
 
     .slogan__logo {
         position: absolute;
-        width: 12rem;
+        width: fit-content;
         margin-top: 0.5rem;
-        margin-left: 50%;
+        margin-left: 40%;
     }
 }
