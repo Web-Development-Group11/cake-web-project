@@ -26,6 +26,7 @@ function Register() {
     let isEmail = loginInfo.includes("@");
     let isPhone = loginInfo.startsWith("0") && loginInfo.length === 10;
 
+<<<<<<< Updated upstream
     if (isEmail) {
       // Check email conditions
       if (loginInfo.includes("@gmail.com")) {
@@ -68,6 +69,30 @@ function Register() {
     } else {
       setErrorRePassword("Password should be 8 letters long");
       setRePasswordColor("red");
+=======
+    const validation = validationForm();
+
+    if (
+      validation.usernameError ||
+      validation.passwordError ||
+      validation.confirmPasswordError
+    ) {
+      setUsernameError(validation.usernameError);
+      setUsernameErrorMsg(validation.usernameErrorMsg);
+      setPasswordError(validation.passwordError);
+      setPasswordErrorMsg(validation.passwordErrorMsg);
+      setConfirmPasswordError(validation.confirmPasswordError);
+      setConfirmPasswordErrorMsg(validation.confirmPasswordErrorMsg);
+    // } else {
+    //   try { 
+    //     const res = axiosClient.post('/register', {username , password })
+    //     console.log(res);
+        
+    //   }
+      // catch (error) {
+      //   console.log(error);
+      // }
+>>>>>>> Stashed changes
     }
   }
 

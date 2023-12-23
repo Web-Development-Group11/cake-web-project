@@ -100,7 +100,7 @@ export default function ProductDetail() {
                 </div>
                 <div className="productDetail__info_text-quantity body--2">
                   <span className='title--3'>Số lượng</span>
-                  <BoxQuantityComponent height="2.5rem" />
+                  <BoxQuantityComponent height="2.5rem" onQuantityChange={() => {}}/>
                 </div>
 
                 <div className="productDetail__info_text-button">
