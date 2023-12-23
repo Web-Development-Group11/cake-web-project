@@ -55,22 +55,30 @@ const TabReview = () => {
         }
     ]
 
+    // Hàm useState phần review
     const [activeTab, setActiveTab] = useState('readReview');
 
+    // Hàm useState phần set giá trị sao ở phần "4.5 trên 5" trong tab đánh giá
     const [currentRating, setCurrentRating] = useState(4.5);
 
+    // Hàm set giá trị cho số sao khi người dùng đánh giá
     const handleRatingChange = (newValue) => {
         setCurrentRating(newValue);
     };
 
+    // Hàm useState phần lọc đánh giá
     const [selectedFilter, setSelectedFilter] = useState('all');
+
+    // Hàm set giá trị cho phần lọc đánh giá
     const handleFilterClick = (filterValue) => {
         setSelectedFilter(filterValue);
-        // Thực hiện các tác vụ khác nếu cần thiết khi lọc được chọn
+
+        // Nếu người dùng chọn "Tất cả" thì hiển thị tất cả các đánh giá
         if (filterValue === 'all') {
             // Lọc tất cả
             setReviewList(review);
         }
+
         else if (filterValue === 5) {
             // Lọc đánh giá 5 sao
             const listTmp = review.filter((item) => item.Star === 5);
@@ -99,6 +107,7 @@ const TabReview = () => {
 
     };
 
+    // Hàm useState phần phân trang
     const [reviewList, setReviewList] = useState(null);
 
     useEffect(() => {
@@ -122,6 +131,7 @@ const TabReview = () => {
     const [userStar, setUserStar] = useState(1);
 
     // Lay gia tri
+    // Đúng là: event.target.value. Mà bên TextField có để sẵn là e.target.value rồi nên chỉ cần truyền event vào là được
     const handleUserNameChange = (event) => {
         setUserName(event);
     };
@@ -151,7 +161,7 @@ const TabReview = () => {
             return;
         }
         else {
-            // Gọi API lấy danh sách review
+            // Gọi API lấy danh sách review (chưa có API nên tạm thời dùng hàm setReviewList()
             const newReview = {
 
                 avatar: null,

@@ -4,72 +4,83 @@ import logo from "../../assets/image/logo.png";
 import bg from "../../assets/image/bgregister.png";
 import Button from "../../components/button/Button";
 import TextField from "../../components/textField/TextField";
-
+import TextFieldWithIcon from "../../components/textFieldWithIcon/TextFieldWithIcon";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { validateUsername, validatePassword, validateConfirmPassword } from "./validationForm";
+import { axiosClient } from "../../api/axios";
 function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [repassword, setRePassword] = useState("");
-  const [errorEmail, setErrorEmail] = useState("");
-  const [errorUserName, setErrorUserName] = useState("");
-  const [errorPhone, setErrorPhone] = useState("");
-  const [errorPassword, setErrorPassword] = useState("");
-  const [errorRePassword, setErrorRePassword] = useState("");
-  const [userColor, setUserColor] = useState("");
-  const [emailColor, setEmailColor] = useState("");
-  const [phoneColor, setPhoneColor] = useState("");
-  const [passwordColor, setPasswordColor] = useState("");
-  const [repasswordColor, setRePasswordColor] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [usernameError, setUsernameError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [confirmPasswordError, setConfirmPasswordError] = useState(false);
+  const [usernameErrorMsg, setUsernameErrorMsg] = useState("");
+  const [passwordErrorMsg, setPasswordErrorMsg] = useState("");
+  const [confirmPasswordErrorMsg, setConfirmPasswordErrorMsg] = useState("");
+  const navigate = useNavigate();
 
-  function validate(e) {
+  function changeInputValue(name, value) {
+    if (name === "username") {
+      setUsername(value);
+      setUsernameError(false);
+      setUsernameErrorMsg("");
+    } else if (name === "password") {
+      setPassword(value);
+      setPasswordError(false);
+      setPasswordErrorMsg("");
+    } else if (name === "confirmPassword") {
+      setConfirmPassword(value);
+      setConfirmPasswordError(false);
+      setConfirmPasswordErrorMsg("");
+    }
+  }
+
+  function validationForm() {
+    let returnData = {
+      usernameError: false,
+      passwordError: false,
+      confirmPasswordError: false,
+      usernameErrorMsg: "",
+      passwordErrorMsg: "",
+      confirmPasswordErrorMsg: ""
+    };
+
+    const usernameError = validateUsername(username);
+    const passwordError = validatePassword(password);
+    const confirmPasswordError = validateConfirmPassword(password, confirmPassword);
+
+    if (usernameError) {
+      returnData = {
+        ...returnData,
+        usernameError: true,
+        usernameErrorMsg: usernameError
+      };
+    }
+
+    if (passwordError) {
+      returnData = {
+        ...returnData,
+        passwordError: true,
+        passwordErrorMsg: passwordError
+      };
+    }
+
+    if (confirmPasswordError) {
+      returnData = {
+        ...returnData,
+        confirmPasswordError: true,
+        confirmPasswordErrorMsg: confirmPasswordError
+      };
+    }
+
+    return returnData;
+  }
+
+  async function submitForm(e) {
     e.preventDefault();
-    let loginInfo = username;
-    let isEmail = loginInfo.includes("@");
-    let isPhone = loginInfo.startsWith("0") && loginInfo.length === 10;
 
-<<<<<<< Updated upstream
-    if (isEmail) {
-      // Check email conditions
-      if (loginInfo.includes("@gmail.com")) {
-        setErrorEmail("");
-        setEmailColor("green");
-      } else {
-        setErrorEmail("Email should have @gmail.com");
-        setEmailColor("red");
-      }
-    } else if (isPhone) {
-      // Check phone conditions
-      if (loginInfo.startsWith("0") && loginInfo.length === 10) {
-        setErrorPhone("");
-        setPhoneColor("green");
-      } else {
-        setErrorPhone("Phone number must be 10 digits starting with 0");
-        setPhoneColor("red");
-      }
-    } else {
-      // Check username conditions
-      if (loginInfo.length > 8) {
-        setErrorUserName("");
-        setUserColor("green");
-      } else {
-        setErrorUserName("Username must be 8 letters long.");
-        setUserColor("red");
-      }
-    }
-
-    if (password.length > 8) {
-      setErrorPassword("");
-      setPasswordColor("green");
-    } else {
-      setErrorPassword("Password should be 8 letters long");
-      setPasswordColor("red");
-    }
-    if (password === repassword) {
-      setErrorRePassword("");
-      setRePasswordColor("green");
-    } else {
-      setErrorRePassword("Password should be 8 letters long");
-      setRePasswordColor("red");
-=======
     const validation = validationForm();
 
     if (
@@ -83,18 +94,19 @@ function Register() {
       setPasswordErrorMsg(validation.passwordErrorMsg);
       setConfirmPasswordError(validation.confirmPasswordError);
       setConfirmPasswordErrorMsg(validation.confirmPasswordErrorMsg);
-    // } else {
-    //   try { 
-    //     const res = axiosClient.post('/register', {username , password })
-    //     console.log(res);
-        
-    //   }
-      // catch (error) {
-      //   console.log(error);
-      // }
->>>>>>> Stashed changes
+    } else {
+      try {
+        const response = await axiosClient.post('/register', {username, password})
+        if (response.statusCode === 200) {
+          navigate('/login');
+      }else {
+        alert('Wrong username or password')
+      }
+  } catch (e) {
+    console.log(e);
     }
   }
+}
 
   return (
     <div className={formStyles.form__container}>
@@ -102,18 +114,17 @@ function Register() {
       <div className={formStyles.form__image}>
         <div className={formStyles.image__bg}></div>
         <div className={formStyles.image__holder}>
-          <img className={formStyles.image}  alt="Background" src={bg} />
+          <img className={formStyles.image} alt="Background" src={bg} />
         </div>
       </div>
       {/* form */}
-      <div className={formStyles.form__frame}>
-        {/* logo */}
-        <div className={formStyles.website__logo}>
-          <a href="/">
-            <img className={formStyles.logoimg} alt="Bong cake logo" src={logo} />
-          </a>
-        </div>
+      <div className={formStyles.form__frameoverlap}>
+
         <div className={formStyles.form}>
+          {/* logo */}
+          <Link to="/" className={formStyles.website__logo}>
+            <img className={formStyles.logoimg} alt="Bong cake logo" src={logo} />
+          </Link>
           <div className={formStyles.form__frame}>
             {/* title */}
             <div className={formStyles.form__title}>
@@ -125,27 +136,24 @@ function Register() {
               </span>
             </div>
             {/* form */}
-            <form className={formStyles.form__frameinput}>
+            <form className={formStyles.form__frameinput} onSubmit={submitForm}>
               {/* input username */}
               <div className={formStyles.form__input}>
                 <div className={formStyles.form__inputtitle}>
                   <div className={formStyles.form__inputtitle1}>
-                    <div className={formStyles.inputwrapper}>Tên đăng nhập</div>
+                    <div className={formStyles["title--3"]}>Tên đăng nhập</div>
                   </div>
                 </div>
-                <div className={formStyles["input-wrapper"]}>
+                <div className={formStyles.inputwrapper}>
                   <TextField
-                    className={formStyles["body--2"]}
-                    type="text"
                     placeholder={"Email/ Số điện thoại"}
-                    style={{ borderColor: userColor }}
-                    onChange={(e) => setUsername(e.target.value)}
+                    name="username"
+                    value={username}
+                    onChange={(value) => changeInputValue("username", value)}
                   />
-                  <div className={formStyles.errorcontainer}>
-                    <p className={formStyles.error}>{errorUserName}</p>
-                    <p className={formStyles.error}>{errorEmail}</p>
-                    <p className={formStyles.error}>{errorPhone}</p>
-                  </div>
+                </div>
+                <div className={formStyles.errorcontainer}>
+                  {usernameError && <div className={formStyles.errorMsg}>{usernameErrorMsg}</div>}
                 </div>
               </div>
               {/* input password */}
@@ -154,18 +162,17 @@ function Register() {
                   <div className={formStyles.form__inputtitle1}>
                     <div className={formStyles["title--3"]}>Mật khẩu</div>
                   </div>
-                </div>
+                </div>  
                 <div className={formStyles.inputwrapper}>
-                  <TextField
-                    className={formStyles["body--2"]}
-                    type="password"
-                    placeholder="Nhập mật khẩu"
-                    style={{ borderColor: passwordColor }}
-                    onChange={(e) => setPassword(e.target.value)}
+                  <TextFieldWithIcon
+                    placeholder={"Mật khẩu"}
+                    value={password}
+                    onChange={(value) => changeInputValue("password", value)}
                   />
-                  <div className={formStyles.errorcontainer}>
-                    <p className={formStyles.error}>{errorPassword}</p>
-                  </div>
+
+                </div>
+                <div className={formStyles.errorcontainer}>
+                  {passwordError && <div className={formStyles.errorMsg}>{passwordErrorMsg}</div>}
                 </div>
               </div>
               {/* input confirm password */}
@@ -176,27 +183,24 @@ function Register() {
                   </div>
                 </div>
                 <div className={formStyles.inputwrapper}>
-                  <TextField
-                    className={formStyles["body--2"]}
-                    type="password"
-                    placeholder="Nhập lại mật khẩu"
-                    style={{ borderColor: repasswordColor }}
-                    onChange={(e) => setRePassword(e.target.value)}
+                <TextFieldWithIcon
+                    placeholder={"Nhập lại mật khẩu"}
+                    value={confirmPassword}
+                    onChange={(value) => changeInputValue("confirmPassword", value)}
                   />
-                  <div className={formStyles.errorcontainer}>
-                    <p className={formStyles.error}>{errorRePassword}</p>
-
-                  </div>
+                </div>
+                <div className={formStyles.errorcontainer}>
+                  {confirmPasswordError && <div className={formStyles.errorMsg}>{confirmPasswordErrorMsg}</div>}
                 </div>
               </div>
               {/* line */}
               <hr className={formStyles.form__line} />
               {/* button */}
-              <div className={formStyles.form__btn}>
-                <Button type="btn2 primary" className="btn" onClick={validate}>
+              < div className={formStyles.form__btn} >
+                <Button type="btn2 primary button">
                   Đăng ký
                 </Button>
-              </div>
+              </div >
             </form>
             {/* link */}
             <div className={formStyles.form__link}>
@@ -209,8 +213,8 @@ function Register() {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   )
 }
 
