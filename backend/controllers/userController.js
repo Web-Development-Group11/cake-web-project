@@ -6,12 +6,12 @@ const user = new PrismaClient().user;
 export const getUser = async (req, res) => {
     const id = req.user.exitingUser.id ;
     try {
-        const info = await user.findUnique({
+        const data = await user.findUnique({
             where: {
                 id: id
             }
         });
-        res.status(200).json({ data: info })
+        res.status(200).json({ data: data })
     } catch (error) {
         res.status(500).json({ message: error.message })
     } finally {

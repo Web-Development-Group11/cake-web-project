@@ -76,9 +76,7 @@ export const loginUser = async (req, res) => {
 
         res.cookie("token", token, { maxAge : 60*60*1000 ,httpOnly: true, secure : true, sameSite :"strict", });
 
-
         res.status(200).json({token})
-
 
       } else {
         //nếu mật khẩu hoặc tài khoản sai 
@@ -92,7 +90,7 @@ export const loginUser = async (req, res) => {
 
 export const logoutUser = async (req, res) => {
   res.clearCookie("token");
-  return res.json({ Status: "logout success" });
+  return res.status(200).json({ Status: "logout success" });
 }
 
 

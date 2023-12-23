@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 import { FaRegClock, FaRegMap } from "react-icons/fa";
 import { FiFileText, FiBox, FiTruck, FiInbox, FiStar } from "react-icons/fi";
 
-const Tab = () => {
+const Tab = ({user}) => {
     const [activeTab, setActiveTab] = useState('customerInfo');
 
     const [isDisabled, setIsDisabled] = useState(false);
@@ -59,8 +59,8 @@ const Tab = () => {
           <div className={styles.user__container}>
             <img src={userData.avatar} alt="User Avatar" className={styles.avatar} />
             <div className={styles.user__info}>
-              <p className='title--1' style={{ color: 'var(--primary-color)' }}>{userData.username}</p>
-              <p className='title--3'>ID: {userData.id}</p>
+              <p className='title--1' style={{ color: 'var(--primary-color)' }}>{user.name}</p>
+              <p className='title--3'>ID: {user.id}</p>
             </div>
             <div className={styles.signout}>
               <Button type='btn1 primary'>Đăng xuất</Button>
@@ -108,7 +108,7 @@ const Tab = () => {
                         <label className='title--4'>Email</label>
                         <div className={styles.input__change}>
                           <div className={styles.input__item}>
-                            <TextFieldWithIcon name="email" value={userData.email}></TextFieldWithIcon>
+                            <TextFieldWithIcon name="email" value={user.email}></TextFieldWithIcon>
                           </div>
                           <Link to = '/forgetpassword' className={`${styles.change__text} body--2`}>Thay đổi</Link>
                         </div>
@@ -119,7 +119,7 @@ const Tab = () => {
                         <label className='title--4'>Điện thoại</label>
                         <div className={styles.input__change}>
                           <div className={styles.input__item}>
-                            <TextFieldWithIcon name="phoneNumber" value={userData.phoneNumber}></TextFieldWithIcon>
+                            <TextFieldWithIcon name="phoneNumber" value={user.phoneNumber}></TextFieldWithIcon>
                           </div>
                           <Link to = '/forgetpassword' className={`${styles.change__text} body--2`}>Thay đổi</Link>
                         </div>
@@ -130,7 +130,7 @@ const Tab = () => {
                         <label className='title--4'>Tên hiển thị</label>
                         <div className={styles.input__change}>
                           <div className={styles.input__item} >
-                            <TextField name="username" value={userData.username} onChange={handleChange('username')} ></TextField>
+                            <TextField name="username" value={user.username} onChange={handleChange('username')} ></TextField>
                           </div>
                         </div>
                       </div>
@@ -140,7 +140,7 @@ const Tab = () => {
                         <label className='title--4'>Mật khẩu</label>
                         <div className={styles.input__change}>
                           <div className={styles.input__item}>
-                            <TextFieldWithIcon name="password" value={userData.password} disabled={true}></TextFieldWithIcon>
+                            <TextFieldWithIcon name="password" value={user.password} disabled={true}></TextFieldWithIcon>
                           </div>
                           <Link to = '/changePassword' className={`${styles.change__text} body--2`}>Thay đổi</Link>
                         </div>
@@ -169,7 +169,7 @@ const Tab = () => {
                         <label className='title--4'>Địa chỉ</label>
                         <div className={styles.input__change}>
                           <div className={styles.input__item}>
-                            <TextField name="address" value={userData.address} onChange={handleChange('address')} ></TextField>
+                            <TextField name="address" value={user.address} onChange={handleChange('address')} ></TextField>
                           </div>
                         </div>
                       </div>
@@ -183,9 +183,9 @@ const Tab = () => {
                   <div className={styles.loc__container}>
                     <div className={styles.loc__detail}>
                       <div className="body--2">
-                        <div> {userData.username} | {userData.phoneNumber}</div>
-                        <div> {userData.address} </div>
-                        <div>{`${userData.ward}, ${userData.district}, ${userData.province} `}</div>
+                        <div> {user.name} | {user.phoneNumber}</div>
+                        <div> {user.addressDetails.address} </div>
+                        <div>{`${user.addressDetails.ward}, ${user.addressDetails.district}, ${user.addressDetails.province} `}</div>
                       </div>
                       <hr size="1" className={styles.line}/>
                     </div>

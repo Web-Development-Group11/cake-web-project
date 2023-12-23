@@ -31,10 +31,10 @@ type ProductImageUrls {
 }
 
 type UserAddressDetails {
-  address  String
-  district String
-  province String
-  ward     String
+  address  String  @default("")
+  district String    @default("")
+  province String    @default("")
+  ward     String      @default("")
 }
 
 model Blog {
