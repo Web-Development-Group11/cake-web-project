@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Product.css'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Navbar from '../../components/header/NavBar'
 import Card from '../../components/card/Card'
 import jsonData from "../../assets/db/productsData.json";
@@ -11,6 +11,7 @@ import { axiosClient } from '../../api/axios';
 
 export default function Product()  {
   const [product, setProduct] = useState();
+  const {page} = useParams();
   const productCategories = [
     {
       id: 1,
@@ -61,14 +62,14 @@ export default function Product()  {
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const  response = await axiosClient.get('/products')
+        const  response = await axiosClient.get('/product')
         setProduct(response.data.data);
       } catch ( err){
         console.log(err);
       }
     }
     getProduct();
-  },[]);
+  },[page]);
 
 
   return (

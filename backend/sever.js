@@ -7,6 +7,7 @@ import productRoutes from './routes/product.js';
 import cookieParser from 'cookie-parser';
 import authenticationRoute from './routes/authentication.js';
 import userRoute from './routes/user.js';
+import pageRoute from './routes/page.js';
 
 
 //express app
@@ -41,6 +42,7 @@ app.use('/', authenticationRoute)
 app.use('/', productRoutes)
 app.use('/', blogRoutes)
 app.use('/',userRoute)
+app.use('/',pageRoute )
 
 //listen for reqquest 
 app.listen(process.env.PORT, () => {
