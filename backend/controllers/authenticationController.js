@@ -13,12 +13,12 @@ const user = new PrismaClient().user;
 export const createNewUser = async (req, res) => {
   try {
     const  data = req.body;
-    console.log(data.emai, data.phoneNumber, data.password);
+    console.log(data.email, data.phoneNumber, data.password);
     //kiểm tra validate
     if (typeof(data.email)  !== "string") return res.status(404).json({ message: "invalid email" });
     
     //kiểm tra người dùng tồn tại bằng email
-    const exitingEmail = await user.findUnique({ where: { email: data.emai } });
+    const exitingEmail = await user.findUnique({ where: { email: data.email } });
     
     //kiểm tra người dùng tồn tại bằng phoneNumber
     const exitingPhoneNumber = await user.findUnique({ where: { phoneNumber: data.phoneNumber } });

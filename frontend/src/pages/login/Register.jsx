@@ -9,6 +9,11 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { validateUsername, validatePassword, validateConfirmPassword } from "./validationForm";
 import { axiosClient } from "../../api/axios";
+import TextFieldWithIcon from "../../components/textFieldWithIcon/TextFieldWithIcon";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { validateUsername, validatePassword, validateConfirmPassword } from "./validationForm";
+import { axiosClient } from "../../api/axios";
 function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -97,8 +102,7 @@ function Register() {
     } else {
       try {
         const response = await axiosClient.post('/register', {username, password})
-        console.log(response.status)
-        if (response.status == 200) {
+        if (response.statusCode === 200) {
           navigate('/login');
       }else {
         alert('Wrong username or password')
