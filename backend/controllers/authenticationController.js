@@ -13,36 +13,32 @@ const user = new PrismaClient().user;
 export const createNewUser = async (req, res) => {
   try {
     const  data = req.body;
-    console.log(data.username, data.password);
+    console.log(data.emai, data.phoneNumber, data.password);
     //kiểm tra validate
-    if (typeof(data.username) !== "string") return res.status(404).json({ message: "invalid email" });
+    if (typeof(data.email)  !== "string") return res.status(404).json({ message: "invalid email" });
     
     //kiểm tra người dùng tồn tại bằng email
-    const exitingEmail = await user.findUnique({ where: { email: data.username } });
+    const exitingEmail = await user.findUnique({ where: { email: data.emai } });
     
     //kiểm tra người dùng tồn tại bằng phoneNumber
-    const exitingPhoneNumber = await user.findUnique({ where: { phoneNumber: data.username } });
+    const exitingPhoneNumber = await user.findUnique({ where: { phoneNumber: data.phoneNumber } });
     
     if (exitingEmail || exitingPhoneNumber) { return res.status(400).json({ message: "User already exist" }); }
 
     //mã hóa mật khẩu
-    let userData = {};
-    if(isEmail(data.username)){ 
-      userData.email = data.username;
-      userData.phoneNumber = ""; 
-    }else if(isPhone(data.username)){ 
-      userData.phoneNumber = data.username;
-      userData.email = "";
-    }else{
-      res.status(400).json({error: 'Dữ liệu không hợp lệ'});
-    }
     const hashPassword = await bcrypt.hash(data.password, 10);
     //tạo người dùng mới 
     const newUser = await user.create({
       data:{
-        email : userData.email,
-        phoneNumber : userData.phoneNumber,
-        password : hashPassword
+        email : data.email,
+        phoneNumber : data.phoneNumber,
+        password : hashPassword,
+        addressDetails : {
+          province : '',
+          district : '',
+          ward : '',
+          address : '',
+        }
       }
     });
     res.status(200).json({ data: newUser });
