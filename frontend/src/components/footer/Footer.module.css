@@ -147,6 +147,7 @@
     align-items: flex-start;
     position: absolute;
     right: 0;
+    width: fit-content;
 }
 
 a {
@@ -243,19 +244,26 @@ a {
 
     .contact {
         order: 3;
-        width: 100%;
+        width: fit-content;
         margin: 2rem 1.5rem;
     }
 
     .quick_links {
         left: 0;
         margin: 0 1.5rem;
+        width: fit-content;
     }
 
     .slogan__logo {
         position: absolute;
+<<<<<<< Updated upstream
         width: 12rem;
         margin-top: 2.275rem;
         margin-left: 5rem;
+=======
+        width: fit-content;
+        margin-top: 0.5rem;
+        margin-left: 40%;
+>>>>>>> Stashed changes
     }
 }
