@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Product.css'
 import { Link } from 'react-router-dom'
 import Navbar from '../../components/header/NavBar'
@@ -7,55 +7,68 @@ import jsonData from "../../assets/db/productsData.json";
 import Footer from '../../components/footer/Footer'
 import ProductSort from './productSort/ProductSort';
 import Pagination from '../../components/pagination/index';
+import { axiosClient } from '../../api/axios';
 
+export default function Product()  {
+  const [product, setProduct] = useState();
+  const productCategories = [
+    {
+      id: 1,
+      title: 'Tất cả sản phẩm',
+      path: '/product',
+      cName: 'category-item',
+    },
+    {
+      id: 2,
+      title: 'Cupcake',
+      path: '/product/cupcake',
+      cName: 'category-item'
+    },
+    {
+      id: 3,
+      title: 'Tiramisu',
+      path: '/product/tiramisu',
+      cName: 'category-item'
+    },
+    {
+      id: 4,
+      title: 'Cookie',
+      path: '/product/cookie',
+      cName: 'category-item'
+    },
+    {
+      id: 5,
+      title: 'Combo',
+      path: '/product/combo',
+      cName: 'category-item'
+    },
+  ]
+  
 
-const productCategories = [
-  {
-    id: 1,
-    title: 'Tất cả sản phẩm',
-    path: '/product',
-    cName: 'category-item',
-  },
-  {
-    id: 2,
-    title: 'Cupcake',
-    path: '/product/cupcake',
-    cName: 'category-item'
-  },
-  {
-    id: 3,
-    title: 'Tiramisu',
-    path: '/product/tiramisu',
-    cName: 'category-item'
-  },
-  {
-    id: 4,
-    title: 'Cookie',
-    path: '/product/cookie',
-    cName: 'category-item'
-  },
-  {
-    id: 5,
-    title: 'Combo',
-    path: '/product/combo',
-    cName: 'category-item'
-  },
-]
-
-const Product = () => {
   // const handleSortChange = (newSortValue) => {
   //   setFilters((preFilters) => ({
   //     ...preFilters,
   //     _sort: newSortValue,
   //   }));
   // };
-
   const sortFilter = [
     { id: 1, title: 'Từ A-Z', value: 'title:ASC', cName: 'yourClassName' },
     { id: 2, title: 'Từ Z-A', value: 'title:DESC', cName: 'yourClassName' },
     { id: 3, title: 'Giá thấp tới cao', value: 'price:ASC', cName: 'yourClassName' },
     { id: 4, title: 'Giá cao xuống thấp', value: 'price:DESC', cName: 'yourClassName' },
   ];
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const  response = await axiosClient.get('/products')
+        setProduct(response.data.data);
+      } catch ( err){
+        console.log(err);
+      }
+    }
+    getProduct();
+  },[]);
 
 
   return (
@@ -101,10 +114,8 @@ const Product = () => {
               </div>
 
               <div className="product__list-item">
-                {jsonData.map((category) => (
-                  category.products.map((product) => (
+                {product?.map((product) => (
                     <Card key={product.title} className="product__card" product={product} />
-                  ))
                 ))}
               </div>
               <div className='product__pagination'>
@@ -122,5 +133,3 @@ const Product = () => {
     </>
   )
 }
-
-export default Product

@@ -97,7 +97,8 @@ function Register() {
     } else {
       try {
         const response = await axiosClient.post('/register', {username, password})
-        if (response.statusCode === 200) {
+        console.log(response.status)
+        if (response.status == 200) {
           navigate('/login');
       }else {
         alert('Wrong username or password')

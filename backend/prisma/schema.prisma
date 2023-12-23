@@ -22,16 +22,12 @@ type BlogContent {
 }
 
 type ProductImageUrls {
-  image_url_0  String
-  image_url_1  String
-  image_url_2  String?
-  image_url_3  String?
-  image_url_4  String?
-  image_url_5  String?
-  image_urls_0 String?
-  image_urls_1 String?
-  image_urls_2 String?
-  image_urls_3 String?
+  image_url_0 String
+  image_url_1 String
+  image_url_2 String?
+  image_url_3 String?
+  image_url_4 String?
+  image_url_5 String?
 }
 
 type UserAddressDetails {
@@ -59,13 +55,19 @@ model Product {
   product_description String
   specific_type       String
   title               String
+  comments       ProductComment[]
 }
 
+type ProductComment {
+  author  String
+  comment String
+  email   String
+}
 model User {
-  id             String             @id @default(auto()) @map("_id") @db.ObjectId
+  id             String              @id @default(auto()) @map("_id") @db.ObjectId
   addressDetails UserAddressDetails?
-  email          String?             @unique
+  email          String?              @unique
   name           String?
   password       String
-  phoneNumber    String?             @unique
+  phoneNumber    String?            @unique
 }

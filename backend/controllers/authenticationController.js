@@ -12,7 +12,8 @@ const user = new PrismaClient().user;
 // thêm người dùng mới
 export const createNewUser = async (req, res) => {
   try {
-    const  data  = req.body;
+    const  data = req.body;
+    console.log(data.username, data.password);
     //kiểm tra validate
     if (typeof(data.username) !== "string") return res.status(404).json({ message: "invalid email" });
     
@@ -27,13 +28,14 @@ export const createNewUser = async (req, res) => {
     //mã hóa mật khẩu
     let userData = {};
     if(isEmail(data.username)){ 
-      userData.email = data.username; 
+      userData.email = data.username;
+      userData.phoneNumber = ""; 
     }else if(isPhone(data.username)){ 
       userData.phoneNumber = data.username;
+      userData.email = "";
     }else{
       res.status(400).json({error: 'Dữ liệu không hợp lệ'});
     }
-    res.status(200).json(true);
     const hashPassword = await bcrypt.hash(data.password, 10);
     //tạo người dùng mới 
     const newUser = await user.create({
@@ -45,7 +47,7 @@ export const createNewUser = async (req, res) => {
     });
     res.status(200).json({ data: newUser });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({message: error.message});
   }
 };
 
