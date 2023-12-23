@@ -39,7 +39,7 @@ getUser();
         <div className={acct.tab}>
           <Tab user ={user} ></Tab>
         </div>
-        ):(<p>laoding data</p>)}
+        ):(<p>loading data</p>)}
       </div>
       <Footer></Footer>
     </div>

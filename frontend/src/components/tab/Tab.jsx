@@ -7,23 +7,30 @@ import styles from './Tab.module.css';
 import { Link } from 'react-router-dom'
 import { FaRegClock, FaRegMap } from "react-icons/fa";
 import { FiFileText, FiBox, FiTruck, FiInbox, FiStar } from "react-icons/fi";
+import { axiosClient } from '../../api/axios';
 
 const Tab = ({user}) => {
     const [activeTab, setActiveTab] = useState('customerInfo');
 
     const [isDisabled, setIsDisabled] = useState(false);
+    const [address, setAddress] = useState({
+      province: '',
+      district: '',
+      ward: '',
+      address : '',
+    });
 
     const [userData, setUserData] = useState({
-      username: 'Đào Huyền Anh',
-      id: '01234455657',
-      avatar: '/src/assets/image/avatar.png', 
-      email: 'huyenanhdao@gmail.com',
-      phoneNumber: '0398607486',
-      password: '********',
-      province: 'Hồ Chí Minh',
-      district: 'Thủ Đức',
-      ward: ' Linh Xuân', 
-      address: 'KTX Khu B ĐHQG',
+     name: '',
+      id: '',
+      avatar: '', 
+      email: '',
+      phoneNumber: '',
+      password: '',
+      province: '',
+      district: '',
+      ward: '', 
+      address: '',
     });
   
     const handleChange = (name) => (value) => {
@@ -32,12 +39,18 @@ const Tab = ({user}) => {
         [name]: value,
       }));
     };
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
       e.preventDefault();
       // Xử lý cập nhật thông tin địa chỉ khi nhấn nút "Cập nhật"
       // Ví dụ: gọi API hoặc thực hiện các tác vụ cần thiết
+      try {
+      const response = await axiosClient.patch('/user')
+      setUserData(response.data.data)
       console.log('Thông tin cập nhật:', userData);
-    };
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
     // This is just placeholder data. Replace this with your actual data.
     const orders = [
@@ -192,7 +205,7 @@ const Tab = ({user}) => {
                   </div>
                 </fieldset>
                 <div className={styles.update__btn} >
-                  <Button type='btn1 secondary--1'>Cập nhật</Button>
+                  <Button type='btn1 secondary--1'onClick={handleSubmit} >Cập nhật</Button>
                 </div>
               </form>
             </div>

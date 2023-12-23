@@ -62,6 +62,8 @@ type ProductComment {
   author  String
   comment String
   email   String
+  phoneNumber String
+  rating Int
 }
 model User {
   id             String              @id @default(auto()) @map("_id") @db.ObjectId

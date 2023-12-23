@@ -32,7 +32,7 @@ app.use("/", (req, res, next) => {
 //middleware handleing cors policy
 app.use(cors({
     origin: `http://localhost:${process.env.CLIENT_PORT}`,
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type'],
     credentials: true,
 }));

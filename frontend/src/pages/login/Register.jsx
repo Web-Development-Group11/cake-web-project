@@ -9,11 +9,6 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { validateUsername, validatePassword, validateConfirmPassword } from "./validationForm";
 import { axiosClient } from "../../api/axios";
-import TextFieldWithIcon from "../../components/textFieldWithIcon/TextFieldWithIcon";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { validateUsername, validatePassword, validateConfirmPassword } from "./validationForm";
-import { axiosClient } from "../../api/axios";
 function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
