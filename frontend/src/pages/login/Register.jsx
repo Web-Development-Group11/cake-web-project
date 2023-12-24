@@ -12,7 +12,7 @@ import { axiosClient } from "../../api/axios";
 
 function Register() {
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [phoneNumber, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -34,7 +34,7 @@ function Register() {
       setEmailError(false);
       setEmailErrorMsg("");
 
-    } else if (name === "phone") {
+    } else if (name === "phoneNumber") {
       setPhone(value);
       setPhoneError(false);
       setPhoneErrorMsg("");
@@ -65,7 +65,7 @@ function Register() {
     };
 
     const emailError = validateEmail(email);
-    const phoneError = validatePhone(phone);
+    const phoneError = validatePhone(phoneNumber);
     const passwordError = validatePassword(password);
     const confirmPasswordError = validateConfirmPassword(password, confirmPassword);
 
@@ -125,7 +125,7 @@ function Register() {
       setConfirmPasswordErrorMsg(validation.confirmPasswordErrorMsg);
     } else {
       try {
-        const response = await axiosClient.post('/register', { email, phone, password })
+        const response = await axiosClient.post('/register', { email, phoneNumber, password })
         console.log(response.status)
         if (response.status == 200) {
           navigate('/login');
@@ -200,8 +200,8 @@ function Register() {
                     <TextField
                       placeholder={"Số điện thoại"}
                       name="phone"
-                      value={phone}
-                      onChange={(value) => changeInputValue("phone", value)}
+                      value={phoneNumber}
+                      onChange={(value) => changeInputValue("phoneNumber", value)}
                     />
                   </div>
                   <div className={formStyles.errorcontainer}>
