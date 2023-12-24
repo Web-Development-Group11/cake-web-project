@@ -107,7 +107,7 @@ getProduct();
                   style={{ color: '#E21033' }}
                   name="half-rating-read" defaultValue={4.5} precision={0.5} readOnly />
 
-                <p className="productDetail__info_text-price title--1">{product.price}</p>
+                <p className="productDetail__info_text-price title--1">{`${product.price} vnd`}</p>
 
                 <div className="productDetail__info_text-description body--2">
                   {product.product_description}

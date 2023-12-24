@@ -56,7 +56,7 @@ export default function Card({ product }) {
           <span className={`body--2`}>{product.pRate}</span>
         </div>
         <div className={cardStyles.content__price}>
-          <div className={`title--4`}>{product.price}</div>
+          <div className={`title--4`}>{`${product.price} vnd`}</div>
         </div>
         <div className={cardStyles.content__cart}>
           <FaShoppingCart className={cardStyles.carticons} />

@@ -22,6 +22,9 @@ import BlogDetail from './pages/blogDetail/BlogDetail';
 
 // import Shop from './pages/cart/Shop';
 
+
+
+
 function App() {
   return (
     <div className="App">
