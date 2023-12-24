@@ -106,7 +106,12 @@
     justify-content: space-between;
     margin-top: 0.5rem;
 }
-
+.cusInfo__column{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
 .cusInfo__col1 {
     flex: 55%;
     height: 40px;
