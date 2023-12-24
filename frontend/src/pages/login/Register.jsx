@@ -7,29 +7,43 @@ import TextField from "../../components/textField/TextField";
 import TextFieldWithIcon from "../../components/textFieldWithIcon/TextFieldWithIcon";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { validateUsername, validatePassword, validateConfirmPassword } from "./validationForm";
+import { validateEmail, validatePhone, validatePassword, validateConfirmPassword } from "./validationForm";
 import { axiosClient } from "../../api/axios";
+
 function Register() {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [usernameError, setUsernameError] = useState(false);
+
+  const [emailError, setEmailError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
-  const [usernameErrorMsg, setUsernameErrorMsg] = useState("");
+
+  const [emailErrorMsg, setEmailErrorMsg] = useState("");
+  const [phoneErrorMsg, setPhoneErrorMsg] = useState("");
   const [passwordErrorMsg, setPasswordErrorMsg] = useState("");
   const [confirmPasswordErrorMsg, setConfirmPasswordErrorMsg] = useState("");
+
   const navigate = useNavigate();
 
   function changeInputValue(name, value) {
-    if (name === "username") {
-      setUsername(value);
-      setUsernameError(false);
-      setUsernameErrorMsg("");
+    if (name === "email") {
+      setEmail(value);
+      setEmailError(false);
+      setEmailErrorMsg("");
+
+    } else if (name === "phone") {
+      setPhone(value);
+      setPhoneError(false);
+      setPhoneErrorMsg("");
+
     } else if (name === "password") {
       setPassword(value);
       setPasswordError(false);
       setPasswordErrorMsg("");
+
     } else if (name === "confirmPassword") {
       setConfirmPassword(value);
       setConfirmPasswordError(false);
@@ -39,23 +53,35 @@ function Register() {
 
   function validationForm() {
     let returnData = {
-      usernameError: false,
+      emailError: false,
+      phoneError: false,
       passwordError: false,
       confirmPasswordError: false,
-      usernameErrorMsg: "",
+      
+      phoneErrorMsg: "",
+      emailErrorMsg: "",
       passwordErrorMsg: "",
       confirmPasswordErrorMsg: ""
     };
 
-    const usernameError = validateUsername(username);
+    const emailError = validateEmail(email);
+    const phoneError = validatePhone(phone);
     const passwordError = validatePassword(password);
     const confirmPasswordError = validateConfirmPassword(password, confirmPassword);
 
-    if (usernameError) {
+    if (emailError) {
       returnData = {
         ...returnData,
-        usernameError: true,
-        usernameErrorMsg: usernameError
+        emailError: true,
+        emailErrorMsg: emailError
+      };
+    }
+
+    if (phoneError) {
+      returnData = {
+        ...returnData,
+        phoneError: true,
+        phoneErrorMsg: phoneError
       };
     }
 
@@ -84,29 +110,33 @@ function Register() {
     const validation = validationForm();
 
     if (
-      validation.usernameError ||
+      validation.emailError ||
+      validation.phoneError ||
       validation.passwordError ||
       validation.confirmPasswordError
     ) {
-      setUsernameError(validation.usernameError);
-      setUsernameErrorMsg(validation.usernameErrorMsg);
+      setEmailError(validation.emailError);
+      setPhoneError(validation.phoneError);
+      setEmailErrorMsg(validation.emailErrorMsg);
+      setPhoneErrorMsg(validation.phoneErrorMsg);
       setPasswordError(validation.passwordError);
       setPasswordErrorMsg(validation.passwordErrorMsg);
       setConfirmPasswordError(validation.confirmPasswordError);
       setConfirmPasswordErrorMsg(validation.confirmPasswordErrorMsg);
     } else {
       try {
-        const response = await axiosClient.post('/register', {username, password})
-        if (response.statusCode === 200) {
+        const response = await axiosClient.post('/register', { email, phone, password })
+        console.log(response.status)
+        if (response.status == 200) {
           navigate('/login');
-      }else {
-        alert('Wrong username or password')
+        } else {
+          alert('Wrong username or password')
+        }
+      } catch (e) {
+        console.log(e);
       }
-  } catch (e) {
-    console.log(e);
     }
   }
-}
 
   return (
     <div className={formStyles.form__container}>
@@ -137,23 +167,46 @@ function Register() {
             </div>
             {/* form */}
             <form className={formStyles.form__frameinput} onSubmit={submitForm}>
-              {/* input username */}
-              <div className={formStyles.form__input}>
-                <div className={formStyles.form__inputtitle}>
-                  <div className={formStyles.form__inputtitle1}>
-                    <div className={formStyles["title--3"]}>Tên đăng nhập</div>
+              <div className={`${formStyles.form__input} ${formStyles.form__inputuser}`}>
+                {/* input email */}
+                <div className={formStyles.form__input1}>
+                  <div className={formStyles.form__inputtitle}>
+                    <div className={formStyles.form__inputtitle1}>
+                      <div className={formStyles["title--3"]}>Email</div>
+                    </div>
+                  </div>
+
+                  <div className={formStyles.inputwrapper}>
+                    <TextField
+                      placeholder={"Email"}
+                      name="email"
+                      value={email}
+                      onChange={(value) => changeInputValue("email", value)}
+                    />
+                  </div>
+                  <div className={formStyles.errorcontainer}>
+                    {emailError && <div className={formStyles.errorMsg}>{emailErrorMsg}</div>}
                   </div>
                 </div>
-                <div className={formStyles.inputwrapper}>
-                  <TextField
-                    placeholder={"Email/ Số điện thoại"}
-                    name="username"
-                    value={username}
-                    onChange={(value) => changeInputValue("username", value)}
-                  />
-                </div>
-                <div className={formStyles.errorcontainer}>
-                  {usernameError && <div className={formStyles.errorMsg}>{usernameErrorMsg}</div>}
+                {/* input sdt */}
+                <div className={formStyles.form__input2}>
+                  <div className={formStyles.form__inputtitle}>
+                    <div className={formStyles.form__inputtitle1}>
+                      <div className={formStyles["title--3"]}>Số điện thoại</div>
+                    </div>
+                  </div>
+
+                  <div className={formStyles.inputwrapper}>
+                    <TextField
+                      placeholder={"Số điện thoại"}
+                      name="phone"
+                      value={phone}
+                      onChange={(value) => changeInputValue("phone", value)}
+                    />
+                  </div>
+                  <div className={formStyles.errorcontainer}>
+                    {phoneError && <div className={formStyles.errorMsg}>{phoneErrorMsg}</div>}
+                  </div>
                 </div>
               </div>
               {/* input password */}
@@ -162,7 +215,7 @@ function Register() {
                   <div className={formStyles.form__inputtitle1}>
                     <div className={formStyles["title--3"]}>Mật khẩu</div>
                   </div>
-                </div>  
+                </div>
                 <div className={formStyles.inputwrapper}>
                   <TextFieldWithIcon
                     placeholder={"Mật khẩu"}
@@ -183,7 +236,7 @@ function Register() {
                   </div>
                 </div>
                 <div className={formStyles.inputwrapper}>
-                <TextFieldWithIcon
+                  <TextFieldWithIcon
                     placeholder={"Nhập lại mật khẩu"}
                     value={confirmPassword}
                     onChange={(value) => changeInputValue("confirmPassword", value)}
