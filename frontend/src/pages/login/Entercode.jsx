@@ -110,9 +110,10 @@ function Entercode() {
                         <div className={formStyles.form__link}>
                             <span className={formStyles["title--3"]}>
                                 <span className={formStyles.form__linktitle1}>
-                                    Bạn chưa nhận được mã xác nhận?
+                                    Bạn chưa nhận được mã xác nhận?  <span></span>
                                 </span>
-                                <a className={formStyles.form__linktitle2} href="/">
+                                <a className={formStyles.form__linktitle2} href="/entercode">
+                                    {/* liên kết backend */}
                                     Gửi lại
                                 </a >
                             </span>

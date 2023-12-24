@@ -39,8 +39,8 @@ function Login() {
             passwordErrorMsg: ""
         };
 
-        // const usernameError = validateUsername(username);
-        // const passwordError = validatePassword(password);
+        const usernameError = validateUsername(username);
+        const passwordError = validatePassword(password);
 
         if (usernameError) {
             returnData = {
