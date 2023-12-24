@@ -11,10 +11,6 @@ import { useParams } from 'react-router';
 
 
 
-<<<<<<< Updated upstream
-const TabReview = () => {
-    const [ review, setReview] = useState()
-=======
 const TabReview = (props) => {
     // const review = props.comments;
     const review = [
@@ -61,7 +57,6 @@ const TabReview = (props) => {
             comment: "ahihu"
         }
     ]
->>>>>>> Stashed changes
 
     // Hàm useState phần review
     const [activeTab, setActiveTab] = useState('readReview');

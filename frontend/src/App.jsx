@@ -18,17 +18,9 @@ import Navbar from './components/header/NavBar';
 import Footer from './components/footer/Footer';
 import ScrollToTop from './components/scroll/scroll';
 import BlogDetail from './pages/blogDetail/BlogDetail';
-<<<<<<< Updated upstream
 import PaymentPageGuest from './pages/payment/PaymentPageGuest';
 import PaymentPageAuthenticated from './pages/payment/PaymentPageAuthenticated';
-
-// import Shop from './pages/cart/Shop';
-
-
-
-=======
 import { useState, useEffect } from "react";
->>>>>>> Stashed changes
 
 function App() {
 
@@ -82,30 +74,6 @@ function App() {
 
   return (
     <div className="App">
-<<<<<<< Updated upstream
-    <BrowserRouter>
-      <ScrollToTop />
-            <Routes>
-                <Route path="/" element={< Home />} />
-                <Route path="/login" element={< Login />} />
-                <Route path="/register" element={< Register />} />
-                <Route path="/forgetpassword" element={< Forgetpass />} />
-                <Route path="/entercode" element={< Entercode />} />
-                <Route path="/changepassword" element={< Changepass />} />
-                <Route path="/product" element={< Product />} />
-                <Route path="/productDetail/:id" element={< ProductDetail />} />
-                <Route path="/support" element={< Support/>} />
-                <Route path="/policy" element={< Policy/>} />
-                <Route path="/faq" element={< Faq/>} />
-                <Route path="/paymentpageguest" element={< PaymentPageGuest />} />
-                <Route path="/paymentpageauth" element={< PaymentPageAuthenticated />} />
-
-                <Route path="/account" element={< Account />} />
-                <Route path="/cart" element={< Cart/>} />
-                <Route path="/introduction" element={< Introduction />} />
-                <Route path="/blog" element={< Blog />} />
-                <Route path="/blog/:blogSlug" element={< BlogDetail />} />
-=======
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
@@ -120,13 +88,12 @@ function App() {
           <Route path="/support" element={< Support />} />
           <Route path="/policy" element={< Policy />} />
           <Route path="/faq" element={< Faq />} />
-          <Route path="/payment" element={< Payment />} />
+          {/* <Route path="/payment" element={< Payment />} /> */}
           <Route path="/account" element={< Account />} />
           <Route path="/cart" element={< Cart cart={cart} setCart={setCart} />} />
           <Route path="/introduction" element={< Introduction />} />
           <Route path="/blog" element={< Blog />} />
           <Route path="/blog/:blogSlug" element={< BlogDetail />} />
->>>>>>> Stashed changes
 
           {/* <Route path="/test" element={< Shop />} /> */}
 
