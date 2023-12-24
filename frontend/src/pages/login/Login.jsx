@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import formStyles from "./Form.module.css";
 import logo from "../../assets/image/logo.png";
 import bg from "../../assets/image/bglogin.png";
@@ -10,7 +10,7 @@ import { axiosClient } from "../../api/axios";
 import { useNavigate } from "react-router-dom";
 import { validateUsername, validatePassword} from "./validationForm";
 
-function Login() {
+function Login(props) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [usernameError, setUsernameError] = useState(false);
@@ -87,6 +87,10 @@ function Login() {
         }
     }
 }
+
+useEffect(() => {
+   props.setShowNavbar(false);
+} , []);
 
 
     return (

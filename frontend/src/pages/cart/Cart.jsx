@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 
 function Cart({ setShowCart, cart, setCart }) {
+
   const [tongtien, setTongtien] = useState(0);
   const [someState, setSomeState] = useState(0);
   const listRef = useRef(null);
@@ -17,7 +18,7 @@ function Cart({ setShowCart, cart, setCart }) {
 
   const handleQuantityChange = useCallback((productId, newQuantity) => {
     // Check if the quantity is actually changing
-    if (cart.some(product => product.id === productId && product.amount !== newQuantity)) {
+    if (cart?.some(product => product.id === productId && product.amount !== newQuantity)) {
       setCart((prevCart) => {
         const updatedCart = prevCart.map((product) => {
           if (product.id === productId) {
@@ -33,14 +34,10 @@ function Cart({ setShowCart, cart, setCart }) {
     }
   }, [cart, setCart]);
 
-
   const removeProduct = (sanpham) => {
-    const updatedCart = cart.filter((sp) => sp.id !== sanpham.id);
+    const updatedCart = cart?.filter((sp) => sp.id !== sanpham.id);
     setCart(updatedCart);
   };
-
-
-
 
   const formatPrice = (price) => {
     return price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }).replace(/\./g, ',');
@@ -48,7 +45,7 @@ function Cart({ setShowCart, cart, setCart }) {
 
   const tinhtongtien = useCallback(() => {
     let tt = 0;
-    cart.forEach((sp) => {
+    cart?.forEach((sp) => {
       tt += sp.price * sp.amount;
     });
     setTongtien(tt);
@@ -58,15 +55,11 @@ function Cart({ setShowCart, cart, setCart }) {
     tinhtongtien();
   }, [cart, someState, tinhtongtien]);
 
-
-
-
   return (
     <>
-      <Header></Header>
       <div className={cartStyles.cart__container}>
         {/* Breadcrumb */}
-        <Breadcrumb  />
+        <Breadcrumb />
         {/* Tiêu đề */}
         <div className={`heading ${cartStyles.head}`}>Giỏ hàng của bạn</div>
         {/* Giỏ hàng */}
@@ -82,15 +75,15 @@ function Cart({ setShowCart, cart, setCart }) {
             </tr>
           </thead>
           <tbody>
-            {cart.map((product) => (
+            {cart?.map((product) => (
               <tr key={product.id} className={`body--1 ${cartStyles.class_row}`}>
 
 
                 <td className={`${cartStyles.col1}`}>
                   <div className={cartStyles.product_img}>
-                    <img className={cartStyles.img} src={product.product_image} alt={product.name} />
+                    <img className={cartStyles.img} src={product?.image_urls.image_url_0} alt={product.title} />
                   </div>
-                  <span className={cartStyles.product_name}>{product.name}</span>
+                  <span className={cartStyles.product_name}>{product.title}</span>
                 </td>
                 <td className={cartStyles.col2}>
                   <span>{formatPrice(product.price)}</span>
@@ -153,9 +146,6 @@ function Cart({ setShowCart, cart, setCart }) {
           </div>
         </div>
       </div>
-
-      <Footer></Footer>
-
     </>
   );
 }

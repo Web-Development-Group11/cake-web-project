@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import formStyles from "./Form.module.css";
 import logo from "../../assets/image/logo.png";
 import bg from "../../assets/image/bgregister.png";
@@ -10,9 +10,14 @@ import { useNavigate } from "react-router-dom";
 import { validateEmail, validatePhone, validatePassword, validateConfirmPassword } from "./validationForm";
 import { axiosClient } from "../../api/axios";
 
+<<<<<<< Updated upstream
 function Register() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+=======
+function Register(props) {
+  const [username, setUsername] = useState("");
+>>>>>>> Stashed changes
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -137,6 +142,10 @@ function Register() {
       }
     }
   }
+
+useEffect(() => {
+  props.setShowNavbar(false);
+} , []);
 
   return (
     <div className={formStyles.form__container}>

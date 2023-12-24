@@ -100,7 +100,7 @@ const navItems = [
   },
 ];
 
-function Navbar() {
+function Navbar(props) {
   const [searchOn, setSearchOn] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
 
@@ -139,7 +139,7 @@ function Navbar() {
             <img src={logo} alt="logo" className="navBar__logo"></img>
           </Link>
         </div>
-        
+
         <div onClick={onCloseMenu} className={`navBar__menu ${menuActive ? 'active' : ''}`}>
           <IoMenu onClick={onOpenMenu} className='navBar__menu-icon' />
           <ul className="navBar__item" onClick={(ev) => ev.stopPropagation()}>
@@ -214,7 +214,11 @@ function Navbar() {
           <li>
             <Link to="/cart">
               <FaShoppingCart className="navBar__icon" />
+              <span className="cartamount">
+                <sup className="sub body--2">{props.total}</sup>
+              </span>
             </Link>
+
           </li>
         </ul>
       </div>

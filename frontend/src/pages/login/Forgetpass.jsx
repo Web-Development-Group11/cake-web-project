@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import formStyles from "./Form.module.css";
 import logo from "../../assets/image/logo.png";
 import bg from "../../assets/image/bgforgetpass.png";
@@ -8,7 +8,7 @@ import TextFieldWithIcon from "../../components/textFieldWithIcon/TextFieldWithI
 import { Link } from "react-router-dom";
 import { validateUsername } from "./validationForm";
 
-function Forgetpass() {
+function Forgetpass(props) {
   const [username, setUsername] = useState("");
   const [usernameError, setUsernameError] = useState(false);
   const [usernameErrorMsg, setUsernameErrorMsg] = useState("");
@@ -55,7 +55,9 @@ function Forgetpass() {
       // logic check BE ở đây 
     } 
   }
-
+  useEffect(() => {
+    props.setShowNavbar(false);
+ } , []);
 
   return (
     <div className={formStyles.form__container}>

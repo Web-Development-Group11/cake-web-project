@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import formStyles from "./Form.module.css";
 import logo from "../../assets/image/logo.png";
 import bg from "../../assets/image/bgentercode.png";
@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import {validateCode} from "./validationForm";
 
 
-function Entercode() {
+function Entercode(props) {
     const [code, setCode] = useState("");
     const [codeError, setCodeError] = useState(false);
     const [codeErrorMsg, setCodeErrorMsg] = useState("");
@@ -48,6 +48,11 @@ function Entercode() {
             // logic check BE ở đây 
         }
     }
+
+    useEffect(() => {
+        props.setShowNavbar(false);
+     } , []);
+
     return (
         <div className={formStyles.form__container}>
             {/* hinh */}

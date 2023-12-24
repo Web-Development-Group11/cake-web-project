@@ -10,7 +10,7 @@ import home from './Home.module.css'
 import { useModal } from '../../hook/useModal';
 import { axiosClient } from '../../api/axios';
 
-const Home = () => {
+const Home = (props) => {
   const onOpen = useModal((state) => state.onOpen);
   const setData = useModal((state) => state.setData);
   const [product, setProduct] = useState();
@@ -39,9 +39,13 @@ getProduct();
     }
   }
   
+useEffect(() => {
+  props.setShowNavbar(true);
+}
+, []);
   return (
     <div>
-      <Navbar></Navbar>
+  
       <div className={home.banner}>
         <Banner></Banner>
       </div>
@@ -107,7 +111,6 @@ getProduct();
           </div> 
         </div>
       </div>
-      <Footer></Footer>
     </div>
   )
 }

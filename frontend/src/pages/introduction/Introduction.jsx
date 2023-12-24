@@ -9,7 +9,6 @@ import Footer from '../../components/footer/Footer';
 export default function Introduction() {
   return (
     <>
-      <Navbar />
       <div className={styles.center}>
         <div className={styles.page}>
           <div className={styles.navigation}>
@@ -39,20 +38,20 @@ export default function Introduction() {
               <div className="content__text">
                 <h2 className='content__header heading'>Tầm nhìn, Sứ mệnh, Giá trị cốt lõi</h2>
                 <h3 className='content__subhead body--1'>
-                    Tầm nhìn
-                  </h3>
+                  Tầm nhìn
+                </h3>
                 <p className={`${styles.content__paragraph} body--1`}>
                   Trở thành một thương hiệu nổi tiếng và uy tín trong lĩnh vực bánh ngọt trên toàn quốc. Chúng tôi muốn lan tỏa niềm đam mê và tình yêu với bánh ngọt, tạo ra những trải nghiệm độc đáo cho khách hàng thông qua sản phẩm của chúng tôi. Chúng tôi luôn cố gắng để đem đến cho mọi người những bánh ngọt ngon và đẹp nhất, làm hài lòng cả vị giác và thị giác.
                 </p>
                 <h3 className={`${styles.content__subhead} title--3`}>
                   Sứ mệnh
-                  </h3>
+                </h3>
                 <p className={`${styles.content__paragraph} body--1`}>
                   Sứ mệnh của <strong className={`${styles.brandName} heading`}>Bông Cake</strong> là đem đến niềm vui và hạnh phúc cho mọi người thông qua những chiếc bánh ngọt tinh tế và ngon miệng. Chúng tôi cam kết sử dụng những nguyên liệu tốt nhất, kỹ thuật nướng bánh hàng đầu, và lòng nhiệt huyết để tạo ra những sản phẩm chất lượng cao. Chúng tôi muốn mỗi chiếc bánh của chúng tôi là món quà ý nghĩa cho các dịp quan trọng trong cuộc sống của khách hàng.
                 </p>
                 <h3 className={`${styles.content__subhead} title--3`}>
                   Giá trị cốt lõi
-                  </h3>
+                </h3>
                 <p className={`${styles.content__paragraph} body--1`}>
                   Sáng tạo: Luôn tạo ra những sản phẩm mới mẻ và độc đáo, luôn tìm cách để làm cho mỗi chiếc bánh trở nên đặc biệt.
                 </p>
@@ -73,7 +72,6 @@ export default function Introduction() {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   )
 }

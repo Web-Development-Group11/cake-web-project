@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import TextField from '../../../components/textField/TextField'
 import Button from '../../../components/button/Button';
 import tabreview from './TabReview.module.css';
-import Pagination from '../../../components/pagination/index';
+import Pagination from '@mui/material/Pagination';
 import Rating from '@mui/material/Rating';
 import Avatar from '@mui/material/Avatar';
 import { deepOrange } from '@mui/material/colors';
@@ -11,8 +11,57 @@ import { useParams } from 'react-router';
 
 
 
+<<<<<<< Updated upstream
 const TabReview = () => {
     const [ review, setReview] = useState()
+=======
+const TabReview = (props) => {
+    // const review = props.comments;
+    const review = [
+        {
+            avatar: null,
+            Uername: "Nam phương",
+            Star: 1,
+            Time: "12/12/2023",
+            comment: "ahihu"
+        },
+        {
+            avatar: null,
+            Uername: "Nam phương",
+            Star: 2,
+            Time: "12/12/2023",
+            comment: "ahihu"
+        },
+        {
+            avatar: null,
+            Uername: "Nam phương",
+            Star: 3,
+            Time: "12/12/2023",
+            comment: "ahihu"
+        },
+        {
+            avatar: null,
+            Uername: "Nam phương",
+            Star: 4,
+            Time: "12/12/2023",
+            comment: "ahihu"
+        },
+        {
+            avatar: null,
+            Uername: "Nam phương",
+            Star: 3,
+            Time: "12/12/2023",
+            comment: "ahihu"
+        },
+        {
+            avatar: null,
+            Uername: "Nam phương",
+            Star: 5,
+            Time: "12/12/2023",
+            comment: "ahihu"
+        }
+    ]
+>>>>>>> Stashed changes
 
     // Hàm useState phần review
     const [activeTab, setActiveTab] = useState('readReview');
@@ -87,12 +136,6 @@ const TabReview = () => {
     }, []
     );
 
-    // Chuyen trang danh gia
-    // const handlePageChange = (event, page) => {
-    //     const currentList = reviewList?.slice(1, 5);
-    //     setReviewList(currentList);
-    // };
-
     // Lay so sao tu cmt
     const [userName, setUserName] = useState(null);
     const [userPhone, setUserPhone] = useState(null);
@@ -122,8 +165,6 @@ const TabReview = () => {
         setUserStar(event.target.value <= 1 ? 1 : event.target.value);
     }
 
-
-
     // Xu ly khi bam nut dang bai
     const handlePostReview = () => {
         if (!userName && !userPhone && !userEmail && !userComment) {
@@ -133,7 +174,6 @@ const TabReview = () => {
         else {
             // Gọi API lấy danh sách review (chưa có API nên tạm thời dùng hàm setReviewList()
             const newReview = {
-
                 avatar: null,
                 Uername: userName,
                 Star: userStar,
@@ -151,10 +191,27 @@ const TabReview = () => {
             setUserComment(null);
             setUserStar(1);
         }
-
-
     }
 
+    // Chuyen trang danh gia
+    const itemsPerPage = 3;
+    const [currentPage, setCurrentPage] = useState(1);
+    const [currentReview, setCurrentReview] = useState(reviewList);
+
+    const totalItems = reviewList?.length;
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+    const handlePageChange = (event, page) => {
+        setCurrentPage(page);
+        console.log(event)
+    };
+
+    useEffect(() => {
+        console.log(currentPage)
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        setCurrentReview(reviewList?.slice(startIndex, endIndex))
+    }, [currentPage, reviewList])
 
     return (
         <div className={tabreview.tabReview__container}>
@@ -212,7 +269,7 @@ const TabReview = () => {
 
                                 {
                                     // ?. khi gía trị trước nó là null thi chạy bth, ko null thì dừng
-                                    reviewList?.map((item, index) => (
+                                    currentReview?.map((item, index) => (
                                         <div className={tabreview.readReview__list__item}>
                                             <div className={tabreview.readReview__list__item_infoUser}>
                                                 <div className={tabreview.readReview__list__item_avt}>
@@ -237,7 +294,14 @@ const TabReview = () => {
                                 }
 
                             </div>
-                            {/* <Pagination totalPages={Math.ceil(reviewList?.length / 5)} onChange={handlePageChange} /> */}
+
+                             <Pagination
+                                 totalPages={totalPages}
+                                 onChange={handlePageChange}
+                                 count={totalPages}
+                                 page={currentPage}
+                                 color="primary"
+                             />
                         </div>
 
 

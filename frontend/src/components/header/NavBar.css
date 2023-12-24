@@ -1,4 +1,3 @@
-
 p {
   margin: 0;
 }
@@ -8,7 +7,7 @@ ul {
 }
 
 .mt-4 {
-  margin-top: 2rem; 
+  margin-top: 2rem;
 }
 
 .navbar {
@@ -16,9 +15,9 @@ ul {
   top: 0;
   right: 0;
   left: 0;
-  height: 3.75rem; 
+  height: 3.75rem;
   background: var(--white);
-  box-shadow: 0px 0.25rem 0.25rem 0px rgba(0, 0, 0, 0.25); 
+  box-shadow: 0px 0.25rem 0.25rem 0px rgba(0, 0, 0, 0.25);
   z-index: 100;
 }
 
@@ -26,7 +25,7 @@ ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-inline: 1.25rem; 
+  margin-inline: 1.25rem;
 }
 
 .navBar__home {
@@ -37,9 +36,9 @@ ul {
 
 .navBar__logo {
   height: 2.8125rem;
-  width: 5rem; 
+  width: 5rem;
   position: relative;
-  top: 0.25rem; 
+  top: 0.25rem;
 }
 
 .navBar__menu {
@@ -51,8 +50,8 @@ ul {
 
 .navBar__menu-icon {
   cursor: pointer;
-  height: 1.5rem; 
-  width: 1.5rem; 
+  height: 1.5rem;
+  width: 1.5rem;
   z-index: 10;
 }
 
@@ -61,7 +60,7 @@ ul {
 }
 
 .navbar-menu__placeholder {
-  width: 1.5rem; 
+  width: 1.5rem;
 }
 
 .navBar__mobile-header {
@@ -87,13 +86,13 @@ ul {
 
 .navBar__close {
   align-self: flex-end;
-  margin-right: 1rem; 
-  margin-top: 0.5625rem; 
-  margin-bottom: 0.5625rem; 
+  margin-right: 1rem;
+  margin-top: 0.5625rem;
+  margin-bottom: 0.5625rem;
 }
 
 .navBar__close-icon {
-  height: 2rem; 
+  height: 2rem;
   width: 2rem;
   padding: 0.25rem;
   color: var(--primary-color);
@@ -104,9 +103,9 @@ ul {
   content: '';
   position: absolute;
   top: 80%;
-  width: calc(100% + 2rem); 
+  width: calc(100% + 2rem);
   left: 0;
-  height: 3.125rem; 
+  height: 3.125rem;
   z-index: 10;
 }
 
@@ -136,19 +135,19 @@ ul {
 }
 
 .navBar__menu.active .nav-item__link {
-  padding: 1rem; 
+  padding: 1rem;
   cursor: pointer;
   width: 100%;
 }
 
 .navBar__menu.active .nav-item:hover {
   background-color: var(--background-2);
-  border-radius: 0.375rem; 
+  border-radius: 0.375rem;
 }
 
 .navBar__icons {
   display: flex;
-  gap: 1rem; 
+  gap: 1rem;
   list-style: none;
   text-align: center;
   order: 3;
@@ -165,13 +164,13 @@ ul {
   color: var(--primary-color);
   position: relative;
   cursor: pointer;
-  font-size: 1.25rem; 
+  font-size: 1.25rem;
 }
 
 .product-submenu {
   z-index: 20;
   display: none;
-  width: 12rem; 
+  width: 12rem;
   position: absolute;
   top: calc(100% + 8px);
   right: 16px;
@@ -179,18 +178,18 @@ ul {
   list-style: none;
   text-align: start;
   background-color: white;
-  border-radius: 0.625rem; 
-  box-shadow: 0px 1rem 2rem 0px rgba(0, 0, 0, 0.12); 
+  border-radius: 0.625rem;
+  box-shadow: 0px 1rem 2rem 0px rgba(0, 0, 0, 0.12);
   flex-direction: column;
-  padding: 0.25rem; 
+  padding: 0.25rem;
 }
 
 .authenticate .product-submenu {
-  width: 8rem; 
+  width: 8rem;
 }
 
 .authenticate .product-submenu .submenu-item {
-  padding: 0.5rem 1rem; 
+  padding: 0.5rem 1rem;
 }
 
 .nav-item:hover .product-submenu {
@@ -231,8 +230,8 @@ ul {
 }
 
 .navBar__icon {
-  height: 1.25rem; 
-  width: 1.25rem; 
+  height: 1.25rem;
+  width: 1.25rem;
   color: var(--primary-color);
   cursor: pointer;
   position: relative;
@@ -241,26 +240,26 @@ ul {
 
 .navBar__search {
   position: relative;
-  border-radius: 1rem; 
+  border-radius: 1rem;
 }
 
 .navBar__search-bar {
   position: absolute;
-  right: -1.875rem; 
+  right: -1.875rem;
   top: 200%;
   display: flex;
   align-items: stretch;
-  border: 0.0625rem solid #47271c; 
-  border-radius: 1rem; 
+  border: 0.0625rem solid #47271c;
+  border-radius: 1rem;
   font-family: 'Inter', sans-serif;
 }
 
 .navBar__search-input {
-  width: 9.375rem; 
-  height: 2.5rem; 
+  width: 9.375rem;
+  height: 2.5rem;
   font-size: 0.875rem;
-  padding-inline: 1rem; 
-  border-radius:1rem 0 0 1rem;
+  padding-inline: 1rem;
+  border-radius: 1rem 0 0 1rem;
   outline: none;
   border: none;
   z-index: 20;
@@ -270,13 +269,13 @@ ul {
   display: flex;
   align-items: center;
   background-color: var(--primary-color);
-  border-radius: 1rem; 
+  border-radius: 1rem;
 }
 
 .navBar__search-icon {
   padding-inline: 0.75rem;
   height: 1.25rem;
-  width: 1.25rem; 
+  width: 1.25rem;
   color: var(--white);
 }
 
@@ -289,6 +288,15 @@ ul {
   z-index: 10;
 }
 
+
+.cartamount .sub {
+  position: absolute;
+  text-align: right;
+  color: var(--primary-color);
+  padding: 0 .1rem;
+  top: 0.125rem;
+}
+
 @media only screen and (min-width: 48rem) {
   .navBar__home {
     order: 2;
@@ -296,7 +304,7 @@ ul {
   }
 
   .navbar__content {
-    margin-inline: 1.25rem; 
+    margin-inline: 1.25rem;
   }
 
   .navBar__menu {
@@ -304,7 +312,7 @@ ul {
   }
 
   .navBar__search-bar {
-    right: -0.75rem; 
+    right: -0.75rem;
   }
 
   .navBar__search-input {
@@ -334,15 +342,16 @@ ul {
   }
 
   .navBar__item {
-    gap: 1.5rem; 
+    gap: 1.5rem;
     display: flex;
     flex-direction: row;
     position: unset;
     padding-top: 0;
     width: 100%;
   }
+
   .navbar__content {
-    margin-inline: 5rem; 
+    margin-inline: 5rem;
   }
 
   .navBar__home {
@@ -352,15 +361,15 @@ ul {
   .nav-item__link::before {
     content: '';
     position: absolute;
-    bottom: -0.125rem; 
+    bottom: -0.125rem;
     width: 100%;
-    height: 0.1875rem; 
+    height: 0.1875rem;
     background-color: var(--primary-color);
     opacity: 0;
     transition: all 0.3s ease-in-out;
-    border-radius: 1rem; 
+    border-radius: 1rem;
   }
-  
+
   .nav-item:hover .nav-item__link::before {
     opacity: 1;
   }
@@ -393,10 +402,10 @@ ul {
 
 @media only screen and (min-width: 75rem) {
   .navbar__content {
-    margin-inline: 7.5rem; 
+    margin-inline: 7.5rem;
   }
 
   .navBar__item {
-    gap: 2rem; 
+    gap: 2rem;
   }
 }
