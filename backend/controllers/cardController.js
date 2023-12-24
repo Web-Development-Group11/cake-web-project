@@ -5,7 +5,12 @@ const product = new PrismaClient().product;
 export const getProduct = async (req, res) => {
     try {
         const info = await product.findMany({take: 8});
-        res.status(200).json({ data: info })
+        const cleanData = [];
+        for(let i = 0; i < 8; i++) {
+        info[i].price = parseFloat(info[i].price.replace(/\$/g, '')*22000)
+        cleanData.push(info[i])
+        }
+        res.status(200).json({ data: cleanData })
     } catch (error) {
         res.status(500).json({ message: error.message })
     } finally {
@@ -22,7 +27,12 @@ export const getRandomProduct = async (req, res) => {
         const info = await product.findFirst({
             skip: randomOffset,
         });
-        res.status(200).json({ data: info })
+        const cleanData = [];
+        for(let i = 0; i < 8; i++) {
+        info[i].price = parseFloat(info[i].price.replace(/\$/g, '')*22000)
+        cleanData.push(info[i])
+        }
+        res.status(200).json({ data:cleanData })
     } catch (error) {
         res.status(500).json({ message: error.message })
 
@@ -41,6 +51,11 @@ export const getProductById = async (req, res) =>{
             id : id
         }
         });
+        const cleanData = [];
+        for(let i = 0; i < 8; i++) {
+        data[i].price = parseFloat(data[i].price.replace(/\$/g, '')*22000)
+        cleanData.push(data[i])
+        }
         res.status(200).json({ data : data });
     } catch(err) {
         res.status(500).json({ message : err.message });

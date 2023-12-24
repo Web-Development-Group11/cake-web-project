@@ -44,7 +44,7 @@ const Tab = ({user}) => {
       // Xử lý cập nhật thông tin địa chỉ khi nhấn nút "Cập nhật"
       // Ví dụ: gọi API hoặc thực hiện các tác vụ cần thiết
       try {
-      const response = await axiosClient.patch('/user')
+      const response = await axiosClient.patch('/user',{userData})
       setUserData(response.data.data)
       console.log('Thông tin cập nhật:', userData);
     } catch (e) {

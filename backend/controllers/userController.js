@@ -29,7 +29,14 @@ export const updateUsers = async (req, res) => {
             where: {
                 id: id
             },
-            data: data,
+            data: {
+                addressDetails : {
+                province : data.province,
+                district : data.district,
+                ward : data.ward,
+                address : data.address
+            }
+        }
         });
         res.status(200).json({ data: info })
     } catch (error) {
