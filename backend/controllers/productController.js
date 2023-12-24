@@ -7,7 +7,7 @@ export const getProduct = async (req, res) => {
         const info = await product.findMany({take: 8});
         const cleanData = [];
         for(let i = 0; i < 8; i++) {
-        info[i].price = parseFloat(info[i].price.replace(/\$/g, '')*22000).toFixed(3)
+        info[i].price = parseInt(info[i].price.replace(/\$/g, '')*22000)
         cleanData.push(info[i])
         }
         res.status(200).json({ data: cleanData })
@@ -27,7 +27,7 @@ export const getRandomProduct = async (req, res) => {
         const info = await product.findFirst({
             skip: randomOffset,
         });
-        info.price = parseFloat(info.price.replace(/\$/g, '')*22000).toFixed(3)
+        info.price = parseInt(info.price.replace(/\$/g, '')*22000)
         res.status(200).json({ data:info })
     } catch (error) {
         res.status(500).json({ message: error.message })
@@ -47,7 +47,7 @@ export const getProductById = async (req, res) =>{
             id : id
         }
         });
-        data.price = parseFloat(data.price.replace(/\$/g, '')*22000).toFixed(3);
+        data.price = parseInt(data.price.replace(/\$/g, '')*22000);
         res.status(200).json({ data : data });
     } catch(err) {
         res.status(500).json({ message : err.message });

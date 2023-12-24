@@ -1,4 +1,4 @@
-import { getProduct, getProductById, getRandomProduct } from "../controllers/cardController.js";
+import { getProduct, getProductById, getRandomProduct } from "../controllers/productController.js"
 import { Router } from "express";
 import { verifyToken } from "../middleware/verifyToken.js";
 
