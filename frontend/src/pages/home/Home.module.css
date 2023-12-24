@@ -5,7 +5,7 @@
 }
 
 .content {
-    padding: 0 7.5rem;
+    margin-inline: 7.5rem;
 }
 
 ul, li {
@@ -94,6 +94,9 @@ ul, li {
 /* Responsive */
 
 @media screen and (max-width: 1284px) {
+    .content {
+        margin-inline: 3rem;
+    }
     .cuscup__container, .randombox__container {
       flex-direction: column;
       margin-inline: 0;

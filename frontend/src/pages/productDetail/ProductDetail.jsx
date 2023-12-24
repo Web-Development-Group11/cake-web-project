@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import Card from '../../components/card/Card';
 import Button from '../../components/button/Button';
 // import TextField from '../../components/textField/TextField';
-import BoxQuantityComponent from '../../components/boxquantity/BoxQuantity';
+// import BoxQuantityComponent from '../../components/boxquantity/BoxQuantity';
 import Footer from '../../components/footer/Footer';
 import TabReview from './tab/TabReview';
 
@@ -98,10 +98,10 @@ export default function ProductDetail() {
                 <div className="productDetail__info_text-description body--2">
                   Mô tả sản phẩm ngắn gọn Mô tả sản phẩm ngắn gọn Mô tả sản phẩm ngắn gọn Mô tả sản phẩm ngắn gọn Mô tả sản phẩm ngắn gọn Mô tả sản phẩm ngắn gọn Mô tả sản phẩm ngắn gọn Mô tả sản phẩm ngắn gọn
                 </div>
-                <div className="productDetail__info_text-quantity body--2">
+                {/* <div className="productDetail__info_text-quantity body--2">
                   <span className='title--3'>Số lượng</span>
                   <BoxQuantityComponent height="2.5rem" />
-                </div>
+                </div> */}
 
                 <div className="productDetail__info_text-button">
                   <div className="addToCart_button">

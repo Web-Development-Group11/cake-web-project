@@ -37,6 +37,12 @@
 }
 
 /* Responsive */
+
+@media screen and (max-width: 1284px) {
+  .container {
+      margin-inline: 3rem;
+  }
+}
   
 @media screen and (max-width: 884px) {
   .container {
