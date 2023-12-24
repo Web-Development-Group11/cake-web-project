@@ -112,10 +112,11 @@ getProduct();
                 <div className="productDetail__info_text-description body--2">
                   {product.product_description}
                 </div>
-                <div className="productDetail__info_text-quantity body--2">
+                {/* <div className="productDetail__info_text-quantity body--2">
                   <span className='title--3'>Số lượng</span>
-                  {/* <BoxQuantityComponent height="2.5rem" onQuantityChange={() => {}}/> */}
-                </div>
+                  <BoxQuantityComponent height="2.5rem" />
+                </div> */}
+
                 <div className="productDetail__info_text-button">
                   <div className="addToCart_button">
                     <Button type="btn1 secondary--1">Thêm vào giỏ hàng</Button>

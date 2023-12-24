@@ -53,8 +53,8 @@ getProduct();
             <Category img="/src/assets/category/cupcake.png" title="Cupcake"  description="Món ăn nhẹ ngọt ngào và đáng yêu"></Category>
           </Link>
 
-          <Link className={home.category__item} to = './tiramisu'>
-            <Category img="/src/assets/category/tiramisu.png" title="Tiramisu"  description="Món bánh ngọt sang trọng và béo ngậy"></Category>
+          <Link className={home.category__item} to = './brownie'>
+            <Category img="/src/assets/category/brownie.png" title="Brownie"  description="Món bánh ngọt sang trọng và béo ngậy"></Category>
           </Link>
 
           <Link className={home.category__item} to = './cookie'>
