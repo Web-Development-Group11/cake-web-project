@@ -11,6 +11,7 @@ import Footer from '../../components/footer/Footer';
 import TabReview from './tab/TabReview';
 import { axiosClient } from '../../api/axios';
 import Rating from '@mui/material/Rating';
+import Loader from '../../components/loader/Loader';
 
 
 
@@ -127,7 +128,7 @@ getProduct();
                 </div>
               </div>
             </div>
-            ):(<p>đang tải sản phẩm</p>)}
+            ):(<Loader></Loader>)}
 
             {/* Sản phẩm nổi bật */}
             <div className="productDetail__outstanding">

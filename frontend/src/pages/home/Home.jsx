@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 import home from './Home.module.css'
 import { useModal } from '../../hook/useModal';
 import { axiosClient } from '../../api/axios';
+import Loader from '../../components/loader/Loader';
 
 const Home = () => {
   const onOpen = useModal((state) => state.onOpen);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import TextFieldWithIcon from '../textFieldWithIcon/TextFieldWithIcon'
-import AddSelect from '../../components/AddSelect/addSelect';
+import AddSelect from '../addSelect/AddSelect';
 import TextField from '../textField/TextField'
 import Button from '../button/Button';
 import styles from './Tab.module.css';
@@ -23,7 +23,6 @@ const Tab = ({user}) => {
     const [userData, setUserData] = useState({
      name: '',
       id: '',
-      avatar: '', 
       email: '',
       phoneNumber: '',
       password: '',
@@ -70,7 +69,7 @@ const Tab = ({user}) => {
       <div className={styles.tab__container}>
         <div className={styles.container__wrapper}>
           <div className={styles.user__container}>
-            <img src={userData.avatar} alt="User Avatar" className={styles.avatar} />
+            <img src="/src/assets/image/avatar.png" alt="User Avatar" className={styles.avatar} />
             <div className={styles.user__info}>
               <p className='title--1' style={{ color: 'var(--primary-color)' }}>{user.name}</p>
               <p className='title--3'>ID: {user.id}</p>
@@ -143,7 +142,7 @@ const Tab = ({user}) => {
                         <label className='title--4'>Tên hiển thị</label>
                         <div className={styles.input__change}>
                           <div className={styles.input__item} >
-                            <TextField name="username" value={user.username} onChange={handleChange('username')} ></TextField>
+                            <TextField name="name" value={user.name} onChange={handleChange('name')} ></TextField>
                           </div>
                         </div>
                       </div>

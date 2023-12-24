@@ -4,11 +4,12 @@ import Navbar from '../../components/header/NavBar'
 // import Card from '../../components/card/Card'
 import Tab from '../../components/tab/Tab'
 import Footer from '../../components/footer/Footer'
-import AddSelect from '../../components/AddSelect/addSelect';
+import AddSelect from '../../components/addSelect/AddSelect';
 import acct from './Account.module.css'
+import ScrollToTop from '../../components/scroll/scroll'
 import { Link } from 'react-router-dom'
 import { axiosClient } from '../../api/axios';
-
+import Loader from '../../components/loader/Loader';
 
 const Account = () => {
 const [user, setUser] = useState();
@@ -39,7 +40,7 @@ getUser();
         <div className={acct.tab}>
           <Tab user ={user} ></Tab>
         </div>
-        ):(<p>loading data</p>)}
+        ):(<Loader></Loader>)}
       </div>
       <Footer></Footer>
     </div>
