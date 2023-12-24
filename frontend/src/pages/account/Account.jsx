@@ -12,12 +12,19 @@ import { axiosClient } from '../../api/axios';
 import Loader from '../../components/loader/Loader';
 
 const Account = () => {
+  // Loader state
+  const [isLoading, setIsLoading] = useState(true);
+
   const [user, setUser] = useState();
 
   useEffect(() => {
     const getUser = async () => {
       try {
         const response = await axiosClient.get('/user')
+        setTimeout(() => {
+          setIsLoading(false);
+        })
+
         setUser(response.data.data)
         console.log(response.data.data)
       } catch (err) {
@@ -27,7 +34,9 @@ const Account = () => {
     getUser();
   }, []);
 
-  return (
+  return isLoading ? (
+    <Loader></Loader>
+  ) : (
     <div>
       <div className={acct.content}>
         <div className={acct.navigation}>
@@ -35,11 +44,10 @@ const Account = () => {
           <p className={acct.navigation__item}>|</p>
           <Link className={acct.navigation__item} to={'/account'}>Trang tài khoản</Link>
         </div>
-        {user?(
+        
         <div className={acct.tab}>
           <Tab user ={user} ></Tab>
         </div>
-        ):(<Loader></Loader>)}
       </div>
     </div>
   )

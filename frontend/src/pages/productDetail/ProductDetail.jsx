@@ -35,9 +35,17 @@ export default function ProductDetail(props) {
     setQuantity(parseInt(e));
   }
 
+  // Loader state
+  const [isLoading, setIsLoading] = useState(true);
+
   const getProduct = async ()=> {
     try {
       const response = await axiosClient.get(`/products/${id}`);
+
+      setTimeout(() => {
+        setIsLoading(false);
+      })
+
       console.log(response.data.data);
       setProduct(response.data.data);
       setSelectedImage(response.data.data?.image_urls.image_url_0);
@@ -62,7 +70,9 @@ export default function ProductDetail(props) {
     },
   };
 
-  return (
+  return isLoading ?  (
+    <Loader></Loader>
+  ) : (
     <>
       <div className='productDetail__screen'>
         <div className='productDetail__page'>
@@ -70,16 +80,14 @@ export default function ProductDetail(props) {
             <Link className="navigation__item" to={'/'}>Trang chủ</Link>
             <p className="navigation__item">|</p>
             <Link className="navigation__item" to={'/product'}>Sản phẩm</Link>
-            {product ? (
+
               <>
                 <p className="navigation__item">|</p>
                 <Link className="navigation__item" to={`/productDetail/${id}`} >{product?.title}</Link>
               </>
-            ) : null }
           </div>
 
           <div className='productDetail'>
-          {product ?(
             <div className='productDetail__info'>
               <div className="productDetail__info_img">
                 <div className="productDetail__info_img-big">
@@ -144,7 +152,6 @@ export default function ProductDetail(props) {
                 </div>
               </div>
             </div>
-            ):(<Loader></Loader>)}
 
             {/* Sản phẩm nổi bật */}
             <div className="productDetail__outstanding">

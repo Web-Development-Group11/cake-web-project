@@ -12,6 +12,9 @@ import { axiosClient } from '../../api/axios';
 import Loader from '../../components/loader/Loader';
 
 const Home = (props) => {
+  // Loader state
+  const [isLoading, setIsLoading] = useState(true);
+
   const onOpen = useModal((state) => state.onOpen);
   const setData = useModal((state) => state.setData);
   const [product, setProduct] = useState();
@@ -21,6 +24,9 @@ const Home = (props) => {
     try { 
       const response = await axiosClient.get('/products');
       console.log(response);
+      setTimeout(() => {
+        setIsLoading(false);
+      })
       setProduct(response.data.data);
     } catch (error) {
       console.log(error);
@@ -44,7 +50,10 @@ useEffect(() => {
   props.setShowNavbar(true);
 }
 , []);
-  return (
+
+  return isLoading ? (
+    <Loader></Loader>
+  ) : (
     <div>
   
       <div className={home.banner}>
