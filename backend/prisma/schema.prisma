@@ -55,10 +55,10 @@ model Product {
   product_description String
   specific_type       String
   title               String
-  comments       ProductComment[]
 }
-
-type ProductComment {
+model ProductComment {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  productId String
   author  String
   comment String
   email   String

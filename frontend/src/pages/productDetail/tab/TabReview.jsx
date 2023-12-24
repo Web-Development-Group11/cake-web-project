@@ -6,54 +6,13 @@ import Pagination from '../../../components/pagination/index';
 import Rating from '@mui/material/Rating';
 import Avatar from '@mui/material/Avatar';
 import { deepOrange } from '@mui/material/colors';
+import { axiosClient } from '../../../api/axios';
+import { useParams } from 'react-router';
 
 
 
 const TabReview = () => {
-    const review = [
-        {
-            avatar: null,
-            Uername: "Nam phương",
-            Star: 1,
-            Time: "12/12/2023",
-            comment: "ahihu"
-        },
-        {
-            avatar: null,
-            Uername: "Nam phương",
-            Star: 2,
-            Time: "12/12/2023",
-            comment: "ahihu"
-        },
-        {
-            avatar: null,
-            Uername: "Nam phương",
-            Star: 3,
-            Time: "12/12/2023",
-            comment: "ahihu"
-        },
-        {
-            avatar: null,
-            Uername: "Nam phương",
-            Star: 4,
-            Time: "12/12/2023",
-            comment: "ahihu"
-        },
-        {
-            avatar: null,
-            Uername: "Nam phương",
-            Star: 3,
-            Time: "12/12/2023",
-            comment: "ahihu"
-        },
-        {
-            avatar: null,
-            Uername: "Nam phương",
-            Star: 5,
-            Time: "12/12/2023",
-            comment: "ahihu"
-        }
-    ]
+    const [ review, setReview] = useState()
 
     // Hàm useState phần review
     const [activeTab, setActiveTab] = useState('readReview');
@@ -68,6 +27,7 @@ const TabReview = () => {
 
     // Hàm useState phần lọc đánh giá
     const [selectedFilter, setSelectedFilter] = useState('all');
+    const {id} = useParams();
 
     // Hàm set giá trị cho phần lọc đánh giá
     const handleFilterClick = (filterValue) => {
@@ -112,6 +72,16 @@ const TabReview = () => {
 
     useEffect(() => {
         // Gọi API lấy danh sách review
+        const getComments = async () => {
+        try {
+            const response = await axiosClient.get(`/products/comment/${id}`);
+            setReview(response.data.data);
+            console.log(response.data.data)
+        } catch (err) {
+            console.log(err)
+        }
+    };
+        getComments();
         setReviewList(review);
         // handlePageChange();
     }, []
