@@ -10,7 +10,6 @@ const Support = () => {
   const [textArea, setTextArea] = useState('');
   return (
     <>
-      <Navbar />
       <div className={styles.center}>
         <div className= {styles.page}>
           <div className={styles.navigation}>
@@ -62,7 +61,6 @@ const Support = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   )
 }

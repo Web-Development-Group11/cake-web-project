@@ -47,9 +47,9 @@ const BlogDetail = () => {
 
     // Format the date as a string in the desired format
     const outputString = (dateObject.getDate() < 10 ? '0' : '') + dateObject.getDate() + '/' +
-                      ((dateObject.getMonth() + 1) < 10 ? '0' : '') + (dateObject.getMonth() + 1) + '/' +
-                      dateObject.getFullYear();
-    
+      ((dateObject.getMonth() + 1) < 10 ? '0' : '') + (dateObject.getMonth() + 1) + '/' +
+      dateObject.getFullYear();
+
     return outputString;
   }
 
@@ -57,9 +57,8 @@ const BlogDetail = () => {
     console.log(name, email, content)
   }
 
-	return (
+  return (
     <>
-      <Navbar />
       <div className={styles.center}>
         <div className={styles.page}>
           <div className={styles.navigation}>
@@ -105,7 +104,7 @@ const BlogDetail = () => {
                         <li key={idx} className={styles['blog__post-li']}>{content}</li>
                       ))}
                     </ul>
-                  ) 
+                  )
                 } else {
                   return null;
                 }
@@ -118,7 +117,6 @@ const BlogDetail = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   )
 }

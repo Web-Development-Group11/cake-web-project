@@ -7,7 +7,6 @@ import Footer from '../../components/footer/Footer'
 export default function Policy() {
   return (
     <>
-      <Navbar />
       <div className={styles.center}>
         <div className={styles.page}>
           <div className={styles.navigation}>
@@ -73,7 +72,6 @@ export default function Policy() {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   )
 }

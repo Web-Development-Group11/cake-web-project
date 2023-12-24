@@ -6,7 +6,7 @@ import { Link, useParams } from 'react-router-dom';
 import Card from '../../components/card/Card';
 import Button from '../../components/button/Button';
 // import TextField from '../../components/textField/TextField';
-// import BoxQuantityComponent from '../../components/boxquantity/BoxQuantity';
+import BoxQuantityComponent from '../../components/boxquantity/BoxQuantity';
 import Footer from '../../components/footer/Footer';
 import TabReview from './tab/TabReview';
 import { axiosClient } from '../../api/axios';
@@ -17,7 +17,7 @@ import Rating from '@mui/material/Rating';
 // Import các icon
 // import { FaChevronCircleLeft, FaChevronCircleRight } from "react-icons/fa";
 
-export default function ProductDetail() {
+export default function ProductDetail(props) {
   // Hinh anh hiển thị
   const [selectedImage, setSelectedImage] = useState();
   const [selectedThumbnail, setSelectedThumbnail] = useState(0);
@@ -27,18 +27,29 @@ export default function ProductDetail() {
     setSelectedImage(newImage);
     setSelectedThumbnail(index);
   };
-  useEffect(() => {
-    const getProduct = async ()=> {
-    try { 
+
+  // Hàm thay đổi số lượng
+  const [quantity, setQuantity] = useState(1);
+  const onQuantityChange = (e) => {
+    setQuantity(parseInt(e));
+  }
+
+  const getProduct = async ()=> {
+    try {
       const response = await axiosClient.get(`/products/${id}`);
       console.log(response.data.data);
       setProduct(response.data.data);
+      setSelectedImage(response.data.data?.image_urls.image_url_0);
+      setSelectedThumbnail(0);
     } catch (error) {
       console.log(error);
     }
   }
-getProduct();
-},[id]);
+
+  useEffect(() => {
+    getProduct();
+  },[id]);
+
   // Sample Card
   const sampleProduct = {
     specific_type: "some_type",
@@ -52,12 +63,18 @@ getProduct();
 
   return (
     <>
-      <Navbar />
-
       <div className='productDetail__screen'>
         <div className='productDetail__page'>
           <div className='navigation'>
-
+            <Link className="navigation__item" to={'/'}>Trang chủ</Link>
+            <p className="navigation__item">|</p>
+            <Link className="navigation__item" to={'/product'}>Sản phẩm</Link>
+            {product ? (
+              <>
+                <p className="navigation__item">|</p>
+                <Link className="navigation__item" to={`/productDetail/${id}`} >{product?.title}</Link>
+              </>
+            ) : null }
           </div>
 
           <div className='productDetail'>
@@ -107,19 +124,18 @@ getProduct();
                   style={{ color: '#E21033' }}
                   name="half-rating-read" defaultValue={4.5} precision={0.5} readOnly />
 
-                <p className="productDetail__info_text-price title--1">{`${product.price} vnd`}</p>
+                <p className="productDetail__info_text-price title--1">{product.price}</p>
 
                 <div className="productDetail__info_text-description body--2">
                   {product.product_description}
                 </div>
-                {/* <div className="productDetail__info_text-quantity body--2">
+                <div className="productDetail__info_text-quantity body--2">
                   <span className='title--3'>Số lượng</span>
-                  <BoxQuantityComponent height="2.5rem" />
-                </div> */}
-
+                   <BoxQuantityComponent height="2.5rem" quantity={quantity} onQuantityChange={onQuantityChange} />
+                </div>
                 <div className="productDetail__info_text-button">
                   <div className="addToCart_button">
-                    <Button type="btn1 secondary--1">Thêm vào giỏ hàng</Button>
+                    <Button type="btn1 secondary--1" onSubmit={() => props.addProduct(product, quantity)} >Thêm vào giỏ hàng</Button>
                   </div>
                   <div className="buyNow_button">
                     <Link to="/payment"><Button type="btn1 primary">Mua ngay</Button></Link>
@@ -133,26 +149,19 @@ getProduct();
             <div className="productDetail__outstanding">
               <p className="productDetail__outstanding_title heading">Sản phẩm nổi bật</p>
               <div className="productDetail__outstanding_card">
-              <Card product={sampleProduct} />
-              <Card product={sampleProduct} />
-              <Card product={sampleProduct} />
-              <Card product={sampleProduct} />
-
+              <Card product={sampleProduct} addProduct={props.addProduct} />
+              <Card product={sampleProduct} addProduct={props.addProduct} />
+              <Card product={sampleProduct} addProduct={props.addProduct} />
+              <Card product={sampleProduct} addProduct={props.addProduct} />
               </div>
             </div>
 
             <div className="productDetail__review">
-              <TabReview />
+              {product ? (<TabReview comments={product.comments} />) : null}
             </div>
-
           </div>
-
         </div>
-
       </div>
-
-
-      <Footer />
     </>
   )
 }

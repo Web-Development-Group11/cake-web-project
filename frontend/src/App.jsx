@@ -1,4 +1,4 @@
-import { BrowserRouter,  Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Register from './pages/login/Register';
@@ -20,42 +20,87 @@ import ScrollToTop from './components/scroll/scroll';
 import BlogDetail from './pages/blogDetail/BlogDetail';
 import PaymentPageGuest from './pages/payment/PaymentPageGuest';
 import PaymentPageAuthenticated from './pages/payment/PaymentPageAuthenticated';
-
-// import Shop from './pages/cart/Shop';
-
-
-
+import { useState, useEffect } from "react";
 
 function App() {
+
+  const [showNavbar, setShowNavbar] = useState(true);
+
+  const [cart, setCart] = useState([])
+
+  // Hàm thêm sản phẩm vào giỏ hàng
+  const [total, setTotal] = useState(0)
+
+  const addProduct = (products, quantity) => {
+    const listProductsTmp = cart
+    const productSelect = {
+      ...products,
+      amount: quantity || 1,
+    }
+
+    let checkId = false;
+    let tmp = 0;
+
+    // Nếu sản phẩm đã có trong giỏ hàng thì tăng số lượng lên
+    listProductsTmp.map((item) => {
+      if (item.id === productSelect.id && !checkId) {
+        item.amount = item.amount + productSelect.amount;
+        checkId = true;
+      }
+    })
+
+    listProductsTmp.map((item) => {
+      tmp += item.amount
+    })
+
+    // Nếu sản phẩm chưa có trong giỏ hàng thì thêm vào
+    if (!checkId) {
+      tmp += productSelect.amount
+      listProductsTmp.push(productSelect)
+    }
+    setTotal(tmp)
+    console.log(tmp)
+    setCart(listProductsTmp)
+  }
+
+  useEffect(() => {
+    let tmp = 0
+    cart.map(item => {
+      tmp += parseInt(item.amount)
+    })
+    setTotal(tmp);
+    console.log(tmp)
+  }, [cart])
+
   return (
     <div className="App">
-    <BrowserRouter>
-      <ScrollToTop />
-            <Routes>
-                <Route path="/" element={< Home />} />
-                <Route path="/login" element={< Login />} />
-                <Route path="/register" element={< Register />} />
-                <Route path="/forgetpassword" element={< Forgetpass />} />
-                <Route path="/entercode" element={< Entercode />} />
-                <Route path="/changepassword" element={< Changepass />} />
-                <Route path="/product" element={< Product />} />
-                <Route path="/productDetail/:id" element={< ProductDetail />} />
-                <Route path="/support" element={< Support/>} />
-                <Route path="/policy" element={< Policy/>} />
-                <Route path="/faq" element={< Faq/>} />
-                <Route path="/paymentpageguest" element={< PaymentPageGuest />} />
-                <Route path="/paymentpageauth" element={< PaymentPageAuthenticated />} />
+      <BrowserRouter>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={< Home setShowNavbar={setShowNavbar} />} />
+          <Route path="/login" element={< Login setShowNavbar={setShowNavbar} />} />
+          <Route path="/register" element={< Register setShowNavbar={setShowNavbar} />} />
+          <Route path="/forgetpassword" element={< Forgetpass setShowNavbar={setShowNavbar} />} />
+          <Route path="/entercode" element={< Entercode setShowNavbar={setShowNavbar} />} />
+          <Route path="/changepassword" element={< Changepass setShowNavbar={setShowNavbar} />} />
+          <Route path="/product" element={< Product cart={cart} setCart={setCart} addProduct={addProduct} />} />
+          <Route path="/productDetail/:id" element={< ProductDetail cart={cart} setCart={setCart} addProduct={addProduct} />} />
+          <Route path="/support" element={< Support />} />
+          <Route path="/policy" element={< Policy />} />
+          <Route path="/faq" element={< Faq />} />
+          {/* <Route path="/payment" element={< Payment />} /> */}
+          <Route path="/account" element={< Account />} />
+          <Route path="/cart" element={< Cart cart={cart} setCart={setCart} />} />
+          <Route path="/introduction" element={< Introduction />} />
+          <Route path="/blog" element={< Blog />} />
+          <Route path="/blog/:blogSlug" element={< BlogDetail />} />
 
-                <Route path="/account" element={< Account />} />
-                <Route path="/cart" element={< Cart/>} />
-                <Route path="/introduction" element={< Introduction />} />
-                <Route path="/blog" element={< Blog />} />
-                <Route path="/blog/:blogSlug" element={< BlogDetail />} />
+          {/* <Route path="/test" element={< Shop />} /> */}
 
-                {/* <Route path="/test" element={< Shop />} /> */}
-
-            </Routes>
-    </BrowserRouter>
+        </Routes>
+        {showNavbar ? <Navbar total={total} /> : null}
+        {showNavbar ? <Footer /> : null}
+      </BrowserRouter>
     </div>
   );
 }

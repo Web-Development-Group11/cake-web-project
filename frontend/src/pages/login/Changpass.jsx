@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import formStyles from "./Form.module.css";
 import logo from "../../assets/image/logo.png";
 import bg from "../../assets/image/bgchangepass.png";
@@ -8,7 +8,7 @@ import TextFieldWithIcon from "../../components/textFieldWithIcon/TextFieldWithI
 import { Link } from "react-router-dom";
 import { validatePassword, validateConfirmPassword } from "./validationForm";
 
-function Changepass() {
+function Changepass(props) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordError, setPasswordError] = useState(false);
@@ -73,6 +73,10 @@ function Changepass() {
       // logic check BE here
     }
   }
+
+  useEffect(() => {
+    props.setShowNavbar(false);
+ } , []);
 
   return (
     <div className={formStyles.form__container}>

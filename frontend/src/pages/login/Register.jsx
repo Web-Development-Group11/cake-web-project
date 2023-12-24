@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import formStyles from "./Form.module.css";
 import logo from "../../assets/image/logo.png";
 import bg from "../../assets/image/bgregister.png";
@@ -137,6 +137,10 @@ function Register() {
       }
     }
   }
+
+useEffect(() => {
+  props.setShowNavbar(false);
+} , []);
 
   return (
     <div className={formStyles.form__container}>

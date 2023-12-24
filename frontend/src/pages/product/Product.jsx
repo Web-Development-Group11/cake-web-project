@@ -9,7 +9,7 @@ import ProductSort from './productSort/ProductSort';
 import Pagination from '../../components/pagination/index';
 import { axiosClient } from '../../api/axios';
 
-export default function Product()  {
+export default function Product(props)  {
   const [product, setProduct] = useState();
   const {page} = useParams();
   const productCategories = [
@@ -74,7 +74,6 @@ export default function Product()  {
 
   return (
     <>
-      <Navbar />
       <div className='productScreen'>
         <div className='productPage'>
           <div className="navigation">
@@ -100,8 +99,6 @@ export default function Product()  {
                   </li>
                 ))}
               </ul>
-
-
             </div>
 
             <div className='product__list'>
@@ -116,21 +113,16 @@ export default function Product()  {
 
               <div className="product__list-item">
                 {product?.map((product) => (
-                    <Card key={product.title} className="product__card" product={product} />
+                    <Card key={product.title} className="product__card" product={product} addProduct={props.addProduct} />
                 ))}
               </div>
               <div className='product__pagination'>
                 <Pagination totalPages={6} />
               </div>
             </div>
-
           </div>
-
         </div>
-
       </div>
-
-      <Footer />
     </>
   )
 }

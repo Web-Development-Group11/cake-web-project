@@ -19,7 +19,8 @@ const reducer = (state, action) => {
   }
 };
 
-export default function Card({ product }) {
+export default function Card(props) {
+  const product = props.product
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
@@ -56,10 +57,12 @@ export default function Card({ product }) {
           <span className={`body--2`}>{product.pRate}</span>
         </div>
         <div className={cardStyles.content__price}>
-          <div className={`title--4`}>{`${product.price} vnd`}</div>
+          <div className={`title--4`}>{product.price}</div>
         </div>
-        <div className={cardStyles.content__cart}>
-          <FaShoppingCart className={cardStyles.carticons} />
+        <div className={cardStyles.content__cart} onClick={() => props.addProduct(product)}>
+          <FaShoppingCart
+              className={cardStyles.carticons}
+          />
         </div>
       </div>
     </div>
