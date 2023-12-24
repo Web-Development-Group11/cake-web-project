@@ -62,7 +62,7 @@ export default function Product()  {
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const  response = await axiosClient.get(`/product?page=${page}`)
+        const  response = await axiosClient.get('/product?page=1')
         setProduct(response.data.data);
       } catch ( err){
         console.log(err);
