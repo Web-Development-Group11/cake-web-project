@@ -8,8 +8,12 @@ import Footer from '../../components/footer/Footer'
 import ProductSort from './productSort/ProductSort';
 import Pagination from '../../components/pagination/index';
 import { axiosClient } from '../../api/axios';
+import Loader from '../../components/loader/Loader';
 
 export default function Product(props)  {
+  // Loader state
+  const [isLoading, setIsLoading] = useState(true);
+
   const [product, setProduct] = useState();
   const {page} = useParams();
   const productCategories = [
@@ -62,7 +66,12 @@ export default function Product(props)  {
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const  response = await axiosClient.get('/product?page=1')
+        const  response = await axiosClient.get('/product?page=1');
+
+        setTimeout(() => {
+          setIsLoading(false);
+        })
+
         setProduct(response.data.data);
       } catch ( err){
         console.log(err);
@@ -72,7 +81,9 @@ export default function Product(props)  {
   },[page]);
 
 
-  return (
+  return isLoading ? (
+    <Loader></Loader>
+  ) : (
     <>
       <div className='productScreen'>
         <div className='productPage'>

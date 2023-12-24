@@ -338,7 +338,10 @@ const TabReview = (props) => {
                                     <Rating onChange={handleUserStarChange} style={{ color: '#E21033' }} name="half-rating-read" value={userStar} precision={0.5} min={1} />
                                 </div>
 
-                                <button className={tabreview.writeReview__postButton} onClick={() => handlePostReview()}>Đăng bài</button>
+                                <div className={tabreview.writeReview__postButton}>
+                                <Button type='btn1 primary' onClick={() => handlePostReview()}>Đăng bài</Button>
+                                </div>
+                                
                                 {/* <Button className={tabreview.writeReview__postButton} onClick={() => handlePostReview()} type="btn1 primary">Đăng bài</Button> */}
 
                             </div>

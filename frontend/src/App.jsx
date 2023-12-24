@@ -20,6 +20,7 @@ import ScrollToTop from './components/scroll/scroll';
 import BlogDetail from './pages/blogDetail/BlogDetail';
 import PaymentPageGuest from './pages/payment/PaymentPageGuest';
 import PaymentPageAuthenticated from './pages/payment/PaymentPageAuthenticated';
+import Loader from './components/loader/Loader';
 import { useState, useEffect } from "react";
 import { axiosClient } from './api/axios';
 

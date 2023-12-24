@@ -10,8 +10,12 @@ import Card from '../../components/card/Card'
 import ContactForm from '../../components/contactForm/ContactForm'
 import Button from '../../components/button/Button'
 import { axiosClient } from '../../api/axios'
+import Loader from '../../components/loader/Loader'
 
 const BlogDetail = () => {
+  // Loader state
+  const [isLoading, setIsLoading] = useState(true);
+
   const { blogSlug } = useParams();
 
   const [data, setData] = useState();
@@ -21,6 +25,10 @@ const BlogDetail = () => {
     const getData = async () => {
       try {
         const response = await axiosClient.get(`/blog/${blogSlug}`);
+
+        setTimeout(() => {
+          setIsLoading(false);
+        })
 
         setData(response.data.data);
       } catch (error) {
@@ -57,7 +65,9 @@ const BlogDetail = () => {
     console.log(name, email, content)
   }
 
-  return (
+  return isLoading ? (
+    <Loader></Loader>
+  ) : (
     <>
       <div className={styles.center}>
         <div className={styles.page}>

@@ -6,8 +6,12 @@ import { Link } from 'react-router-dom'
 import BlogSuggest from '../../assets/image/suggest_post.png'
 import BlogPost from '../../assets/image/post.png'
 import { axiosClient } from '../../api/axios'
+import Loader from '../../components/loader/Loader'
 
 const Blog = () => {
+  // Loader state
+  const [isLoading, setIsLoading] = useState(true);
+
   const [posts, setPosts] = useState();
   const [suggestedPosts, setSuggestedPosts] = useState()
 
@@ -15,6 +19,10 @@ const Blog = () => {
     const getPosts = async () => {
       try {
         const response = await axiosClient.get('/blog');
+
+        setTimeout(() => {
+          setIsLoading(false);
+        })
 
         setPosts(response.data.data)
       } catch (error) {
@@ -49,7 +57,9 @@ const Blog = () => {
     return outputString;
   }
 
-  return (
+  return isLoading ? (
+    <Loader></Loader>
+  ) : (
     <>
       <div className={styles.center}>
         <div className={styles.page}>
