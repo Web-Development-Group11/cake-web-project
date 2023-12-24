@@ -84,15 +84,7 @@ const saveGuestCart = async()=> {
 }
 
 useEffect(() => {
-  const getCartDataFromCookie = () => {
-    const cookies = document.cookies.guestCart;
-    let parsedData = {};
-    parsedData = JSON.parse(decodeURIComponent(cookies));
-    console.log(parsedData)
-    return parsedData;
-  };
-  const cartDataFromCookie = getCartDataFromCookie();
-  setCart(cartDataFromCookie);
+
 }, []);
 
 
