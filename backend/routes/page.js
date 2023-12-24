@@ -2,7 +2,7 @@ import { Router } from "express";
 import { pagination } from "../controllers/pageController.js";
 
 
-const pageRoute = Router();
+const pageRoute = new  Router();
 
 pageRoute.get('/product', pagination);
 

@@ -8,6 +8,7 @@ import cookieParser from 'cookie-parser';
 import authenticationRoute from './routes/authentication.js';
 import userRoute from './routes/user.js';
 import pageRoute from './routes/page.js';
+import cartRoute from './routes/cart.js';
 
 
 //express app
@@ -43,6 +44,7 @@ app.use('/', productRoutes)
 app.use('/', blogRoutes)
 app.use('/',userRoute)
 app.use('/',pageRoute )
+app.use('/',cartRoute)
 
 //listen for reqquest 
 app.listen(process.env.PORT, () => {

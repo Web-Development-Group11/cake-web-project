@@ -2,7 +2,7 @@ import {createNewUser, loginUser, logoutUser } from "../controllers/authenticati
 import  { Router }  from "express";
 
 
-const authenticationRoute = Router();
+const authenticationRoute = new Router();
 
 authenticationRoute.post('/register',  createNewUser);
 

@@ -21,6 +21,7 @@ import BlogDetail from './pages/blogDetail/BlogDetail';
 import PaymentPageGuest from './pages/payment/PaymentPageGuest';
 import PaymentPageAuthenticated from './pages/payment/PaymentPageAuthenticated';
 import { useState, useEffect } from "react";
+import { axiosClient } from './api/axios';
 
 function App() {
 
@@ -61,6 +62,7 @@ function App() {
     setTotal(tmp)
     console.log(tmp)
     setCart(listProductsTmp)
+    saveGuestCart()
   }
 
   useEffect(() => {
@@ -71,6 +73,27 @@ function App() {
     setTotal(tmp);
     console.log(tmp)
   }, [cart])
+
+const saveGuestCart = async()=> {
+  try {
+    await  axiosClient.post('/cart',{cart})
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+useEffect(() => {
+  const getCartDataFromCookie = () => {
+    const cookies = document.cookies.guestCart;
+    let parsedData = {};
+    parsedData = JSON.parse(decodeURIComponent(cookies));
+    console.log(parsedData)
+    return parsedData;
+  };
+  const cartDataFromCookie = getCartDataFromCookie();
+  setCart(cartDataFromCookie);
+}, []);
+
 
   return (
     <div className="App">
