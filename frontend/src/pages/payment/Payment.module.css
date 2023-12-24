@@ -26,11 +26,7 @@
 
 }
 
-.payment__orderDetail {
 
-    border: 2px solid var(--brown);
-    border-radius: 16px;
-}
 
 .payment__cusInfo {
     flex: 2;
@@ -50,68 +46,45 @@
     order: 1;
 }
 
-
-/* Chi tiết đơn hàng  */
-.orderDetail__head {
-    color: var(--primary-color);
-    padding: 0.75rem;
-}
-
-.orderDetail__line {
-    width: 100%;
-    border: 1px solid var(--brown);
-    padding: 0;
-    margin: 0;
-}
-
-.orderDetail__info {
-    padding: 1.5rem;
-}
-
-/* card sản phẩm */
-.orderDetail__product {
-    height: 10rem;
-    width: 100%;
-    /* border: 1px solid; */
-    margin: 0;
-}
-
-.checkout__info1 {
-    display: flex;
-    justify-content: space-between;
-}
-.info1__sumup{
+.info1__sumup {
     color: var(--primary-color)
+}
 
-}
-.info1__title{
-    margin-bottom:1rem;
-}
+
+
 
 
 /*  thông tin nhận hàng */
 .cusInfo__head {
     color: var(--primary-color);
-    margin-top:1rem;
-    margin-bottom:1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
-.cusInfo__head1{
-    margin-top:1rem;
-    margin-bottom:1rem;
+
+.cusInfo__head1 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 
 
 }
+
 .cusInfo__row {
     display: flex;
     justify-content: space-between;
     margin-top: 0.5rem;
 }
-.cusInfo__column{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+
+.cusInfo__column {
+    width: 100%;
     margin-top: 0.5rem;
 }
+
+.flexContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+}
+
 .cusInfo__col1 {
     flex: 55%;
     height: 40px;
@@ -131,20 +104,24 @@
     margin-top: 0;
 }
 
+.checkout__info1 {
+    display: flex;
+    justify-content: space-between;
 
+}
 /* checkbox */
 .cusInfo__checkbox .checkbox__item {
     display: block;
     cursor: pointer;
     position: relative;
-    margin-top:1rem;
-    margin-bottom:1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 
 }
 
 .cusInfo__checkbox .checkbox__item .checkbox {
     display: none;
-    
+
 
 }
 

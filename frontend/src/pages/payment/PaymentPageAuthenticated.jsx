@@ -7,6 +7,7 @@ import Button from '../../components/button/Button';
 import paymentStyles from './Payment.module.css'
 import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 import { FaCheck } from "react-icons/fa";
+import PaymentDetail from '../../components/paymentDetail/PaymentDetail';
 const PaymentPageAuthenticated = () => {
     const [customerData, setCustomerData] = useState([]);
 
@@ -48,62 +49,7 @@ const PaymentPageAuthenticated = () => {
                     <div className={paymentStyles.payment__container}>
                         {/* Chi tiết đơn hàng  */}
                         <div className={paymentStyles.payment__orderOverlap}>
-                            <div className={paymentStyles.payment__orderDetail}>
-                                <div className={`title--1 ${paymentStyles.orderDetail__head}`}>Chi tiết đơn hàng</div>
-                                <hr className={paymentStyles.orderDetail__line}></hr>
-                                <div className={paymentStyles.orderDetail__product}>card sp </div>
-
-                                <div className={`body--1 ${paymentStyles.orderDetail__info}`}>
-                                    <div className={`title--2 ${paymentStyles.orderDetail__info1}`} >
-
-                                        <div className={paymentStyles.info1__title}>Nhập mã khuyến mãi:</div>
-                                        <div className={paymentStyles.checkout__info1}>
-                                            <div >
-                                                <TextField
-                                                    placeholder="Nhập mã khuyến mãi"
-                                                />
-                                            </div>
-                                            <div >
-                                                <Button type="btn2 primary">Áp dụng</Button>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <hr className={paymentStyles.orderDetail__line}></hr>
-
-                                <div className={`body--1 ${paymentStyles.orderDetail__info}`}>
-                                    <div className={paymentStyles.checkout__info1}>
-                                        <div >Tạm tính</div>
-                                        <div>90,000 </div>
-                                    </div>
-                                    <div className={paymentStyles.checkout__info1}>
-                                        <div>Giảm giá: </div>
-                                        <div>0
-                                        </div>
-                                    </div>
-                                    <div className={paymentStyles.checkout__info1}>
-                                        <div >Phí vận chuyển: </div>
-                                        <div >0
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <hr className={paymentStyles.orderDetail__line}></hr>
-
-                                <div className={`body--1 ${paymentStyles.orderDetail__info}`}>
-                                    <div className={paymentStyles.checkout__info1}>
-                                        <div >
-                                            <div className={`body--1 `}>Tổng tiền</div>
-                                            <div className={`title--3 ${paymentStyles.info1__sumup}`}>90,000</div>
-                                        </div>
-                                        <div >
-                                            <Button type="btn1 primary">Thanh toán</Button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <PaymentDetail></PaymentDetail>
                         </div>
 
                         <div className={paymentStyles.payment__cusInfo}>
