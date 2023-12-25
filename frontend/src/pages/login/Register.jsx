@@ -138,9 +138,7 @@ function Register() {
     }
   }
 
-useEffect(() => {
-  props.setShowNavbar(false);
-} , []);
+
 
   return (
     <div className={formStyles.form__container}>

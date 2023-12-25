@@ -1,6 +1,6 @@
 import '../../Variable.css';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/image/logo.png';
 import './NavBar.css';
 import Dropdown from '../dropdown/Dropdown';
@@ -105,6 +105,8 @@ function Navbar() {
   const [searchOn, setSearchOn] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
 
+  const navigate = useNavigate();
+
   const { data: currentUser } = useCurrentUser();
 
   const onOpen = useModal((state) => state.onOpen);
@@ -138,6 +140,8 @@ function Navbar() {
   const handleLogout = async () => {
     try {
       await axiosClient.post('/logout');
+      navigate('/')
+      window.location.reload()
     } catch (error) {
       console.log(error);
     }
@@ -209,9 +213,16 @@ function Navbar() {
           </li>
           <li>
             <div className='nav-item has-drop-down authenticate'>
-              <Link to='/account'>
+              {currentUser && (
+                <Link to='/account'>
                 <FaUser className="navBar__icon" />
               </Link>
+              )}
+              {!currentUser && (
+                <div onClick={() => alert("Bạn cần đăng nhập!")}>
+                  <FaUser className="navBar__icon" />
+                </div>
+              )}
               <ul className='product-submenu'>
                 {currentUser && (
                   <>
