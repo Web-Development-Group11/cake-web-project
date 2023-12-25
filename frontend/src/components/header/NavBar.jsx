@@ -1,5 +1,5 @@
 import '../../Variable.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/image/logo.png';
 import './NavBar.css';
@@ -12,6 +12,7 @@ import { IoMenu } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
 import { useModal } from '../../hook/useModal';
 import { axiosClient } from '../../api/axios'
+import { useCurrentUser } from '../../hook/useCurrentUser'
 
 const navItems = [
   {
@@ -100,14 +101,20 @@ const navItems = [
   },
 ];
 
-function Navbar(props) {
+function Navbar() {
   const [searchOn, setSearchOn] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
+
+  const { data: currentUser } = useCurrentUser();
 
   const onOpen = useModal((state) => state.onOpen);
   const setData = useModal((state) => state.setData)
 
   const handleOpenRandomBox = async () => {
+    if (!currentUser) {
+      alert('Bạn cần đăng nhập để mở random box');
+      return;
+    }
     onOpen('randomBox');
 
     try {
@@ -128,6 +135,14 @@ function Navbar(props) {
     setMenuActive(true);
   }
 
+  const handleLogout = async () => {
+    try {
+      await axiosClient.post('/logout');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar__content">
@@ -139,7 +154,7 @@ function Navbar(props) {
             <img src={logo} alt="logo" className="navBar__logo"></img>
           </Link>
         </div>
-
+        
         <div onClick={onCloseMenu} className={`navBar__menu ${menuActive ? 'active' : ''}`}>
           <IoMenu onClick={onOpenMenu} className='navBar__menu-icon' />
           <ul className="navBar__item" onClick={(ev) => ev.stopPropagation()}>
@@ -198,27 +213,41 @@ function Navbar(props) {
                 <FaUser className="navBar__icon" />
               </Link>
               <ul className='product-submenu'>
-                <li className="product-submenu__item">
-                  <Link to='/register' className={`submenu-item body--2`}>
-                    Đăng ký
-                  </Link>
-                </li>
-                <li className="product-submenu__item">
-                  <Link to='/login' className={`submenu-item body--2`}>
-                    Đăng nhập
-                  </Link>
-                </li>
+                {currentUser && (
+                  <>
+                    <li className="product-submenu__item">
+                      <Link to='/account' className={`submenu-item body--2`}>
+                        Tài khoản
+                      </Link>
+                    </li>
+                    <li className="product-submenu__item">
+                      <div onClick={handleLogout} className={`submenu-item body--2`}>
+                        Đăng xuất
+                      </div>
+                    </li>
+                  </>
+                )}
+                {!currentUser && (
+                  <>
+                    <li className="product-submenu__item">
+                      <Link to='/register' className={`submenu-item body--2`}>
+                        Đăng ký
+                      </Link>
+                    </li>
+                    <li className="product-submenu__item">
+                      <Link to='/login' className={`submenu-item body--2`}>
+                        Đăng nhập
+                      </Link>
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
           </li>
           <li>
             <Link to="/cart">
               <FaShoppingCart className="navBar__icon" />
-              <span className="cartamount">
-                <sup className="sub body--2">{props.total}</sup>
-              </span>
             </Link>
-
           </li>
         </ul>
       </div>

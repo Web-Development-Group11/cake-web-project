@@ -5,6 +5,7 @@ import randomBoxStyles from './RandomBoxModal.module.css'
 import { IoMdClose } from 'react-icons/io';
 import { useModal } from '../../hook/useModal';
 import { axiosClient } from '../../api/axios';
+import Card from '../card/Card';
 
 export default function RandomBoxModal() {
     const onClose = useModal((state) => state.onClose);
@@ -37,9 +38,17 @@ export default function RandomBoxModal() {
                 <h3 className={`title--3 ${randomBoxStyles.header}`}>
                     Random Box
                 </h3>
-                <p className={styles.modal__description}>
-                    {data?.data?.product_description}
-                </p>
+                <div className={`center ${randomBoxStyles.card}`}>
+                    {data && <Card product={{
+                        title: data?.data.title,
+                        image_urls: {
+                            image_url_0: data?.data.image_urls.image_url_0,
+                        },
+                        pRate: 5,
+                        price: data?.data.price,
+                        specific_type: data?.data.specific_type
+                    }} />}
+                </div>
                 <div className={styles.modal__action}>
                     <button className={styles['modal__button-destroy']} onClick={onClose}>
                         Close

@@ -4,7 +4,6 @@ import Navbar from '../../components/header/NavBar'
 // import Card from '../../components/card/Card'
 import Tab from '../../components/tab/Tab'
 import Footer from '../../components/footer/Footer'
-import AddSelect from '../../components/addSelect/AddSelect';
 import acct from './Account.module.css'
 import ScrollToTop from '../../components/scroll/scroll'
 import { Link } from 'react-router-dom'

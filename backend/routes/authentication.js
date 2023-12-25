@@ -8,7 +8,7 @@ authenticationRoute.post('/register',  createNewUser);
 
 authenticationRoute.post('/login',  loginUser);
 
-authenticationRoute.get('/logout', logoutUser);
+authenticationRoute.post('/logout', logoutUser);
 
 
 export default authenticationRoute;

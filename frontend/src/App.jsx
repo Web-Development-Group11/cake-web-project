@@ -23,6 +23,7 @@ import PaymentPageAuthenticated from './pages/payment/PaymentPageAuthenticated';
 import Loader from './components/loader/Loader';
 import { useState, useEffect } from "react";
 import { axiosClient } from './api/axios';
+import ModalProvider from './provider/ModalProvider';
 
 function App() {
 
@@ -91,6 +92,7 @@ useEffect(() => {
   return (
     <div className="App">
       <BrowserRouter>
+        <ModalProvider />
         <ScrollToTop />
         <Routes>
           <Route path="/" element={< Home setShowNavbar={setShowNavbar} />} />
