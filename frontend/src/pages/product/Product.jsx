@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Product.css'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import Navbar from '../../components/header/NavBar'
 import Card from '../../components/card/Card'
 import jsonData from "../../assets/db/productsData.json";
@@ -11,11 +11,16 @@ import { axiosClient } from '../../api/axios';
 import Loader from '../../components/loader/Loader';
 
 export default function Product(props)  {
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+
+  const currentPage = params.get('page') || 1;
+
   // Loader state
   const [isLoading, setIsLoading] = useState(true);
 
   const [product, setProduct] = useState();
-  const {page} = useParams();
+
   const productCategories = [
     {
       id: 1,
@@ -66,7 +71,7 @@ export default function Product(props)  {
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const  response = await axiosClient.get('/product?page=1');
+        const  response = await axiosClient.get(`/product?page=${currentPage}&size=9`);
 
         setTimeout(() => {
           setIsLoading(false);
@@ -78,7 +83,7 @@ export default function Product(props)  {
       }
     }
     getProduct();
-  },[page]);
+  },[currentPage]);
 
 
   return isLoading ? (

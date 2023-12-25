@@ -4,3 +4,7 @@
     margin-top: 1rem;
     color: var(--primary-color);
 }
+
+.card {
+    margin-top: 2rem;
+}
