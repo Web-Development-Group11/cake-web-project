@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { validateEmail, validatePhone, validatePassword, validateConfirmPassword } from "./validationForm";
 import { axiosClient } from "../../api/axios";
 
-function Register() {
+function Register(props) {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhone] = useState("");
   const [password, setPassword] = useState("");

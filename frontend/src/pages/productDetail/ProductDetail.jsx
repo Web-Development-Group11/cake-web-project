@@ -144,7 +144,7 @@ export default function ProductDetail(props) {
                 </div>
                 <div className="productDetail__info_text-button">
                   <div className="addToCart_button">
-                    <Button type="btn1 secondary--1" onSubmit={() => props.addProduct(product, quantity)} >Thêm vào giỏ hàng</Button>
+                    <Button type="btn1 secondary--1" onClick={() => props.addProduct(product, quantity)} >Thêm vào giỏ hàng</Button>
                   </div>
                   <div className="buyNow_button">
                     <Link to="/payment"><Button type="btn1 primary">Mua ngay</Button></Link>
