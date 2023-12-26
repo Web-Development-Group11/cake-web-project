@@ -63,7 +63,7 @@ model ProductComment {
   comment String
   email   String
   phoneNumber String
-  rating Int
+  rating Float
 }
 model User {
   id             String              @id @default(auto()) @map("_id") @db.ObjectId

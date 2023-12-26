@@ -114,7 +114,8 @@ const TabReview = (props) => {
     }
 
     const handleratingChange = (event) => {
-        setrating(event.target.value <= 1 ? 1 : event.target.value);
+        setrating(parseFloat(event.target.value) <= 1 ? 1 : parseFloat(event.target.value));
+        console.log( typeof parseFloat(event.target.value))
     }
 
     // Xu ly khi bam nut dang bai
@@ -223,10 +224,10 @@ const TabReview = (props) => {
                                                     {!item.avatar && <Avatar></Avatar>}
                                                 </div>
                                                 <div className={tabreview.readReview__list__item_info}>
-                                                    <p className={`${tabreview.author} body--2`}>{item.Uername}</p>
+                                                    <p className={`${tabreview.author} body--2`}>{item.author}</p>
                                                     <Rating
                                                         style={{ color: '#E21033', fontSize: '0.75rem' }}
-                                                        name="half-rating-read" value={item.Star} precision={0.5} readOnly />
+                                                        name="half-rating-read" value={item.rating} precision={0.5} readOnly />
                                                     <p className={tabreview.date}>
                                                         {item.Time}
                                                     </p>

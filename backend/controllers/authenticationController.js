@@ -76,7 +76,7 @@ export const loginUser = async (req, res) => {
 
       } else {
         //nếu mật khẩu hoặc tài khoản sai 
-        return res.status(400).json({ message: "UserName or Password is wrong" });
+       res.status(400).json({ message: "UserName or Password is wrong" });
       }
     }
   } catch (err) {

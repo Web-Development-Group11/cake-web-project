@@ -30,6 +30,7 @@ export const updateUsers = async (req, res) => {
                 id: id
             },
             data: {
+                name : data.name ,
                 addressDetails : {
                 province : data.province,
                 district : data.district,
