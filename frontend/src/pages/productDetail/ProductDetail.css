@@ -14,8 +14,6 @@
     margin-right: 7.5rem;
 }
 
-/*  */
-
 .productDetail {
     display: flex;
     flex-direction: column;
@@ -24,6 +22,7 @@
     position: relative;
 }
 
+/* ----- Định dạng phần thông tin sản phẩm ----- */
 .productDetail__info {
     display: flex;
     justify-content: space-between;
@@ -32,6 +31,7 @@
     height: 39.5rem;
 }
 
+/* Định dạng phần hiển thị hình ảnh */
 .productDetail__info_img {
     position: absolute;
     width: calc(100% - 4rem - 53%);
@@ -49,7 +49,7 @@
 
 .productDetail__info_img-small {
     display: flex;
-    justify-content: space-between;
+    gap: 0 calc((31.25rem - 6.25rem*4)/3);
     bottom: 0;
     left: 0;
 }
@@ -60,6 +60,7 @@
     object-fit: cover;
     margin-top: 2rem;
     border-radius: 1rem;
+    box-sizing: border-box;
     cursor: pointer;
 }
 
@@ -68,7 +69,7 @@
 }
 
 
-/* content */
+/* Định dạng phần thông tin chi tiết */
 .productDetail__info_text {
     position: relative;
     width: 53%;
@@ -133,5 +134,3 @@
     align-items: center;
     cursor: pointer;
 }
-
-/* Review */

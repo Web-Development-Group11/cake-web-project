@@ -89,6 +89,7 @@ export default function ProductDetail(props) {
                   <img src={selectedImage} alt="" />
                 </div>
                 <div className="productDetail__info_img-small">
+<<<<<<< Updated upstream
                   <img
                     className={`selectable-image ${selectedThumbnail === 0 ? 'selected' : ''}`}
                     src={product.image_urls.image_url_0}
@@ -112,6 +113,18 @@ export default function ProductDetail(props) {
                     src={product.image_urls.image_url_3}
                     onClick={() => handleImageClick(product.image_urls.image_url_3, 3)}
                   />
+=======
+                {Object.entries(product.image_urls).map(([key, value], index) => (
+                      value ?
+                          (<img
+                              key={key} // Thêm key để React xác định các phần tử riêng biệt
+                              className={`selectable-image ${selectedThumbnail === index ? 'selected' : ''}`}
+                              src={value}
+                              alt=""
+                              onClick={() => handleImageClick(value, index)}
+                          />) : null
+                  ))}
+>>>>>>> Stashed changes
                 </div>
               </div>
 
