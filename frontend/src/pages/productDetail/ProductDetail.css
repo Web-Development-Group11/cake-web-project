@@ -45,6 +45,7 @@
 .productDetail__info_img-big img {
     width: 100%;
     border-radius: 1rem;
+    max-height: 31.25rem;
 }
 
 .productDetail__info_img-small {
@@ -105,7 +106,6 @@
 }
 
 .addToCart_button, .buyNow_button {
-    margin-right: 2rem;
     margin-top: 2rem;
 }
 

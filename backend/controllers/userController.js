@@ -24,20 +24,22 @@ export const getUser = async (req, res) => {
 export const updateUsers = async (req, res) => {
   const id = req.user.exitingUser.id ;
   const data = req.body;
+  console.log(data)
     try {
         const info = await user.update({
             where: {
                 id: id
             },
+            
             data: {
-                name : data.name ,
+                name : data.name,
                 addressDetails : {
-                province : data.province,
-                district : data.district,
-                ward : data.ward,
-                address : data.address
+                    province : data.province,
+                    district : data.district,
+                    ward : data.ward,
+                    address : data.address
+                }
             }
-        }
         });
         res.status(200).json({ data: info })
     } catch (error) {
