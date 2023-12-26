@@ -1,6 +1,10 @@
 import { PrismaClient } from "@prisma/client";
 
+
+
 const product = new PrismaClient().product;
+
+const comment = new PrismaClient().productComment;
 
 export const getProducts = async (req, res) => {
     try {
@@ -55,5 +59,38 @@ export const getProductById = async (req, res) =>{
         async() => {
             await product.$disconnect();
         };
+    }
+}
+
+export const getHighlitedProduct = async ( req, res) => {
+    try { 
+        const averageRatings = await comment.groupBy({
+            take : 8,
+            by: ['productId'],
+            _avg: {
+              rating: true,
+            },
+            orderBy: {
+              _avg: {
+                rating: 'desc', // Sắp xếp theo giá trị trung bình giảm dần
+              },
+            },
+          });
+        //   averageRatings.forEach( element => async {
+        const productByRating = await product.findMany({
+            
+            where : {
+                
+                id : averageRatings.productId,
+            }
+        })
+        res.status(200).json({data : averageRatings._avg.ra})
+    } catch (err) { 
+        res.status(500).json({ message : err.message})
+    } finally {
+        async () => { 
+            await product.$disconnect();
+            await comment.$disconnect()
+        }
     }
 }

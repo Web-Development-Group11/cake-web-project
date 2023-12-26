@@ -1,4 +1,4 @@
-import { getProducts, getProductById, getRandomProduct } from "../controllers/productController.js"
+import { getProducts, getProductById, getRandomProduct, getHighlitedProduct } from "../controllers/productController.js"
 import { Router } from "express";
 import { verifyToken } from "../middleware/verifyToken.js";
 import { createComment, getComments } from "../controllers/commentController.js";
@@ -14,5 +14,7 @@ productRoutes.get('/products/:id', getProductById)
 productRoutes.post('/products/comment/:id',createComment )
 
 productRoutes.get('/products/comment/:id', getComments)
+
+productRoutes.get('/highlight', getHighlitedProduct)
 
 export default productRoutes;
