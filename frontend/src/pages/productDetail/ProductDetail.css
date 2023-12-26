@@ -107,6 +107,7 @@
 .addToCart_button, .buyNow_button {
     margin-right: 2rem;
     margin-top: 2rem;
+    cursor: pointer;
 }
 
 .addToCart_button button, .buyNow_button button {

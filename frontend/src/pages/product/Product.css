@@ -107,10 +107,9 @@
 
 .product__list-item {
     display: flex;
-    justify-content: space-between;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 2rem calc((100% - 16.5rem*3)/3);
 }
 
 .product__pagination {

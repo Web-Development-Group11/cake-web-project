@@ -36,8 +36,8 @@ export default function Product(props)  {
     },
     {
       id: 3,
-      title: 'Tiramisu',
-      path: '/product/tiramisu',
+      title: 'Brownie',
+      path: '/product/brownie',
       cName: 'category-item'
     },
     {

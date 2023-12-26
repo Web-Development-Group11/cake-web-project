@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 import { fetcher } from "../../api/fetcher";
 
-function Cart({ setShowCart, cart, setCart }) {
+function Cart({ setShowCart, cart, setCart, setIsBuyNow }) {
 
   const [tongtien, setTongtien] = useState(0);
   const [someState, setSomeState] = useState(0);
@@ -121,8 +121,8 @@ function Cart({ setShowCart, cart, setCart }) {
 
               <div className={`body--2 ${cartStyles.checkout__info3}`}>Phí vận chuyển sẽ được tính ở trang thanh toán</div>
 
-              <div className={cartStyles.checkout__btn}>
-                <Link to="/checkout">
+              <div className={cartStyles.checkout__btn} onClick={() => setIsBuyNow(false)}>
+                <Link to="/payment">
                   <Button type="btn1 primary">Thanh toán</Button>
                 </Link>
               </div>

@@ -32,11 +32,14 @@ function App() {
   const getGuestCart= fetcher('cart');
 
   const [cart, setCart] = useState([])
+  const [cartNow, setCartNow] = useState([]);
+  const [isBuyNow, setIsBuyNow] = useState(false);
 
   // Hàm thêm sản phẩm vào giỏ hàng
   const [total, setTotal] = useState(0)
 
   const addProduct = (products, quantity) => {
+    setIsBuyNow(false);
     const listProductsTmp = cart
     const productSelect = {
       ...products,
@@ -64,9 +67,20 @@ function App() {
       listProductsTmp.push(productSelect)
     }
     setTotal(tmp)
-    console.log(tmp)
     setCart(listProductsTmp)
     saveGuestCart()
+  }
+
+  // Thêm sản phẩm vào khi bấm nút mua ngay
+  const addProductNow = (products, quantity) => {
+    setIsBuyNow(true);
+    const productSelect = {
+      ...products,
+      amount: quantity || 1,
+    }
+    const listProductsTmp = []
+    listProductsTmp.push(productSelect)
+    setCartNow(listProductsTmp)
   }
 
   useEffect(() => {
@@ -75,8 +89,6 @@ function App() {
       tmp += parseInt(item.amount)
     })
     setTotal(tmp);
-    console.log(tmp)
-    console.log(getGuestCart)
   }, [cart])
 
 const saveGuestCart = async()=> {
@@ -86,8 +98,6 @@ const saveGuestCart = async()=> {
     console.log(err)
   }
 }
-
-
 
 
 useEffect(() => {
@@ -107,14 +117,14 @@ useEffect(() => {
           <Route path="/forgetpassword" element={< Forgetpass setShowNavbar={setShowNavbar} />} />
           <Route path="/entercode" element={< Entercode setShowNavbar={setShowNavbar} />} />
           <Route path="/changepassword" element={< Changepass setShowNavbar={setShowNavbar} />} />
-          <Route path="/product" element={< Product cart={cart} setCart={setCart} addProduct={addProduct} />} />
-          <Route path="/productDetail/:id" element={< ProductDetail cart={cart} setCart={setCart} addProduct={addProduct} />} />
+          <Route path="/product" element={< Product addProduct={addProduct} />} />
+          <Route path="/productDetail/:id" element={< ProductDetail addProduct={addProduct} addProductNow={addProductNow} />} />
           <Route path="/support" element={< Support />} />
           <Route path="/policy" element={< Policy />} />
           <Route path="/faq" element={< Faq />} />
-          {/* <Route path="/payment" element={< Payment />} /> */}
+          <Route path="/payment" element={< PaymentPageGuest cart={(isBuyNow ? cartNow : cart)} />} />
           <Route path="/account" element={< Account />} />
-          <Route path="/cart" element={< Cart cart={cart} setCart={setCart} />} />
+          <Route path="/cart" element={< Cart cart={cart} setCart={setCart} setIsBuyNow={setIsBuyNow} />} />
           <Route path="/introduction" element={< Introduction />} />
           <Route path="/blog" element={< Blog />} />
           <Route path="/blog/:blogSlug" element={< BlogDetail />} />

@@ -1,11 +1,11 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import TextField from '../textField/TextField';
 import Button from '../button/Button';
 
 import { FaTimes } from 'react-icons/fa'; // Assuming you're using FaTimes for the remove icon
 import payDetailStyles from './PaymentDetail.module.css';
 
-const PaymentDetail = () => {
+const PaymentDetail = (props) => {
     // Dummy data for testing
     const [cart, setCart] = useState([
         {
@@ -69,6 +69,9 @@ const PaymentDetail = () => {
 
     const totalPrice = subTotal + discount + shippingFee;
 
+    useEffect(() => {
+        setCart(props.cart);
+    }, [])
 
     return (
         <>

@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../../components/header/NavBar'
 import './ProductDetail.css';
-import '../../Variable.css';
 import { Link, useParams } from 'react-router-dom';
 import Card from '../../components/card/Card';
 import Button from '../../components/button/Button';
-// import TextField from '../../components/textField/TextField';
 import BoxQuantityComponent from '../../components/boxquantity/BoxQuantity';
-import Footer from '../../components/footer/Footer';
 import TabReview from './tab/TabReview';
 import { axiosClient } from '../../api/axios';
 import Rating from '@mui/material/Rating';
 import Loader from '../../components/loader/Loader';
-
 
 
 // Import các icon
@@ -38,6 +33,7 @@ export default function ProductDetail(props) {
   // Loader state
   const [isLoading, setIsLoading] = useState(true);
 
+  //  Lấy sản phẩm từ API
   const getProduct = async ()=> {
     try {
       const response = await axiosClient.get(`/products/${id}`);
@@ -46,7 +42,6 @@ export default function ProductDetail(props) {
         setIsLoading(false);
       })
 
-      console.log(response.data.data);
       setProduct(response.data.data);
       setSelectedImage(response.data.data?.image_urls.image_url_0);
       setSelectedThumbnail(0);
@@ -114,9 +109,8 @@ export default function ProductDetail(props) {
                   />
                   <img
                     className={`selectable-image ${selectedThumbnail === 3 ? 'selected' : ''}`}
-                    src="https://cupcakecentral.com.au/cdn/shop/products/CLASSIC-STYLED-CC-RV-3.jpg?v=1681783027"
-                    alt=""
-                    onClick={() => handleImageClick('https://cupcakecentral.com.au/cdn/shop/products/CLASSIC-STYLED-CC-RV-3.jpg?v=1681783027', 3)}
+                    src={product.image_urls.image_url_3}
+                    onClick={() => handleImageClick(product.image_urls.image_url_3, 3)}
                   />
                 </div>
               </div>
@@ -147,7 +141,7 @@ export default function ProductDetail(props) {
                     <Button type="btn1 secondary--1" onClick={() => props.addProduct(product, quantity)} >Thêm vào giỏ hàng</Button>
                   </div>
                   <div className="buyNow_button">
-                    <Link to="/payment"><Button type="btn1 primary">Mua ngay</Button></Link>
+                    <Link to="/payment"><Button type="btn1 primary" onClick={() => props.addProductNow(product, quantity)}>Mua ngay</Button></Link>
                   </div>
                 </div>
               </div>
