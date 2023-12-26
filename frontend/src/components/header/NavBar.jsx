@@ -101,7 +101,7 @@ const navItems = [
   },
 ];
 
-function Navbar() {
+function Navbar(props) {
   const [searchOn, setSearchOn] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
 
@@ -256,8 +256,11 @@ function Navbar() {
             </div>
           </li>
           <li>
-            <Link to="/cart">
+          <Link to="/cart">
               <FaShoppingCart className="navBar__icon" />
+              <span className="cartamount">
+                <sup className="sub body--2">{props.total}</sup>
+              </span>
             </Link>
           </li>
         </ul>

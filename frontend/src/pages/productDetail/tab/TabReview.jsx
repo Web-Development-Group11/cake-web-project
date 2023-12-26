@@ -13,50 +13,7 @@ import { useParams } from 'react-router';
 
 const TabReview = (props) => {
     // const review = props.comments;
-    const review = [
-        {
-            avatar: null,
-            Uername: "Nam phương",
-            Star: 1,
-            Time: "12/12/2023",
-            comment: "ahihu"
-        },
-        {
-            avatar: null,
-            Uername: "Nam phương",
-            Star: 2,
-            Time: "12/12/2023",
-            comment: "ahihu"
-        },
-        {
-            avatar: null,
-            Uername: "Nam phương",
-            Star: 3,
-            Time: "12/12/2023",
-            comment: "ahihu"
-        },
-        {
-            avatar: null,
-            Uername: "Nam phương",
-            Star: 4,
-            Time: "12/12/2023",
-            comment: "ahihu"
-        },
-        {
-            avatar: null,
-            Uername: "Nam phương",
-            Star: 3,
-            Time: "12/12/2023",
-            comment: "ahihu"
-        },
-        {
-            avatar: null,
-            Uername: "Nam phương",
-            Star: 5,
-            Time: "12/12/2023",
-            comment: "ahihu"
-        }
-    ]
+    const [ review, setReview] = useState([])
 
     // Hàm useState phần review
     const [activeTab, setActiveTab] = useState('readReview');
@@ -132,59 +89,54 @@ const TabReview = (props) => {
     );
 
     // Lay so sao tu cmt
-    const [userName, setUserName] = useState(null);
-    const [userPhone, setUserPhone] = useState(null);
-    const [userEmail, setUserEmail] = useState(null);
-    const [userComment, setUserComment] = useState(null);
-    const [userStar, setUserStar] = useState(1);
+    const [author, setauthor] = useState(null);
+    const [phoneNumber, setphoneNumber] = useState(null);
+    const [email, setemail] = useState(null);
+    const [comment, setcomment] = useState(null);
+    const [rating, setrating] = useState(1);
 
     // Lay gia tri
     // Đúng là: event.target.value. Mà bên TextField có để sẵn là e.target.value rồi nên chỉ cần truyền event vào là được
-    const handleUserNameChange = (event) => {
-        setUserName(event);
+    const handleauthorChange = (event) => {
+        setauthor(event);
     };
 
-    const handleUserPhoneChange = (event) => {
-        setUserPhone(event);
+    const handlephoneNumberChange = (event) => {
+        setphoneNumber(event);
     }
 
-    const handleUserEmailChange = (event) => {
-        setUserEmail(event);
+    const handleemailChange = (event) => {
+        setemail(event);
     }
 
-    const handleUserCommentChange = (event) => {
-        setUserComment(event);
+    const handlecommentChange = (event) => {
+        setcomment(event);
     }
 
-    const handleUserStarChange = (event) => {
-        setUserStar(event.target.value <= 1 ? 1 : event.target.value);
+    const handleratingChange = (event) => {
+        setrating(event.target.value <= 1 ? 1 : event.target.value);
     }
 
     // Xu ly khi bam nut dang bai
-    const handlePostReview = () => {
-        if (!userName && !userPhone && !userEmail && !userComment) {
+    const handlePostReview = async () => {
+        if (!author && !phoneNumber && !email && !comment) {
             alert("Bạn vui lòng nhập đầy đủ thông tin!");
             return;
         }
         else {
             // Gọi API lấy danh sách review (chưa có API nên tạm thời dùng hàm setReviewList()
-            const newReview = {
-                avatar: null,
-                Uername: userName,
-                Star: userStar,
-                Time: "31/12/2023",
-                comment: userComment
+            try {
+                await axiosClient.post(`/products/comment/${id}`,{author, phoneNumber,email, comment, rating});
+                alert("Bạn đã đăng bài thành công!");
+            } catch (err){
+                console.log(err)
             }
-
-            review.push(newReview);
-            console.log(newReview);
+            setauthor(null);
+            setphoneNumber(null);
+            setemail(null);
+            setcomment(null);
+            setrating(1);
             setReviewList(review);
-            alert("Bạn đã đăng bài thành công!");
-            setUserName(null);
-            setUserPhone(null);
-            setUserEmail(null);
-            setUserComment(null);
-            setUserStar(1);
         }
     }
 
@@ -271,7 +223,7 @@ const TabReview = (props) => {
                                                     {!item.avatar && <Avatar></Avatar>}
                                                 </div>
                                                 <div className={tabreview.readReview__list__item_info}>
-                                                    <p className={`${tabreview.userName} body--2`}>{item.Uername}</p>
+                                                    <p className={`${tabreview.author} body--2`}>{item.Uername}</p>
                                                     <Rating
                                                         style={{ color: '#E21033', fontSize: '0.75rem' }}
                                                         name="half-rating-read" value={item.Star} precision={0.5} readOnly />
@@ -316,26 +268,26 @@ const TabReview = (props) => {
                             <div className={tabreview.tabreview}>
                                 <div className={tabreview.writeReview__nameAndPhone}>
                                     <div className={tabreview.writeReview__name}>
-                                        <TextField onChange={handleUserNameChange} value={userName} placeholder="Họ và tên" />
+                                        <TextField onChange={handleauthorChange} value={author} placeholder="Họ và tên" />
                                     </div>
                                     <div className={tabreview.writeReview__phone}>
-                                        <TextField onChange={handleUserPhoneChange} value={userPhone} placeholder="Số điện thoại" />
+                                        <TextField onChange={handlephoneNumberChange} value={phoneNumber} placeholder="Số điện thoại" />
                                     </div>
                                 </div>
 
                                 <div className={tabreview.writeReview__email}>
-                                    <TextField onChange={handleUserEmailChange} value={userEmail} placeholder="Email" />
+                                    <TextField onChange={handleemailChange} value={email} placeholder="Email" />
                                 </div>
 
                                 <div className={tabreview.writeReview__review}>
-                                    <TextField onChange={handleUserCommentChange} value={userComment} placeholder="Đánh giá của bạn" />
+                                    <TextField onChange={handlecommentChange} value={comment} placeholder="Đánh giá của bạn" />
                                 </div>
 
                                 <div className={tabreview.writeReview__satisfaction}>
                                     <p className={`${tabreview.writeReview__satisfaction_title} title--3`}>
                                         Đánh giá mức độ hài lòng của bạn:
                                     </p>
-                                    <Rating onChange={handleUserStarChange} style={{ color: '#E21033' }} name="half-rating-read" value={userStar} precision={0.5} min={1} />
+                                    <Rating onChange={handleratingChange} style={{ color: '#E21033' }} name="half-rating-read" value={rating} precision={0.5} min={1} />
                                 </div>
 
                                 <div className={tabreview.writeReview__postButton}>

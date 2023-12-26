@@ -24,10 +24,12 @@ import Loader from './components/loader/Loader';
 import { useState, useEffect } from "react";
 import { axiosClient } from './api/axios';
 import ModalProvider from './provider/ModalProvider';
+import { fetcher } from './api/fetcher';
 
 function App() {
 
   const [showNavbar, setShowNavbar] = useState(true);
+  const getGuestCart= fetcher('cart');
 
   const [cart, setCart] = useState([])
 
@@ -74,6 +76,7 @@ function App() {
     })
     setTotal(tmp);
     console.log(tmp)
+    console.log(getGuestCart)
   }, [cart])
 
 const saveGuestCart = async()=> {
@@ -83,6 +86,9 @@ const saveGuestCart = async()=> {
     console.log(err)
   }
 }
+
+
+
 
 useEffect(() => {
 

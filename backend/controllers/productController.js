@@ -4,26 +4,13 @@ const product = new PrismaClient().product;
 
 export const getProducts = async (req, res) => {
     try {
-        const page = req.query.page || 1;
-        const size = req.query.size || 9;
-        const totalCount = await product.count();
-
-        const skip = (page - 1) * size;
-        const totalPages = Math.ceil(totalCount / size);
-
-        const products = await product.findMany({
-            take: size,
-            skip,
-        })
-
-        const data = products.map((product) => {
-            return {
-                ...product,
-                price: parseInt(product.price.replace(/\$/g, '')*22000)
-            }
-        })
-
-        res.status(200).json({ data, totalPages })
+        const info = await product.findMany({take: 8});
+        const cleanData = [];
+        for(let i = 0; i < 8; i++) {
+        info[i].price = parseInt(info[i].price.replace(/\$/g, '')*22000)
+        cleanData.push(info[i])
+        }
+        res.status(200).json({ data: cleanData })
     } catch (error) {
         res.status(500).json({ message: error.message })
     } finally {

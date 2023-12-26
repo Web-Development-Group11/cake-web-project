@@ -1,4 +1,3 @@
-
 export const saveGuestCart =async (req,res)=> {
     const {cart} = req.body
     const info =[]
@@ -19,9 +18,10 @@ export const saveGuestCart =async (req,res)=> {
 }
 
 export const getGuestCart = async (req, res) => {
-    const  cookie = await req.cookies.guestCart
     try {
-
+        const encodedData = await req.cookies.guestCart
+        res.status(200).json({data : encodedData});
+        console.log(encodedData);
     } catch (err) {
         res.status(500).json({message : err.message})
     }
