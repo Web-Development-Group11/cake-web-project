@@ -5,7 +5,6 @@ import tabreview from './TabReview.module.css';
 import Pagination from '@mui/material/Pagination';
 import Rating from '@mui/material/Rating';
 import Avatar from '@mui/material/Avatar';
-import { deepOrange } from '@mui/material/colors';
 import { axiosClient } from '../../../api/axios';
 import { useParams } from 'react-router';
 
@@ -125,7 +124,7 @@ const TabReview = (props) => {
             return;
         }
         else {
-            // Gọi API lấy danh sách review (chưa có API nên tạm thời dùng hàm setReviewList()
+            // Gọi API lấy danh sách review
             try {
                 await axiosClient.post(`/products/comment/${id}`,{author, phoneNumber,email, comment, rating});
                 alert("Bạn đã đăng bài thành công!");
