@@ -15,7 +15,7 @@ const TextField = ({ name, value, placeholder, className, onChange }) => {
           className={textfield.input}
           type="text"
           name={name}
-          value={value}
+          value={value} 
           placeholder={placeholder}
           onChange={handleChange}
         />

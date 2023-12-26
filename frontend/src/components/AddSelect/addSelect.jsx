@@ -18,9 +18,9 @@ const AddSelect = ({
   const [wards, setWards] = useState([]);
 
 
-  const [selectedProvinceName, setSelectedProvince] = useState(selectedProvince || '');
-  const [selectedDistrictName, setSelectedDistrict] = useState(selectedDistrict || '');
-  const [selectedWardName, setSelectedWard] = useState(selectedWard || '');
+  const [selectedProvinceName, setSelectedProvince] = useState(selectedProvince);
+  const [selectedDistrictName, setSelectedDistrict] = useState(selectedDistrict);
+  const [selectedWardName, setSelectedWard] = useState(selectedWard);
 
   useEffect(() => {
     const fetchData = async () => {

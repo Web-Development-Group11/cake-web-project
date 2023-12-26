@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import TextFieldWithIcon from '../textFieldWithIcon/TextFieldWithIcon'
-import AddSelect from '../AddSelect/addSelect'
+import AddSelect from '../addSelect/AddSelect'
 import TextField from '../textField/TextField'
 import Button from '../button/Button';
 import styles from './Tab.module.css';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FaRegClock, FaRegMap } from "react-icons/fa";
 import { FiFileText, FiBox, FiTruck, FiInbox, FiStar } from "react-icons/fi";
 import { axiosClient } from '../../api/axios';
@@ -12,24 +12,16 @@ import { axiosClient } from '../../api/axios';
 const Tab = ({user}) => {
     const [activeTab, setActiveTab] = useState('customerInfo');
 
-    const [isDisabled, setIsDisabled] = useState(false);
-    const [address, setAddress] = useState({
-      province: '',
-      district: '',
-      ward: '',
-      address : '',
-    });
-
     const [userData, setUserData] = useState({
-     name: '',
-      id: '',
-      email: '',
-      phoneNumber: '',
-      password: '',
-      province: '',
-      district: '',
-      ward: '', 
-      address: '',
+      name: user.name,
+      id: user.id,
+      email: user.email,
+      phoneNumber: user.phoneNumber,
+      password: user.password,
+      province: user.addressDetails.province ,
+      district: user.addressDetails.district ,
+      ward: user.addressDetails.ward ,
+      address: user.addressDetails.address,
     });
   
     const handleChange = (name) => (value) => {
@@ -39,12 +31,17 @@ const Tab = ({user}) => {
       }));
     };
     const handleSubmit = async (e) => {
-      e.preventDefault();
-      // Xử lý cập nhật thông tin địa chỉ khi nhấn nút "Cập nhật"
-      // Ví dụ: gọi API hoặc thực hiện các tác vụ cần thiết
+      // e.preventDefault();
+
       try {
-      const response = await axiosClient.patch('/user',{userData})
-      setUserData(response.data.data)
+      const response = await axiosClient.patch('/user',userData)
+      // setUserData(response.data.data)
+      setUserData((prevUserData) => ({
+        ...prevUserData,
+        province: response.data.data.addressDetails.province || '',
+        district: response.data.data.addressDetails.district || '',
+        ward: response.data.data.addressDetails.ward || '',
+        address: response.data.data.addressDetails.address || '',}))
       console.log('Thông tin cập nhật:', userData);
     } catch (e) {
       console.log(e)
@@ -64,6 +61,20 @@ const Tab = ({user}) => {
       },
       // Add more orders here...
     ];
+
+    // Navigation
+    const navigate = useNavigate();
+
+    // Logout button
+    const handleLogout = async () => {
+      try {
+        await axiosClient.post('/logout');
+        navigate('/')
+        window.location.reload()
+      } catch (error) {
+        console.log(error);
+      }
+    };
   
     return (
       <div className={styles.tab__container}>
@@ -71,11 +82,11 @@ const Tab = ({user}) => {
           <div className={styles.user__container}>
             <img src="/src/assets/image/avatar.png" alt="User Avatar" className={styles.avatar} />
             <div className={styles.user__info}>
-              <p className='title--1' style={{ color: 'var(--primary-color)' }}>{user.name}</p>
-              <p className='title--3'>ID: {user.id}</p>
+              <p className='title--1' style={{ color: 'var(--primary-color)' }}>{userData.name}</p>
+              <p className='title--3'>ID: {userData.id}</p>
             </div>
             <div className={styles.signout}>
-              <Button type='btn1 primary'>Đăng xuất</Button>
+              <Button type='btn1 primary' onClick = {handleLogout}>Đăng xuất</Button>
             </div>
           </div>
           <div className={styles.tab__header}>
@@ -104,7 +115,7 @@ const Tab = ({user}) => {
         <div className={styles.tab__content}>
           {activeTab === 'customerInfo' && (
             <div className={styles.customerInfo}>
-              <form onSubmit={handleSubmit}>
+              <form>
                 <div className={`${styles.title} heading`}>Thông tin khách hàng</div>
                 <fieldset className={styles.acct__info}>
 
@@ -120,7 +131,7 @@ const Tab = ({user}) => {
                         <label className='title--4'>Email</label>
                         <div className={styles.input__change}>
                           <div className={styles.input__item}>
-                            <TextFieldWithIcon name="email" value={user.email}></TextFieldWithIcon>
+                            <TextFieldWithIcon name="email" value={userData.email}></TextFieldWithIcon>
                           </div>
                           <Link to = '/forgetpassword' className={`${styles.change__text} body--2`}>Thay đổi</Link>
                         </div>
@@ -131,7 +142,7 @@ const Tab = ({user}) => {
                         <label className='title--4'>Điện thoại</label>
                         <div className={styles.input__change}>
                           <div className={styles.input__item}>
-                            <TextFieldWithIcon name="phoneNumber" value={user.phoneNumber}></TextFieldWithIcon>
+                            <TextFieldWithIcon name="phoneNumber" value={userData.phoneNumber}></TextFieldWithIcon>
                           </div>
                           <Link to = '/forgetpassword' className={`${styles.change__text} body--2`}>Thay đổi</Link>
                         </div>
@@ -142,7 +153,7 @@ const Tab = ({user}) => {
                         <label className='title--4'>Tên hiển thị</label>
                         <div className={styles.input__change}>
                           <div className={styles.input__item} >
-                            <TextField name="name" value={user.name} onChange={handleChange('name')} ></TextField>
+                            <TextField name="name" value={userData.name} onChange={handleChange('name')} ></TextField>
                           </div>
                         </div>
                       </div>
@@ -152,7 +163,7 @@ const Tab = ({user}) => {
                         <label className='title--4'>Mật khẩu</label>
                         <div className={styles.input__change}>
                           <div className={styles.input__item}>
-                            <TextFieldWithIcon name="password" value={user.password} disabled={true}></TextFieldWithIcon>
+                            <TextFieldWithIcon name="password" value={userData.password} disabled={true}></TextFieldWithIcon>
                           </div>
                           <Link to = '/changePassword' className={`${styles.change__text} body--2`}>Thay đổi</Link>
                         </div>
@@ -181,7 +192,7 @@ const Tab = ({user}) => {
                         <label className='title--4'>Địa chỉ</label>
                         <div className={styles.input__change}>
                           <div className={styles.input__item}>
-                            <TextField name="address" value={user.address} onChange={handleChange('address')} ></TextField>
+                            <TextField name="address" value={userData.address} onChange={handleChange('address')} ></TextField>
                           </div>
                         </div>
                       </div>
