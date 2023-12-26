@@ -63,9 +63,10 @@ export const getProductById = async (req, res) =>{
 }
 
 export const getHighlitedProduct = async ( req, res) => {
+    const {amount} = req.body;
     try { 
         const averageRatings = await comment.groupBy({
-            take : 8,
+            take : amount,
             by: ['productId'],
             _avg: {
               rating: true,
@@ -77,14 +78,22 @@ export const getHighlitedProduct = async ( req, res) => {
             },
           });
         //   averageRatings.forEach( element => async {
+        const productIds = averageRatings.map((rating) => rating.productId);
+        if (productIds.length > 0) {
         const productByRating = await product.findMany({
-            
             where : {
-                
-                id : averageRatings.productId,
-            }
+                id : {
+                    in : productIds,
+                },
+            },
         })
-        res.status(200).json({data : averageRatings._avg.ra})
+        const sortedProducts = productIds.map((productId) =>
+        productByRating.find((product) => product.id === productId)
+      );
+        res.status(200).json({data : sortedProducts})
+    } else {
+        res.status(404).json({message : " product not found"})
+    }
     } catch (err) { 
         res.status(500).json({ message : err.message})
     } finally {

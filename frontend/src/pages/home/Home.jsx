@@ -21,11 +21,13 @@ const Home = (props) => {
   const [product, setProduct] = useState();
 
   const { data: currentUser } = useCurrentUser();
+  
 
   useEffect(() => {
+    const amount = 8;
     const getProduct = async () => {
       try { 
-        const response = await axiosClient.get('/products');
+        const response = await axiosClient.post('/highlight',{amount});
         console.log(response);
         setTimeout(() => {
           setIsLoading(false);

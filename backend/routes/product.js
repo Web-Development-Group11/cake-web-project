@@ -15,6 +15,6 @@ productRoutes.post('/products/comment/:id',createComment )
 
 productRoutes.get('/products/comment/:id', getComments)
 
-productRoutes.get('/highlight', getHighlitedProduct)
+productRoutes.post('/highlight', getHighlitedProduct)
 
 export default productRoutes;
