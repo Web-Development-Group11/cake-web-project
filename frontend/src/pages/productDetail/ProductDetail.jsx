@@ -89,31 +89,6 @@ export default function ProductDetail(props) {
                   <img src={selectedImage} alt="" />
                 </div>
                 <div className="productDetail__info_img-small">
-<<<<<<< Updated upstream
-                  <img
-                    className={`selectable-image ${selectedThumbnail === 0 ? 'selected' : ''}`}
-                    src={product.image_urls.image_url_0}
-                    alt=""
-                    onClick={() => handleImageClick(product.image_urls.image_url_0, 0)}
-                  />
-                  <img
-                    className={`selectable-image ${selectedThumbnail === 1 ? 'selected' : ''}`}
-                    src={product.image_urls.image_url_1}
-                    alt=""
-                    onClick={() => handleImageClick(product.image_urls.image_url_1, 1)}
-                  />
-                  <img
-                    className={`selectable-image ${selectedThumbnail === 2 ? 'selected' : ''}`}
-                    src={product.image_urls.image_url_2}
-                    alt=""
-                    onClick={() => handleImageClick(product.image_urls.image_url_2, 2)}
-                  />
-                  <img
-                    className={`selectable-image ${selectedThumbnail === 3 ? 'selected' : ''}`}
-                    src={product.image_urls.image_url_3}
-                    onClick={() => handleImageClick(product.image_urls.image_url_3, 3)}
-                  />
-=======
                 {Object.entries(product.image_urls).map(([key, value], index) => (
                       value ?
                           (<img
@@ -124,7 +99,6 @@ export default function ProductDetail(props) {
                               onClick={() => handleImageClick(value, index)}
                           />) : null
                   ))}
->>>>>>> Stashed changes
                 </div>
               </div>
 
