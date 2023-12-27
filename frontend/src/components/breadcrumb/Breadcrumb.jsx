@@ -22,9 +22,10 @@ const vietnameseBreadcrumbNames = {
 const Breadcrumb = () => {
   const location = useLocation();
   const pathname = location.pathname;
-  const productId = pathname.substring(pathname.lastIndexOf('/') + 1);
+  const pathElements = pathname.split('/');
+  const productId = pathElements[2];
   const [productName, setProductName] = useState('');
-  const [dataLoaded, setDataLoaded] = useState(false); // Thêm biến state để theo dõi trạng thái đã nhận dữ liệu hay chưa
+  const [dataLoaded, setDataLoaded] = useState(false); 
 
   useEffect(() => {
     const fetchProductById = async (productId) => {
@@ -33,9 +34,9 @@ const Breadcrumb = () => {
         const productData = response.data.data;
         const productName = productData.title;
         setProductName(productName);
-        setDataLoaded(true); // Đánh dấu rằng dữ liệu đã được nhận
+        setDataLoaded(true); 
       } catch (error) {
-        setDataLoaded(true); // Đánh dấu rằng dữ liệu đã được nhận (kể cả khi xảy ra lỗi)
+        setDataLoaded(true); 
       }
     };
 
@@ -49,7 +50,7 @@ const Breadcrumb = () => {
     return vietnameseBreadcrumbNames[pathname] || pathname;
   };
 
-  const showBreadcrumb = dataLoaded && productName; // Kiểm tra khi dữ liệu đã được nhận và `productName` đã được thiết lập
+  const showBreadcrumb = dataLoaded && productName; 
 
   return (
     <nav>
@@ -58,8 +59,7 @@ const Breadcrumb = () => {
           <Link to="/">Trang chủ</Link>
         </li>
 
-        {showBreadcrumb &&
-          pathnames.slice(0, 1).map((pathname, index) => {
+        {pathnames.slice(0, 1).map((pathname, index) => {
             const url = `/${pathnames.slice(0, index + 1).join('/')}`;
             const breadcrumbName = getBreadcrumbName(pathname);
             return (
