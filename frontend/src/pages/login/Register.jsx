@@ -26,6 +26,8 @@ function Register(props) {
   const [passwordErrorMsg, setPasswordErrorMsg] = useState("");
   const [confirmPasswordErrorMsg, setConfirmPasswordErrorMsg] = useState("");
 
+  const [loginError, setLoginError] = useState("");
+
   const navigate = useNavigate();
 
   function changeInputValue(name, value) {
@@ -57,7 +59,7 @@ function Register(props) {
       phoneError: false,
       passwordError: false,
       confirmPasswordError: false,
-      
+
       phoneErrorMsg: "",
       emailErrorMsg: "",
       passwordErrorMsg: "",
@@ -130,18 +132,17 @@ function Register(props) {
         if (response.status == 200) {
           alert("đăng ký thành công")
           navigate('/login');
-        } else {
-          alert('Wrong username or password')
         }
-      } catch (e) {
-        console.log(e);
+      } catch (error) {
+        setLoginError('Tài khoản đã tồn tại ! Vui lòng sử dụng tài khoản khác hoặc đăng nhập');
+        console.log(error);
       }
     }
   }
 
-useEffect(() => {
-  props.setShowNavbar(false);
-} , []);
+  useEffect(() => {
+    props.setShowNavbar(false);
+  }, []);
 
   return (
     <div className={formStyles.form__container}>
@@ -249,6 +250,7 @@ useEffect(() => {
                 </div>
                 <div className={formStyles.errorcontainer}>
                   {confirmPasswordError && <div className={formStyles.errorMsg}>{confirmPasswordErrorMsg}</div>}
+                  {loginError && <div className={formStyles.errorMsg}>{loginError}</div>}
                 </div>
               </div>
               {/* line */}

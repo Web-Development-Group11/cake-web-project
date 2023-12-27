@@ -98,12 +98,12 @@
 
 .inputwrapper {
   margin-top: 0.5rem;
-  height: 3.75rem;
+  height: 6vh;
 }
 
 .errorcontainer {
   margin-top: 0.25rem;
-  height: 1.5rem;
+  height: 2.5vh;
   color: var(--primary-color);
 }
 
@@ -149,7 +149,7 @@
 .form__btn {
   margin-top: 1rem;
   display: flex;
-  height: 3.75rem;
+  height: 6vh;
 }
 
 .form__btn button {

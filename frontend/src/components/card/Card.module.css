@@ -130,22 +130,33 @@
 
 .card.default .content__cart {
     background-color: var(--red);
+    cursor: pointer;
 }
 
 .card.hover .content__cart {
     background-color: var(--blue);
+    cursor: pointer;
 
     
 }
-
+.card .content__cart:active{
+    background-color: var(--red);
+    color: var(--white);
+    cursor: pointer;
+    user-select: none;
+}
 .card.default .carticons {
     color: var(--white);
+    
 }
 
 .card.hover .carticons {
     color: var(--brown);
 }
-
+.card .carticons:active{
+    color: var(--white);
+   
+}
 @media screen and (max-width: 768px) {
     .card {
         height: calc(14rem * 400 / 276);
