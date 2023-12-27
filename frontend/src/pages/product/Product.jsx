@@ -9,8 +9,9 @@ import ProductSort from './productSort/ProductSort';
 import Pagination from '../../components/pagination/index';
 import { axiosClient } from '../../api/axios';
 import Loader from '../../components/loader/Loader';
+import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 
-export default function Product(props)  {
+export default function Product(props) {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
 
@@ -53,7 +54,7 @@ export default function Product(props)  {
       cName: 'category-item'
     },
   ]
-  
+
 
   // const handleSortChange = (newSortValue) => {
   //   setFilters((preFilters) => ({
@@ -71,19 +72,19 @@ export default function Product(props)  {
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const  response = await axiosClient.get(`/product?page=${currentPage}&size=9`);
+        const response = await axiosClient.get(`/product?page=${currentPage}&size=9`);
 
         setTimeout(() => {
           setIsLoading(false);
         })
 
         setProduct(response.data.data);
-      } catch ( err){
+      } catch (err) {
         console.log(err);
       }
     }
     getProduct();
-  },[currentPage]);
+  }, [currentPage]);
 
 
   return isLoading ? (
@@ -92,10 +93,8 @@ export default function Product(props)  {
     <>
       <div className='productScreen'>
         <div className='productPage'>
-          <div className="navigation">
-            <Link className="navigation__item" to={'/'}>Trang chủ</Link>
-            <p className="navigation__item">|</p>
-            <Link className="navigation__item" to={'/product'}>Sản phẩm</Link>
+          <div className='navigation'>
+            <Breadcrumb />
           </div>
           <div className='product'>
             <div className="product__filter">
@@ -129,7 +128,7 @@ export default function Product(props)  {
 
               <div className="product__list-item">
                 {product?.map((product) => (
-                    <Card key={product.title} className="product__card" product={product} addProduct={props.addProduct} />
+                  <Card key={product.title} className="product__card" product={product} addProduct={props.addProduct} />
                 ))}
               </div>
               <div className='product__pagination'>

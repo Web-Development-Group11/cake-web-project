@@ -1,106 +1,70 @@
-// Hướng dẫn sử dụng: ở trang cần sử dụng breadcumb
-// import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
-// <Breadcrumb  />
-
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
+
 import breadcrumbStyles from './Breadcrumb.module.css';
+import { axiosClient } from '../../api/axios';
+
+const vietnameseBreadcrumbNames = {
+  home: 'Trang chủ',
+  blog: 'Blog',
+  product: 'Sản phẩm',
+  productDetail: 'Sản phẩm',
+  paymentpageguest: 'Thanh toán',
+  paymentpageauth: 'Thanh toán',
+  support: 'Hỗ trợ khách hàng',
+  policy: 'Hỗ trợ kháchi9 hàng',
+  faq: 'Hỗ trợ khách hàng',
+  account: 'Trang tài khoản',
+  cart: 'Giỏ hàng',
+  introduction: 'Giới thiệu'
+};
 
 const Breadcrumb = () => {
   const location = useLocation();
-  const { blogId, productId } = useParams();
-  const [blogName, setBlogName] = useState('');
+  const pathname = location.pathname;
+  const productId = pathname.substring(pathname.lastIndexOf('/') + 1);
   const [productName, setProductName] = useState('');
 
   useEffect(() => {
-    const fetchBlogName = async () => {
+    const fetchProductById = async (productId) => {
       try {
-        const response = await fetch(`/api/blogs/${blogId}`);
-        const data = await response.json();
-        setBlogName(data.blogName);
-      } catch (error) {
-        console.error('Error fetching blog name:', error);
-      }
+        const response = await axiosClient.get(`/products/${productId}`);
+        const productData = response.data.data;
+        const productName = productData.title;
+        setProductName(productName);
+      } catch (error) {}
     };
 
-    const fetchProductName = async () => {
-      try {
-        const response = await fetch(`/api/products/${productId}`);
-        const data = await response.json();
-        setProductName(data.productName);
-      } catch (error) {
-        console.error('Error fetching product name:', error);
-      }
-    };
-
-    if (blogId) {
-      fetchBlogName();
+    if (productId != null) {
+      fetchProductById(productId);
     }
-
-    if (productId) {
-      fetchProductName();
-    }
-  }, [blogId, productId]);
+  }, [productId]);
 
   const pathnames = location.pathname.split('/').filter((x) => x);
-  const vietnameseBreadcrumbNames = {
-    home: 'Trang chủ',
-    blog: 'Blog',
-    product: 'Sản phẩm',
-    paymentpageguest: 'Thanh toán',
-    paymentpageauth: 'Thanh toán',
-    support: 'Hỗ trợ khách hàng',
-    policy: 'Hỗ trợ khách hàng',
-    faq: 'Hỗ trợ khách hàng',
-    account: 'Tài khoản',
-    cart: 'Giỏ hàng',
-    
-  };
   const getBreadcrumbName = (pathname) => {
-    const words = pathname.split('_');
-    const formattedWords = words.map((word, index) => {
-      if (index === 0) {
-        return vietnameseBreadcrumbNames[word] || word.charAt(0).toUpperCase() + word.slice(1);
-      }
-      return vietnameseBreadcrumbNames[word] || word;
-    });
-    return formattedWords.join(' ');
+    return vietnameseBreadcrumbNames[pathname] || pathname;
   };
 
   return (
-    <nav >
+    <nav>
       <ul className={`body--1 ${breadcrumbStyles.breadcrumbList}`}>
-        <li >
-          <Link to="/" >
-          Trang chủ
-          </Link>
+        <li>
+          <Link to="/">Trang chủ</Link>
         </li>
-        {pathnames.map((pathname, index) => {
+
+        {pathnames.slice(0, 1).map((pathname, index) => {
           const url = `/${pathnames.slice(0, index + 1).join('/')}`;
-          const isLastItem = index === pathnames.length - 1;
           const breadcrumbName = getBreadcrumbName(pathname);
 
           return (
             <React.Fragment key={index}>
               <li className={breadcrumbStyles.breadcrumbSeparator}>|</li>
-              <li >
-                {isLastItem ? (
-                  <span >{breadcrumbName}</span>
-                ) : (
-                  <Link to={url} >
-                    {breadcrumbName}
-                  </Link>
-                )}
+              <li>
+                <Link to={url}>{breadcrumbName}</Link>
               </li>
             </React.Fragment>
           );
         })}
-        {blogName && (
-          <>
-            <li className={breadcrumbStyles.breadcrumbSeparator}>|</li>
-            <li>{blogName}</li>
-          </>
-        )}
         {productName && (
           <>
             <li className={breadcrumbStyles.breadcrumbSeparator}>|</li>

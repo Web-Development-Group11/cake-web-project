@@ -12,6 +12,7 @@ import TabReview from './tab/TabReview';
 import { axiosClient } from '../../api/axios';
 import Rating from '@mui/material/Rating';
 import Loader from '../../components/loader/Loader';
+import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 
 
 
@@ -77,16 +78,8 @@ export default function ProductDetail(props) {
       <div className='productDetail__screen'>
         <div className='productDetail__page'>
           <div className='navigation'>
-            <Link className="navigation__item" to={'/'}>Trang chủ</Link>
-            <p className="navigation__item">|</p>
-            <Link className="navigation__item" to={'/product'}>Sản phẩm</Link>
-
-              <>
-                <p className="navigation__item">|</p>
-                <Link className="navigation__item" to={`/productDetail/${id}`} >{product?.title}</Link>
-              </>
+              <Breadcrumb />
           </div>
-
           <div className='productDetail'>
             <div className='productDetail__info'>
               <div className="productDetail__info_img">

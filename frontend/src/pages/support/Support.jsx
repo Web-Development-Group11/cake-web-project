@@ -5,17 +5,16 @@ import { Link } from 'react-router-dom'
 import Button from '../../components/button/Button'
 import Footer from '../../components/footer/Footer'
 import ContactForm from '../../components/contactForm/ContactForm'
+import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 
 const Support = () => {
   const [textArea, setTextArea] = useState('');
   return (
     <>
       <div className={styles.center}>
-        <div className= {styles.page}>
+        <div className={styles.page}>
           <div className={styles.navigation}>
-            <Link className={styles.navigation__item} to={'/'}>Trang chủ</Link>
-            <p className={styles.navigation__item}>|</p>
-            <Link className={styles.navigation__item} to={'/support'}>Hỗ trợ khách hàng</Link>
+            <Breadcrumb />
           </div>
           <div className={styles.center}>
             <div className={styles.content}>
@@ -27,7 +26,7 @@ const Support = () => {
                 Số 669 Quốc lộ 1, Khu phố 3, Phường Linh Xuân, Thủ Đức, TP. Hồ Chí Minh
               </p>
               <div className={`${styles.content__map} ${styles.center}`}>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.241478143737!2d106.7753786758543!3d10.869229257473433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175277c352111c3%3A0xed116dcd593369f6!2zxJDhuqFpIEjhu41jIEtpbmggVOG6vyAtTHXhuq10IMSQ4bqhaSBI4buNYyBLaW5oIFThur8gLUx14bqtdCAtIFF14buRYyBM4buZIDEgLSBQaMaw4budbmcgTGluaCBYdcOibg!5e0!3m2!1svi!2s!4v1702562664391!5m2!1svi!2s" width="600" height="600" style={{border: 0}} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.241478143737!2d106.7753786758543!3d10.869229257473433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175277c352111c3%3A0xed116dcd593369f6!2zxJDhuqFpIEjhu41jIEtpbmggVOG6vyAtTHXhuq10IMSQ4bqhaSBI4buNYyBLaW5oIFThur8gLUx14bqtdCAtIFF14buRYyBM4buZIDEgLSBQaMaw4budbmcgTGluaCBYdcOibg!5e0!3m2!1svi!2s!4v1702562664391!5m2!1svi!2s" width="600" height="600" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
               </div>
               <h3 className={`${styles.content__subhead} title--3`}>
                 2. Liên hệ
