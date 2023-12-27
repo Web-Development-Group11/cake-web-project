@@ -25,7 +25,7 @@ const Breadcrumb = () => {
   const pathElements = pathname.split('/');
   const productId = pathElements[2];
   const [productName, setProductName] = useState('');
-  const [dataLoaded, setDataLoaded] = useState(false); 
+  const [dataLoaded, setDataLoaded] = useState(false);
 
   useEffect(() => {
     const fetchProductById = async (productId) => {
@@ -34,9 +34,9 @@ const Breadcrumb = () => {
         const productData = response.data.data;
         const productName = productData.title;
         setProductName(productName);
-        setDataLoaded(true); 
+        setDataLoaded(true);
       } catch (error) {
-        setDataLoaded(true); 
+        setDataLoaded(true);
       }
     };
 
@@ -50,31 +50,46 @@ const Breadcrumb = () => {
     return vietnameseBreadcrumbNames[pathname] || pathname;
   };
 
-  const showBreadcrumb = dataLoaded && productName; 
+  const showBreadcrumb = dataLoaded && productName;
+
+  const commonElements = (
+    <>
+      <li>
+        <Link to="/">Trang chủ</Link>
+      </li>
+      {pathnames.slice(0, 1).map((pathname, index) => {
+        const url = `/${pathnames.slice(0, index + 1).join('/')}`;
+        const breadcrumbName = getBreadcrumbName(pathname);
+        return (
+          <React.Fragment key={index}>
+            <li className={breadcrumbStyles.breadcrumbSeparator}>|</li>
+            <li>
+              <Link to={url}>{breadcrumbName}</Link>
+            </li>
+          </React.Fragment>
+        );
+      })}
+    </>
+  );
 
   return (
     <nav>
       <ul className={`body--1 ${breadcrumbStyles.breadcrumbList}`}>
-        <li>
-          <Link to="/">Trang chủ</Link>
-        </li>
-
-        {pathnames.slice(0, 1).map((pathname, index) => {
-            const url = `/${pathnames.slice(0, index + 1).join('/')}`;
-            const breadcrumbName = getBreadcrumbName(pathname);
-            return (
-              <React.Fragment key={index}>
-                <li className={breadcrumbStyles.breadcrumbSeparator}>|</li>
-                <li>
-                  <Link to={url}>{breadcrumbName}</Link>
-                </li>
-              </React.Fragment>
-            );
-          })}
-        {showBreadcrumb && (
+        {productId ? (
+          // Nếu có productId
           <>
-            <li className={breadcrumbStyles.breadcrumbSeparator}>|</li>
-            <li>{productName}</li>
+            {showBreadcrumb && (
+              <>
+                {commonElements}
+                <li className={breadcrumbStyles.breadcrumbSeparator}>|</li>
+                <li>{productName}</li>
+              </>
+            )}
+          </>
+        ) : (
+          // Nếu không có productId
+          <>
+            {commonElements}
           </>
         )}
       </ul>
