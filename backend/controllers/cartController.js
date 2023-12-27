@@ -4,11 +4,14 @@ export const saveGuestCart =async (req,res)=> {
     try { 
     cart.forEach(element => { 
         info.push({
-            productTitle : element.title,
-            productPrice : element.price,
-            productAmount : element.amount,
-            productImage : element.image_urls.image_url_0
-        })
+            id : element.id,
+            title : element.title,
+            price : element.price,
+            amount : element.amount,
+            image_urls :{
+                image_url_0: element.image_urls.image_url_0
+            }
+        });
     });
       await  res.cookie('guestCart', info, {httpOnly:true , maxAge : 60*60*1000})
       res.status(200).json({message : "success"})

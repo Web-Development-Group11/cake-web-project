@@ -41,7 +41,7 @@ export default function ProductDetail(props) {
   const getProduct = async ()=> {
     try {
       const response = await axiosClient.get(`/products/${id}`);
-
+      
       setTimeout(() => {
         setIsLoading(false);
       })
