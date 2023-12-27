@@ -128,6 +128,7 @@ function Register(props) {
         const response = await axiosClient.post('/register', { email, phoneNumber, password })
         console.log(response.status)
         if (response.status == 200) {
+          alert("đăng ký thành công")
           navigate('/login');
         } else {
           alert('Wrong username or password')
