@@ -22,6 +22,31 @@ export const pagination =async (req,res) => {
     }
 }
 
+export const searchBar = async (req, res) => {
+    const { keyword } = req.query;
+    try { 
+        const data = await products.findMany({
+            where: {
+                OR: [
+                  {
+                    title: {
+                      contains: keyword,
+                      mode: 'insensitive', // Case insensitive search
+                    },
+                  },
+                ],
+              },
+            });
+            res.status(200).json({ data: data });
+    } catch (err) {
+        res.status(404).json({message : err.message});
+    } finally { 
+        async () => {
+            products.$disconnect()
+        }
+    }
+}
+
 // try {
 //     const page = req.query.page || 1;
 //     const size = req.query.size || 9;

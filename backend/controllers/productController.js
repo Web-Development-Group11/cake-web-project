@@ -90,6 +90,12 @@ export const getHighlitedProduct = async ( req, res) => {
         const sortedProducts = productIds.map((productId) =>
         productByRating.find((product) => product.id === productId)
       );
+      sortedProducts.forEach((product) => {
+        if (product && product.price) {
+            const numericPrice = parseInt(product.price.replace(/\$/g, '')) * 22000;
+            product.price = numericPrice;
+        }
+    });
         res.status(200).json({data : sortedProducts})
     } else {
         res.status(404).json({message : " product not found"})
