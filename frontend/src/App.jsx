@@ -25,6 +25,7 @@ import { useState, useEffect } from "react";
 import { axiosClient } from './api/axios';
 import ModalProvider from './provider/ModalProvider';
 import { fetcher } from './api/fetcher';
+import ToasterProvider from './provider/ToasterProvider';
 
 function App() {
 
@@ -79,7 +80,7 @@ function App() {
     })
     setTotal(tmp);
     console.log(tmp)
-  },[cart])
+    },[cart])
 
 const saveGuestCart = async()=> {
   try {
@@ -105,6 +106,7 @@ const getGuestCart = async ()=> {
     <div className="App">
       <BrowserRouter>
         <ModalProvider />
+        <ToasterProvider />
         <ScrollToTop />
         <Routes>
           <Route path="/" element={< Home setShowNavbar={setShowNavbar} />} />

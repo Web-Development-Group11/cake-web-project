@@ -11,6 +11,7 @@ import { useModal } from '../../hook/useModal';
 import { axiosClient } from '../../api/axios';
 import Loader from '../../components/loader/Loader';
 import { useCurrentUser } from '../../hook/useCurrentUser';
+import toast from 'react-hot-toast';
 
 const Home = (props) => {
   // Loader state
@@ -21,10 +22,10 @@ const Home = (props) => {
   const [product, setProduct] = useState();
 
   const { data: currentUser } = useCurrentUser();
-  
+
 
   useEffect(() => {
-    const amount = 8;
+const amount = 8;
     const getProduct = async () => {
       try { 
         const response = await axiosClient.post('/highlight',{amount});
@@ -42,7 +43,7 @@ const Home = (props) => {
 
   const handleOpenRandomBox = async () => {
     if (!currentUser) {
-      alert('Bạn cần đăng nhập để mở random box');
+      toast.error('Bạn cần đăng nhập để mở random box');
       return;
     }
 
