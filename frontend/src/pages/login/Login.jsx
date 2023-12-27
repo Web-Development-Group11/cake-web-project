@@ -8,7 +8,7 @@ import TextFieldWithIcon from "../../components/textFieldWithIcon/TextFieldWithI
 import { Link } from "react-router-dom";
 import { axiosClient } from "../../api/axios";
 import { useNavigate } from "react-router-dom";
-import { validateUsername, validatePassword} from "./validationForm";
+import { validateUsername, validatePassword } from "./validationForm";
 
 function Login(props) {
     const [username, setUsername] = useState("");
@@ -17,6 +17,7 @@ function Login(props) {
     const [passwordError, setPasswordError] = useState(false);
     const [usernameErrorMsg, setUsernameErrorMsg] = useState("");
     const [passwordErrorMsg, setPasswordErrorMsg] = useState("");
+    const [loginError, setLoginError] = useState("");
     const navigtate = useNavigate();
 
     function changeInputValue(name, value) {
@@ -61,9 +62,9 @@ function Login(props) {
         return returnData;
     }
 
-       async function  submitForm(e) {
+    async function submitForm(e) {
         e.preventDefault();
-        
+
         const validation = validationForm();
 
         if (validation.usernameError || validation.passwordError) {
@@ -72,25 +73,22 @@ function Login(props) {
             setPasswordError(validation.passwordError);
             setPasswordErrorMsg(validation.passwordErrorMsg);
         } else {
-            // logic check BE ở đây 
-            try { 
-                const response=  await  axiosClient.post('/login', {username , password})
-                console.log(response)
-                 if (response.status == 200) {
+            try {
+                const response = await axiosClient.post('/login', { username, password });
+
+                if (response.status === 200) {
                     navigtate('/');
-            } 
-            else {
-                navigtate('/login');
+                } 
+            } catch (error) {
+                setLoginError('Tên đăng nhập không tồn tại hoặc mật khẩu không chính xác.');
+                console.log(error);
             }
-        } catch (e) {
-            console.log(e);
         }
     }
-}
 
-useEffect(() => {
-   props.setShowNavbar(false);
-} , []);
+    useEffect(() => {
+        props.setShowNavbar(false);
+    }, []);
 
 
     return (
@@ -158,6 +156,7 @@ useEffect(() => {
                                 </div>
                                 <div className={formStyles.errorcontainer}>
                                     {passwordError && <div className={formStyles.errorMsg}>{passwordErrorMsg}</div>}
+                                    {loginError  && <div className={formStyles.errorMsg}>{loginError}</div>}
                                 </div>
                             </div>
                             {/* line */}
