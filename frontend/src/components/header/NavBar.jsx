@@ -13,6 +13,7 @@ import { IoMdClose } from "react-icons/io";
 import { useModal } from '../../hook/useModal';
 import { axiosClient } from '../../api/axios'
 import { useCurrentUser } from '../../hook/useCurrentUser'
+import toast from 'react-hot-toast';
 
 const navItems = [
   {
@@ -42,7 +43,7 @@ const navItems = [
       },
       {
         id: 2,
-        title: 'Tiramisu',
+        title: 'Brownie',
         path: '/cart',
         cName: 'submenu-item',
       },
@@ -114,7 +115,7 @@ function Navbar(props) {
 
   const handleOpenRandomBox = async () => {
     if (!currentUser) {
-      alert('Bạn cần đăng nhập để mở random box');
+      toast.error('Bạn cần đăng nhập để mở Random Box!')
       return;
     }
     onOpen('randomBox');
@@ -219,7 +220,7 @@ function Navbar(props) {
               </Link>
               )}
               {!currentUser && (
-                <div onClick={() => alert("Bạn cần đăng nhập!")}>
+                <div onClick={() => toast.error("Bạn cần đăng nhập!")}>
                   <FaUser className="navBar__icon" />
                 </div>
               )}

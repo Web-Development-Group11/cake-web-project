@@ -25,15 +25,17 @@ import { useState, useEffect } from "react";
 import { axiosClient } from './api/axios';
 import ModalProvider from './provider/ModalProvider';
 import { fetcher } from './api/fetcher';
+import ToasterProvider from './provider/ToasterProvider';
 
 function App() {
 
   const [showNavbar, setShowNavbar] = useState(true);
+  const getGuestCart= fetcher('cart');
 
   const [cart, setCart] = useState([])
 
   // Hàm thêm sản phẩm vào giỏ hàng
-  const [total, setTotal] = useState()
+  const [total, setTotal] = useState(0)
 
   const addProduct = (products, quantity) => {
     const listProductsTmp = cart
@@ -69,17 +71,14 @@ function App() {
   }
 
   useEffect(() => {
-    getGuestCart()
-  },[])
-
-  useEffect(() => {
-    let tmp = 0;
+    let tmp = 0
     cart.map(item => {
       tmp += parseInt(item.amount)
     })
     setTotal(tmp);
     console.log(tmp)
-  },[cart])
+    console.log(getGuestCart)
+  }, [cart])
 
 const saveGuestCart = async()=> {
   try {
@@ -89,22 +88,19 @@ const saveGuestCart = async()=> {
   }
 }
 
-const getGuestCart = async ()=> {
-  try {
-    const response =  await axiosClient.get('/cart')
-    if(response.data.data) {
-    setCart(response.data.data)
-    console.log(response.data.data)
-    } 
-  } catch (err) {
-    console.log(err)
-  }
-}
+
+
+
+useEffect(() => {
+
+}, []);
+
 
   return (
     <div className="App">
       <BrowserRouter>
         <ModalProvider />
+        <ToasterProvider />
         <ScrollToTop />
         <Routes>
           <Route path="/" element={< Home setShowNavbar={setShowNavbar} />} />
