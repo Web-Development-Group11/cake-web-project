@@ -118,7 +118,7 @@ const getGuestCart = async ()=> {
           <Route path="/entercode" element={< Entercode setShowNavbar={setShowNavbar} />} />
           <Route path="/changepassword" element={< Changepass setShowNavbar={setShowNavbar} />} />
           <Route path="/product" element={< Product cart={cart} setCart={setCart} addProduct={addProduct} />} />
-          <Route path="/productDetail/:id" element={< ProductDetail cart={cart} setCart={setCart} addProduct={addProduct} />} />
+          <Route path="/product/:id" element={< ProductDetail cart={cart} setCart={setCart} addProduct={addProduct} />} />
           <Route path="/support" element={< Support />} />
           <Route path="/policy" element={< Policy />} />
           <Route path="/faq" element={< Faq />} />

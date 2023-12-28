@@ -11,6 +11,7 @@ import ContactForm from '../../components/contactForm/ContactForm'
 import Button from '../../components/button/Button'
 import { axiosClient } from '../../api/axios'
 import Loader from '../../components/loader/Loader'
+import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 
 const BlogDetail = () => {
   // Loader state
@@ -72,9 +73,8 @@ const BlogDetail = () => {
       <div className={styles.center}>
         <div className={styles.page}>
           <div className={styles.navigation}>
-            <Link className={styles.navigation__item} to={'/'}>Trang chủ</Link>
-            <p className={styles.navigation__item}>|</p>
-            <Link className={styles.navigation__item} to={'/blog'}>Blog</Link>
+            <Breadcrumb />
+
           </div>
           <div className={styles.blog}>
             <div>
@@ -83,7 +83,7 @@ const BlogDetail = () => {
                 <ul className={styles['blog__suggest-list']}>
                   {suggestedPosts?.map((post, idx) => (
                     <li key={idx} className={styles['blog__suggest-post']}>
-                      <Link Link to={`/blog/${post.slug}`} className={styles['blog__suggest-link']}>
+                      <Link to={`/blog/${post.slug}`} className={styles['blog__suggest-link']}>
                         <img className={styles['blog__suggest-img']} src={`/image/${post.coverImage}`} alt="" />
                         <h3 className={styles['blog__suggest-title']}>{post.title}</h3>
                       </Link>

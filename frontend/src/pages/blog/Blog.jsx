@@ -7,6 +7,7 @@ import BlogSuggest from '../../assets/image/suggest_post.png'
 import BlogPost from '../../assets/image/post.png'
 import { axiosClient } from '../../api/axios'
 import Loader from '../../components/loader/Loader'
+import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 
 const Blog = () => {
   // Loader state
@@ -64,9 +65,8 @@ const Blog = () => {
       <div className={styles.center}>
         <div className={styles.page}>
           <div className={styles.navigation}>
-            <Link className={styles.navigation__item} to={'/'}>Trang chủ</Link>
-            <p className={styles.navigation__item}>|</p>
-            <Link className={styles.navigation__item} to={'/support'}>Blog</Link>
+            <Breadcrumb />
+
           </div>
           <div className={styles.blog}>
             <div className={styles.blog__suggest}>

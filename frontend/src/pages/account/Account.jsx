@@ -9,6 +9,7 @@ import ScrollToTop from '../../components/scroll/scroll'
 import { Link } from 'react-router-dom'
 import { axiosClient } from '../../api/axios';
 import Loader from '../../components/loader/Loader';
+import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 
 const Account = () => {
   // Loader state
@@ -39,13 +40,10 @@ const Account = () => {
     <div>
       <div className={acct.content}>
         <div className={acct.navigation}>
-          <Link className={acct.navigation__item} to={'/'}>Trang chủ</Link>
-          <p className={acct.navigation__item}>|</p>
-          <Link className={acct.navigation__item} to={'/account'}>Trang tài khoản</Link>
+          <Breadcrumb />
         </div>
-        
         <div className={acct.tab}>
-          <Tab user ={user} ></Tab>
+          <Tab user={user} ></Tab>
         </div>
       </div>
     </div>

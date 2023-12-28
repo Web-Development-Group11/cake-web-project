@@ -4,15 +4,15 @@ import styles from './faq.module.css';
 import { Link } from 'react-router-dom'
 import Footer from '../../components/footer/Footer'
 import { FaSearch } from 'react-icons/fa';
+import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
+
 export default function Faq() {
     return (
         <>
             <div className={styles.center}>
                 <div className={styles.page}>
                     <div className={styles.navigation}>
-                        <Link className={styles.navigation__item} to={'/'}>Trang chủ</Link>
-                        <p className={styles.navigation__item}>|</p>
-                        <Link className={styles.navigation__item} to={'/support'}>Hỗ trợ khách hàng</Link>
+                        <Breadcrumb />
                     </div>
                     <div className={styles.center}>
                         <div className={styles.content}>
