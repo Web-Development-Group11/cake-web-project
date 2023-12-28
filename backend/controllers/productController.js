@@ -8,20 +8,70 @@ const comment = new PrismaClient().productComment;
 
 export const getProducts = async (req, res) => {
     try {
-        const info = await product.findMany({take: 8});
-        const cleanData = [];
-        for(let i = 0; i < 8; i++) {
-        info[i].price = parseInt(info[i].price.replace(/\$/g, '')*22000)
-        cleanData.push(info[i])
+    const page = req.query.page || 1;
+    const size = req.query.size || 9;
+    const filter = req.query.filter
+    const sort = req.query.sort
+    const keyword   = req.query.keyword
+    const totalCount = await product.count();
+    let where = {}; 
+    let orderBy = {};
+
+
+    const skip = (page - 1) * size;
+    const totalPages = Math.ceil(totalCount / size);
+    
+    if (filter) {
+        where = {
+            specific_type: {
+                contains: filter
+            }
+        };
+    } else {    
+        where = {}; 
+    }
+    if (keyword) {
+        const searchConditions = {
+                title: 
+                    { contains: keyword,
+                    mode : 'insensitive' } 
+                }
+            };
+        if (filter) {
+            where = {
+                AND: [where, searchConditions] 
+            };
+        } else {
+            where = searchConditions; 
         }
-        res.status(200).json({ data: cleanData })
-    } catch (error) {
-        res.status(500).json({ message: error.message })
-    } finally {
-        (async () => {
-            await product.$disconnect();
-        })
-    };
+    if (sort) {
+        orderBy = {
+            price: sort === 'asc' ? 'asc' : 'desc' 
+        };
+    }
+
+    const products = await product.findMany({
+        take: size,
+        where : where,
+        orderBy : orderBy,
+        skip,
+    })
+
+    const data = products.map((product) => {
+        return {
+            ...product,
+            price: parseInt(product.price.replace(/\$/g, '')*22000)
+        }
+    })
+
+    res.status(200).json({ data, totalPages })
+} catch (error) {
+    res.status(500).json({ message: error.message })
+} finally {
+    (async () => {
+        await product.$disconnect();
+    })
+};
 }
 
 export const getRandomProduct = async (req, res) => {
