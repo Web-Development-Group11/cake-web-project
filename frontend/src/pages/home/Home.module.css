@@ -16,7 +16,7 @@ ul, li {
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 8rem;
-    row-gap: 6rem
+    row-gap: 6rem;
 }
 
 .category__item {
@@ -39,7 +39,7 @@ ul, li {
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 2rem;
-    row-gap: 2rem
+    row-gap: 2rem;
 }
 
 .product__btn {
@@ -97,6 +97,11 @@ ul, li {
     .content {
         margin-inline: 3rem;
     }
+
+    .category__container, .product__container {
+        justify-content: flex-start;
+        column-gap: calc((100% - 16.5rem*3)/2);
+    }
     .cuscup__container, .randombox__container {
       flex-direction: column;
       margin-inline: 0;
@@ -113,9 +118,9 @@ ul, li {
     }
   }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 888px){
     .content {
-        padding: 0 2rem;
+        margin-inline: 2rem;
     }
 
     .category__container, .product__container {
@@ -126,7 +131,7 @@ ul, li {
 
 @media screen and (max-width: 540px){
     .content {
-        padding: 0 1rem;
+        margin-inline: 1rem;
     }
 
     .category__container {
@@ -139,13 +144,6 @@ ul, li {
         justify-content: space-evenly;
         column-gap: 0.5rem;
         row-gap: 2rem;
-    }
-}
-
-@media screen and (max-width: 360px){
-
-    .category__container, .product__container {
-        padding: 0 0.5rem;
     }
 }
 

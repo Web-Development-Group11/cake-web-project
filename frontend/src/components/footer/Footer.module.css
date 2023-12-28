@@ -76,7 +76,8 @@
     flex-direction: row;
     justify-content: space-between;
     position: relative;
-    margin: 5.2rem 7.5rem 0 7.5rem;
+    margin-inline: 7.5rem;
+    margin-top: 5.2rem;
     align-items: flex-start;
     flex-wrap: wrap;
     text-align: left;
@@ -196,7 +197,7 @@ a {
     }
     
     .footer__links {
-        margin: 5.2rem 2rem 0 2rem;
+        margin-inline: 2rem;
     }
 }
 
@@ -238,7 +239,8 @@ a {
         flex-direction: column-reverse;
         justify-content: flex-start;
         align-items: center;
-        margin: 4rem 1rem 0 1rem;
+        margin-inline: 1rem;
+        margin-top: 4rem;
         position: absolute;
     }
 
@@ -262,8 +264,14 @@ a {
 
     .slogan__logo {
         position: absolute;
-        width: fit-content;
+        width: 10rem;
         margin-top: 0.5rem;
-        margin-left: 40%;
+        margin-left: 50%;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .slogan__logo {
+        margin-left: 20%;
     }
 }

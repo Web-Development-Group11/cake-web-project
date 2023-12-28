@@ -5,7 +5,6 @@ import Navbar from '../../components/header/NavBar'
 import Tab from '../../components/tab/Tab'
 import Footer from '../../components/footer/Footer'
 import acct from './Account.module.css'
-import ScrollToTop from '../../components/scroll/scroll'
 import { Link } from 'react-router-dom'
 import { axiosClient } from '../../api/axios';
 import Loader from '../../components/loader/Loader';
