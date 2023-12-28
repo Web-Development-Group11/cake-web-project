@@ -26,64 +26,63 @@ export const saveGuestCart =async (req,res)=> {
             }
         });
     });
-    if(token){
-        cart.forEach(async element =>  {
-        const existProduct = await users.findFirst({
-            where : {
-                id : req.user.exitingUser.id,
-                cart : {
-                    some : {
-                    productId : element.id,
-                    }
-                }
-            },
-        });
-        console.log(existProduct)
-        if(existProduct) {
-            await users.update({
-                where : {
-                    id : req.user.exitingUser.id,
-                    cart : {
-                        some : {
-                            productId : element.id
-                        }
-                    }
-                },
-                    data : {
-                        cart : {
-                        updateMany : {
-                            where : {
-                                productId : element.id,
-                            },
-                            data : {
-                                productAmount : element.amount,
-                            }
-                        }
-                    }
-                }
-            })
-        } else {
-            await users.update({
-                where : {
-                    id : req.user.exitingUser.id,
-                },
-                data : {    
-                    cart : {
-                        push :{
-                            productId : element.id,
-                            productTitle : element.title,
-                            productPrice : element.price,
-                            productAmount : element.amount,
-                            productThumbnail : element.image_urls.image_url_0,
-                        }
-                    }
-                }
-            })
-        }
-    })
-} else {
+//     if(token){
+//         cart.forEach(async element =>  {
+//         const existProduct = await users.findFirst({
+//             where : {
+//                 id : req.user.exitingUser.id,
+//                 cart : {
+//                     some : {
+//                     productId : element.id,
+//                     }
+//                 }
+//             },
+//         });
+//         console.log(existProduct)
+//         if(existProduct) {
+//             await users.update({
+//                 where : {
+//                     id : req.user.exitingUser.id,
+//                     cart : {
+//                         some : {
+//                             productId : element.id
+//                         }
+//                     }
+//                 },
+//                     data : {
+//                         cart : {
+//                         updateMany : {
+//                             where : {
+//                                 productId : element.id,
+//                             },
+//                             data : {
+//                                 productAmount : element.amount,
+//                             }
+//                         }
+//                     }
+//                 }
+//             })
+//         } else {
+//             await users.update({
+//                 where : {
+//                     id : req.user.exitingUser.id,
+//                 },
+//                 data : {    
+//                     cart : {
+//                         push :{
+//                             productId : element.id,
+//                             productTitle : element.title,
+//                             productPrice : element.price,
+//                             productAmount : element.amount,
+//                             productThumbnail : element.image_urls.image_url_0,
+//                         }
+//                     }
+//                 }
+//             })
+//         }
+//     })
+// } else {
     await  res.cookie('guestCart', info, {httpOnly:true , maxAge : 60*60*1000})
-}
     res.status(200).json({message : "success"})
     } catch (err) {
         res.status(500).json({message : err.message})
