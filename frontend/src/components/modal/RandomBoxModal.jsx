@@ -6,6 +6,7 @@ import { IoMdClose } from 'react-icons/io';
 import { useModal } from '../../hook/useModal';
 import { axiosClient } from '../../api/axios';
 import Card from '../card/Card';
+import Button from '../button/Button';
 
 export default function RandomBoxModal() {
     const onClose = useModal((state) => state.onClose);
@@ -50,10 +51,10 @@ export default function RandomBoxModal() {
                     }} />}
                 </div>
                 <div className={styles.modal__action}>
-                    <button className={styles['modal__button-destroy']} onClick={onClose}>
-                        Close
-                    </button>
-                    <button className={styles['modal__button-accept']} onClick={onRandom}>Random</button>
+                    <Button type="btn2 secondary--2" onClick={onClose}>
+                        Đóng
+                    </Button>
+                    <Button type="btn2 primary" onClick={onRandom}>Random</Button>
                 </div>
             </div>
         </Modal>
