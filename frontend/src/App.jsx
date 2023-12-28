@@ -111,7 +111,7 @@ useEffect(() => {
         <ModalProvider />
         <ScrollToTop />
         <Routes>
-          <Route path="/" element={< Home setShowNavbar={setShowNavbar} />} />
+          <Route path="/" element={< Home setShowNavbar={setShowNavbar} addProduct={addProduct} />} />
           <Route path="/login" element={< Login setShowNavbar={setShowNavbar} />} />
           <Route path="/register" element={< Register setShowNavbar={setShowNavbar} />} />
           <Route path="/forgetpassword" element={< Forgetpass setShowNavbar={setShowNavbar} />} />
@@ -128,9 +128,6 @@ useEffect(() => {
           <Route path="/introduction" element={< Introduction />} />
           <Route path="/blog" element={< Blog />} />
           <Route path="/blog/:blogSlug" element={< BlogDetail />} />
-
-          {/* <Route path="/test" element={< Shop />} /> */}
-
         </Routes>
         {showNavbar ? <Navbar total={total} /> : null}
         {showNavbar ? <Footer /> : null}
