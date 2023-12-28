@@ -59,22 +59,4 @@
   gap: 0.5rem;
 }
 
-.modal__button-destroy {
-  cursor: pointer;
-  color: var(--primary-color);
-  background-color: #ffeef4;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  border: none;
-  font-weight: 600;
-}
 
-.modal__button-accept {
-  cursor: pointer;
-  color: white;
-  background-color: var(--primary-color);
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  border: none;
-  font-weight: 600;
-}
