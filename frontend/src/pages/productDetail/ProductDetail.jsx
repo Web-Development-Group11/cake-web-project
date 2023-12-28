@@ -8,21 +8,28 @@ import TabReview from './tab/TabReview';
 import { axiosClient } from '../../api/axios';
 import Rating from '@mui/material/Rating';
 import Loader from '../../components/loader/Loader';
+<<<<<<< Updated upstream
 
 
 // Import các icon
 // import { FaChevronCircleLeft, FaChevronCircleRight } from "react-icons/fa";
+=======
+import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
+>>>>>>> Stashed changes
 
 export default function ProductDetail(props) {
   // Hinh anh hiển thị
   const [selectedImage, setSelectedImage] = useState();
   const [selectedThumbnail, setSelectedThumbnail] = useState(0);
-  const {id} = useParams();
+  const { id } = useParams();
   const [product, setProduct] = useState();
   const handleImageClick = (newImage, index) => {
     setSelectedImage(newImage);
     setSelectedThumbnail(index);
   };
+
+  // Hàm lấy sản phẩm nổi bật
+  const [highlightProduct, setHighlightProduct] = useState();
 
   // Hàm thay đổi số lượng
   const [quantity, setQuantity] = useState(1);
@@ -33,8 +40,12 @@ export default function ProductDetail(props) {
   // Loader state
   const [isLoading, setIsLoading] = useState(true);
 
+<<<<<<< Updated upstream
   //  Lấy sản phẩm từ API
   const getProduct = async ()=> {
+=======
+  const getProduct = async () => {
+>>>>>>> Stashed changes
     try {
       const response = await axiosClient.get(`/products/${id}`);
 
@@ -50,28 +61,32 @@ export default function ProductDetail(props) {
     }
   }
 
+
   useEffect(() => {
     getProduct();
-  },[id]);
+  }, [id]);
 
-  // Sample Card
-  const sampleProduct = {
-    specific_type: "some_type",
-    title: "Sample Product",
-    price: "$19.99",
-    pRate: 4.5,
-    image_urls: {
-      image_url_0: "https://cupcakecentral.com.au/cdn/shop/products/CLASSIC-STYLED-CC-RV-3.jpg?v=1681783027",
-    },
-  };
+  useEffect(() => {
+    const amount = 4;
+    const getHighlightProduct = async () => {
+      try {
+        const response = await axiosClient.post('/highlight', { amount });
+        setHighlightProduct(response.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getHighlightProduct();
+  }, []);
 
-  return isLoading ?  (
+  return isLoading ? (
     <Loader></Loader>
   ) : (
     <>
       <div className='productDetail__screen'>
         <div className='productDetail__page'>
           <div className='navigation'>
+<<<<<<< Updated upstream
             <Link className="navigation__item" to={'/'}>Trang chủ</Link>
             <p className="navigation__item">|</p>
             <Link className="navigation__item" to={'/product'}>Sản phẩm</Link>
@@ -80,6 +95,9 @@ export default function ProductDetail(props) {
                 <p className="navigation__item">|</p>
                 <Link className="navigation__item" to={`/productDetail/${id}`} >{product?.title}</Link>
               </>
+=======
+            <Breadcrumb />
+>>>>>>> Stashed changes
           </div>
 
           <div className='productDetail'>
@@ -103,7 +121,7 @@ export default function ProductDetail(props) {
               </div>
 
               {/* Thông tin sản phẩm */}
-              
+
               <div className="productDetail__info_text" >
 
                 <p className="productDetail__info_text-name title--1">{product.title}</p>
@@ -121,7 +139,7 @@ export default function ProductDetail(props) {
                 </div>
                 <div className="productDetail__info_text-quantity body--2">
                   <span className='title--3'>Số lượng</span>
-                   <BoxQuantityComponent height="2.5rem" quantity={quantity} onQuantityChange={onQuantityChange} />
+                  <BoxQuantityComponent height="2.5rem" quantity={quantity} onQuantityChange={onQuantityChange} />
                 </div>
                 <div className="productDetail__info_text-button">
                   <div className="addToCart_button">
@@ -135,13 +153,14 @@ export default function ProductDetail(props) {
             </div>
 
             {/* Sản phẩm nổi bật */}
-            <div className="productDetail__outstanding">
-              <p className="productDetail__outstanding_title heading">Sản phẩm nổi bật</p>
-              <div className="productDetail__outstanding_card">
-              <Card product={sampleProduct} addProduct={props.addProduct} />
-              <Card product={sampleProduct} addProduct={props.addProduct} />
-              <Card product={sampleProduct} addProduct={props.addProduct} />
-              <Card product={sampleProduct} addProduct={props.addProduct} />
+            <div className="productDetail__highlight">
+              <p className="productDetail__highlight_title heading">Sản phẩm nổi bật</p>
+              <div className="productDetail__highlight_card">
+                {highlightProduct?.map((highlightProduct, index) => (
+                  <div key={index}>
+                    <Card product={highlightProduct} addProduct={props.addProduct}></Card>
+                  </div>
+                ))}
               </div>
             </div>
 
