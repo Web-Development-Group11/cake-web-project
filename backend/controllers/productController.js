@@ -8,23 +8,23 @@ const comment = new PrismaClient().productComment;
 
 export const getProducts = async (req, res) => {
     try {
-    const page = req.query.page || 1;
-    const size = req.query.size || 9;
+    const page = parseInt(req.query.page) || 1;
+    const size = parseInt(req.query.size) || 9;
     const filter = req.query.filter
     const sort = req.query.sort
     const keyword   = req.query.keyword
-    const totalCount = await product.count();
+   
     let where = {}; 
     let orderBy = {};
-
-
     const skip = (page - 1) * size;
-    const totalPages = Math.ceil(totalCount / size);
+    
+   
     
     if (filter) {
         where = {
             specific_type: {
-                contains: filter
+                contains: filter,
+                mode :'insensitive' 
             }
         };
     } else {    
@@ -32,9 +32,9 @@ export const getProducts = async (req, res) => {
     }
     if (keyword) {
         const searchConditions = {
-                title: 
-                    { contains: keyword,
-                    mode : 'insensitive' } 
+                title: {
+                contains: keyword,
+                mode : 'insensitive' 
                 }
             };
         if (filter) {
@@ -44,18 +44,23 @@ export const getProducts = async (req, res) => {
         } else {
             where = searchConditions; 
         }
-    if (sort) {
-        orderBy = {
-            price: sort === 'asc' ? 'asc' : 'desc' 
-        };
     }
-
+    if (sort==='priceAsc' || sort==='priceDesc') {
+        orderBy = {
+            price: sort === 'priceAsc' ? 'asc' : 'desc' 
+        }
+    } else if(sort==='titleAsc' || sort==='titleDesc') {
+        orderBy = {
+            title: sort === 'titleAsc' ? 'asc' : 'desc' 
+        }
+    };
     const products = await product.findMany({
         take: size,
         where : where,
         orderBy : orderBy,
-        skip,
+        skip :skip,
     })
+    
 
     const data = products.map((product) => {
         return {
@@ -63,8 +68,12 @@ export const getProducts = async (req, res) => {
             price: parseInt(product.price.replace(/\$/g, '')*22000)
         }
     })
+   
+    const totalCount = await product.count({where});
+    console.log(totalCount)
+    const totalPages = Math.ceil(totalCount / size);
 
-    res.status(200).json({ data, totalPages })
+    res.status(200).json({ data, totalPages })  
 } catch (error) {
     res.status(500).json({ message: error.message })
 } finally {
@@ -73,6 +82,9 @@ export const getProducts = async (req, res) => {
     })
 };
 }
+
+
+
 
 export const getRandomProduct = async (req, res) => {
     try {

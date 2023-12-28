@@ -21,7 +21,7 @@ export default function Product(props) {
   const [isLoading, setIsLoading] = useState(true);
 
   const [product, setProduct] = useState();
-
+  const [total,setTotal] = useState();
   const productCategories = [
     {
       id: 1,
@@ -72,13 +72,15 @@ export default function Product(props) {
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const response = await axiosClient.get(`/product?page=${currentPage}&size=9`);
+        const response = await axiosClient.get(`/products?page=${currentPage}&filter=cupcake&sort=priceAsc&size=9`);
 
         setTimeout(() => {
           setIsLoading(false);
         })
 
         setProduct(response.data.data);
+        setTotal(response.data.totalPages)
+
       } catch (err) {
         console.log(err);
       }
@@ -132,7 +134,7 @@ export default function Product(props) {
                 ))}
               </div>
               <div className='product__pagination'>
-                <Pagination totalPages={6} />
+                <Pagination totalPages={total} />
               </div>
             </div>
           </div>
