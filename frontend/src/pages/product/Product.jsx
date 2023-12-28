@@ -120,7 +120,7 @@ export default function Product(props) {
 
             <div className='product__list'>
               <div className="header">
-                <p className="heading">Sản phẩm</p>
+                <p className="heading">Tất cả sản phẩm</p>
 
                 <div className='product__sort'>
                   <ProductSort items={sortFilter} />
