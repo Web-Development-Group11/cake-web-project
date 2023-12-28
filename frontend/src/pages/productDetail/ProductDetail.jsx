@@ -8,14 +8,7 @@ import TabReview from './tab/TabReview';
 import { axiosClient } from '../../api/axios';
 import Rating from '@mui/material/Rating';
 import Loader from '../../components/loader/Loader';
-<<<<<<< Updated upstream
-
-
-// Import các icon
-// import { FaChevronCircleLeft, FaChevronCircleRight } from "react-icons/fa";
-=======
 import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
->>>>>>> Stashed changes
 
 export default function ProductDetail(props) {
   // Hinh anh hiển thị
@@ -40,12 +33,8 @@ export default function ProductDetail(props) {
   // Loader state
   const [isLoading, setIsLoading] = useState(true);
 
-<<<<<<< Updated upstream
   //  Lấy sản phẩm từ API
   const getProduct = async ()=> {
-=======
-  const getProduct = async () => {
->>>>>>> Stashed changes
     try {
       const response = await axiosClient.get(`/products/${id}`);
 
@@ -86,18 +75,7 @@ export default function ProductDetail(props) {
       <div className='productDetail__screen'>
         <div className='productDetail__page'>
           <div className='navigation'>
-<<<<<<< Updated upstream
-            <Link className="navigation__item" to={'/'}>Trang chủ</Link>
-            <p className="navigation__item">|</p>
-            <Link className="navigation__item" to={'/product'}>Sản phẩm</Link>
-
-              <>
-                <p className="navigation__item">|</p>
-                <Link className="navigation__item" to={`/productDetail/${id}`} >{product?.title}</Link>
-              </>
-=======
             <Breadcrumb />
->>>>>>> Stashed changes
           </div>
 
           <div className='productDetail'>
