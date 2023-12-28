@@ -7,7 +7,9 @@ import cardStyles from "./Card.module.css";
 const initialState = {
   status: "default",
 };
-
+const formatPrice = (price) => {
+  return price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }).replace(/\./g, ',');
+};
 const reducer = (state, action) => {
   switch (action.type) {
     case "mouse_enter":
@@ -57,7 +59,7 @@ export default function Card(props) {
           <span className={`body--2`}>{product.pRate}</span>
         </div>
         <div className={cardStyles.content__price}>
-          <div className={`title--4`}>{product.price}</div>
+          <div className={`title--4`}>{formatPrice(product.price)}</div>
         </div>
         <div className={cardStyles.content__cart} onClick={() => props.addProduct(product)}>
           <FaShoppingCart

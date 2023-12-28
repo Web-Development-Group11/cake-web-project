@@ -74,7 +74,7 @@ const Breadcrumb = () => {
 
   return (
     <nav>
-      <ul className={`body--1 ${breadcrumbStyles.breadcrumbList}`}>
+      <ul className={`body--2 ${breadcrumbStyles.breadcrumbList}`}>
         {productId ? (
           // Nếu có productId
           <>
