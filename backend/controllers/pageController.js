@@ -9,17 +9,29 @@ export const pagination =async (req,res) => {
     const perPage = parseInt(req.query.perPage) || 9;
     const filter = req.query.filter;
     const sort = req.query.sort;
+    const  keyword  = req.query;
     try { 
-        let where = {
-            specific_type : {
-            contains : filter
-            }
-        };
-        let orderBy = {
+        let where = {}; // Điều kiện để lọc dữ liệu
+        let orderBy = {}; // Điều kiện để sắp xếp dữ liệu
+        if (filter) {
+            where = {
+                name: {
+                    contains: filter
+                }
+            };
+        } else {    
+            where = {};
+        }
+        if (sort) {
+            orderBy = {
+                price: sort === 'asc' ? 'asc' : 'desc' 
+            };
         }
     const info = await products.findMany({
         skip: (page-1) * perPage,
         take : perPage,
+        where : where,
+        orderBy : orderBy,   
     
     });
     const data = info.map(item => {
