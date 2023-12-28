@@ -7,10 +7,20 @@ const products = new PrismaClient().product;
 export const pagination =async (req,res) => {
     const page = parseInt(req.query.page) || 1;
     const perPage = parseInt(req.query.perPage) || 9;
+    const filter = req.query.filter;
+    const sort = req.query.sort;
     try { 
+        let where = {
+            specific_type : {
+            contains : filter
+            }
+        };
+        let orderBy = {
+        }
     const info = await products.findMany({
         skip: (page-1) * perPage,
         take : perPage,
+    
     });
     const data = info.map(item => {
         const priceWithSymbol = item.price; // Giả sử giá là một trường có tên là 'price'
@@ -32,16 +42,12 @@ export const searchBar = async (req, res) => {
     try { 
         const data = await products.findMany({
             where: {
-                OR: [
-                  {
                     title: {
                       contains: keyword,
                       mode: 'insensitive', // Case insensitive search
                     },
-                  },
-                ],
-              },
-            });
+                  }
+              });
             res.status(200).json({ data: data });
     } catch (err) {
         res.status(404).json({message : err.message});
