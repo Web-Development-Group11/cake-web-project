@@ -82,6 +82,7 @@ function App() {
     console.log(tmp)
     },[cart])
 
+// save user cart
 const saveGuestCart = async()=> {
   try {
     await  axiosClient.post('/cart',{cart})
@@ -90,6 +91,7 @@ const saveGuestCart = async()=> {
   }
 }
 
+//get user cart
 const getGuestCart = async ()=> {
   try {
     const response =  await axiosClient.get('/cart')

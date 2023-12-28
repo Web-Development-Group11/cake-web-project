@@ -8,9 +8,14 @@ export const pagination =async (req,res) => {
     const page = parseInt(req.query.page) || 1;
     const perPage = parseInt(req.query.perPage) || 9;
     try { 
-    const data = await products.findMany({
+    const info = await products.findMany({
         skip: (page-1) * perPage,
         take : perPage,
+    });
+    const data = info.map(item => {
+        const priceWithSymbol = item.price; // Giả sử giá là một trường có tên là 'price'
+        const priceWithoutSymbol = parseInt(priceWithSymbol.replace(/\$/g, '')*22000);
+        return { ...item, price: priceWithoutSymbol }; // Thay thế giá trị cũ bằng giá trị mới không có ký hiệu $
     });
     res.status(200).json({data : data})
 } catch (err) {

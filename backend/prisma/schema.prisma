@@ -37,6 +37,14 @@ type UserAddressDetails {
   ward     String      @default("")
 }
 
+type UserCart {
+  productId  String?
+  productTitle String?
+  productPrice Int?
+  productAmount Int?
+  productThumbnail String?
+}
+
 model Blog {
   id          String        @id @default(auto()) @map("_id") @db.ObjectId
   comments    BlogComments
@@ -72,4 +80,5 @@ model User {
   name           String?
   password       String
   phoneNumber    String?            @unique
+  cart                  UserCart[] 
 }

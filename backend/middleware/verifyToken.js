@@ -8,12 +8,16 @@ import jwt from "jsonwebtoken";
     if(!token) return res.status(401).json({message : "Unauthorized"});
     try {
     const user = jwt.verify(token, secretKey, (err, decoded) => {
-        if(err) return res.status(403).json({message : "Forbidden"});
+        if(err){ 
+             res.status(403).json({message : "Forbidden"});
+             next();
+        } else {
         req.user = decoded;
         next();
+        }
     });
 } catch (error) {
-    res.clearCookie("token")
+    res.clearCookie("token");
     return res.status(500).json({message : error.message});
     }
 }

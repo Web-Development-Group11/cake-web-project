@@ -9,6 +9,7 @@ import Button from '../../components/button/Button';
 import { Link } from 'react-router-dom';
 import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 import { fetcher } from "../../api/fetcher";
+import { axiosClient } from "../../api/axios";
 
 function Cart({ setShowCart, cart, setCart }) {
 
@@ -52,9 +53,21 @@ function Cart({ setShowCart, cart, setCart }) {
     setTongtien(tt);
   }, [cart, setTongtien]);
 
+  const saveGuestCart = async(cart)=> {
+    try {
+      await  axiosClient.post('/cart',{cart})
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   useEffect(() => {
     tinhtongtien();
   }, [cart, someState, tinhtongtien]);
+
+  useEffect(()=> {
+    saveGuestCart(cart);
+  })
 
   return (
     <>
