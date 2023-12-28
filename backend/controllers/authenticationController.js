@@ -4,7 +4,6 @@ import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
 import { isEmail, isPhone } from "../middleware/validateData.js";
 
-const cookie = cookieParser();
 
 const user = new PrismaClient().user;
 

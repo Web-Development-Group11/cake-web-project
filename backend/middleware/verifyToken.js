@@ -10,7 +10,6 @@ import jwt from "jsonwebtoken";
     const user = jwt.verify(token, secretKey, (err, decoded) => {
         if(err){ 
              res.status(403).json({message : "Forbidden"});
-             next();
         } else {
         req.user = decoded;
         next();
