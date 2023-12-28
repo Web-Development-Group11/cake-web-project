@@ -7,7 +7,9 @@ import cardStyles from "./Card.module.css";
 const initialState = {
   status: "default",
 };
-
+const formatPrice = (price) => {
+  return price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }).replace(/\./g, ',');
+};
 const reducer = (state, action) => {
   switch (action.type) {
     case "mouse_enter":
@@ -35,7 +37,7 @@ export default function Card(props) {
     >
       <div className={cardStyles.card__productImage}>
         <Link to={`/product/${product.id}`}>
-          <img className={cardStyles.card__Image} src={product.image_urls.image_url_0} alt={product.title} />
+          <img className={cardStyles.card__Image} src={product.image_urls.image_url_0} alt={product.img} />
         </Link>
       </div>
       <div className={cardStyles.card__content}>
@@ -54,14 +56,16 @@ export default function Card(props) {
               )}
             </span>
           ))}
-          <span className={`body--2`}>{product.pRate}</span>
+          <div className={cardStyles.rate} >
+            <span className={`body--2`}>{product.pRate}</span>
+          </div>
         </div>
         <div className={cardStyles.content__price}>
-          <div className={`title--4`}>{product.price}</div>
+          <div className={`title--4`}>{formatPrice(product.price)}</div>
         </div>
         <div className={cardStyles.content__cart} onClick={() => props.addProduct(product)}>
           <FaShoppingCart
-              className={cardStyles.carticons}
+            className={cardStyles.carticons}
           />
         </div>
       </div>

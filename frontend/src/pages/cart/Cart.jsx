@@ -53,9 +53,9 @@ function Cart({ setShowCart, cart, setCart, setIsBuyNow }) {
     setTongtien(tt);
   }, [cart, setTongtien]);
 
-  const saveGuestCart = async(cart)=> {
+  const saveGuestCart = async (cart) => {
     try {
-      await  axiosClient.post('/cart',{cart})
+      await axiosClient.post('/cart', { cart })
     } catch (err) {
       console.log(err)
     }
@@ -65,7 +65,7 @@ function Cart({ setShowCart, cart, setCart, setIsBuyNow }) {
     tinhtongtien();
   }, [cart, someState, tinhtongtien]);
 
-  useEffect(()=> {
+  useEffect(() => {
     saveGuestCart(cart);
   })
 
@@ -90,15 +90,15 @@ function Cart({ setShowCart, cart, setCart, setIsBuyNow }) {
           </thead>
           <tbody>
             {cart?.map((product) => (
-              <tr key={product.id} className={`body--1 ${cartStyles.class_row}`}>
-
-
-                <td className={`${cartStyles.col1}`}>
+              <tr key={product.id} className={`body--2 ${cartStyles.class_row}`}>
+                <Link to={`/product/${product.id}`} className={`${cartStyles.col1}`}>
                   <div className={cartStyles.product_img}>
-                    <img className={cartStyles.img} src={product?.image_urls.image_url_0} alt={product.title} />
+                    <div className={cartStyles.img_container}>
+                      <img className={cartStyles.img} src={product?.image_urls.image_url_0} alt={product.title} />
+                    </div>
                   </div>
-                  <span className={cartStyles.product_name}>{product.title}</span>
-                </td>
+                  <div className={cartStyles.product_name}>{product.title}</div>
+                </Link>
                 <td className={cartStyles.col2}>
                   <span>{formatPrice(product.price)}</span>
                 </td>
