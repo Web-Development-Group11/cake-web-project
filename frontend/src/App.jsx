@@ -16,7 +16,6 @@ import Introduction from './pages/introduction/Introduction';
 import Blog from './pages/blog/Blog';
 import Navbar from './components/header/NavBar';
 import Footer from './components/footer/Footer';
-import ScrollToTop from './components/scroll/scroll';
 import BlogDetail from './pages/blogDetail/BlogDetail';
 import PaymentPageGuest from './pages/payment/PaymentPageGuest';
 import PaymentPageAuthenticated from './pages/payment/PaymentPageAuthenticated';
@@ -26,6 +25,7 @@ import { axiosClient } from './api/axios';
 import ModalProvider from './provider/ModalProvider';
 import { fetcher } from './api/fetcher';
 import ToasterProvider from './provider/ToasterProvider';
+// import ScrollToTop from './components/scrollToTop/ScrollToTop';
 
 function App() {
 
@@ -47,7 +47,6 @@ function App() {
     }
 
     let checkId = false;
-    let tmp = 0;
 
     // Nếu sản phẩm đã có trong giỏ hàng thì tăng số lượng lên
     listProductsTmp.map((item) => {
@@ -57,16 +56,12 @@ function App() {
       }
     })
 
-    listProductsTmp.map((item) => {
-      tmp += item.amount
-    })
-
     // Nếu sản phẩm chưa có trong giỏ hàng thì thêm vào
     if (!checkId) {
-      tmp += productSelect.amount
       listProductsTmp.push(productSelect)
     }
-    setTotal(tmp)
+
+    setTotal(listProductsTmp.length)
     setCart(listProductsTmp)
     saveGuestCart()
   }
@@ -88,12 +83,7 @@ function App() {
   },[])
 
   useEffect(() => {
-    let tmp = 0;
-    cart.map(item => {
-      tmp += parseInt(item.amount)
-    })
-    setTotal(tmp);
-    console.log(tmp)
+    setTotal(cart.length);
     },[cart])
 
 // save user cart
@@ -123,7 +113,7 @@ const getGuestCart = async ()=> {
       <BrowserRouter>
         <ModalProvider />
         <ToasterProvider />
-        <ScrollToTop />
+        
         <Routes>
           <Route path="/" element={< Home setShowNavbar={setShowNavbar} addProduct={addProduct} />} />
           <Route path="/login" element={< Login setShowNavbar={setShowNavbar} />} />
@@ -143,6 +133,7 @@ const getGuestCart = async ()=> {
           <Route path="/blog" element={< Blog />} />
           <Route path="/blog/:blogSlug" element={< BlogDetail />} />
         </Routes>
+        {/* <ScrollToTop /> */}
         {showNavbar ? <Navbar total={total} /> : null}
         {showNavbar ? <Footer /> : null}
       </BrowserRouter>
