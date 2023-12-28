@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Navbar from '../../components/header/NavBar'
-import Footer from '../../components/footer/Footer'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import TextField from '../../components/textField/TextField';
 import Button from '../../components/button/Button';
 import paymentStyles from './Payment.module.css'
@@ -12,7 +10,7 @@ import PaymentDetail from '../../components/paymentDetail/PaymentDetail';
 
 import axios from 'axios';
 
-const PaymentPageGuest = () => {
+const PaymentPageGuest = (props) => {
 
   const handleChange = (name) => (value) => {
     setUserData((prevUserData) => ({
@@ -29,14 +27,13 @@ const PaymentPageGuest = () => {
 
   return (
     <>
-      <Navbar />
       <div className={paymentStyles.center}>
         <div className={paymentStyles.payment}>
           <Breadcrumb />
           <div className={paymentStyles.payment__container}>
             {/* Chi tiết đơn hàng  */}
             <div className={paymentStyles.payment__orderOverlap}>
-              <PaymentDetail></PaymentDetail>
+              <PaymentDetail cart={props.cart} />
             </div>
             
             <div className={paymentStyles.payment__cusInfo}>
@@ -171,8 +168,6 @@ const PaymentPageGuest = () => {
           </div>
         </div>
       </div >
-      <Footer />
-
     </>
   )
 }

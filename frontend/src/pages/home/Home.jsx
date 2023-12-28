@@ -98,7 +98,7 @@ useEffect(() => {
           <div className={home.product__container}>
           {product?.map((product, index) => (
             <div className={home.product__item} key={index}>
-              <Card product={product} ></Card>
+              <Card product={product} addProduct={props.addProduct} ></Card>
             </div>
           ))}
           </div>

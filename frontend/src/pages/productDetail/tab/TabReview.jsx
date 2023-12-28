@@ -13,7 +13,7 @@ import { useParams } from 'react-router';
 
 const TabReview = (props) => {
     // const review = props.comments;
-    const [ review, setReview] = useState([])
+    const [review, setReview] = useState([])
 
     // Hàm useState phần review
     const [activeTab, setActiveTab] = useState('readReview');
@@ -28,7 +28,7 @@ const TabReview = (props) => {
 
     // Hàm useState phần lọc đánh giá
     const [selectedFilter, setSelectedFilter] = useState('all');
-    const {id} = useParams();
+    const { id } = useParams();
 
     // Hàm set giá trị cho phần lọc đánh giá
     const handleFilterClick = (filterValue) => {
@@ -42,27 +42,27 @@ const TabReview = (props) => {
 
         else if (filterValue === 5) {
             // Lọc đánh giá 5 sao
-            const listTmp = review.filter((item) => item.Star === 5);
+            const listTmp = review.filter((item) => item.rating === 5);
             setReviewList(listTmp);
         }
         else if (filterValue === 4) {
             // Lọc đánh giá 4 sao
-            const listTmp = review.filter((item) => item.Star >= 4 && item.Star < 5);
+            const listTmp = review.filter((item) => item.rating >= 4 && item.rating < 5);
             setReviewList(listTmp);
         }
         else if (filterValue === 3) {
             // Lọc đánh giá 3 sao
-            const listTmp = review.filter((item) => item.Star >= 3 && item.Star < 4);
+            const listTmp = review.filter((item) => item.rating >= 3 && item.rating < 4);
             setReviewList(listTmp);
         }
         else if (filterValue === 2) {
             // Lọc đánh giá 2 sao
-            const listTmp = review.filter((item) => item.Star >= 2 && item.Star < 3);
+            const listTmp = review.filter((item) => item.rating >= 2 && item.rating < 3);
             setReviewList(listTmp);
         }
         else if (filterValue === 1) {
             // Lọc đánh giá 1 sao
-            const listTmp = review.filter((item) => item.Star >= 1 && item.Star < 2);
+            const listTmp = review.filter((item) => item.rating >= 1 && item.rating < 2);
             setReviewList(listTmp);
         }
 
@@ -71,21 +71,20 @@ const TabReview = (props) => {
     // Hàm useState phần phân trang
     const [reviewList, setReviewList] = useState(null);
 
-    useEffect(() => {
-        // Gọi API lấy danh sách review
-        const getComments = async () => {
+    // Gọi API lấy danh sách review
+    const getComments = async () => {
         try {
             const response = await axiosClient.get(`/products/comment/${id}`);
             setReview(response.data.data);
+            setReviewList(response.data.data);
             console.log(response.data.data)
         } catch (err) {
             console.log(err)
         }
     };
+    useEffect(() => {
         getComments();
-        setReviewList(review);
-        // handlePageChange();
-    }, []
+    }, [id]
     );
 
     // Lay so sao tu cmt
@@ -115,7 +114,7 @@ const TabReview = (props) => {
 
     const handleratingChange = (event) => {
         setrating(parseFloat(event.target.value) <= 1 ? 1 : parseFloat(event.target.value));
-        console.log( typeof parseFloat(event.target.value))
+        console.log(typeof parseFloat(event.target.value))
     }
 
     // Xu ly khi bam nut dang bai
@@ -127,9 +126,9 @@ const TabReview = (props) => {
         else {
             // Gọi API lấy danh sách review (chưa có API nên tạm thời dùng hàm setReviewList()
             try {
-                await axiosClient.post(`/products/comment/${id}`,{author, phoneNumber,email, comment, rating});
+                await axiosClient.post(`/products/comment/${id}`, { author, phoneNumber, email, comment, rating });
                 alert("Bạn đã đăng bài thành công!");
-            } catch (err){
+            } catch (err) {
                 console.log(err)
             }
             setauthor(null);
@@ -243,20 +242,15 @@ const TabReview = (props) => {
 
                             </div>
 
-                             <Pagination
-                                 totalPages={totalPages}
-                                 onChange={handlePageChange}
-                                 count={totalPages}
-                                 page={currentPage}
-                                 color="primary"
-                             />
+                            <Pagination
+                                totalPages={totalPages}
+                                onChange={handlePageChange}
+                                count={totalPages}
+                                page={currentPage}
+                                color="primary"
+                            />
                         </div>
-
-
-
                     )}
-
-
 
                     {/* TabContent of writeReview Tab */}
                     {activeTab === 'writeReview' && (
@@ -292,10 +286,8 @@ const TabReview = (props) => {
                                 </div>
 
                                 <div className={tabreview.writeReview__postButton}>
-                                <Button type='btn1 primary' onClick={() => handlePostReview()}>Đăng bài</Button>
+                                    <Button type='btn1 primary' onClick={() => handlePostReview()}>Đăng bài</Button>
                                 </div>
-                                
-                                {/* <Button className={tabreview.writeReview__postButton} onClick={() => handlePostReview()} type="btn1 primary">Đăng bài</Button> */}
 
                             </div>
 
