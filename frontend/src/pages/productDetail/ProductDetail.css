@@ -117,18 +117,18 @@
 }
 
 /* Sản phẩm nổi bât */
-.productDetail__outstanding {
+.productDetail__highlight {
     display: flex;
     flex-direction: column;
     margin-top: 4rem;
     gap: 2rem;
 }
 
-.productDetail__outstanding_title {
+.productDetail__highlight_title {
     text-align: center;
 }
 
-.productDetail__outstanding_card {
+.productDetail__highlight_card {
     display: flex;
     justify-content: space-between;
     align-items: center;
