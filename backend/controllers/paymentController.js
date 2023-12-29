@@ -11,9 +11,8 @@ const saveOrder = async (req,res) => {
             name : order.name,
             phoneNumber : order.phoneNumber,
             email : order.email,
-            addressDetails : {
-                
-            }
+            addressDetails : order.addressDetails,
+            product : order.cart
         })
     } catch(err){
 
