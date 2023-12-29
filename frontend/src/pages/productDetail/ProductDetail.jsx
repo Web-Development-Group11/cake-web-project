@@ -9,12 +9,16 @@ import { axiosClient } from '../../api/axios';
 import Rating from '@mui/material/Rating';
 import Loader from '../../components/loader/Loader';
 import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
+import { useCurrentUser } from "../../hook/useCurrentUser";
 
 
 // Import các icon
 // import { FaChevronCircleLeft, FaChevronCircleRight } from "react-icons/fa";
 
 export default function ProductDetail(props) {
+
+  const { data: currentUser } = useCurrentUser();
+
   // Hinh anh hiển thị
   const [selectedImage, setSelectedImage] = useState();
   const [selectedThumbnail, setSelectedThumbnail] = useState(0);
@@ -129,7 +133,13 @@ export default function ProductDetail(props) {
                     <Button type="btn1 secondary--1" onClick={() => props.addProduct(product, quantity)} >Thêm vào giỏ hàng</Button>
                   </div>
                   <div className="buyNow_button">
-                    <Link to="/payment"><Button type="btn1 primary" onClick={() => props.addProductNow(product, quantity)}>Mua ngay</Button></Link>
+                    {!currentUser && (
+                      <Link to="/paymentpageguest"><Button type="btn1 primary" onClick={() => props.addProductNow(product, quantity)}>Mua ngay</Button></Link>
+                    )}
+
+                    {currentUser && (
+                      <Link to="/paymentpageauth"><Button type="btn1 primary" onClick={() => props.addProductNow(product, quantity)}>Mua ngay</Button></Link>
+                    )}
                   </div>
                 </div>
               </div>
