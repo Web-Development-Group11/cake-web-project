@@ -31,7 +31,6 @@ const Tab = ({user}) => {
       }));
     };
     const handleSubmit = async (e) => {
-      e.preventDefault();
 
       try {
       const response = await axiosClient.patch('/user',userData)
