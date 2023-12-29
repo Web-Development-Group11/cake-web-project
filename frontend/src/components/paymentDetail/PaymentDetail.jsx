@@ -64,8 +64,8 @@ const PaymentDetail = (props) => {
         return total + productPrice;
     }, 0);
 
-    const discount = 0; // Assuming the discount is 0 for now
-    const shippingFee = 0; // Assuming the shipping fee is 0 for now
+    const discount = 0; 
+    const shippingFee = 0; 
 
     const totalPrice = subTotal + discount + shippingFee;
 
@@ -94,14 +94,14 @@ const PaymentDetail = (props) => {
                                         </div>
                                     </td>
                                     <td className={payDetailStyles.col2}>
-                                        <div className={`title--3 ${payDetailStyles.content__title}`}>{product.title}</div>
+                                        <div className={`title--4 ${payDetailStyles.content__title}`}>{product.title}</div>
                                         <div className={`body--2 ${payDetailStyles.count}`}>Số lượng: {product.amount}</div>
                                     </td>
                                     <td className={payDetailStyles.col3}>
                                         <div className={payDetailStyles.x}>
                                             <FaTimes onClick={() => removeProduct(product)} />
                                         </div>
-                                        <div className={`body--1 ${payDetailStyles.price}`}> {formatPrice(parseFloat(product.price) * product.amount)}
+                                        <div className={`body--2 ${payDetailStyles.price}`}> {formatPrice(parseFloat(product.price) * product.amount)}
                                         </div>
                                     </td>
                                 </tr>
