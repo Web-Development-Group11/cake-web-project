@@ -14,6 +14,7 @@ import { useModal } from '../../hook/useModal';
 import { axiosClient } from '../../api/axios'
 import { useCurrentUser } from '../../hook/useCurrentUser'
 import toast from 'react-hot-toast';
+import axios from 'axios';
 
 const navItems = [
   {
@@ -104,9 +105,65 @@ const navItems = [
 
 function Navbar(props) {
   const [searchOn, setSearchOn] = useState(false);
+  const [searchContent, setSearchContent] = useState('');
+  const [searchResult, setSearchResult] = useState(null);
+
+  // Declare token handling interrupting search requests
+  const CancelToken = axios.CancelToken;
+  let cancelSearchRequest;
+
+  useEffect(() => {
+    const fetchSearchResult = async () => {
+      try {
+        // Cancel the previous request if it exists
+        if (cancelSearchRequest) {
+          cancelSearchRequest();
+        }
+
+        // Create a cancellation token for the current request
+        const source = CancelToken.source();
+        cancelSearchRequest = source.cancel;
+
+        const response = await axiosClient.get(`/products?keyword=${searchContent}`, {
+          cancelToken: source.token
+        });
+        setSearchResult(response.data?.data);
+      } catch (error) {
+        // Ignored cancelled requests
+        if (axios.isCancel(error)) {}
+        else {
+          console.log(error)
+        }
+      }
+    }
+
+    if (searchContent.length > 0) {
+      fetchSearchResult();
+    } else {
+      // Cancel any ongoing search requests if the searchContent is empty
+      if (cancelSearchRequest) {
+        cancelSearchRequest();
+      }
+
+      setSearchResult(null);
+    }
+
+    return () => {
+      if (cancelSearchRequest) {
+        cancelSearchRequest();
+      }
+    }
+  }, [searchContent])
+
   const [menuActive, setMenuActive] = useState(false);
 
   const navigate = useNavigate();
+
+  const handleChooseProduct = (id) => {
+    setSearchContent('');
+    setSearchOn(false);
+    navigate(`/product/${id}`);
+  }
 
   const { data: currentUser } = useCurrentUser();
 
@@ -148,6 +205,14 @@ function Navbar(props) {
     }
   };
 
+  const handleNavigateResult = () => {
+    if (searchContent.length > 0) {
+      setSearchOn(false);
+      setSearchContent('');
+      navigate(`/product?keyword=${searchContent}`);
+    }
+  }
+
   return (
     <nav className="navbar">
       <div className="navbar__content">
@@ -159,7 +224,7 @@ function Navbar(props) {
             <img src={logo} alt="logo" className="navBar__logo"></img>
           </Link>
         </div>
-        
+
         <div onClick={onCloseMenu} className={`navBar__menu ${menuActive ? 'active' : ''}`}>
           <IoMenu onClick={onOpenMenu} className='navBar__menu-icon' />
           <ul className="navBar__item" onClick={(ev) => ev.stopPropagation()}>
@@ -193,17 +258,50 @@ function Navbar(props) {
             />
             {searchOn && (
               <>
-                <div onClick={() => setSearchOn(false)} className="layer"></div>
+                <div onClick={() => {
+                  setSearchOn(false);
+                  setSearchContent('');
+                }} className="layer"></div>
                 <div className="navBar__search-bar">
                   <input
+                    autoFocus
                     className="navBar__search-input"
+                    value={searchContent}
+                    onChange={(e) => setSearchContent(e.target.value)}
+                    onKeyDown={(e) => {
+                      e.key === 'Enter' && handleNavigateResult();
+                    }}
                     type="text"
                     placeholder="Tìm kiếm"
                   />
-                  <div className="navBar__search-button">
+                  <div onClick={handleNavigateResult} className="navBar__search-button">
                     <FaSearch className="navBar__search-icon" />
                   </div>
                 </div>
+                {searchResult && searchResult.length > 0 && (
+                  <div className='navBar__search-results'>
+                    {searchResult.slice(0, 3).map((item) => (
+                      <div key={item.id} onClick={() => handleChooseProduct(item.id)} className="navBar__search-item">
+                        <img src={item.image_urls.image_url_0} alt="" />
+                        <div className="navBar__search-item-container">
+                          <h3>{item.title}</h3>
+                          <p>{item.product_description}</p>
+                        </div>
+                      </div>
+                    ))}
+                    <p onClick={handleNavigateResult} className='navBar__search-desc'>View all results</p>
+                  </div>
+                )}
+                {searchResult && searchResult.length === 0 && (
+                  <div className='navBar__search-results'>
+                    <p onClick={() => {
+                      setSearchOn(false);
+                      setSearchContent('');
+                    }} className='navBar__search-item center'>
+                      Không tìm thấy kết quả phù hợp
+                    </p>
+                  </div>
+                )}
               </>
             )}
           </li>

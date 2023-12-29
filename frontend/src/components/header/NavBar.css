@@ -247,11 +247,94 @@ ul {
   position: absolute;
   right: -1.875rem;
   top: 200%;
+  z-index: 120;
   display: flex;
   align-items: stretch;
   border: 0.0625rem solid #47271c;
+  background-color: white;
   border-radius: 1rem;
   font-family: 'Inter', sans-serif;
+}
+
+.navBar__search-results {
+  z-index: 40;
+  width: 14.125rem;
+  position: absolute;
+  right: -1.875rem;
+  top: calc(200% + 3.5rem);
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 0px 1rem 2rem 0px rgba(0, 0, 0, 0.12);
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  padding-top: 8px;
+  overflow: hidden;
+  z-index: 120;
+}
+
+.navBar__search-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.navBar__search-item img {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+.navBar__search-item-container {
+  flex: 1;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  align-items: start;
+}
+
+.navBar__search-item-container h3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  white-space: pre-wrap;
+  font-size: 1rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  text-align: left;
+  margin: 0;
+}
+
+.navBar__search-item-container p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  white-space: pre-wrap;
+  font-size: 0.875rem;
+  color: var(--text);
+  text-align: left;
+  margin: 0;
+}
+
+.navBar__search-item:hover {
+  background-color: var(--background-2);
+}
+
+.navBar__search-desc {
+  cursor: pointer;
+  padding: 8px 0;
+  transition: all 0.15s ease-in-out;
+}
+
+.navBar__search-desc:hover {
+  background: var(--background-2);
+  color: var(--primary-color);
 }
 
 .navBar__search-input {
@@ -270,6 +353,8 @@ ul {
   align-items: center;
   background-color: var(--primary-color);
   border-radius: 1rem;
+  cursor: pointer;
+  z-index: 40;
 }
 
 .navBar__search-icon {
@@ -285,7 +370,7 @@ ul {
   right: 0;
   left: 0;
   bottom: 0;
-  z-index: 10;
+  z-index: 110;
 }
 
 
@@ -312,6 +397,11 @@ ul {
   }
 
   .navBar__search-bar {
+    right: -0.75rem;
+  }
+
+  .navBar__search-results {
+    width: 23.5rem;
     right: -0.75rem;
   }
 

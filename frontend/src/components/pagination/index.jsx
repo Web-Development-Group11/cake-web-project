@@ -8,6 +8,8 @@ export default function Pagination({ totalPages }) {
 
   const pages = []
 
+  if (totalPages <= 1) return (<></>)
+
   for (let i = 1; i <= totalPages; i++) {
     pages.push(i)
   }
@@ -39,16 +41,16 @@ export default function Pagination({ totalPages }) {
   return (
     <div className={styles.center}>
       <div className={styles.pagination}>
-        <button 
-          className={`${styles.pagination__button} ${Number(currentPage) === 1 ? styles.inactive : ''}`} 
+        <button
+          className={`${styles.pagination__button} ${Number(currentPage) === 1 ? styles.inactive : ''}`}
           onClick={handlePrevious}
         >
           <GrFormPrevious className= {styles.pagination__icon} />
         </button>
         <div className={styles.pagination__items}>
           {pages.map((page, idx) => (
-            <button 
-              key={idx} 
+            <button
+              key={idx}
               className={`${styles.pagination__item} ${Number(currentPage) === page ? styles.active : ''}`}
               onClick={() => handleChoosePage(page)}
             >
@@ -56,7 +58,7 @@ export default function Pagination({ totalPages }) {
             </button>
           ))}
         </div>
-        <button 
+        <button
           className={`${styles.pagination__button} ${Number(currentPage) === totalPages ? styles.inactive : ''}`}
           onClick={handleNext}
         >

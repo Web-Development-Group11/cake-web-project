@@ -8,7 +8,7 @@ import { axiosClient } from '../../api/axios';
 import Card from '../card/Card';
 import Button from '../button/Button';
 
-export default function RandomBoxModal(props) {
+export default function RandomBoxModal({ addProduct }) {
     const onClose = useModal((state) => state.onClose);
     const name = useModal((state) => state.name);
     const data = useModal((state) => state.data);
@@ -40,14 +40,15 @@ export default function RandomBoxModal(props) {
                     Random Box
                 </h3>
                 <div className={`center ${randomBoxStyles.card}`}>
-                    {data && <Card product={{
+                    {data && <Card addProduct={addProduct} onClick={onClose} product={{
                         title: data?.data.title,
                         image_urls: {
                             image_url_0: data?.data.image_urls.image_url_0,
                         },
                         pRate: 5,
                         price: data?.data.price,
-                        specific_type: data?.data.specific_type
+                        specific_type: data?.data.specific_type,
+                        id: data?.data.id
                     }} />}
                 </div>
                 <div className={styles.modal__action}>

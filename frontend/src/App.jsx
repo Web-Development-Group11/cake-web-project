@@ -12,7 +12,6 @@ import Policy from './pages/policy/Policy';
 import Faq from './pages/faq/faq';
 import Account from './pages/account/Account';
 import Cart from './pages/cart/Cart';
-import CustomCupcake from './pages/customCupcake/CustomCupcake';
 import Introduction from './pages/introduction/Introduction';
 import Blog from './pages/blog/Blog';
 import Navbar from './components/header/NavBar';
@@ -48,6 +47,7 @@ function App() {
     }
 
     let checkId = false;
+    let tmp = 0;
 
     // Nếu sản phẩm đã có trong giỏ hàng thì tăng số lượng lên
     listProductsTmp.map((item) => {
@@ -57,12 +57,16 @@ function App() {
       }
     })
 
+    listProductsTmp.map((item) => {
+      tmp += item.amount
+    })
+
     // Nếu sản phẩm chưa có trong giỏ hàng thì thêm vào
     if (!checkId) {
+      tmp += productSelect.amount
       listProductsTmp.push(productSelect)
     }
-
-    setTotal(listProductsTmp.length)
+    setTotal(tmp)
     setCart(listProductsTmp)
     saveGuestCart()
   }
@@ -84,7 +88,12 @@ function App() {
   },[])
 
   useEffect(() => {
-    setTotal(cart.length);
+    let tmp = 0;
+    cart.map(item => {
+      tmp += parseInt(item.amount)
+    })
+    setTotal(tmp);
+    console.log(tmp)
     },[cart])
 
 // save user cart
@@ -112,7 +121,7 @@ const getGuestCart = async ()=> {
   return (
     <div className="App">
       <BrowserRouter>
-        <ModalProvider />
+        <ModalProvider addProduct={addProduct} />
         <ToasterProvider />
         
         <Routes>
@@ -130,7 +139,6 @@ const getGuestCart = async ()=> {
           <Route path="/payment" element={< PaymentPageGuest cart={(isBuyNow ? cartNow : cart)} />} />
           <Route path="/account" element={< Account />} />
           <Route path="/cart" element={< Cart cart={cart} setCart={setCart} setIsBuyNow={setIsBuyNow} />} />
-          <Route path="/cuscupcake" element={< CustomCupcake />} />
           <Route path="/introduction" element={< Introduction />} />
           <Route path="/blog" element={< Blog />} />
           <Route path="/blog/:blogSlug" element={< BlogDetail />} />
