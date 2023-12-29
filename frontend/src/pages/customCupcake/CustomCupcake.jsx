@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import styles from './CustomCupcake.module.css'
 import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
-import cuscupimg from '../../assets/image/cuscup.png'
+import cuscupimg from '../../assets/cuscupcake/cuscup.png'
 import BoxQuantityComponent from '../../components/boxquantity/BoxQuantity';
 import Button from '../../components/button/Button';
 import TabCus from './tab/tabCus';
