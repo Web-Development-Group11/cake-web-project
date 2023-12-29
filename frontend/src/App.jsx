@@ -27,6 +27,7 @@ import { fetcher } from './api/fetcher';
 import ToasterProvider from './provider/ToasterProvider';
 import ScrollToTop from './components/scrollToTop/ScrollToTop';
 import GoToTop from './components/goTop/GoToTop';
+import CustomCupcake from './pages/customCupcake/CustomCupcake';
 
 function App() {
 
@@ -137,6 +138,7 @@ const getGuestCart = async ()=> {
           <Route path="/support" element={< Support />} />
           <Route path="/policy" element={< Policy />} />
           <Route path="/faq" element={< Faq />} />
+          <Route path="/cuscupcake" element={<CustomCupcake/>} />
           <Route path="/paymentpageguest" element={< PaymentPageGuest cart={(isBuyNow ? cartNow : cart)} />} />
           <Route path="/paymentpageauth" element={< PaymentPageAuthenticated cart={(isBuyNow ? cartNow : cart)} />} />
           <Route path="/account" element={< Account />} />
