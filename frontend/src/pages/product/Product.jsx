@@ -15,7 +15,7 @@ export default function Product(props) {
   const currentPage = params.get('page') || 1;
 
   // Filter and sort state
-  const [currentSort, setCurrentSort] = useState('titleASC');
+  const [currentSort, setCurrentSort] = useState('titleAsc');
   const [currentProductCategories, setCurrentProductCategories] = useState('all');
 
   // Loader state
@@ -59,10 +59,10 @@ export default function Product(props) {
 
 
   const sortFilter = [
-    { id: 1, title: 'Từ A-Z', value: 'titleASC', cName: 'yourClassName' },
-    { id: 2, title: 'Từ Z-A', value: 'titleDESC', cName: 'yourClassName' },
-    { id: 3, title: 'Giá thấp tới cao', value: 'priceASC', cName: 'yourClassName' },
-    { id: 4, title: 'Giá cao xuống thấp', value: 'priceDESC', cName: 'yourClassName' },
+    { id: 1, title: 'Từ A-Z', value: 'titleAsc', cName: 'yourClassName' },
+    { id: 2, title: 'Từ Z-A', value: 'titleDesc', cName: 'yourClassName' },
+    { id: 3, title: 'Giá thấp tới cao', value: 'priceAsc', cName: 'yourClassName' },
+    { id: 4, title: 'Giá cao xuống thấp', value: 'priceDesc', cName: 'yourClassName' },
   ];
 
   useEffect(() => {
@@ -70,7 +70,7 @@ export default function Product(props) {
       let response
       try {
         if (currentProductCategories === 'all') {
-          response = await axiosClient.get(`/product?page=${currentPage}&size=9`);
+          response = await axiosClient.get(`/products?page=${currentPage}&size=9`);
         } else {
           response = await axiosClient.get(`/products?page=${currentPage}&filter=${currentProductCategories}&sort=${currentSort}&size=9`);
         }
