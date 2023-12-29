@@ -8,39 +8,38 @@ import paymentStyles from './Payment.module.css'
 import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 import { FaCheck } from "react-icons/fa";
 import PaymentDetail from '../../components/paymentDetail/PaymentDetail';
-const PaymentPageAuthenticated = () => {
-    const [customerData, setCustomerData] = useState([]);
+import Loader from '../../components/loader/Loader';
+import { axiosClient } from '../../api/axios';
+
+const PaymentPageAuthenticated = (props) => {
+
+    // Loader state
+    const [isLoading, setIsLoading] = useState(true);
+
+    // const [user, setUser] = useState();
+
+    const [customerData, setCustomerData] = useState();
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-
-                const data = [
-                    {
-                        "username": "Nguyen Van A",
-                        "phone": "0123456789",
-                        "email": "example1@email.com",
-                        "address": {
-                            "detail": "251",
-                            "ward": "phường 23",
-                            "district": "quận 1",
-                            "province": "Thành phố Hồ Chí Minh"
-                        }
-                    }
-                ];
-
-                // Thiết lập dữ liệu trong state
-                setCustomerData(data[0]);
-            } catch (error) {
-                console.error('Error fetching customer data:', error);
-            }
-        };
-
-        fetchData();
-    }, []);
+        const getUser = async () => {
+          try {
+            const response = await axiosClient.get('/user')
+            setTimeout(() => {
+              setIsLoading(false);
+            })
+    
+            setCustomerData(response.data.data)
+          } catch (err) {
+            console.log(err)
+          }
+        }
+        getUser();
+      }, []);
 
 
-    return (
+    return isLoading ? (
+        <Loader></Loader>
+      ) : (
         <>
             <Navbar />
             <div className={paymentStyles.center}>
@@ -49,7 +48,7 @@ const PaymentPageAuthenticated = () => {
                     <div className={paymentStyles.payment__container}>
                         {/* Chi tiết đơn hàng  */}
                         <div className={paymentStyles.payment__orderOverlap}>
-                            <PaymentDetail></PaymentDetail>
+                            <PaymentDetail cart={props.cart}/>
                         </div>
 
                         <div className={paymentStyles.payment__cusInfo}>
@@ -62,15 +61,18 @@ const PaymentPageAuthenticated = () => {
                                             Thông tin người nhận
                                         </div>
                                         <div >
-                                            <Button type="btn2 primary">Thay đổi thông tin</Button>
+                                            <Link to='/paymentpageguest'>
+                                                <Button type="btn2 primary">Thay đổi thông tin</Button>
+                                            </Link>
+                                
                                         </div>
                                     </div>
                                 </div>
                                 {customerData && (
                                     <div>
-                                        <div className={paymentStyles.cusInfo__col1}>Họ và tên: {customerData.username} </div>
+                                        <div className={paymentStyles.cusInfo__col1}>Họ và tên: {customerData.name} </div>
 
-                                        <div className={paymentStyles.cusInfo__col1}>Số điện thoại: {customerData.phone}</div>
+                                        <div className={paymentStyles.cusInfo__col1}>Số điện thoại: {customerData.phoneNumber}</div>
 
                                         <div className={paymentStyles.cusInfo__col1}>Email: {customerData.email}</div>
                                     </div>
@@ -78,11 +80,11 @@ const PaymentPageAuthenticated = () => {
                                 <div className={`title--3 ${paymentStyles.cusInfo__head1}`}>
                                     Địa chỉ giao hàng
                                 </div>
-                                {customerData && customerData.address && (
+                                {customerData && (
                                     <div>
-                                        <div className={paymentStyles.cusInfo__col1}>Địa chỉ cụ thể: {customerData.address.detail}</div>
-                                        <div className={paymentStyles.cusInfo__col1}> Phường/Xã, Quận/Huyện: {customerData.address.ward},{" "}{customerData.address.district}</div>
-                                        <div className={paymentStyles.cusInfo__col1}>Tỉnh/Thành phố: {customerData.address.province}</div>
+                                        <div className={paymentStyles.cusInfo__col1}>Địa chỉ cụ thể: {customerData.addressDetails.address}</div>
+                                        <div className={paymentStyles.cusInfo__col1}> Phường/Xã, Quận/Huyện: {customerData.addressDetails.ward},{" "}{customerData.addressDetails.district}</div>
+                                        <div className={paymentStyles.cusInfo__col1}>Tỉnh/Thành phố: {customerData.addressDetails.province}</div>
 
                                     </div>
                                 )}
