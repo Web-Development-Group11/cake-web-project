@@ -27,6 +27,7 @@ import ModalProvider from './provider/ModalProvider';
 import { fetcher } from './api/fetcher';
 import ToasterProvider from './provider/ToasterProvider';
 import ScrollToTop from './components/scrollToTop/ScrollToTop';
+import GoToTop from './components/goTop/GoToTop';
 
 function App() {
 
@@ -124,7 +125,7 @@ const getGuestCart = async ()=> {
       <BrowserRouter>
         <ModalProvider />
         <ToasterProvider />
-        
+        <GoToTop></GoToTop>
         <Routes>
           <Route path="/" element={< Home setShowNavbar={setShowNavbar} addProduct={addProduct} />} />
           <Route path="/login" element={< Login setShowNavbar={setShowNavbar} />} />
