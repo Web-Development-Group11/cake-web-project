@@ -26,6 +26,7 @@ import ModalProvider from './provider/ModalProvider';
 import { fetcher } from './api/fetcher';
 import ToasterProvider from './provider/ToasterProvider';
 import ScrollToTop from './components/scrollToTop/ScrollToTop';
+import GoToTop from './components/goTop/GoToTop';
 
 function App() {
 
@@ -123,7 +124,7 @@ const getGuestCart = async ()=> {
       <BrowserRouter>
         <ModalProvider addProduct={addProduct} />
         <ToasterProvider />
-        
+        <GoToTop></GoToTop>
         <Routes>
           <Route path="/" element={< Home setShowNavbar={setShowNavbar} addProduct={addProduct} />} />
           <Route path="/login" element={< Login setShowNavbar={setShowNavbar} />} />
@@ -137,6 +138,7 @@ const getGuestCart = async ()=> {
           <Route path="/policy" element={< Policy />} />
           <Route path="/faq" element={< Faq />} />
           <Route path="/paymentpageguest" element={< PaymentPageGuest cart={(isBuyNow ? cartNow : cart)} />} />
+          <Route path="/paymentpageauth" element={< PaymentPageAuthenticated cart={(isBuyNow ? cartNow : cart)} />} />
           <Route path="/account" element={< Account />} />
           <Route path="/cart" element={< Cart cart={cart} setCart={setCart} setIsBuyNow={setIsBuyNow} />} />
           <Route path="/introduction" element={< Introduction />} />

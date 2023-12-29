@@ -7,48 +7,7 @@ import payDetailStyles from './PaymentDetail.module.css';
 
 const PaymentDetail = (props) => {
     // Dummy data for testing
-    const [cart, setCart] = useState([
-        {
-            "image_urls": {
-                "image_url_0": "https://cupcakecentral.com.au/cdn/shop/products/CLASSIC-INDIVIDUAL-CUT-CC-VV.jpg?v=1681779966",
-                "image_url_1": "https://cupcakecentral.com.au/cdn/shop/products/CLASSIC-STYLED-CC-VV.jpg?v=1681783651",
-                "image_url_2": null,
-                "image_url_3": null,
-                "image_url_4": null,
-                "image_url_5": null,
-                "image_urls_0": null,
-                "image_urls_1": null,
-                "image_urls_2": null,
-                "image_urls_3": null
-            },
-            "id": "658058d48d7ea0928f7babd5",
-            "price": 4.6,
-            "product_description": "There is nothing ordinary about this Vanilla...",
-            "specific_type": "cupcake",
-            "title": "Vanilla Vanilla - Cupcake",
-            "amount": 3 // Assuming amount is part of the product object
-        },
-        {
-            "image_urls": {
-                "image_url_0": "https://cupcakecentral.com.au/cdn/shop/products/CLASSIC-INDIVIDUAL-CUT-CC-DFC.jpg?v=1681779984",
-                "image_url_1": "https://cupcakecentral.com.au/cdn/shop/products/CLASSIC-STYLED-CC-DFC.jpg?v=1681783491",
-                "image_url_2": "https://cupcakecentral.com.au/cdn/shop/products/CLASSIC-STYLED-CC-DFC-2.jpg?v=1681783491",
-                "image_url_3": null,
-                "image_url_4": null,
-                "image_url_5": null,
-                "image_urls_0": null,
-                "image_urls_1": null,
-                "image_urls_2": null,
-                "image_urls_3": null
-            },
-            "id": "658058d48d7ea0928f7babd6",
-            "price": 4.6,
-            "product_description": "NEW LOOK, same great taste...",
-            "specific_type": "cupcake",
-            "title": "Devil's Food Chocolate - Cupcake",
-            "amount": 2 // Assuming amount is part of the product object
-        }
-    ]);
+    const [cart, setCart] = useState([]);
 
     const removeProduct = (sanpham) => {
         const updatedCart = cart.filter((sp) => sp.id !== sanpham.id);
@@ -70,8 +29,10 @@ const PaymentDetail = (props) => {
     const totalPrice = subTotal + discount + shippingFee;
 
     useEffect(() => {
-        setCart(props.cart);
-    }, [])
+        if (props.cart && props.cart.length > 0) {
+            setCart(props.cart);
+        }
+    }, [props.cart]);
 
     return (
         <>

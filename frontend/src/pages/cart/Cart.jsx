@@ -10,12 +10,15 @@ import { Link } from 'react-router-dom';
 import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 import { fetcher } from "../../api/fetcher";
 import { axiosClient } from "../../api/axios";
+import { useCurrentUser } from "../../hook/useCurrentUser";
 
 function Cart({ setShowCart, cart, setCart, setIsBuyNow }) {
 
   const [tongtien, setTongtien] = useState(0);
   const [someState, setSomeState] = useState(0);
   const listRef = useRef(null);
+
+  const { data: currentUser } = useCurrentUser();
 
 
   const handleQuantityChange = useCallback((productId, newQuantity) => {
@@ -135,9 +138,16 @@ function Cart({ setShowCart, cart, setCart, setIsBuyNow }) {
               <div className={`body--2 ${cartStyles.checkout__info3}`}>Phí vận chuyển sẽ được tính ở trang thanh toán</div>
 
               <div className={cartStyles.checkout__btn} onClick={() => setIsBuyNow(false)}>
-                <Link to="/paymentpageguest">
-                  <Button type="btn1 primary">Thanh toán</Button>
-                </Link>
+                {!currentUser && (
+                  <Link to="/paymentpageguest">
+                    <Button type="btn1 primary">Thanh toán</Button>
+                  </Link>
+                )}
+                {currentUser && (
+                  <Link to="/paymentpageauth">
+                    <Button type="btn1 primary">Thanh toán</Button>
+                  </Link>
+                )}
               </div>
 
               <div className={`body--2 ${cartStyles.back__arrow}`}>
