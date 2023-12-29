@@ -70,7 +70,7 @@ export default function Product(props) {
       let response
       try {
         if (currentProductCategories === 'all') {
-          response = await axiosClient.get(`/products?page=${currentPage}&size=9`);
+          response = await axiosClient.get(`/products?page=${currentPage}&sort=${currentSort}&size=9`);
         } else {
           response = await axiosClient.get(`/products?page=${currentPage}&filter=${currentProductCategories}&sort=${currentSort}&size=9`);
         }
