@@ -11,12 +11,13 @@ const vietnameseBreadcrumbNames = {
   productDetail: 'Sản phẩm',
   paymentpageguest: 'Thanh toán',
   paymentpageauth: 'Thanh toán',
-  support: 'Hỗ trợ khách hàng',
-  policy: 'Hỗ trợ kháchi9 hàng',
-  faq: 'Hỗ trợ khách hàng',
+  support: 'Liên hệ',
+  policy: 'Chính sách giao hàng',
+  faq: 'Câu hỏi thường gặp',
   account: 'Trang tài khoản',
   cart: 'Giỏ hàng',
-  introduction: 'Giới thiệu'
+  introduction: 'Giới thiệu',
+  cuscupcake: 'Custom Cupcake'
 };
 
 const Breadcrumb = () => {

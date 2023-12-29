@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { axiosClient } from "../../api/axios";
 import { useNavigate } from "react-router-dom";
 import { validateUsername, validatePassword } from "./validationForm";
+import toast from 'react-hot-toast';
 
 function Login(props) {
     const [username, setUsername] = useState("");
@@ -77,6 +78,7 @@ function Login(props) {
                 const response = await axiosClient.post('/login', { username, password });
 
                 if (response.status === 200) {
+                    toast.success("Đăng nhập thành công!")
                     navigtate('/');
                     window.location.reload();
                 } 

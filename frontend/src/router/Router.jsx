@@ -9,6 +9,7 @@ import Policy from "../pages/policy/Policy";
 import Faq from "../pages/faq/faq";
 import Account from "../pages/account/Account";
 import Cart from "../pages/cart/Cart";
+import CustomCupcake from '../pages/customCupcake/CustomCupcake';
 import Introduction from "../pages/introduction/Introduction";
 import Blog from "../pages/blog/Blog";
 import Navbar from "../components/header/NavBar";
@@ -33,6 +34,7 @@ const Router = () => {
                     <Route path="/paymentpageauth" element={< PaymentPageAuthenticated />} />
                     <Route path="/account" element={< Account />} />
                     <Route path="/cart" element={< Cart />} />
+                    <Route path="/cuscupcake" element={< CustomCupcake />} />
                     <Route path="/introduction" element={< Introduction />} />
                     <Route path="/blog" element={< Blog />} />
                     <Route path="/blog/:blogId" element={< BlogDetail />} />

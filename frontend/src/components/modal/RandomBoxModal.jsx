@@ -8,7 +8,7 @@ import { axiosClient } from '../../api/axios';
 import Card from '../card/Card';
 import Button from '../button/Button';
 
-export default function RandomBoxModal() {
+export default function RandomBoxModal(props) {
     const onClose = useModal((state) => state.onClose);
     const name = useModal((state) => state.name);
     const data = useModal((state) => state.data);
