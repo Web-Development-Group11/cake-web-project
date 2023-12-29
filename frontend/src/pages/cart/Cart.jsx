@@ -135,7 +135,7 @@ function Cart({ setShowCart, cart, setCart, setIsBuyNow }) {
               <div className={`body--2 ${cartStyles.checkout__info3}`}>Phí vận chuyển sẽ được tính ở trang thanh toán</div>
 
               <div className={cartStyles.checkout__btn} onClick={() => setIsBuyNow(false)}>
-                <Link to="/payment">
+                <Link to="/paymentpageguest">
                   <Button type="btn1 primary">Thanh toán</Button>
                 </Link>
               </div>

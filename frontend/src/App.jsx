@@ -136,7 +136,7 @@ const getGuestCart = async ()=> {
           <Route path="/support" element={< Support />} />
           <Route path="/policy" element={< Policy />} />
           <Route path="/faq" element={< Faq />} />
-          <Route path="/payment" element={< PaymentPageGuest cart={(isBuyNow ? cartNow : cart)} />} />
+          <Route path="/paymentpageguest" element={< PaymentPageGuest cart={(isBuyNow ? cartNow : cart)} />} />
           <Route path="/account" element={< Account />} />
           <Route path="/cart" element={< Cart cart={cart} setCart={setCart} setIsBuyNow={setIsBuyNow} />} />
           <Route path="/introduction" element={< Introduction />} />

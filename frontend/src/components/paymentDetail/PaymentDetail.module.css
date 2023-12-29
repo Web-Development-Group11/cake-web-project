@@ -99,19 +99,17 @@
 }
 
 .col3 {
-    display: flex;
+    flex: 1;
     flex-direction: column;
-    justify-content: space-between;
     height: 70%;
 }
 
 .col3 .x {
     flex: 1;
-
-
+    margin-left: auto;
 }
 
 .col3.price {
-    flex: 1;
+    margin-left: auto;
 
 }
