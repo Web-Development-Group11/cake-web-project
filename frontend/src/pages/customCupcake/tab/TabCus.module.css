@@ -44,6 +44,8 @@
     align-items: center;
 }
 
+/* Style for Cake Type Tab */
+
 .cakeType {
     display: flex;
     flex-direction: column;
@@ -61,7 +63,7 @@
     height: 3.125rem;
     border-radius: 100%;
     border: 2px solid var(--primary-color);
-    background-color: var(--brown);
+    background-color: #5A0000;
 }
 
 .cakeType__option2 {
@@ -79,3 +81,130 @@
     border: 2px solid var(--primary-color);
     background-color: var(--background-2);
 }
+
+/* Style for Cream Tab */
+
+.cream {
+    display: flex;
+    flex-direction: column;
+    margin: 0 2.5rem;
+    gap: 2rem;
+}
+.cream__item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cream__option1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3.125rem;
+    height: 3.125rem;
+    border-radius: 100%;
+    border: 2px solid var(--brown);
+    background-color: var(--white);
+}
+
+.cream__option2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3.125rem;
+    height: 3.125rem;
+    border-radius: 100%;
+    border: 2px solid var(--brown);
+    background-color: var(--white);
+}
+
+.chooseOption {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.subOption {
+    display: flex;
+    width: 23rem;
+    row-gap: 2rem;
+    column-gap: 4rem;
+    flex-wrap: wrap;
+    margin: 0 3.5rem;
+    justify-content: space-between;
+
+}
+
+.sub__item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cream__subOption1 {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 100%;
+    border: 2px solid var(--brown);
+    background-color: #5A0000;
+}
+
+.cream__subOption2 {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 100%;
+    border: 2px solid var(--brown);
+    background-color: #fdf0aa;
+}
+
+.cream__subOption3 {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 100%;
+    border: 2px solid var(--brown);
+    background-color: var(--background-2);
+}
+
+
+/* Style for Topping Tab */
+
+.topping {
+    display: flex;
+    flex-direction: column;
+    margin: 0 2.5rem;
+    gap: 2rem;
+}
+.topping__item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.topping__option1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3.125rem;
+    height: 3.125rem;
+    border-radius: 100%;
+    border: 2px solid var(--brown);
+    background-color: var(--white);
+}
+
+.topping__option2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3.125rem;
+    height: 3.125rem;
+    border-radius: 100%;
+    border: 2px solid var(--brown);
+    background-color: var(--white);
+}
+
+.sub__item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
