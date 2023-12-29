@@ -53,7 +53,7 @@ function Cart({ setShowCart, cart, setCart, setIsBuyNow }) {
     setTongtien(tt);
   }, [cart, setTongtien]);
 
-  const saveGuestCart = async (cart) => {
+  const saveGuestCart = async () => {
     try {
       await axiosClient.post('/cart', { cart })
     } catch (err) {
@@ -66,7 +66,7 @@ function Cart({ setShowCart, cart, setCart, setIsBuyNow }) {
   }, [cart, someState, tinhtongtien]);
 
   useEffect(() => {
-    saveGuestCart(cart);
+    saveGuestCart();
   })
 
   return (

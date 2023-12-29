@@ -78,6 +78,7 @@ function Login(props) {
 
                 if (response.status === 200) {
                     navigtate('/');
+                    window.location.reload();
                 } 
             } catch (error) {
                 setLoginError('Tên đăng nhập không tồn tại hoặc mật khẩu không chính xác.');

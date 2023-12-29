@@ -37,12 +37,17 @@ type UserAddressDetails {
   ward     String      @default("")
 }
 
-type UserCart {
+type UserCart{
   productId  String?
   productTitle String?
   productPrice Int?
   productAmount Int?
   productThumbnail String?
+}
+model Cart {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String
+  cart   UserCart[]
 }
 
 model Blog {
@@ -80,5 +85,4 @@ model User {
   name           String?
   password       String
   phoneNumber    String?            @unique
-  cart                  UserCart[] 
 }

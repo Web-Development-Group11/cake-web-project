@@ -8,34 +8,20 @@ import paymentStyles from './Payment.module.css'
 import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 import { FaCheck } from "react-icons/fa";
 import PaymentDetail from '../../components/paymentDetail/PaymentDetail';
+import axios from 'axios';
+import { axiosClient } from '../../api/axios';
 const PaymentPageAuthenticated = () => {
     const [customerData, setCustomerData] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-
-                const data = [
-                    {
-                        "username": "Nguyen Van A",
-                        "phone": "0123456789",
-                        "email": "example1@email.com",
-                        "address": {
-                            "detail": "251",
-                            "ward": "phường 23",
-                            "district": "quận 1",
-                            "province": "Thành phố Hồ Chí Minh"
-                        }
-                    }
-                ];
-
-                // Thiết lập dữ liệu trong state
-                setCustomerData(data[0]);
+                const response = await axiosClient.get('/user')
+                setCustomerData(response.data.data);
             } catch (error) {
                 console.error('Error fetching customer data:', error);
             }
         };
-
         fetchData();
     }, []);
 

@@ -6,6 +6,7 @@ import { isEmail, isPhone } from "../middleware/validateData.js";
 
 
 const user = new PrismaClient().user;
+const cart = new PrismaClient().cart;
 
 
 // thêm người dùng mới
@@ -40,6 +41,12 @@ export const createNewUser = async (req, res) => {
         }
       }
     });
+    //tạo giỏ hàng
+     await cart.create({
+      data : {
+        userId : newUser.id
+      }
+    });
     res.status(200).json({ data: newUser });
   } catch (error) {
     res.status(500).json({message: error.message});
@@ -70,9 +77,8 @@ export const loginUser = async (req, res) => {
         const token = jwt.sign({ exitingUser }, process.env.SECRET_KEY, { expiresIn: "1d" });
 
         res.cookie("token", token, { maxAge : 60*60*10000 ,httpOnly: true, secure : true, sameSite :"strict", });
-
-        res.status(200).json({token})
-
+        res.status(200).json({token});
+        
       } else {
         //nếu mật khẩu hoặc tài khoản sai 
        res.status(400).json({ message: "UserName or Password is wrong" });
