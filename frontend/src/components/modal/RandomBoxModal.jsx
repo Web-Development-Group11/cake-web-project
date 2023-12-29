@@ -7,8 +7,9 @@ import { useModal } from '../../hook/useModal';
 import { axiosClient } from '../../api/axios';
 import Card from '../card/Card';
 import Button from '../button/Button';
+import { Link } from 'react-router-dom';
 
-export default function RandomBoxModal({ addProduct }) {
+export default function RandomBoxModal({ addProduct, addProductNow }) {
     const onClose = useModal((state) => state.onClose);
     const name = useModal((state) => state.name);
     const data = useModal((state) => state.data);
@@ -25,6 +26,14 @@ export default function RandomBoxModal({ addProduct }) {
             console.log(error)
         }
     }
+
+    const handleBuyNow = () => {
+        if (data && data.data) {
+            onClose();
+            addProductNow(data.data);
+        }
+    };
+    
 
     return (
         <Modal>
@@ -52,10 +61,13 @@ export default function RandomBoxModal({ addProduct }) {
                     }} />}
                 </div>
                 <div className={styles.modal__action}>
-                    <Button type="btn2 secondary--2" onClick={onClose}>
-                        Đóng
+                    <Button type="btn2 secondary--2" onClick={onRandom}>
+                        Random
                     </Button>
-                    <Button type="btn2 primary" onClick={onRandom}>Random</Button>
+                    <Link to="/paymentpageauth">
+                        <Button type="btn2 primary" onClick={handleBuyNow} >Mua ngay</Button>
+                
+                    </Link>
                 </div>
             </div>
         </Modal>

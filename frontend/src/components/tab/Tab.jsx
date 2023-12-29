@@ -31,7 +31,6 @@ const Tab = ({user}) => {
       }));
     };
     const handleSubmit = async (e) => {
-      e.preventDefault();
 
       try {
       const response = await axiosClient.patch('/user',userData)
@@ -81,7 +80,7 @@ const Tab = ({user}) => {
           <div className={styles.user__container}>
             <img src="/src/assets/image/avatar.png" alt="User Avatar" className={styles.avatar} />
             <div className={styles.user__info}>
-              <p className='title--1' style={{ color: 'var(--primary-color)' }}>{userData.name}</p>
+              <p className='title--1' style={{ color: 'var(--primary-color)' }}>{user.name}</p>
               <p className='title--3'>ID: {userData.id}</p>
             </div>
             <div className={styles.signout}>

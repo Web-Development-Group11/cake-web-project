@@ -104,6 +104,7 @@ const PaymentPageAuthenticated = (props) => {
                                             className={paymentStyles.checkbox}
                                             type="checkbox"
                                             id="checkbox1"
+                                            value="fastship"
 
                                         />
                                         Giao hàng hoả tốc (trong 2h)
@@ -116,6 +117,7 @@ const PaymentPageAuthenticated = (props) => {
                                             className={paymentStyles.checkbox}
                                             type="checkbox"
                                             id="checkbox2"
+                                            value="standardship"
 
 
                                         />
@@ -165,7 +167,6 @@ const PaymentPageAuthenticated = (props) => {
                     </div>
                 </div>
             </div>
-            <Footer />
         </>
     )
 }
