@@ -53,7 +53,9 @@ export default function ProductDetail(props) {
       console.log(error);
     }
   }
-
+  const formatPrice = (price) => {
+    return price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }).replace(/\./g, ',');
+  };
 
   useEffect(() => {
     getProduct();
@@ -113,7 +115,7 @@ export default function ProductDetail(props) {
                   style={{ color: '#E21033' }}
                   name="half-rating-read" defaultValue={4.5} precision={0.5} readOnly />
 
-                <p className="productDetail__info_text-price title--1">{product.price}</p>
+                <p className="productDetail__info_text-price title--1">{formatPrice(product.price)}</p>
 
                 <div className="productDetail__info_text-description body--2">
                   {product.product_description}
