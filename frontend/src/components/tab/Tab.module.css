@@ -202,6 +202,7 @@ legend {
     height: 14rem;
     margin: 1rem;
     margin-right: 4rem;
+    border-radius: 1rem;
 }
 
 .product__info {
@@ -256,18 +257,6 @@ legend {
 .btn__recieve button {
     padding: 10px 48px;
 }
-
-/* .process {
-    position: relative;
-    overflow: hidden;
-}
-
-.line__process {
-    border: 2px solid var(--primary-color);
-    width: 100%;
-    position: absolute;
-    top: 108px;
-} */
 
 .process__container {
     display: flex;

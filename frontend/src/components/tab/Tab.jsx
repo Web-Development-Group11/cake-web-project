@@ -31,18 +31,17 @@ const Tab = ({user}) => {
       }));
     };
     const handleSubmit = async (e) => {
-      // e.preventDefault();
+      e.preventDefault();
 
       try {
       const response = await axiosClient.patch('/user',userData)
-      // setUserData(response.data.data)
+
       setUserData((prevUserData) => ({
         ...prevUserData,
         province: response.data.data.addressDetails.province || '',
         district: response.data.data.addressDetails.district || '',
         ward: response.data.data.addressDetails.ward || '',
         address: response.data.data.addressDetails.address || '',}))
-      console.log('Thông tin cập nhật:', userData);
     } catch (e) {
       console.log(e)
     }
@@ -51,9 +50,9 @@ const Tab = ({user}) => {
     // This is just placeholder data. Replace this with your actual data.
     const orders = [
       {
-        image: '/src/assets/image/order-img.png',
-        name: 'Red Velvet Cupcake',
-        price: '45.000đ',
+        image: 'https://cupcakecentral.com.au/cdn/shop/products/CLASSIC-INDIVIDUAL-CUT-CC-RV.jpg?v=1681779929',
+        name: 'Red Velvet - Cupcake',
+        price: '101,199đ',
         quantity: 1,
         date: '01-01-2023',
         orderNumber: '123456789ABCXYZ123',
@@ -261,7 +260,7 @@ const Tab = ({user}) => {
                     {/* Style for order price */}
                     <div className={styles.order_price}>
                       <div className="title--3">Thành tiền: {order.price}</div>
-                      <Link to = '/support'>
+                      <Link to = '/product/658058d48d7ea0928f7babd4'>
                         <Button type='btn1 primary'>Đánh giá</Button>
                       </Link>
                     </div>
@@ -371,7 +370,7 @@ const Tab = ({user}) => {
                   <div className={styles.order_price}>
                     <div className="title--3">Thành tiền: {order.price}</div>
                     <div className={styles.btn__recieve}>
-                      <Button type='btn2 primary'>Đã nhận được hàng</Button>
+                      <Button type='btn2 primary' >Đã nhận được hàng</Button>
                     </div>
                     <Link to = '/support'>
                       <Button type='btn2 secondary--2'>Yêu cầu trả hàng/hoàn tiền</Button>

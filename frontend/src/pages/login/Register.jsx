@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { validateEmail, validatePhone, validatePassword, validateConfirmPassword } from "./validationForm";
 import { axiosClient } from "../../api/axios";
+import toast from 'react-hot-toast';
 
 function Register(props) {
   const [email, setEmail] = useState("");
@@ -130,7 +131,7 @@ function Register(props) {
         const response = await axiosClient.post('/register', { email, phoneNumber, password })
         console.log(response.status)
         if (response.status == 200) {
-          alert("đăng ký thành công")
+          toast.success("Đăng ký thành công!")
           navigate('/login');
         }
       } catch (error) {

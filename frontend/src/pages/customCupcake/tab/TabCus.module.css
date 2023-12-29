@@ -1,0 +1,81 @@
+@import url('../../../Variable.css');
+
+/* Style for Tab Navigation*/
+.tab__container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 1rem;
+    background-color: var(--variant);
+}
+
+/* Style for 3 Tab Header */
+.tab__header {
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    border-bottom: 1px solid var(--brown);
+    overflow: hidden;
+}
+
+/* Style for each Tab */
+.tab {
+    flex: 1;
+    height: 3.125rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Style for tab when actived */
+.active {
+    background-color: var(--background-2);
+    color: var(--primary-color);
+}
+
+.tab__content {
+    display: flex;
+    height: 20rem;
+    align-items: center;
+}
+
+.cakeType {
+    display: flex;
+    flex-direction: column;
+    margin: 0 2.5rem;
+    gap: 2rem;
+}
+.cakeType__item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cakeType__option1 {
+    width: 3.125rem;
+    height: 3.125rem;
+    border-radius: 100%;
+    border: 2px solid var(--primary-color);
+    background-color: var(--brown);
+}
+
+.cakeType__option2 {
+    width: 3.125rem;
+    height: 3.125rem;
+    border-radius: 100%;
+    border: 2px solid var(--primary-color);
+    background-color: #fdf0aa;
+}
+
+.cakeType__option3 {
+    width: 3.125rem;
+    height: 3.125rem;
+    border-radius: 100%;
+    border: 2px solid var(--primary-color);
+    background-color: var(--background-2);
+}

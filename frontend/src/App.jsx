@@ -12,6 +12,7 @@ import Policy from './pages/policy/Policy';
 import Faq from './pages/faq/faq';
 import Account from './pages/account/Account';
 import Cart from './pages/cart/Cart';
+import CustomCupcake from './pages/customCupcake/CustomCupcake';
 import Introduction from './pages/introduction/Introduction';
 import Blog from './pages/blog/Blog';
 import Navbar from './components/header/NavBar';
@@ -139,6 +140,7 @@ const getGuestCart = async ()=> {
           <Route path="/payment" element={< PaymentPageGuest cart={(isBuyNow ? cartNow : cart)} />} />
           <Route path="/account" element={< Account />} />
           <Route path="/cart" element={< Cart cart={cart} setCart={setCart} setIsBuyNow={setIsBuyNow} />} />
+          <Route path="/cuscupcake" element={< CustomCupcake />} />
           <Route path="/introduction" element={< Introduction />} />
           <Route path="/blog" element={< Blog />} />
           <Route path="/blog/:blogSlug" element={< BlogDetail />} />
