@@ -87,7 +87,7 @@ function App() {
 
   useEffect(() => {
     getGuestCart()
-  },[])
+  }, [])
 
   useEffect(() => {
     let tmp = 0;
@@ -96,29 +96,29 @@ function App() {
     })
     setTotal(tmp);
     console.log(tmp)
-    },[cart])
+  }, [cart])
 
-// save user cart
-const saveGuestCart = async()=> {
-  try {
-    await  axiosClient.post('/cart',{cart})
-  } catch (err) {
-    console.log(err)
+  // save user cart
+  const saveGuestCart = async () => {
+    try {
+      await axiosClient.post('/cart', { cart })
+    } catch (err) {
+      console.log(err)
+    }
   }
-}
 
-//get user cart
-const getGuestCart = async ()=> {
-  try {
-    const response =  await axiosClient.get('/cart')
-    if(response.data.data) {
-    setCart(response.data.data)
-    console.log(response.data.data)
-    } 
-  } catch (err) {
-    console.log(err)
+  //get user cart
+  const getGuestCart = async () => {
+    try {
+      const response = await axiosClient.get('/cart')
+      if (response.data.data) {
+        setCart(response.data.data)
+        console.log(response.data.data)
+      }
+    } catch (err) {
+      console.log(err)
+    }
   }
-}
 
   return (
     <div className="App">

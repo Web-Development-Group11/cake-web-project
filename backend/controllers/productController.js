@@ -22,7 +22,7 @@ export const getProducts = async (req, res) => {
     
     if (filter) {
         where = {
-            specific_type: {
+            title: {
                 contains: filter,
                 mode :'insensitive' 
             }

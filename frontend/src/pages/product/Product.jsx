@@ -52,7 +52,7 @@ export default function Product(props) {
       title: 'Combo',
       path: '/product/combo',
       cName: 'category-item',
-      filter: 'combo',
+      filter: 'box',
     },
   ]
 
