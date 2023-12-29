@@ -9,8 +9,6 @@ import { deepOrange } from '@mui/material/colors';
 import { axiosClient } from '../../../api/axios';
 import { useParams } from 'react-router';
 
-
-
 const TabReview = (props) => {
     // const review = props.comments;
     const [review, setReview] = useState([])
@@ -84,8 +82,7 @@ const TabReview = (props) => {
     };
     useEffect(() => {
         getComments();
-    }, [id]
-    );
+    }, [id]);
 
     // Lay so sao tu cmt
     const [author, setauthor] = useState(null);
@@ -131,6 +128,8 @@ const TabReview = (props) => {
             } catch (err) {
                 console.log(err)
             }
+            getComments();
+            setActiveTab('readReview');
             setauthor(null);
             setphoneNumber(null);
             setemail(null);

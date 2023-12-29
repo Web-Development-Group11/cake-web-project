@@ -1,19 +1,13 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import './ProductSort.css';
 
-
-// ProductSort.propTypes = {
-//     currentSort: PropTypes.string.isRequired, onChange: PropTypes.func
-// };
-
-function ProductSort({ items }) {
+function ProductSort({ items, onChange }) {
     const [selectedValue, setSelectedValue] = useState(items[0].value);
 
     const handleSelectChange = (event) => {
         setSelectedValue(event.target.value);
+        onChange(event.target.value)
     };
-
 
     return (
         <div className='sortfilter__container'>

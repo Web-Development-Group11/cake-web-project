@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Product.css'
 import { Link, useLocation, useParams } from 'react-router-dom'
-import Navbar from '../../components/header/NavBar'
 import Card from '../../components/card/Card'
-import jsonData from "../../assets/db/productsData.json";
-import Footer from '../../components/footer/Footer'
 import ProductSort from './productSort/ProductSort';
 import Pagination from '../../components/pagination/index';
 import { axiosClient } from '../../api/axios';
@@ -17,63 +14,67 @@ export default function Product(props) {
 
   const currentPage = params.get('page') || 1;
 
+  // Filter and sort state
+  const [currentSort, setCurrentSort] = useState('titleASC');
+  const [currentProductCategories, setCurrentProductCategories] = useState('all');
+
   // Loader state
   const [isLoading, setIsLoading] = useState(true);
 
   const [product, setProduct] = useState();
-  const [total,setTotal] = useState();
+  const [total, setTotal] = useState();
+
   const productCategories = [
     {
       id: 1,
       title: 'Tất cả sản phẩm',
-      path: '/product',
+      path: 'all',
       cName: 'category-item',
     },
     {
       id: 2,
       title: 'Cupcake',
-      path: '/product/cupcake',
+      path: 'cupcake',
       cName: 'category-item'
     },
     {
       id: 3,
       title: 'Brownie',
-      path: '/product/brownie',
+      path: 'brownie',
       cName: 'category-item'
     },
     {
       id: 4,
       title: 'Cookie',
-      path: '/product/cookie',
+      path: 'cookie',
       cName: 'category-item'
     },
     {
       id: 5,
       title: 'Combo',
-      path: '/product/combo',
+      path: 'combo',
       cName: 'category-item'
     },
   ]
 
 
-  // const handleSortChange = (newSortValue) => {
-  //   setFilters((preFilters) => ({
-  //     ...preFilters,
-  //     _sort: newSortValue,
-  //   }));
-  // };
   const sortFilter = [
-    { id: 1, title: 'Từ A-Z', value: 'title:ASC', cName: 'yourClassName' },
-    { id: 2, title: 'Từ Z-A', value: 'title:DESC', cName: 'yourClassName' },
-    { id: 3, title: 'Giá thấp tới cao', value: 'price:ASC', cName: 'yourClassName' },
-    { id: 4, title: 'Giá cao xuống thấp', value: 'price:DESC', cName: 'yourClassName' },
+    { id: 1, title: 'Từ A-Z', value: 'titleASC', cName: 'yourClassName' },
+    { id: 2, title: 'Từ Z-A', value: 'titleDESC', cName: 'yourClassName' },
+    { id: 3, title: 'Giá thấp tới cao', value: 'priceASC', cName: 'yourClassName' },
+    { id: 4, title: 'Giá cao xuống thấp', value: 'priceDESC', cName: 'yourClassName' },
   ];
 
   useEffect(() => {
     const getProduct = async () => {
+      let response
       try {
-        const response = await axiosClient.get(`/products?page=${currentPage}&filter=cupcake&sort=priceAsc&size=9`);
-
+        if (currentProductCategories === 'all') {
+          response = await axiosClient.get(`/product?page=${currentPage}&size=9`);
+        } else {
+          response = await axiosClient.get(`/products?page=${currentPage}&filter=${currentProductCategories}&sort=${currentSort}&size=9`);
+        }
+        console.log(response)
         setTimeout(() => {
           setIsLoading(false);
         })
@@ -86,7 +87,7 @@ export default function Product(props) {
       }
     }
     getProduct();
-  }, [currentPage]);
+  }, [currentPage, currentSort, currentProductCategories]);
 
 
   return isLoading ? (
@@ -108,9 +109,12 @@ export default function Product(props) {
               <ul className="product-categories">
                 {productCategories.map((category) => (
                   <li
+                    onClick={() => {
+                      setCurrentProductCategories(category.path)
+                    }}
                     key={category.id}
                     className={`${category.cName} body--2`}>
-                    <Link className="category-item__link" to={category.path}>
+                    <Link className="category-item__link" >
                       {category.title}
                     </Link>
                   </li>
@@ -123,7 +127,7 @@ export default function Product(props) {
                 <p className="heading">Tất cả sản phẩm</p>
 
                 <div className='product__sort'>
-                  <ProductSort items={sortFilter} />
+                  <ProductSort items={sortFilter} onChange={(e) => setCurrentSort(e)} />
                 </div>
 
               </div>

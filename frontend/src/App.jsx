@@ -48,7 +48,6 @@ function App() {
     }
 
     let checkId = false;
-    let tmp = 0;
 
     // Nếu sản phẩm đã có trong giỏ hàng thì tăng số lượng lên
     listProductsTmp.map((item) => {
@@ -58,16 +57,12 @@ function App() {
       }
     })
 
-    listProductsTmp.map((item) => {
-      tmp += item.amount
-    })
-
     // Nếu sản phẩm chưa có trong giỏ hàng thì thêm vào
     if (!checkId) {
-      tmp += productSelect.amount
       listProductsTmp.push(productSelect)
     }
-    setTotal(tmp)
+
+    setTotal(listProductsTmp.length)
     setCart(listProductsTmp)
     saveGuestCart()
   }
@@ -89,12 +84,7 @@ function App() {
   },[])
 
   useEffect(() => {
-    let tmp = 0;
-    cart.map(item => {
-      tmp += parseInt(item.amount)
-    })
-    setTotal(tmp);
-    console.log(tmp)
+    setTotal(cart.length);
     },[cart])
 
 // save user cart
