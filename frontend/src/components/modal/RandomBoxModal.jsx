@@ -20,7 +20,6 @@ export default function RandomBoxModal({ addProduct, addProductNow }) {
     const onRandom = async () => {
         try {
             const response = await axiosClient.get('/products/random');
-
             setData(response.data)
         } catch (error) {
             console.log(error)
@@ -55,7 +54,7 @@ export default function RandomBoxModal({ addProduct, addProductNow }) {
                         image_urls: {
                             image_url_0: data?.data.image_urls.image_url_0,
                         },
-                        pRate: 5,
+                        rating: data?.data.rating,
                         price: data?.data.price,
                         specific_type: data?.data.specific_type,
                         id: data?.data.id

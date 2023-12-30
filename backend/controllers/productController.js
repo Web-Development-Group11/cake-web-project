@@ -18,8 +18,7 @@ export const getProducts = async (req, res) => {
     let orderBy = {};
     const skip = (page - 1) * size;
     
-   
-    
+
     if (filter) {
         where = {
             title: {
@@ -60,19 +59,43 @@ export const getProducts = async (req, res) => {
         orderBy : orderBy,
         skip :skip,
     })
-    
+    const productIds = products.map((product) => product.id);
+    if (productIds.length > 0) {
+        const averageRatings = await comment.groupBy({
+            by: ['productId'],
+            _avg: {
+                rating: true
+            },
+            where: {
+                productId: {
+                    in: productIds
+                }
+            }
+        });
+        const productWithRatingInfo = products.map((product) =>{
+            const avgRating = averageRatings.find((rating) => rating.productId === product.id);
+            const defaultRating = { _avg: { rating: 0 }, _count: { rating: 0 } };
+            const ratingInfo = avgRating || defaultRating
 
-    const data = products.map((product) => {
+            const productWithRating = {
+            ...product,
+            rating : ratingInfo._avg.rating
+        };
+        return productWithRating;
+    });
+
+    const data = productWithRatingInfo.map((product) => {
         return {
             ...product,
+            rating : Math.ceil(product.rating*2)/2,
             price: parseInt(product.price.replace(/\$/g, '')*22000)
         }
     })
-   
     const totalCount = await product.count({where});
     const totalPages = Math.ceil(totalCount / size);
 
-    res.status(200).json({ data, totalPages })  
+    res.status(200).json({ data, totalPages })
+}  
 } catch (error) {
     res.status(500).json({ message: error.message })
 } finally {
@@ -89,11 +112,30 @@ export const getRandomProduct = async (req, res) => {
     try {
         const count = await product.count(); // Đếm số lượng bản ghi
         const randomOffset = Math.floor(Math.random() * count); // Tạo offset ngẫu nhiên
-        const info = await product.findFirst({
+        const productData = await product.findFirst({
             skip: randomOffset,
         });
-        info.price = parseInt(info.price.replace(/\$/g, '')*22000)
-        res.status(200).json({ data:info })
+        
+        const productPrice = parseInt(productData.price.replace(/\$/g, '')*22000)
+        
+        const commentData = await comment.groupBy({
+            by: ['productId'],
+            where: {
+                productId: productData.id,
+            },
+            _avg: {
+                rating: true
+            },
+        });
+        console.log(commentData)
+        const rating = commentData.length > 0 ? commentData[0]._avg.rating : 0;
+        const data = {
+            ...productData,
+            price: productPrice,
+            rating: Math.ceil(rating*2)/2
+        };
+
+        res.status(200).json({ data: data })
     } catch (error) {
         res.status(500).json({ message: error.message })
 
@@ -127,7 +169,7 @@ export const getProductById = async (req, res) =>{
         const data = {
             ...productData,
             price: productPrice,
-            rating: rating
+            rating: Math.ceil(rating*2)/2
         };
 
         res.status(200).json({ data : data });
@@ -171,7 +213,7 @@ export const getHighlitedProduct = async ( req, res) => {
 
             const productWithRating = {
             ...product,
-            averageRatings : ratingInfo._avg.rating
+            rating : Math.ceil(ratingInfo._avg.rating*2)/2
         };
         return productWithRating;
     });

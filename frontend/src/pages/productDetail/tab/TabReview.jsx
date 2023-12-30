@@ -109,7 +109,7 @@ const TabReview = (props) => {
     const handlePostReview = async () => {
         if (!author && !phoneNumber && !email && !comment) {
             alert("Bạn vui lòng nhập đầy đủ thông tin!");
-            return;
+            
         }
         else {
             // Gọi API lấy danh sách review (chưa có API nên tạm thời dùng hàm setReviewList()
@@ -127,6 +127,7 @@ const TabReview = (props) => {
             setcomment(null);
             setrating(1);
             setReviewList(review);
+            window.location.reload();
         }
     }
 

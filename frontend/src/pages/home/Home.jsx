@@ -75,19 +75,19 @@ useEffect(() => {
       <div className={home.content}>
 
         <div className={home.category__container}>
-          <Link className={home.category__item} to = './cupcake'>
+          <Link className={home.category__item} to = './product?filter=cupcake'>
             <Category img="/src/assets/category/cupcake.png" title="Cupcake"  description="Món ăn nhẹ ngọt ngào và đáng yêu"></Category>
           </Link>
 
-          <Link className={home.category__item} to = './brownie'>
+          <Link className={home.category__item} to = './product?filter=brownie'>
             <Category img="/src/assets/category/brownie.png" title="Brownie"  description="Món bánh ngọt sang trọng và béo ngậy"></Category>
           </Link>
 
-          <Link className={home.category__item} to = './cookie'>
+          <Link className={home.category__item} to = './product?filter=cookie'>
             <Category img="/src/assets/category/cookie.png" title="Cookie"  description="Những chiếc bánh giòn tan và đậm đà"></Category>
           </Link>
 
-          <Link className={home.category__item} to = './combo'>
+          <Link className={home.category__item} to = './product?filter=box'>
             <Category img="/src/assets/category/combo.png" title="Combo"  description="Sự kết hợp đa dạng và hoàn hảo"></Category>
           </Link>
 
