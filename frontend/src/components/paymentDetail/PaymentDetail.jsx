@@ -8,6 +8,7 @@ import payDetailStyles from './PaymentDetail.module.css';
 const PaymentDetail = (props) => {
     // Dummy data for testing
     const [cart, setCart] = useState([]);
+    const [total,setTotal] =useState();
 
     const removeProduct = (sanpham) => {
         const updatedCart = cart.filter((sp) => sp.id !== sanpham.id);
@@ -32,7 +33,8 @@ const PaymentDetail = (props) => {
         if (props.cart && props.cart.length > 0) {
             setCart(props.cart);
         }
-    }, [props.cart]);
+        setTotal(totalPrice);
+    }, [props.cart,totalPrice]);
 
     return (
         <>
