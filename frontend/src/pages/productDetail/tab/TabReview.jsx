@@ -5,7 +5,6 @@ import tabreview from './TabReview.module.css';
 import Pagination from '@mui/material/Pagination';
 import Rating from '@mui/material/Rating';
 import Avatar from '@mui/material/Avatar';
-import { deepOrange } from '@mui/material/colors';
 import { axiosClient } from '../../../api/axios';
 import { useParams } from 'react-router';
 
@@ -15,14 +14,6 @@ const TabReview = (props) => {
 
     // Hàm useState phần review
     const [activeTab, setActiveTab] = useState('readReview');
-
-    // Hàm useState phần set giá trị sao ở phần "4.5 trên 5" trong tab đánh giá
-    const [currentRating, setCurrentRating] = useState(4.5);
-
-    // Hàm set giá trị cho số sao khi người dùng đánh giá
-    const handleRatingChange = (newValue) => {
-        setCurrentRating(newValue);
-    };
 
     // Hàm useState phần lọc đánh giá
     const [selectedFilter, setSelectedFilter] = useState('all');
@@ -186,10 +177,10 @@ const TabReview = (props) => {
                         <div className={tabreview.readReview}>
                             <div className={tabreview.readReview__ratingFilter}>
                                 <div className={tabreview.readReview__ratingFilter_total}>
-                                    <p className={`${tabreview.readReview__ratingFilter_totalStar} title--3`}>{currentRating} trên 5</p>
+                                    <p className={`${tabreview.readReview__ratingFilter_totalStar} title--3`}>{props.rating} trên 5</p>
                                     <Rating
                                         style={{ color: '#E21033' }}
-                                        name="half-rating-read" value={currentRating} precision={0.5} readOnly
+                                        name="half-rating-read" value={props.rating} precision={0.5} readOnly
                                         onChange={(event, newValue) => handleRatingChange(newValue)} />
                                 </div>
                                 <div className={tabreview.readReview__ratingFilter_filter}>

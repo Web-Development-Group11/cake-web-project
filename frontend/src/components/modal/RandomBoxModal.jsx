@@ -29,6 +29,7 @@ export default function RandomBoxModal({ addProduct, addProductNow }) {
 
     const handleBuyNow = () => {
         if (data && data.data) {
+            console.log(data.data)
             onClose();
             addProductNow(data.data);
         }

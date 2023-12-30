@@ -3,7 +3,7 @@ import DeleteBlogModal from '../components/modal/DeleteBlogModal'
 import { useModal } from '../hook/useModal';
 import RandomBoxModal from '../components/modal/RandomBoxModal';
 
-const ModalProvider = ({ addProduct }) => {
+const ModalProvider = ({ addProduct, addProductNow }) => {
 	const isOpen = useModal((state) => state.isOpen);
 
 	useEffect(() => {
@@ -17,7 +17,7 @@ const ModalProvider = ({ addProduct }) => {
 	return (
 		<>
 			<DeleteBlogModal />
-			<RandomBoxModal addProduct={addProduct} />
+			<RandomBoxModal addProduct={addProduct} addProductNow={addProductNow} />
 		</>
 	)
 }

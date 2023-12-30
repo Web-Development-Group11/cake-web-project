@@ -50,7 +50,13 @@ export default function ProductDetail(props) {
         setIsLoading(false);
       })
 
-      setProduct(response.data.data);
+      // Call api lấy sao ở chỗ này rùi xoá data đi
+      const data = {
+        ...response.data.data,
+        rating: 4.5
+      }
+
+      setProduct(data);
       setSelectedImage(response.data.data?.image_urls.image_url_0);
       setSelectedThumbnail(0);
     } catch (error) {
@@ -117,7 +123,7 @@ export default function ProductDetail(props) {
                 </div>
                 <Rating
                   style={{ color: '#E21033' }}
-                  name="half-rating-read" defaultValue={4.5} precision={0.5} readOnly />
+                  name="half-rating-read" defaultValue={product.rating} precision={0.5} readOnly />
 
                 <p className="productDetail__info_text-price title--1">{formatPrice(product.price)}</p>
 
@@ -158,7 +164,7 @@ export default function ProductDetail(props) {
             </div>
 
             <div className="productDetail__review">
-              {product ? (<TabReview comments={product.comments} />) : null}
+              {product ? (<TabReview rating = {product.rating}  />) : null}
             </div>
           </div>
         </div>

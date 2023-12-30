@@ -28,6 +28,7 @@ import ToasterProvider from './provider/ToasterProvider';
 import ScrollToTop from './components/scrollToTop/ScrollToTop';
 import GoToTop from './components/goTop/GoToTop';
 import CustomCupcake from './pages/customCupcake/CustomCupcake';
+import PageNotFound from './pages/pageNotFound/PageNotFound';
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
   const [cart, setCart] = useState([])
   const [cartNow, setCartNow] = useState([]);
   const [isBuyNow, setIsBuyNow] = useState(false);
+  const [pageNotFound, setPageNotFound] = useState(false);
 
   // Hàm thêm sản phẩm vào giỏ hàng
   const [total, setTotal] = useState()
@@ -120,10 +122,13 @@ function App() {
     }
   }
 
+  // Error 404
+  
+
   return (
     <div className="App">
-      <BrowserRouter>
-        <ModalProvider addProduct={addProduct} />
+      {!pageNotFound ? (<BrowserRouter>
+        <ModalProvider addProduct={addProduct} addProductNow={addProductNow} />
         <ToasterProvider />
         <GoToTop></GoToTop>
         <Routes>
@@ -146,11 +151,12 @@ function App() {
           <Route path="/introduction" element={< Introduction />} />
           <Route path="/blog" element={< Blog />} />
           <Route path="/blog/:blogSlug" element={< BlogDetail />} />
+          <Route path="/404" element={<PageNotFound/>} />
         </Routes>
         <ScrollToTop />
         {showNavbar ? <Navbar total={total} /> : null}
         {showNavbar ? <Footer /> : null}
-      </BrowserRouter>
+      </BrowserRouter>) : <PageNotFound/>}
     </div>
   );
 }
