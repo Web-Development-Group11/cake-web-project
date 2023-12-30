@@ -4,9 +4,8 @@ import logo from "../../assets/image/logo.png";
 import bg from "../../assets/image/bgforgetpass.png";
 import Button from "../../components/button/Button";
 import TextField from "../../components/textField/TextField";
-import TextFieldWithIcon from "../../components/textFieldWithIcon/TextFieldWithIcon";
 import { Link } from "react-router-dom";
-import { validateUsername } from "./validationForm";
+import { validateUsername } from "../../components/validation/validationForm";
 
 function Forgetpass(props) {
   const [username, setUsername] = useState("");

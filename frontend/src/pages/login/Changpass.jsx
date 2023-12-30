@@ -3,10 +3,9 @@ import formStyles from "./Form.module.css";
 import logo from "../../assets/image/logo.png";
 import bg from "../../assets/image/bgchangepass.png";
 import Button from "../../components/button/Button";
-import TextField from "../../components/textField/TextField";
 import TextFieldWithIcon from "../../components/textFieldWithIcon/TextFieldWithIcon";
 import { Link } from "react-router-dom";
-import { validatePassword, validateConfirmPassword } from "./validationForm";
+import { validatePassword, validateConfirmPassword } from "../../components/validation/validationForm";
 
 function Changepass(props) {
   const [password, setPassword] = useState("");

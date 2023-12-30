@@ -7,8 +7,7 @@
 }
 
 .payment {
-    /* xem các trang  */
-    padding-top: 5.75rem;
+    margin-top: 5.75rem;
     width: 100%;
     margin-inline: 7.5rem;
 }
@@ -49,7 +48,121 @@
 .info1__sumup {
     color: var(--primary-color)
 }
+/*  */
+.orderDetail__head {
+    color: var(--primary-color);
+    padding: 0.75rem;
+}
 
+.orderDetail__line {
+    width: 100%;
+    border-bottom: 1px solid var(--brown);
+    padding: 0;
+    margin: 0;
+}
+
+.checkout__info1 {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.cusInfo__head {
+    color: var(--primary-color);
+}
+
+.checkout__info2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.info1__title {
+    margin-bottom: 1rem;
+}
+
+.orderDetail__info {
+    padding: 1.5rem;
+}
+
+.payment__orderDetail {
+
+    border: 2px solid var(--brown);
+    border-radius: 1rem;
+}
+
+.product_row {
+    height: 6.75rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-bottom: 1px solid var(--brown);
+
+}
+
+.product_row,
+.col2,
+.col3,
+.product_name,
+.checkout__btn,
+.back__arrow {
+    display: flex;
+    align-items: center;
+}
+
+.col1 {
+    flex: 1;
+
+}
+
+.col1 .product_img {
+    width: 5rem;
+}
+
+.img {
+    width: 100%;
+    max-height: 8rem;
+    border-top-left-radius: 25%;
+    border-top-right-radius: 25%;
+}
+
+.col2 {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.col2 .content__title {
+    flex: 2;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-align: left;
+    white-space: pre-wrap;
+}
+
+.col2 .count {
+    flex: 1;
+    text-align: left;
+}
+
+.col3 {
+    flex: 1;
+    flex-direction: column;
+    height: 70%;
+}
+
+.col3 .x {
+    flex: 1;
+    margin-left: auto;
+}
+
+.col3.price {
+    margin-left: auto;
+
+}
 
 
 
@@ -77,6 +190,7 @@
 .cusInfo__column {
     width: 100%;
     margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .flexContainer {
@@ -91,7 +205,14 @@
 
 
 }
+.cusInfo__row{
+    margin-bottom:1.5rem;
+}
 
+.errorcontainer{
+    color: var(--primary-color);
+    padding-left:0.5rem;
+}
 .cusInfo__col2 {
     flex: 45%;
     margin-left: 2rem;
@@ -116,6 +237,7 @@
     position: relative;
     margin-top: 1rem;
     margin-bottom: 1rem;
+    user-select: none;
 
 }
 

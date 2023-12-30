@@ -5,7 +5,7 @@ import bg from "../../assets/image/bgentercode.png";
 import Button from "../../components/button/Button";
 import TextField from "../../components/textField/TextField";
 import { Link } from "react-router-dom";
-import {validateCode} from "./validationForm";
+import {validateCode} from "../../components/validation/validationForm";
 
 
 function Entercode(props) {

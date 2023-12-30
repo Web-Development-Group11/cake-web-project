@@ -7,7 +7,7 @@ import TextField from "../../components/textField/TextField";
 import TextFieldWithIcon from "../../components/textFieldWithIcon/TextFieldWithIcon";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { validateEmail, validatePhone, validatePassword, validateConfirmPassword } from "./validationForm";
+import { validateEmail, validatePhone, validatePassword, validateConfirmPassword } from "../../components/validation/validationForm";
 import { axiosClient } from "../../api/axios";
 import toast from 'react-hot-toast';
 
