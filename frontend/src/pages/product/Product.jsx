@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './Product.css'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import Navbar from '../../components/header/NavBar'
-import Card from '../../components/card/Card'
-import jsonData from "../../assets/db/productsData.json";
-import Footer from '../../components/footer/Footer'
+import './Product.css';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Card from '../../components/card/Card';
 import ProductSort from './productSort/ProductSort';
 import Pagination from '../../components/pagination/index';
 import { axiosClient } from '../../api/axios';
@@ -56,7 +53,6 @@ export default function Product(props) {
     },
   ]
 
-
   const sortFilter = [
     { id: 1, title: 'Từ A-Z', value: 'titleAsc', cName: 'yourClassName' },
     { id: 2, title: 'Từ Z-A', value: 'titleDesc', cName: 'yourClassName' },
@@ -98,8 +94,6 @@ export default function Product(props) {
   }, [currentPage, keyword, filter, sort]);
 
   const navigate = useNavigate();
-
-  // useEffect(() => {props.setPageNotFound(true)}, []);
 
   return isLoading ? (
     <Loader></Loader>
