@@ -148,9 +148,18 @@ export const getHighlitedProduct = async ( req, res) => {
                 },
             },
         })
-        const sortedProducts = productIds.map((productId) =>
-        productByRating.find((product) => product.id === productId)
-      );
+        const productWithRatingInfo = productByRating.map((product) =>{
+            const avgRating = averageRatings.find((rating) => rating.productId === product.id);
+            const defaultRating = { _avg: { rating: 0 }, _count: { rating: 0 } };
+            const ratingInfo = avgRating || defaultRating
+
+            const productWithRating = {
+            ...product,
+            averageRatings : ratingInfo._avg.rating
+        };
+        return productWithRating;
+    });
+        const sortedProducts = productWithRatingInfo.sort((a,b) => b.rating - a.rating);
       sortedProducts.forEach((product) => {
         if (product && product.price) {
             const numericPrice = parseInt(product.price.replace(/\$/g, '')) * 22000;
