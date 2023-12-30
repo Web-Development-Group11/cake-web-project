@@ -4,7 +4,7 @@ import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 import cuscupimg from '../../assets/cuscupcake/cuscup.png'
 import BoxQuantityComponent from '../../components/boxquantity/BoxQuantity';
 import Button from '../../components/button/Button';
-import TabCus from './tab/tabCus';
+import TabCus from './tab/TabCus';
 import { Link } from 'react-router-dom';
 
 const CustomCupcake = (props) => {
