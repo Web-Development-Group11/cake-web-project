@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import TextFieldWithIcon from '../textFieldWithIcon/TextFieldWithIcon'
-import AddSelect from '../addSelect/AddSelect'
+import AddSelect from '../AddSelect/addSelect'
 import TextField from '../textField/TextField'
 import Button from '../button/Button';
 import styles from './Tab.module.css';
