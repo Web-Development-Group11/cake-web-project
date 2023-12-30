@@ -39,10 +39,28 @@ function Cart({ setShowCart, cart, setCart, setIsBuyNow }) {
     }
   }, [cart, setCart]);
 
-  const removeProduct = (sanpham) => {
-    const updatedCart = cart?.filter((sp) => sp.id !== sanpham.id);
+  const removeProduct = (product) => {
+    deleteCartProduct(product.id);
+    const updatedCart = cart?.filter((sp) => sp.id !== product.id);
     setCart(updatedCart);
+    console.log(product.id);
   };
+
+  const saveGuestCart = async () => {
+    try {
+      await axiosClient.post('/cart', { cart })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const deleteCartProduct = async (productId) => {
+    try {
+      await axiosClient.delete('/cart/remove', {data :{productId: productId}})
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   const formatPrice = (price) => {
     return price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }).replace(/\./g, ',');
@@ -55,14 +73,6 @@ function Cart({ setShowCart, cart, setCart, setIsBuyNow }) {
     });
     setTongtien(tt);
   }, [cart, setTongtien]);
-
-  const saveGuestCart = async () => {
-    try {
-      await axiosClient.post('/cart', { cart })
-    } catch (err) {
-      console.log(err)
-    }
-  }
 
   useEffect(() => {
     tinhtongtien();

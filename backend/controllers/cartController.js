@@ -32,7 +32,6 @@ export const saveGuestCart =async (req,res)=> {
         });
         cart.forEach(async element =>  {
         const productIndex= existCart.cart.findIndex(product => product.productId === element.id); 
-        console.log(productIndex);
         if(productIndex > -1) {
             await userCart.update({
                 where: {
@@ -129,5 +128,46 @@ export const getGuestCart = async (req, res) => {
         async () => {
         await  users.$disconnect()
         }
+    }
+}
+
+export const deleteCartProduct = async (req, res) => {
+    const {productId} = req.body;
+    const token = req.cookies.token
+    jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
+        if(decoded){ 
+            req.user = decoded;
+        }
+    });
+    try {
+        if(token) {
+            const existCart = await userCart.findFirst({
+                where : {
+                    userId: req.user.exitingUser.id,
+                }
+            });
+            const productIndex = existCart.cart.findIndex(element => 
+                element.productId === productId)
+                console.log(productIndex);
+            if(productIndex > -1){
+                await userCart.update({
+                    where : {
+                        id : existCart.id,
+                        userId : req.user.exitingUser.id,
+                    },
+                    data : {
+                        cart : {
+                            deleteMany : {
+                                where : {
+                                    productId : productId
+                                }
+                            }
+                        }
+                    }                      
+                })
+            }
+        }
+    } catch(err) {
+        res.status(400).json({message : err.message});
     }
 }
