@@ -107,12 +107,29 @@ export const getRandomProduct = async (req, res) => {
 export const getProductById = async (req, res) =>{
     const id = req.params.id;
     try { 
-        const data = await product.findUnique({
+        const productData = await product.findUnique({
             where : {
             id : id
         }
         });
-        data.price = parseInt(data.price.replace(/\$/g, '')*22000);
+        const productPrice = parseInt(productData.price.replace(/\$/g, '')*22000);
+
+        const commentData = await comment.groupBy({
+            by: ['productId'],
+            where: {
+                productId: id
+            },
+            _avg: {
+                rating: true
+            },
+        });
+        const rating = commentData.length > 0 ? commentData[0]._avg.rating : 0;
+        const data = {
+            ...productData,
+            price: productPrice,
+            rating: rating
+        };
+
         res.status(200).json({ data : data });
     } catch(err) {
         res.status(500).json({ message : err.message });
