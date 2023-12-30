@@ -147,7 +147,7 @@ function App() {
           <Route path="/introduction" element={< Introduction />} />
           <Route path="/blog" element={< Blog />} />
           <Route path="/blog/:blogSlug" element={< BlogDetail />} />
-          <Route path="*" element={<PageNotFound setShowNavbar={setShowNavbar}/>} />
+          <Route path="*"  element={<PageNotFound setShowNavbar={setShowNavbar}/>} />
         </Routes>
         <ScrollToTop />
         {showNavbar ? <Navbar total={total} /> : null}
