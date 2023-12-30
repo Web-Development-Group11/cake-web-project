@@ -70,7 +70,6 @@ export const getProducts = async (req, res) => {
     })
    
     const totalCount = await product.count({where});
-    console.log(totalCount)
     const totalPages = Math.ceil(totalCount / size);
 
     res.status(200).json({ data, totalPages })  
