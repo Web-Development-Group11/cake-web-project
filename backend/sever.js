@@ -31,12 +31,17 @@ app.use("/", (req, res, next) => {
 )
 
 //middleware handleing cors policy
-app.use(cors({
-    origin: 'https://bong-cake.vercel.app',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-    allowedHeaders: ['Content-Type'],
-    credentials: true,
-}));
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://bong-cake.vercel.app');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE,PATCH, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    if (req.method === 'OPTIONS') {
+      res.sendStatus(200); // Phản hồi cho preflight request
+    } else {
+      next();
+    }
+  });
 
 //routes 
 app.use('/', authenticationRoute)
