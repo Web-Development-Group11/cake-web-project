@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { FaShoppingCart, FaStar, FaRegStar } from "react-icons/fa";
 import cardStyles from "./Card.module.css";
+import Rating from '@mui/material/Rating';
 
 const initialState = {
   status: "default",
@@ -48,7 +49,10 @@ export default function Card(props) {
           <hr />
         </div>
         <div className={cardStyles.content__rate}>
-          {[...Array(5)].map((_, index) => (
+          <Rating
+            style={{ color: '#E21033' }}
+            name="half-rating-read" defaultValue={product.rating} precision={0.5} readOnly />
+          {/* {[...Array(5)].map((_, index) => (
             <span key={index} className={cardStyles.starDetail}>
               {index < Math.round(product.pRate) ? (
                 <FaStar className={cardStyles.icons} />
@@ -56,7 +60,7 @@ export default function Card(props) {
                 <FaRegStar className={cardStyles.icons} />
               )}
             </span>
-          ))}
+          ))} */}
           <span className={`body--2`}>{product.pRate}</span>
         </div>
         <div className={cardStyles.content__price}>
@@ -64,7 +68,7 @@ export default function Card(props) {
         </div>
         <div className={cardStyles.content__cart} onClick={() => props.addProduct(product)}>
           <FaShoppingCart
-              className={cardStyles.carticons}
+            className={cardStyles.carticons}
           />
         </div>
       </div>
