@@ -57,12 +57,6 @@ export default function Product(props) {
   ]
 
 
-  // const handleSortChange = (newSortValue) => {
-  //   setFilters((preFilters) => ({
-  //     ...preFilters,
-  //     _sort: newSortValue,
-  //   }));
-  // };
   const sortFilter = [
     { id: 1, title: 'Từ A-Z', value: 'titleAsc', cName: 'yourClassName' },
     { id: 2, title: 'Từ Z-A', value: 'titleDesc', cName: 'yourClassName' },
@@ -104,6 +98,8 @@ export default function Product(props) {
   }, [currentPage, keyword, filter, sort]);
 
   const navigate = useNavigate();
+
+  // useEffect(() => {props.setPageNotFound(true)}, []);
 
   return isLoading ? (
     <Loader></Loader>
@@ -147,7 +143,16 @@ export default function Product(props) {
 
             <div className='product__list'>
               <div className="header">
-                <p className="heading">Tất cả sản phẩm</p>
+
+                {!filter && (
+                  <p className="heading">Tất cả sản phẩm</p>
+                )}
+
+                {productCategories.map((category) => {
+                  return filter !== undefined && filter === category.filter ? (
+                    <p className="heading">{category.title}</p>
+                  ) : null;
+                })}
 
                 <div className='product__sort'>
                   <ProductSort items={sortFilter} />
