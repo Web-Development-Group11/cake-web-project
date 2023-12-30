@@ -182,7 +182,7 @@ const PaymentPageAuthenticated = (props) => {
                                             Thông tin người nhận
                                         </div>
                                         <div >
-                                            <Link to='/paymentpageguest'>
+                                            <Link to='/account'>
                                                 <Button type="btn2 primary">Thay đổi thông tin</Button>
                                             </Link>
 

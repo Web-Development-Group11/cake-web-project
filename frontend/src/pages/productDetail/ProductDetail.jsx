@@ -51,12 +51,9 @@ export default function ProductDetail(props) {
       })
 
       // Call api lấy sao ở chỗ này rùi xoá data đi
-      const data = {
-        ...response.data.data,
-        rating: 4.5
-      }
+      
 
-      setProduct(data);
+      setProduct(response.data.data);
       setSelectedImage(response.data.data?.image_urls.image_url_0);
       setSelectedThumbnail(0);
     } catch (error) {

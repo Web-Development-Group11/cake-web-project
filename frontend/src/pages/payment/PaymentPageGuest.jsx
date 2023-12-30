@@ -179,7 +179,7 @@ const PaymentPageGuest = (props) => {
       <div className={paymentStyles.center}>
         <div className={paymentStyles.payment}>
           <Breadcrumb />
-          <form onSubmit={submitFormform} className={paymentStyles.payment__container}>
+          <form onSubmit={submitForm} className={paymentStyles.payment__container}>
             {/* Chi tiết đơn hàng  */}
             <div className={paymentStyles.payment__orderOverlap}>
               <div className={paymentStyles.payment__orderDetail}>
