@@ -32,7 +32,7 @@ app.use("/", (req, res, next) => {
 
 //middleware handleing cors policy
 app.use(cors({
-    origin: 'bong-cake.vercel.app',
+    origin: 'https://bong-cake.vercel.app/',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type'],
     credentials: true,
