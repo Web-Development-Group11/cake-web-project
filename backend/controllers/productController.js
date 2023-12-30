@@ -139,7 +139,6 @@ export const getHighlitedProduct = async ( req, res) => {
               },
             },
           });
-        //   averageRatings.forEach( element => async {
         const productIds = averageRatings.map((rating) => rating.productId);
         if (productIds.length > 0) {
         const productByRating = await product.findMany({
