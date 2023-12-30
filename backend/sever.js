@@ -24,13 +24,6 @@ app.get('/', (req, res) => {
 })
 
 //middleware
-app.use("/", (req, res, next) => {
-    console.log(req.path, res.method);
-    next();
-    }
-)
-
-//middleware handleing cors policy
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'https://bong-cake.vercel.app');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE,PATCH, OPTIONS');
@@ -42,6 +35,15 @@ app.use((req, res, next) => {
       next();
     }
   });
+
+//middleware handleing cors policy
+app.use(cors({
+    origin: 'https://bong-cake.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+    allowedHeaders: ['Content-Type'],
+    credentials: true,
+}));
+
 
 //routes 
 app.use('/', authenticationRoute)
