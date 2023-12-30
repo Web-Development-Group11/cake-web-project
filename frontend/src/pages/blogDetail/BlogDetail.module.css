@@ -137,6 +137,12 @@
     font-family: 'Inter';
 }
 
+.blog__post-products {
+    margin-top: 2rem;
+    display: flex;
+    gap: 2rem;
+}
+
 .blog__post-img {
     width: 25.5rem;
     margin-top: 0.75rem;

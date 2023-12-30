@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import styles from './BlogDetail.module.css'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import Navbar from '../../components/header/NavBar'
-import Footer from '../../components/footer/Footer'
-import BlogSuggest from '../../assets/image/suggest_post.png'
-import BlogPost from '../../assets/image/post.png'
 import '../../custom.css'
 import Card from '../../components/card/Card'
 import ContactForm from '../../components/contactForm/ContactForm'
-import Button from '../../components/button/Button'
 import { axiosClient } from '../../api/axios'
 import Loader from '../../components/loader/Loader'
 import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
@@ -21,6 +16,7 @@ const BlogDetail = () => {
 
   const [data, setData] = useState();
   const [suggestedPosts, setSuggestedPosts] = useState();
+  const [products, setProducts] = useState();
 
   useEffect(() => {
     const getData = async () => {
@@ -47,8 +43,19 @@ const BlogDetail = () => {
       }
     }
 
+    const getProducts = async () => {
+      try {
+        const response = await axiosClient.post('/highlight', 2);
+
+        setProducts(response.data.data);
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
     getData();
     getSuggestedPosts();
+    getProducts();
   }, [])
 
   const processDate = (date) => {
@@ -119,6 +126,13 @@ const BlogDetail = () => {
                   return null;
                 }
               })}
+              <div className="center">
+                <div className={styles['blog__post-products']}>
+                  {products?.map((product, idx) => (
+                    <Card key={idx} product={product} />
+                  ))}
+                </div>
+              </div>
               <div className={styles['blog__post-contacts']}>
                 <h1 className={styles['blog__post-contacts-heading']}>Viết bình luận của bạn</h1>
                 <ContactForm onSubmit={onSubmit} />
