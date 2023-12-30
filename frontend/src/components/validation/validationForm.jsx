@@ -45,11 +45,9 @@ export function validatePassword(password) {
     if (!password) {
         return 'Vui lòng nhập mật khẩu';
     }
-
     if (password.length < 8) {
         return 'Mật khẩu phải chứa ít nhất 8 ký tự';
     }
-
     return "";
 }
 
@@ -57,11 +55,9 @@ export function validateConfirmPassword(password, confirmPassword) {
     if (!confirmPassword) {
         return "Vui lòng nhập lại mật khẩu";
     }
-
     if (password !== confirmPassword) {
         return "Mật khẩu không khớp";
     }
-
     return "";
 }
 
@@ -78,3 +74,23 @@ export function validateCode(code) {
 
     return '';
 }
+
+export function validateFullName(fullname) {
+    if (fullname.trim() === '') {
+        return 'Vui lòng nhập họ và tên';
+    }
+    return '';
+}
+
+export function  validateAddress(address){
+    if (address.trim() === '') {
+        return 'Vui lòng nhập địa chỉ';
+    }
+    return '';
+};   
+export function  validateAddressDetail(addressDetail){
+    if (addressDetail.trim() === '') {
+        return 'Vui lòng nhập địa chỉ cụ thể';
+    }
+    return '';
+};   

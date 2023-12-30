@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback, useRef } from "react";
 import cartStyles from "./Cart.module.css";
-import { FaArrowCircleLeft } from "react-icons/fa";
+import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
 import BoxQuantityComponent from '../../components/boxquantity/BoxQuantity';
 import Header from '../../components/header/NavBar';
@@ -149,13 +149,10 @@ function Cart({ setShowCart, cart, setCart, setIsBuyNow }) {
                   </Link>
                 )}
               </div>
-
-              <div className={`body--2 ${cartStyles.back__arrow}`}>
-                <Link to="/product">
-                  <FaArrowCircleLeft alt="Arrow left circle" /> Tiếp tục mua hàng
-                </Link>
-              </div>
-
+              <Link to="/product" className={`body--2 ${cartStyles.back__arrow}`}>
+                <FaRegArrowAltCircleLeft className={cartStyles.arrow__icon} alt="Arrow left circle" />
+                <span className={cartStyles.arrow__text}>Tiếp tục mua hàng</span>
+              </Link>
             </div>
           </div>
 
