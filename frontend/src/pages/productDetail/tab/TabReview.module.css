@@ -183,8 +183,10 @@
     margin-left: 4.5rem;
 }
 
-
-
+.pagination {
+    display: flex;
+    justify-content: center;
+}
 
 /* Style for tab when actived */
 .active {

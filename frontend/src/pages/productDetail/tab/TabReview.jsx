@@ -233,13 +233,18 @@ const TabReview = (props) => {
 
                             </div>
 
-                            <Pagination
-                                totalPages={totalPages}
-                                onChange={handlePageChange}
-                                count={totalPages}
-                                page={currentPage}
-                                color="primary"
-                            />
+                            <div className={tabreview.pagination}>
+                                <Pagination
+                                    className="custom-pagination"
+                                    totalPages={totalPages}
+                                    onChange={handlePageChange}
+                                    count={totalPages}
+                                    page={currentPage}
+                                    variant="outlined"
+                                    shape="rounded"
+                                />
+                            </div>
+
                         </div>
                     )}
 
