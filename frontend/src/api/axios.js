@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const axiosClient = axios.create({
-    baseURL: 'http://localhost:4000/',
+    baseURL: 'bong-cake-api.vercel.app/',
     headers: {
         'Content-Type': 'application/json',
 
