@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
 import { isEmail, isPhone } from "../middleware/validateData.js";
