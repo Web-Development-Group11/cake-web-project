@@ -17,16 +17,6 @@ export default function Faq() {
                     <div className={styles.center}>
                         <div className={styles.content}>
                             <h2 className={`${styles.content__header} heading`}>Câu hỏi thường gặp (FAQ)</h2>
-                            <div className={styles.faq__searchBar}>
-                                <input
-                                    className={styles.faq__searchInput}
-                                    type="text"
-                                    placeholder="Tìm kiếm"
-                                />
-                                <div className={styles.faq__searchButton}>
-                                    <FaSearch className={styles.faq__searchIcon} />
-                                </div>
-                            </div>
                             <h3 className={`${styles.content__subhead} title--3`}>
                                 1. Đặt hàng và thanh toán
                             </h3>
