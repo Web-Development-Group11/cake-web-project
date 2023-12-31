@@ -47,7 +47,7 @@ app.use('/',userRoute)
 app.use('/',pageRoute )
 app.use('/',cartRoute)
 
-//listen for reqquest 
+//listen for request 
 app.listen(process.env.PORT, () => {
     console.log("app are listening at http://localhost:" + process.env.PORT);
 })
