@@ -76,7 +76,7 @@ export const saveGuestCart =async (req,res)=> {
 }
 });
 }else {
-    await  res.cookie('guestCart', info, {httpOnly:true , maxAge : 60*60*1000})
+    await  res.cookie('guestCart', info, {httpOnly:true , secure: true,sameSite :"none", maxAge : 60*60*1000})
     }
     res.status(200).json({message : "success"})
     } catch (err) {
