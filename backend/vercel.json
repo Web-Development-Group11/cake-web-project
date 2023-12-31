@@ -7,7 +7,7 @@
     "rewrites": [
         {
           "source": "/(.*)",
-          "destination": "sever.js"
+          "destination": "/"
         }
       ],
     "env" : {
