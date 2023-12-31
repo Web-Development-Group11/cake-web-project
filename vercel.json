@@ -14,8 +14,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/backend/index.js",
-      "check": true
+      "destination": "/backend/index.js"
     },
     {
       "source": "/(.*)",
