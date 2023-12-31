@@ -18,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 
+
 app.get('/', (req, res) => {
     res.send('hello')
 })
@@ -31,12 +32,11 @@ app.use("/", (req, res, next) => {
 
 //middleware handleing cors policy
 app.use(cors({
-    origin: 'https://bong-cake.vercel.app',
+    origin: `http://localhost:${process.env.CLIENT_PORT}`,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type'],
     credentials: true,
 }));
-
 
 //routes 
 app.use('/', authenticationRoute)
