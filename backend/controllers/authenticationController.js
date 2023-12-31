@@ -76,7 +76,7 @@ export const loginUser = async (req, res) => {
         //tạo token
         const token = jwt.sign({ exitingUser }, process.env.SECRET_KEY, { expiresIn: "1d" });
 
-        res.cookie("token", token, { maxAge : 60*60*10000 ,httpOnly: true, secure : true, sameSite :"none" });
+        res.cookie("token", token, { maxAge : 60*60*1000 , httpOnly: true,  secure : true, sameSite :"none" });
         res.status(200).json({token});
         
       } else {
