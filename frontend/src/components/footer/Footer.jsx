@@ -65,10 +65,7 @@ const Footer = () => {
                 <div className={`${footer.footer__links_div} ${footer.slogan}`}>
                     <div className={footer.slogan__logo}>
                         <Link to='/'>
-                            <img src={logo} alt="" /><img
-                            className={footer.logo}
-                            alt="Bong cake logo"
-                            src={logo}/>
+                            <img src={logo} alt="" className={footer.logo} />
                         </Link>
                         
                         <div className={`${footer.slogan__content} title--2`}>
