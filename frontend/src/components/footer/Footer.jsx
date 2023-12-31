@@ -64,10 +64,10 @@ const Footer = () => {
                 <div className={`${footer.footer__links_div} ${footer.slogan}`}>
                     <div className={footer.slogan__logo}>
                         <Link to='/'>
-                            <img src="/images/Logo-BongCake.png" alt="" /><img
+                            <img src="../../.././public/logoBongcake.png" alt="" /><img
                             className={footer.logo}
                             alt="Bong cake logo"
-                            src="/src/assets/image/logo.png"/>
+                            src="/../../.././public/logoBongcake.png"/>
                         </Link>
                         
                         <div className={`${footer.slogan__content} title--2`}>
