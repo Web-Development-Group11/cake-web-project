@@ -15,5 +15,9 @@
         "DATABASE_URL": "mongodb+srv://duc19052003:0336638998az@cake-web-projecr.qpkevmp.mongodb.net/cake-web-project?retryWrites=true&w=majority",
         "NODE_ENV":"production",
         "SECRET_KEY" : "ducduc"
-    }
+    },
+    "plugins" : [
+        "@now/node",
+        ["esm"]
+    ]
 }
