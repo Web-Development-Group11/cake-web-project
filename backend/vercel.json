@@ -3,10 +3,11 @@
     "builds" : [
         {"src": "sever.js", "use" : "@vercel/node"}
     ],
+
     "rewrites": [
         {
           "source": "/(.*)",
-          "destination": "/"
+          "destination": "sever.js"
         }
       ],
     "env" : {
