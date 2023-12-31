@@ -9,6 +9,12 @@
             "dest" : "sever.js"
         }
     ],
+    "rewrites": [
+        {
+          "source": "/(.*)",
+          "destination": "/"
+        }
+      ],
     "env" : {
         "PORT" : "4000",
         "CLIENT_PORT" : "3000",
