@@ -3,6 +3,7 @@ import footer from './Footer.module.css';
 import Button from '../button/Button';
 import { Link } from 'react-router-dom';
 import TextField from '../textField/TextField';
+import logo from '../../assets/image/logo.png';
 
 // Import thư viện các icon
 import { MdMail } from 'react-icons/md';
@@ -64,10 +65,10 @@ const Footer = () => {
                 <div className={`${footer.footer__links_div} ${footer.slogan}`}>
                     <div className={footer.slogan__logo}>
                         <Link to='/'>
-                            <img src="../../.././public/logoBongcake.png" alt="" /><img
+                            <img src={logo} alt="" /><img
                             className={footer.logo}
                             alt="Bong cake logo"
-                            src="/../../.././public/logoBongcake.png"/>
+                            src={logo}/>
                         </Link>
                         
                         <div className={`${footer.slogan__content} title--2`}>

@@ -14,6 +14,9 @@ import cupcake from '../../assets/category/cupcake.png';
 import brownie from '../../assets/category/brownie.png';
 import cookie from '../../assets/category/cookie.png';
 import combo from '../../assets/category/combo.png';
+import customcupcake from '../../assets/image/customcupcake.png';
+import randomBox from '../../assets/image/randombox.png';
+
 
 const Home = (props) => {
   // Loader state
@@ -111,7 +114,7 @@ useEffect(() => {
 
         <div className={home.cuscup__container}>
           <div className={home.cuscup__image}>
-            <img src="/src/assets/image/customcupcake.png" alt="Custom Cupcake" />
+            <img src={customcupcake} alt="Custom Cupcake" />
           </div> 
           <div className={home.cuscup__content}>
             <div className={`${home.cuscup__title} heading`}>Custom Cupcake</div>
@@ -124,7 +127,7 @@ useEffect(() => {
 
         <div className={home.randombox__container}>
           <div className={home.randombox__image}> 
-            <img src="/src/assets/image/randombox.png" alt="Random Box" />
+            <img src={randomBox} alt="Random Box" />
           </div>
           <div className={home.randombox__content}>
             <div className={`${home.randombox__title} heading`}>Random Box</div>
