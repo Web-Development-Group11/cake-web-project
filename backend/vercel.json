@@ -1,14 +1,14 @@
 {
     "version": 2,
     "builds" : [
-        {"src": "/sever.js", "use" : "@vercel/node"}
+        {"src": "sever.js", "use" : "@vercel/node"}
     ],
-    "rewrites": [
-        {
-          "source": "/(.*)",
-          "destination": "/sever.js"
-        }
-      ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "sever.js"
+      }
+    ],
     "env" : {
         "PORT" : "4000",
         "CLIENT_PORT" : "3000",
