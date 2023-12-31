@@ -8,6 +8,8 @@ import { FaCheck } from "react-icons/fa";
 import AddSelectPayment from '../../components/AddSelect/addSelectPayment';
 import { FaTimes } from 'react-icons/fa';
 import { validateFullName, validateAddressDetail, validateEmail, validatePhone } from "../../components/validation/validationForm";
+import toast from 'react-hot-toast';
+
 const PaymentPageGuest = (props) => {
   const navigate = useNavigate();
   const [fullname, setFullname] = useState("");
@@ -129,7 +131,8 @@ const PaymentPageGuest = (props) => {
       setEmailError(validation.emailError);
       setEmailErrorMsg(validation.emailErrorMsg);
     } else {
-      navigate('/');
+      toast.success('Bạn đã thanh toán thành công!')
+      // navigate('/');
     }
   }
 
