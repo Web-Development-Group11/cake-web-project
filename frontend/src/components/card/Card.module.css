@@ -204,6 +204,9 @@
 
     .content__rate {
         margin-top: calc(1 / 31 * 31%);
+        transform: scale(0.6) translateX(-50%);
+        
+        
 
         .content__price {
             margin-top: 0;

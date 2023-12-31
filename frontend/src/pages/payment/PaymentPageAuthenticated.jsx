@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import Loader from '../../components/loader/Loader';
 import { axiosClient } from '../../api/axios';
 import { FaTimes } from 'react-icons/fa';
+import toast from 'react-hot-toast';
 
 const PaymentPageAuthenticated = (props) => {
     const navigate = useNavigate();
@@ -26,7 +27,8 @@ const PaymentPageAuthenticated = (props) => {
     const [customerData, setCustomerData] = useState();
     async function submitForm(e) {
         e.preventDefault();
-        navigate('/');
+        toast.success('Bạn đã thanh toán thành công!');
+        // navigate('/');
     }
 
     useEffect(() => {
