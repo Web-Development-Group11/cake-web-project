@@ -18,7 +18,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 
-// const homeRoute = require('./routes/home');
 app.get('/', (req, res) => {
     res.send('hello')
 })
