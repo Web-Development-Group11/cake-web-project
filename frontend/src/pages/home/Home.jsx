@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Button from '../../components/button/Button';
-import Navbar from '../../components/header/NavBar'
 import Banner from '../../components/banner/Banner'
 import Category from '../../components/category/Category'
 import Card from '../../components/card/Card'
-import Footer from '../../components/footer/Footer'
 import { Link } from 'react-router-dom'
 import home from './Home.module.css'
 import { useModal } from '../../hook/useModal';
@@ -12,6 +10,10 @@ import { axiosClient } from '../../api/axios';
 import Loader from '../../components/loader/Loader';
 import { useCurrentUser } from '../../hook/useCurrentUser';
 import toast from 'react-hot-toast';
+import cupcake from '../../assets/category/cupcake.png';
+import brownie from '../../assets/category/brownie.png';
+import cookie from '../../assets/category/cookie.png';
+import combo from '../../assets/category/combo.png';
 
 const Home = (props) => {
   // Loader state
@@ -76,19 +78,19 @@ useEffect(() => {
 
         <div className={home.category__container}>
           <Link className={home.category__item} to = './product?filter=cupcake'>
-            <Category img="/src/assets/category/cupcake.png" title="Cupcake"  description="Món ăn nhẹ ngọt ngào và đáng yêu"></Category>
+            <Category img={cupcake} title="Cupcake"  description="Món ăn nhẹ ngọt ngào và đáng yêu"></Category>
           </Link>
 
           <Link className={home.category__item} to = './product?filter=brownie'>
-            <Category img="/src/assets/category/brownie.png" title="Brownie"  description="Món bánh ngọt sang trọng và béo ngậy"></Category>
+            <Category img={brownie} title="Brownie"  description="Món bánh ngọt sang trọng và béo ngậy"></Category>
           </Link>
 
           <Link className={home.category__item} to = './product?filter=cookie'>
-            <Category img="/src/assets/category/cookie.png" title="Cookie"  description="Những chiếc bánh giòn tan và đậm đà"></Category>
+            <Category img={cookie} title="Cookie"  description="Những chiếc bánh giòn tan và đậm đà"></Category>
           </Link>
 
           <Link className={home.category__item} to = './product?filter=box'>
-            <Category img="/src/assets/category/combo.png" title="Combo"  description="Sự kết hợp đa dạng và hoàn hảo"></Category>
+            <Category img={combo} title="Combo"  description="Sự kết hợp đa dạng và hoàn hảo"></Category>
           </Link>
 
         </div>
