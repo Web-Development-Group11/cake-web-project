@@ -5,15 +5,15 @@ import { createComment, getComments } from "../controllers/commentController.js"
 
 const productRoutes = new Router();
 
-productRoutes.get('/products', getProducts);
+productRoutes.get('/product', getProducts);
 
-productRoutes.get('/products/random', verifyToken , getRandomProduct);
+productRoutes.get('/product/random', verifyToken , getRandomProduct);
 
-productRoutes.get('/products/:id', getProductById)
+productRoutes.get('/product/:id', getProductById)
 
-productRoutes.post('/products/comment/:id',createComment )
+productRoutes.post('/product/comment/:id',createComment )
 
-productRoutes.get('/products/comment/:id', getComments)
+productRoutes.get('/product/comment/:id', getComments)
 
 productRoutes.post('/highlight', getHighlitedProduct)
 

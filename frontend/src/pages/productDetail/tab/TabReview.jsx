@@ -182,7 +182,7 @@ const TabReview = (props) => {
                                     <Rating
                                         style={{ color: '#E21033' }}
                                         name="half-rating-read" value={props.rating} precision={0.5} readOnly
-                                        onChange={(event, newValue) => handleRatingChange(newValue)} />
+                                        onChange={(event, newValue) => handleratingChange(newValue)} />
                                 </div>
                                 <div className={tabreview.readReview__ratingFilter_filter}>
                                     <p className={`${tabreview.readReview__ratingFilter_filter__label} title--4`}>
