@@ -77,7 +77,7 @@ export default function Product(props) {
       }
 
       try {
-        const response = await axiosClient.get(`/products?${searchParams.toString()}`);
+        const response = await axiosClient.get(`/product?${searchParams.toString()}`);
 
         setTimeout(() => {
           setIsLoading(false);

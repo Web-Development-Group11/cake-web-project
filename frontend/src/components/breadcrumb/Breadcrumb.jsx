@@ -31,7 +31,7 @@ const Breadcrumb = () => {
   useEffect(() => {
     const fetchProductById = async (productId) => {
       try {
-        const response = await axiosClient.get(`/products/${productId}`);
+        const response = await axiosClient.get(`/product/${productId}`);
         const productData = response.data.data;
         const productName = productData.title;
         setProductName(productName);

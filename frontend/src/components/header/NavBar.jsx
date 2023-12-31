@@ -124,7 +124,7 @@ function Navbar(props) {
         const source = CancelToken.source();
         cancelSearchRequest = source.cancel;
 
-        const response = await axiosClient.get(`/products?keyword=${searchContent}`, {
+        const response = await axiosClient.get(`/product?keyword=${searchContent}`, {
           cancelToken: source.token
         });
         setSearchResult(response.data?.data);
@@ -178,7 +178,7 @@ function Navbar(props) {
     onOpen('randomBox');
 
     try {
-      const response = await axiosClient('/products/random');
+      const response = await axiosClient('/product/random');
 
       setData(response.data)
     } catch (error) {

@@ -55,7 +55,7 @@ const amount = 8;
     onOpen('randomBox');
 
     try {
-      const response = await axiosClient.get('/products/random');
+      const response = await axiosClient.get('/product/random');
 
       setData(response.data);
     } catch (error) {

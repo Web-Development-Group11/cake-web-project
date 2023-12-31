@@ -63,7 +63,7 @@ const TabReview = (props) => {
     // Gọi API lấy danh sách review
     const getComments = async () => {
         try {
-            const response = await axiosClient.get(`/products/comment/${id}`);
+            const response = await axiosClient.get(`/product/comment/${id}`);
             setReview(response.data.data);
             setReviewList(response.data.data);
             console.log(response.data.data)
@@ -114,7 +114,7 @@ const TabReview = (props) => {
         else {
             // Gọi API lấy danh sách review (chưa có API nên tạm thời dùng hàm setReviewList()
             try {
-                await axiosClient.post(`/products/comment/${id}`, { author, phoneNumber, email, comment, rating });
+                await axiosClient.post(`/product/comment/${id}`, { author, phoneNumber, email, comment, rating });
                 alert("Bạn đã đăng bài thành công!");
             } catch (err) {
                 console.log(err)

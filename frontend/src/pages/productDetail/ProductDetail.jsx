@@ -44,7 +44,7 @@ export default function ProductDetail(props) {
   //  Lấy sản phẩm từ API
   const getProduct = async ()=> {
     try {
-      const response = await axiosClient.get(`/products/${id}`);
+      const response = await axiosClient.get(`/product/${id}`);
       
       setTimeout(() => {
         setIsLoading(false);
