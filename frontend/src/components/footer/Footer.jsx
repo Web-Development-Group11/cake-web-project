@@ -85,8 +85,8 @@ const Footer = () => {
                         <div className={`${footer.quick_links__name} title--1`}>
                             Liên kết nhanh
                         </div>
-                        <Link className={`${footer.content} body--2`} to="/home">Trang chủ</Link>
-                        <Link className={`${footer.content} body--2`} to="/productDetail">Custom Cupcake</Link>
+                        <Link className={`${footer.content} body--2`} to="/">Trang chủ</Link>
+                        <Link className={`${footer.content} body--2`} to="/cuscupcake">Custom Cupcake</Link>
                         <a className={`${footer.content} body--2`} href="/product">Sản phẩm</a>
                         <Link className={`${footer.content} body--2`} to="/introduction">Giới thiệu</Link>
                         <Link className={`${footer.content} body--2`} to="/blog">Blog</Link>
